@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "GBiO | Since 1700",
+    "description": "DOP extra virgin olive oil and ancient grain pasta from Abruzzo. ICEA certified organic."
+  },
+  "nav": {
+    "heritage": "Our Story",
+    "products": "Products",
+    "territory": "Territory",
+    "certifications": "Certifications",
+    "contact": "Contact"
+  },
+  "header": {
+    "openCart": "Open cart",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "myProfile": "My Profile",
+    "myOrders": "My Orders",
+    "myAddresses": "My Addresses",
+    "logout": "Logout",
+    "login": "Login",
+    "cart": "Cart",
+    "account": "Account"
+  },
+  "hero": {
+    "eyebrow": "Golden Triangle of Olive Oil",
+    "tagline": "Castellana, Abruzzo.",
+    "taglineHighlight": "Organic excellence.",
+    "cta": "Explore",
+    "explore": "Discover",
+    "location": "City of Olive Oil",
+    "established": "Bio ICEA"
+  },
+  "heritage": {
+    "eyebrow": "Our Land",
+    "title": "Golden Triangle",
+    "subtitle": "Moscufo · Loreto Aprutino · Pianella",
+    "founder": "Giovanni Battista Obletter",
+    "description1": "Our croplands grow in Via del Grano in Castellana. The olive oil is born in the heart of the Golden Triangle, a territory recognized among Italy's Cities of Olive Oil.",
+    "description2": "DOP Aprutino Pescarese. ICEA certified organic.",
+    "stats": {
+      "totalHectares": "Hectares",
+      "cropland": "Cropland",
+      "oliveGrove": "Olive Grove"
+    }
+  },
+  "products": {
+    "eyebrow": "Collection",
+    "title": "Products",
+    "subtitle": "ICEA certified organic.",
+    "addToCart": "Add",
+    "added": "Added",
+    "add": "Add",
+    "requestCatalog": "Catalog",
+    "goToCart": "Cart",
+    "categories": {
+      "all": {
+        "label": "All"
+      },
+      "olio": {
+        "label": "Olive Oil",
+        "title": "Golden Triangle of Olive Oil",
+        "description": "Moscufo · Loreto Aprutino · Pianella. Nutraceutical DOP Aprutino Pescarese olive oil with high polyphenol content. Certified antioxidant properties."
+      },
+      "pasta": {
+        "label": "Pasta",
+        "title": "Ancient Grains · Via del Grano",
+        "description": "Castellana. Senatore Cappelli pasta, a highly digestible ancient grain. Bronze-drawn, slow dried at low temperature."
+      },
+      "farina": {
+        "label": "Flours",
+        "title": "Ancient Grain Flours",
+        "description": "Castellana. Stone-ground Senatore Cappelli and Gentil Rosso. High digestibility, low glycemic index."
+      },
+      "conserve": {
+        "label": "Preserves",
+        "title": "Pera d'Abruzzo Tomato",
+        "description": "Native variety with high lycopene content. Dense flesh, thin skin. Processed within 24 hours of harvest."
+      }
+    }
+  },
+  "territory": {
+    "eyebrow": "Terroir",
+    "title": "Cepagatti",
+    "subtitle": "Abruzzo. Where Gran Sasso meets the Adriatic."
+  },
+  "certifications": {
+    "eyebrow": "Certifications",
+    "title": "ICEA Bio",
+    "subtitle": "Certified organic. No compromise."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let's Talk",
+    "subtitle": "For orders, collaborations or farm visits.",
+    "address": "Address",
+    "addressValue": "Via Sicilia 2/A, Cepagatti (PE)",
+    "phone": "Phone",
+    "phoneValue": "+39 392 636 2254",
+    "email": "Email",
+    "hours": "Hours",
+    "hoursValue": "Mon - Fri: 9:00 - 18:00\nSat: 9:00 - 13:00",
+    "visitUs": "Visit us",
+    "visitDescription": "We organize guided tours and tastings by appointment.",
+    "bookVisit": "Book a visit",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "Your email",
+      "phone": "Phone",
+      "phonePlaceholder": "Your number",
+      "subject": "Subject",
+      "subjects": {
+        "info": "General information",
+        "orders": "Orders and shipping",
+        "collaborations": "Collaborations",
+        "other": "Other"
+      },
+      "message": "Message",
+      "messagePlaceholder": "How can we help?",
+      "required": "Required fields",
+      "submit": "Send message",
+      "sending": "Sending...",
+      "success": "Thank you for your message! We'll respond shortly."
+    }
+  },
+  "footer": {
+    "description": "Since 1700. Abruzzo.",
+    "contacts": "Contact",
+    "navigation": "Navigation",
+    "followUs": "Social",
+    "certifications": "Certifications",
+    "copyright": "GBiO - Azienda Agricola Obletter Giovanni Battista - VAT IT02773610692",
+    "privacyPolicy": "Privacy",
+    "cookiePolicy": "Cookie",
+    "yearsHistory": "Since",
+    "hectares": "Hectares",
+    "organic": "Bio"
+  },
+  "cart": {
+    "title": "Cart",
+    "empty": "Your cart is empty",
+    "emptyDescription": "Discover our organic products",
+    "goToProducts": "Go to Products",
+    "removeItem": "Remove from cart",
+    "decreaseQuantity": "Decrease quantity",
+    "increaseQuantity": "Increase quantity",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "freeShippingRemaining": "Add {amount} for free shipping",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "continueShopping": "Continue shopping",
+    "close": "Close cart"
+  },
+  "checkout": {
+    "emptyCart": "Your cart is empty",
+    "emptyCartDescription": "Add products to proceed to checkout",
+    "backToProducts": "Back to Products",
+    "backToSite": "Back to site",
+    "steps": {
+      "shipping": "Shipping",
+      "payment": "Payment"
+    },
+    "shippingAddress": "Shipping Address",
+    "savedAddresses": "Saved addresses",
+    "useNewAddress": "Use a new address",
+    "haveAccount": "Already have an account?",
+    "loginForFaster": "for faster checkout.",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "province": "Province",
+      "postalCode": "Postal Code",
+      "select": "Select...",
+      "deliveryNotes": "Delivery notes",
+      "deliveryNotesPlaceholder": "Doorbell, floor, preferred times...",
+      "required": "Required",
+      "invalidEmail": "Invalid email",
+      "invalidPostalCode": "Invalid postal code"
+    },
+    "continueToPayment": "Continue to Payment",
+    "editAddress": "Edit address",
+    "paymentMethod": "Payment Method",
+    "shippingTo": "Shipping to:",
+    "payment": {
+      "creditCard": "Credit Card",
+      "creditCardTypes": "Visa, Mastercard, American Express",
+      "paypal": "PayPal",
+      "paypalDescription": "Pay securely with PayPal",
+      "cod": "Cash on Delivery",
+      "codDescription": "Pay on delivery (+3.00)",
+      "cardNumber": "Card Number",
+      "expiry": "Expiry",
+      "cvv": "CVV",
+      "securePayment": "Secure SSL payment",
+      "buyerProtection": "Buyer protection",
+      "pay": "Pay",
+      "processing": "Processing..."
+    },
+    "orderSummary": "Order Summary",
+    "quantity": "Qty:",
+    "freeShippingOver": "Free shipping over 50",
+    "securePayment100": "100% secure payment",
+    "confirmation": {
+      "thanks": "Thank you for your order!",
+      "orderNumber": "Order #",
+      "emailConfirmation": "You will receive a confirmation email at {email} with all your order details.",
+      "shippingAddressLabel": "Shipping address",
+      "backHome": "Back to Home"
+    }
+  },
+  "auth": {
+    "branding": {
+      "tagline": "Since 1700. Organic excellence from Abruzzo.",
+      "yearsHistory": "Since",
+      "hectares": "Hectares",
+      "organic": "Bio"
+    },
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Log in to your GBiO account",
+      "email": "Email",
+      "emailPlaceholder": "name@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submit": "Log In",
+      "submitting": "Logging in...",
+      "noAccount": "Don't have an account?",
+      "register": "Register",
+      "orWith": "or",
+      "continueWithGoogle": "Continue with Google",
+      "error": "Login error"
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join the GBiO family",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "passwordRequirements": "Minimum 8 characters",
+      "termsAgree": "I agree to the",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "submit": "Create Account",
+      "submitting": "Creating...",
+      "haveAccount": "Already have an account?",
+      "login": "Log In"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "subtitle": "Enter your email to receive instructions",
+      "email": "Email",
+      "submit": "Send instructions",
+      "submitting": "Sending...",
+      "backToLogin": "Back to login",
+      "success": "We've sent you an email with instructions to reset your password."
+    }
+  },
+  "account": {
+    "title": "My Account",
+    "tabs": {
+      "profile": "Profile",
+      "orders": "Orders",
+      "addresses": "Addresses"
+    },
+    "profile": {
+      "personalInfo": "Personal Information",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "saveChanges": "Save Changes",
+      "saving": "Saving...",
+      "saved": "Saved!",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "updatePassword": "Update Password"
+    },
+    "orders": {
+      "title": "My Orders",
+      "empty": "No orders yet",
+      "emptyDescription": "Discover our organic products",
+      "goToProducts": "Go to Products"
+    },
+    "addresses": {
+      "title": "My Addresses",
+      "addNew": "Add Address",
+      "default": "Default",
+      "setDefault": "Set as default",
+      "edit": "Edit",
+      "delete": "Delete",
+      "empty": "No saved addresses",
+      "emptyDescription": "Add an address for faster checkout"
+    }
+  },
+  "payment": {
+    "crypto": "Cryptocurrency",
+    "cryptoSubtitle": "BTC, SOL, DOGE, USDT, USDC",
+    "selectCrypto": "Select cryptocurrency"
+  },
+  "cryptoPayment": {
+    "payWith": "Pay with {currency}",
+    "amountToPay": "Amount to pay",
+    "walletAddress": "Wallet address",
+    "scanQR": "Scan QR code",
+    "orCopyAddress": "or copy address",
+    "copyAddress": "Copy address",
+    "copied": "Copied!",
+    "network": "Network",
+    "instructions": "Send the exact amount to the address above. The transaction will be verified manually.",
+    "timeRemaining": "Time remaining",
+    "confirmPayment": "I have made the payment",
+    "cancel": "Cancel",
+    "expired": "Time expired",
+    "expiredDescription": "The payment session has expired. Please try again.",
+    "retry": "Try again"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "back": "Back",
+    "next": "Next",
+    "required": "Required"
+  },
+  "productData": {
+    "olio-dop-50cl": {
+      "name": "Extra Virgin Olive Oil",
+      "subtitle": "DOP Aprutino Pescarese · 50cl",
+      "description": "Nutraceutical. High polyphenol content. Notes of almond and artichoke."
+    },
+    "olio-dop-3l": {
+      "name": "Extra Virgin Olive Oil",
+      "subtitle": "DOP Aprutino Pescarese · 3L Tin",
+      "description": "Family format. Natural polyphenols and antioxidants."
+    },
+    "olio-dop-5l": {
+      "name": "Extra Virgin Olive Oil",
+      "subtitle": "DOP Aprutino Pescarese · 5L Tin",
+      "description": "For connoisseurs. Certified antioxidant properties."
+    },
+    "pasta-penne": {
+      "name": "Penne Rigate",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "High digestibility. Bronze-drawn, slow dried."
+    },
+    "pasta-mezzemaniche": {
+      "name": "Mezzemaniche",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "High digestibility. Bronze-drawn, slow dried."
+    },
+    "pasta-fettuccine": {
+      "name": "Fettuccine",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "High digestibility. Bronze-drawn, slow dried."
+    },
+    "pasta-tagliatelle": {
+      "name": "Tagliatelle",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "High digestibility. Bronze-drawn, slow dried."
+    },
+    "pasta-sagnette": {
+      "name": "Sagnette",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Abruzzo format. High digestibility, bronze-drawn."
+    },
+    "pasta-quadrucci": {
+      "name": "Quadrucci",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "For soups and broths. High digestibility."
+    },
+    "semolato-cappelli": {
+      "name": "Semolina",
+      "subtitle": "Senatore Cappelli · 1kg",
+      "description": "Stone-ground. Low glycemic index."
+    },
+    "farina-gentilrosso": {
+      "name": "Gentilrosso Flour",
+      "subtitle": "Ancient Soft Wheat · 1kg",
+      "description": "Stone-ground. Low glycemic index."
+    },
+    "passata-pomodoro": {
+      "name": "Tomato Passata",
+      "subtitle": "Pera d'Abruzzo Bio · 70cl",
+      "description": "High lycopene content. Dense flesh, processed within 24 hours."
+    }
+  }
+}

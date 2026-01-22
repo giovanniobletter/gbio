@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "GBiO | С 1700 года",
+    "description": "Оливковое масло DOP экстра вирджин и паста из древних сортов пшеницы из Абруццо. Сертифицированное органическое ICEA."
+  },
+  "nav": {
+    "heritage": "Наша История",
+    "products": "Продукция",
+    "territory": "Территория",
+    "certifications": "Сертификаты",
+    "contact": "Контакты"
+  },
+  "header": {
+    "openCart": "Открыть корзину",
+    "openMenu": "Открыть меню",
+    "closeMenu": "Закрыть меню",
+    "myProfile": "Мой профиль",
+    "myOrders": "Мои заказы",
+    "myAddresses": "Мои адреса",
+    "logout": "Выйти",
+    "login": "Войти",
+    "cart": "Корзина",
+    "account": "Аккаунт"
+  },
+  "hero": {
+    "eyebrow": "Золотой Треугольник Оливкового Масла",
+    "tagline": "Кастеллана, Абруццо.",
+    "taglineHighlight": "Органическое совершенство.",
+    "cta": "Исследовать",
+    "explore": "Открыть",
+    "location": "Город Оливкового Масла",
+    "established": "Bio ICEA"
+  },
+  "heritage": {
+    "eyebrow": "Наша Земля",
+    "title": "Золотой Треугольник",
+    "subtitle": "Москуфо · Лорето Апрутино · Пианелла",
+    "founder": "Джованни Баттиста Облеттер",
+    "description1": "Наши посевные земли процветают на Via del Grano в Кастеллане. Оливковое масло рождается в сердце Золотого Треугольника, территории, признанной среди Городов Оливкового Масла Италии.",
+    "description2": "DOP Aprutino Pescarese. Сертифицированное органическое ICEA.",
+    "stats": {
+      "totalHectares": "Гектаров",
+      "cropland": "Посевных",
+      "oliveGrove": "Оливковая роща"
+    }
+  },
+  "products": {
+    "eyebrow": "Коллекция",
+    "title": "Продукция",
+    "subtitle": "Сертифицированное органическое ICEA.",
+    "addToCart": "Добавить",
+    "added": "Добавлено",
+    "add": "Добавить",
+    "requestCatalog": "Каталог",
+    "goToCart": "Корзина",
+    "categories": {
+      "all": {
+        "label": "Все"
+      },
+      "olio": {
+        "label": "Масло",
+        "title": "Золотой Треугольник Оливкового Масла",
+        "description": "Москуфо · Лорето Апрутино · Пианелла. Нутрицевтическое оливковое масло DOP Aprutino Pescarese с высоким содержанием полифенолов. Сертифицированные антиоксидантные свойства."
+      },
+      "pasta": {
+        "label": "Паста",
+        "title": "Древние Сорта Пшеницы · Via del Grano",
+        "description": "Кастеллана. Паста из Senatore Cappelli, легкоусвояемого древнего сорта пшеницы. Бронзовое волочение, медленная сушка при низкой температуре."
+      },
+      "farina": {
+        "label": "Мука",
+        "title": "Мука из Древних Сортов",
+        "description": "Кастеллана. Senatore Cappelli и Gentil Rosso каменного помола. Высокая усвояемость, низкий гликемический индекс."
+      },
+      "conserve": {
+        "label": "Консервы",
+        "title": "Томат Pera d'Abruzzo",
+        "description": "Автохтонный сорт с высоким содержанием ликопина. Плотная мякоть, тонкая кожица. Переработка в течение 24 часов после сбора."
+      }
+    }
+  },
+  "territory": {
+    "eyebrow": "Терруар",
+    "title": "Чепагатти",
+    "subtitle": "Абруццо. Где Гран-Сассо встречает Адриатику."
+  },
+  "certifications": {
+    "eyebrow": "Сертификаты",
+    "title": "ICEA Bio",
+    "subtitle": "Сертифицированное органическое. Без компромиссов."
+  },
+  "contact": {
+    "eyebrow": "Контакты",
+    "title": "Поговорим",
+    "subtitle": "Для заказов, сотрудничества или посещений.",
+    "address": "Адрес",
+    "addressValue": "Via Sicilia 2/A, Cepagatti (PE)",
+    "phone": "Телефон",
+    "phoneValue": "+39 392 636 2254",
+    "email": "Email",
+    "hours": "Часы работы",
+    "hoursValue": "Пн - Пт: 9:00 - 18:00\nСб: 9:00 - 13:00",
+    "visitUs": "Посетите нас",
+    "visitDescription": "Мы организуем экскурсии и дегустации по записи.",
+    "bookVisit": "Записаться",
+    "form": {
+      "name": "Имя",
+      "namePlaceholder": "Ваше имя",
+      "email": "Email",
+      "emailPlaceholder": "Ваш email",
+      "phone": "Телефон",
+      "phonePlaceholder": "Ваш номер",
+      "subject": "Тема",
+      "subjects": {
+        "info": "Общая информация",
+        "orders": "Заказы и доставка",
+        "collaborations": "Сотрудничество",
+        "other": "Другое"
+      },
+      "message": "Сообщение",
+      "messagePlaceholder": "Чем можем помочь?",
+      "required": "Обязательные поля",
+      "submit": "Отправить",
+      "sending": "Отправка...",
+      "success": "Спасибо за сообщение! Мы ответим в ближайшее время."
+    }
+  },
+  "footer": {
+    "description": "С 1700 года. Абруццо.",
+    "contacts": "Контакты",
+    "navigation": "Навигация",
+    "followUs": "Соцсети",
+    "certifications": "Сертификаты",
+    "copyright": "GBiO - Azienda Agricola Obletter Giovanni Battista - ИНН IT02773610692",
+    "privacyPolicy": "Конфиденциальность",
+    "cookiePolicy": "Cookie",
+    "yearsHistory": "С",
+    "hectares": "Гектаров",
+    "organic": "Bio"
+  },
+  "cart": {
+    "title": "Корзина",
+    "empty": "Корзина пуста",
+    "emptyDescription": "Откройте наши органические продукты",
+    "goToProducts": "К продукции",
+    "removeItem": "Удалить из корзины",
+    "decreaseQuantity": "Уменьшить количество",
+    "increaseQuantity": "Увеличить количество",
+    "subtotal": "Подытог",
+    "shipping": "Доставка",
+    "free": "Бесплатно",
+    "freeShippingRemaining": "Добавьте {amount} для бесплатной доставки",
+    "total": "Итого",
+    "checkout": "Оформить заказ",
+    "continueShopping": "Продолжить покупки",
+    "close": "Закрыть"
+  },
+  "checkout": {
+    "emptyCart": "Корзина пуста",
+    "emptyCartDescription": "Добавьте продукты для оформления заказа",
+    "backToProducts": "К продукции",
+    "backToSite": "На сайт",
+    "steps": {
+      "shipping": "Доставка",
+      "payment": "Оплата"
+    },
+    "shippingAddress": "Адрес Доставки",
+    "savedAddresses": "Сохраненные адреса",
+    "useNewAddress": "Новый адрес",
+    "haveAccount": "Есть аккаунт?",
+    "loginForFaster": "для быстрой оплаты.",
+    "form": {
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "email": "Email",
+      "phone": "Телефон",
+      "address": "Адрес",
+      "city": "Город",
+      "province": "Провинция",
+      "postalCode": "Индекс",
+      "select": "Выбрать...",
+      "deliveryNotes": "Примечания",
+      "deliveryNotesPlaceholder": "Домофон, этаж, время...",
+      "required": "Обязательно",
+      "invalidEmail": "Неверный email",
+      "invalidPostalCode": "Неверный индекс"
+    },
+    "continueToPayment": "К оплате",
+    "editAddress": "Изменить",
+    "paymentMethod": "Способ Оплаты",
+    "shippingTo": "Доставка:",
+    "payment": {
+      "creditCard": "Банковская карта",
+      "creditCardTypes": "Visa, Mastercard, American Express",
+      "paypal": "PayPal",
+      "paypalDescription": "Безопасная оплата PayPal",
+      "cod": "Наложенный платеж",
+      "codDescription": "Оплата при получении (+3,00€)",
+      "cardNumber": "Номер карты",
+      "expiry": "Срок",
+      "cvv": "CVV",
+      "securePayment": "Безопасная SSL оплата",
+      "buyerProtection": "Защита покупателя",
+      "pay": "Оплатить",
+      "processing": "Обработка..."
+    },
+    "orderSummary": "Сводка заказа",
+    "quantity": "Кол-во:",
+    "freeShippingOver": "Бесплатная доставка от 50€",
+    "securePayment100": "100% безопасная оплата",
+    "confirmation": {
+      "thanks": "Спасибо за заказ!",
+      "orderNumber": "Заказ #",
+      "emailConfirmation": "Подтверждение отправлено на {email}.",
+      "shippingAddressLabel": "Адрес доставки",
+      "backHome": "Назад"
+    }
+  },
+  "auth": {
+    "branding": {
+      "tagline": "С 1700 года. Органическое совершенство из Абруццо.",
+      "yearsHistory": "С",
+      "hectares": "Гектаров",
+      "organic": "Bio"
+    },
+    "login": {
+      "title": "С возвращением",
+      "subtitle": "Войдите в свой аккаунт GBiO",
+      "email": "Email",
+      "emailPlaceholder": "name@email.com",
+      "password": "Пароль",
+      "passwordPlaceholder": "Ваш пароль",
+      "rememberMe": "Запомнить",
+      "forgotPassword": "Забыли пароль?",
+      "submit": "Войти",
+      "submitting": "Вход...",
+      "noAccount": "Нет аккаунта?",
+      "register": "Регистрация",
+      "orWith": "или",
+      "continueWithGoogle": "Войти через Google",
+      "error": "Ошибка входа"
+    },
+    "register": {
+      "title": "Создать аккаунт",
+      "subtitle": "Присоединяйтесь к семье GBiO",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "email": "Email",
+      "password": "Пароль",
+      "confirmPassword": "Подтвердить",
+      "passwordRequirements": "Минимум 8 символов",
+      "termsAgree": "Я принимаю",
+      "termsOfService": "Условия",
+      "and": "и",
+      "privacyPolicy": "Политику конфиденциальности",
+      "submit": "Создать",
+      "submitting": "Создание...",
+      "haveAccount": "Есть аккаунт?",
+      "login": "Войти"
+    },
+    "resetPassword": {
+      "title": "Сброс пароля",
+      "subtitle": "Введите email для получения инструкций",
+      "email": "Email",
+      "submit": "Отправить",
+      "submitting": "Отправка...",
+      "backToLogin": "Назад",
+      "success": "Инструкции отправлены на email."
+    }
+  },
+  "account": {
+    "title": "Мой аккаунт",
+    "tabs": {
+      "profile": "Профиль",
+      "orders": "Заказы",
+      "addresses": "Адреса"
+    },
+    "profile": {
+      "personalInfo": "Личные данные",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "email": "Email",
+      "phone": "Телефон",
+      "saveChanges": "Сохранить",
+      "saving": "Сохранение...",
+      "saved": "Сохранено!",
+      "changePassword": "Изменить пароль",
+      "currentPassword": "Текущий пароль",
+      "newPassword": "Новый пароль",
+      "confirmPassword": "Подтвердить",
+      "updatePassword": "Обновить"
+    },
+    "orders": {
+      "title": "Мои заказы",
+      "empty": "Заказов пока нет",
+      "emptyDescription": "Откройте наши органические продукты",
+      "goToProducts": "К продукции"
+    },
+    "addresses": {
+      "title": "Мои адреса",
+      "addNew": "Добавить",
+      "default": "По умолчанию",
+      "setDefault": "Сделать основным",
+      "edit": "Изменить",
+      "delete": "Удалить",
+      "empty": "Нет сохраненных адресов",
+      "emptyDescription": "Добавьте адрес для быстрого заказа"
+    }
+  },
+  "payment": {
+    "crypto": "Криптовалюта",
+    "cryptoSubtitle": "BTC, SOL, DOGE, USDT, USDC",
+    "selectCrypto": "Выбрать"
+  },
+  "cryptoPayment": {
+    "payWith": "Оплата {currency}",
+    "amountToPay": "Сумма",
+    "walletAddress": "Адрес кошелька",
+    "scanQR": "Сканировать QR",
+    "orCopyAddress": "или скопировать адрес",
+    "copyAddress": "Копировать",
+    "copied": "Скопировано!",
+    "network": "Сеть",
+    "instructions": "Отправьте точную сумму. Ручная проверка.",
+    "timeRemaining": "Осталось времени",
+    "confirmPayment": "Я оплатил",
+    "cancel": "Отмена",
+    "expired": "Истекло",
+    "expiredDescription": "Сессия истекла. Попробуйте снова.",
+    "retry": "Повторить"
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Произошла ошибка",
+    "retry": "Повторить",
+    "close": "Закрыть",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "confirm": "Подтвердить",
+    "delete": "Удалить",
+    "edit": "Изменить",
+    "add": "Добавить",
+    "back": "Назад",
+    "next": "Далее",
+    "required": "Обязательно"
+  },
+  "productData": {
+    "olio-dop-50cl": {
+      "name": "Оливковое Масло Экстра Вирджин",
+      "subtitle": "DOP Aprutino Pescarese · 50cl",
+      "description": "Нутрицевтическое. Высокое содержание полифенолов. Ноты миндаля и артишока."
+    },
+    "olio-dop-3l": {
+      "name": "Оливковое Масло Экстра Вирджин",
+      "subtitle": "DOP Aprutino Pescarese · Канистра 3L",
+      "description": "Семейный формат. Натуральные полифенолы и антиоксиданты."
+    },
+    "olio-dop-5l": {
+      "name": "Оливковое Масло Экстра Вирджин",
+      "subtitle": "DOP Aprutino Pescarese · Канистра 5L",
+      "description": "Для ценителей. Сертифицированные антиоксидантные свойства."
+    },
+    "pasta-penne": {
+      "name": "Пенне Ригате",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Высокая усвояемость. Бронзовая формовка, медленная сушка."
+    },
+    "pasta-mezzemaniche": {
+      "name": "Меццеманике",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Высокая усвояемость. Бронзовая формовка, медленная сушка."
+    },
+    "pasta-fettuccine": {
+      "name": "Феттучине",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Высокая усвояемость. Бронзовая формовка, медленная сушка."
+    },
+    "pasta-tagliatelle": {
+      "name": "Тальятелле",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Высокая усвояемость. Бронзовая формовка, медленная сушка."
+    },
+    "pasta-sagnette": {
+      "name": "Саньетте",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Формат Абруццо. Высокая усвояемость, бронзовая формовка."
+    },
+    "pasta-quadrucci": {
+      "name": "Квадруччи",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Для супов и бульонов. Высокая усвояемость."
+    },
+    "semolato-cappelli": {
+      "name": "Семолина",
+      "subtitle": "Senatore Cappelli · 1kg",
+      "description": "Каменный помол. Низкий гликемический индекс."
+    },
+    "farina-gentilrosso": {
+      "name": "Мука Джентилроссо",
+      "subtitle": "Древняя мягкая пшеница · 1kg",
+      "description": "Каменный помол. Низкий гликемический индекс."
+    },
+    "passata-pomodoro": {
+      "name": "Томатная Пассата",
+      "subtitle": "Pera d'Abruzzo Bio · 70cl",
+      "description": "Высокое содержание ликопина. Плотная мякоть, переработка в течение 24ч."
+    }
+  }
+}

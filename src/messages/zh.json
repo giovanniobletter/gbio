@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "GBiO | 始于1700年",
+    "description": "来自阿布鲁佐的DOP特级初榨橄榄油和古老谷物意大利面。ICEA认证有机产品。"
+  },
+  "nav": {
+    "heritage": "我们的故事",
+    "products": "产品",
+    "territory": "产地",
+    "certifications": "认证",
+    "contact": "联系我们"
+  },
+  "header": {
+    "openCart": "打开购物车",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "myProfile": "我的资料",
+    "myOrders": "我的订单",
+    "myAddresses": "我的地址",
+    "logout": "退出",
+    "login": "登录",
+    "cart": "购物车",
+    "account": "账户"
+  },
+  "hero": {
+    "eyebrow": "橄榄油黄金三角",
+    "tagline": "卡斯特拉纳，阿布鲁佐。",
+    "taglineHighlight": "有机卓越。",
+    "cta": "探索",
+    "explore": "发现",
+    "location": "橄榄油之城",
+    "established": "Bio ICEA"
+  },
+  "heritage": {
+    "eyebrow": "我们的土地",
+    "title": "黄金三角",
+    "subtitle": "莫斯库福 · 洛雷托阿普鲁蒂诺 · 皮亚内拉",
+    "founder": "乔瓦尼·巴蒂斯塔·奥布莱特",
+    "description1": "我们的耕地位于卡斯特拉纳的Via del Grano。橄榄油诞生于黄金三角的中心，这是意大利橄榄油之城的认可区域。",
+    "description2": "DOP Aprutino Pescarese。ICEA认证有机产品。",
+    "stats": {
+      "totalHectares": "公顷",
+      "cropland": "耕地",
+      "oliveGrove": "橄榄园"
+    }
+  },
+  "products": {
+    "eyebrow": "系列",
+    "title": "产品",
+    "subtitle": "ICEA认证有机产品。",
+    "addToCart": "加入",
+    "added": "已加入",
+    "add": "加入",
+    "requestCatalog": "目录",
+    "goToCart": "购物车",
+    "categories": {
+      "all": {
+        "label": "全部"
+      },
+      "olio": {
+        "label": "橄榄油",
+        "title": "橄榄油黄金三角",
+        "description": "莫斯库福 · 洛雷托阿普鲁蒂诺 · 皮亚内拉。高多酚含量的DOP Aprutino Pescarese营养橄榄油。认证抗氧化特性。"
+      },
+      "pasta": {
+        "label": "意面",
+        "title": "古老谷物 · Via del Grano",
+        "description": "卡斯特拉纳。Senatore Cappelli意面，高消化性古老谷物。青铜模具，低温慢速干燥。"
+      },
+      "farina": {
+        "label": "面粉",
+        "title": "古老谷物面粉",
+        "description": "卡斯特拉纳。石磨研磨的Senatore Cappelli和Gentil Rosso。高消化性，低血糖指数。"
+      },
+      "conserve": {
+        "label": "罐头",
+        "title": "Pera d'Abruzzo番茄",
+        "description": "高番茄红素含量的本地品种。果肉致密，皮薄。采摘后24小时内加工。"
+      }
+    }
+  },
+  "territory": {
+    "eyebrow": "风土",
+    "title": "切帕加蒂",
+    "subtitle": "阿布鲁佐。大萨索山与亚得里亚海交汇之处。"
+  },
+  "certifications": {
+    "eyebrow": "认证",
+    "title": "ICEA Bio",
+    "subtitle": "认证有机。绝不妥协。"
+  },
+  "contact": {
+    "eyebrow": "联系",
+    "title": "联系我们",
+    "subtitle": "订单、合作或农场参观。",
+    "address": "地址",
+    "addressValue": "Via Sicilia 2/A, Cepagatti (PE)",
+    "phone": "电话",
+    "phoneValue": "+39 392 636 2254",
+    "email": "电子邮件",
+    "hours": "营业时间",
+    "hoursValue": "周一至周五: 9:00 - 18:00\n周六: 9:00 - 13:00",
+    "visitUs": "访问我们",
+    "visitDescription": "我们提供预约参观和品鉴服务。",
+    "bookVisit": "预约参观",
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "您的姓名",
+      "email": "电子邮件",
+      "emailPlaceholder": "您的电子邮件",
+      "phone": "电话",
+      "phonePlaceholder": "您的电话号码",
+      "subject": "主题",
+      "subjects": {
+        "info": "一般信息",
+        "orders": "订单和配送",
+        "collaborations": "合作",
+        "other": "其他"
+      },
+      "message": "留言",
+      "messagePlaceholder": "我们如何帮助您？",
+      "required": "必填项",
+      "submit": "发送",
+      "sending": "发送中...",
+      "success": "感谢您的留言！我们会尽快回复。"
+    }
+  },
+  "footer": {
+    "description": "始于1700年。阿布鲁佐。",
+    "contacts": "联系",
+    "navigation": "导航",
+    "followUs": "社交媒体",
+    "certifications": "认证",
+    "copyright": "GBiO - Azienda Agricola Obletter Giovanni Battista - 税号 IT02773610692",
+    "privacyPolicy": "隐私",
+    "cookiePolicy": "Cookie",
+    "yearsHistory": "始于",
+    "hectares": "公顷",
+    "organic": "Bio"
+  },
+  "cart": {
+    "title": "购物车",
+    "empty": "购物车为空",
+    "emptyDescription": "发现我们的有机产品",
+    "goToProducts": "去购物",
+    "removeItem": "从购物车移除",
+    "decreaseQuantity": "减少数量",
+    "increaseQuantity": "增加数量",
+    "subtotal": "小计",
+    "shipping": "配送",
+    "free": "免费",
+    "freeShippingRemaining": "再加 {amount} 即可免费配送",
+    "total": "总计",
+    "checkout": "结账",
+    "continueShopping": "继续购物",
+    "close": "关闭"
+  },
+  "checkout": {
+    "emptyCart": "购物车为空",
+    "emptyCartDescription": "添加产品后结账",
+    "backToProducts": "返回产品",
+    "backToSite": "返回网站",
+    "steps": {
+      "shipping": "配送",
+      "payment": "支付"
+    },
+    "shippingAddress": "配送地址",
+    "savedAddresses": "已保存地址",
+    "useNewAddress": "使用新地址",
+    "haveAccount": "已有账户？",
+    "loginForFaster": "更快结账。",
+    "form": {
+      "firstName": "名",
+      "lastName": "姓",
+      "email": "电子邮件",
+      "phone": "电话",
+      "address": "地址",
+      "city": "城市",
+      "province": "省份",
+      "postalCode": "邮编",
+      "select": "选择...",
+      "deliveryNotes": "配送备注",
+      "deliveryNotesPlaceholder": "门铃、楼层、偏好时间...",
+      "required": "必填",
+      "invalidEmail": "无效的电子邮件",
+      "invalidPostalCode": "无效的邮编"
+    },
+    "continueToPayment": "继续支付",
+    "editAddress": "编辑",
+    "paymentMethod": "支付方式",
+    "shippingTo": "配送至：",
+    "payment": {
+      "creditCard": "信用卡",
+      "creditCardTypes": "Visa, Mastercard, American Express",
+      "paypal": "PayPal",
+      "paypalDescription": "安全的PayPal支付",
+      "cod": "货到付款",
+      "codDescription": "配送时支付（+3.00€）",
+      "cardNumber": "卡号",
+      "expiry": "有效期",
+      "cvv": "CVV",
+      "securePayment": "安全SSL支付",
+      "buyerProtection": "买家保护",
+      "pay": "支付",
+      "processing": "处理中..."
+    },
+    "orderSummary": "订单摘要",
+    "quantity": "数量：",
+    "freeShippingOver": "满50€免费配送",
+    "securePayment100": "100%安全支付",
+    "confirmation": {
+      "thanks": "感谢您的订单！",
+      "orderNumber": "订单 #",
+      "emailConfirmation": "确认邮件已发送至 {email}。",
+      "shippingAddressLabel": "配送地址",
+      "backHome": "返回"
+    }
+  },
+  "auth": {
+    "branding": {
+      "tagline": "始于1700年。阿布鲁佐的有机卓越。",
+      "yearsHistory": "始于",
+      "hectares": "公顷",
+      "organic": "Bio"
+    },
+    "login": {
+      "title": "欢迎回来",
+      "subtitle": "登录您的GBiO账户",
+      "email": "电子邮件",
+      "emailPlaceholder": "name@email.com",
+      "password": "密码",
+      "passwordPlaceholder": "您的密码",
+      "rememberMe": "记住我",
+      "forgotPassword": "忘记密码？",
+      "submit": "登录",
+      "submitting": "登录中...",
+      "noAccount": "没有账户？",
+      "register": "注册",
+      "orWith": "或",
+      "continueWithGoogle": "使用Google继续",
+      "error": "登录错误"
+    },
+    "register": {
+      "title": "创建账户",
+      "subtitle": "加入GBiO大家庭",
+      "firstName": "名",
+      "lastName": "姓",
+      "email": "电子邮件",
+      "password": "密码",
+      "confirmPassword": "确认",
+      "passwordRequirements": "至少8个字符",
+      "termsAgree": "我同意",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策",
+      "submit": "创建",
+      "submitting": "创建中...",
+      "haveAccount": "已有账户？",
+      "login": "登录"
+    },
+    "resetPassword": {
+      "title": "重置密码",
+      "subtitle": "输入您的电子邮件接收说明",
+      "email": "电子邮件",
+      "submit": "发送",
+      "submitting": "发送中...",
+      "backToLogin": "返回",
+      "success": "说明已发送至您的电子邮件。"
+    }
+  },
+  "account": {
+    "title": "我的账户",
+    "tabs": {
+      "profile": "资料",
+      "orders": "订单",
+      "addresses": "地址"
+    },
+    "profile": {
+      "personalInfo": "个人信息",
+      "firstName": "名",
+      "lastName": "姓",
+      "email": "电子邮件",
+      "phone": "电话",
+      "saveChanges": "保存",
+      "saving": "保存中...",
+      "saved": "已保存！",
+      "changePassword": "更改密码",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "confirmPassword": "确认",
+      "updatePassword": "更新"
+    },
+    "orders": {
+      "title": "我的订单",
+      "empty": "暂无订单",
+      "emptyDescription": "发现我们的有机产品",
+      "goToProducts": "去购物"
+    },
+    "addresses": {
+      "title": "我的地址",
+      "addNew": "添加",
+      "default": "默认",
+      "setDefault": "设为默认",
+      "edit": "编辑",
+      "delete": "删除",
+      "empty": "没有保存的地址",
+      "emptyDescription": "添加地址以更快结账"
+    }
+  },
+  "payment": {
+    "crypto": "加密货币",
+    "cryptoSubtitle": "BTC, SOL, DOGE, USDT, USDC",
+    "selectCrypto": "选择"
+  },
+  "cryptoPayment": {
+    "payWith": "使用 {currency} 支付",
+    "amountToPay": "金额",
+    "walletAddress": "钱包地址",
+    "scanQR": "扫描二维码",
+    "orCopyAddress": "或复制地址",
+    "copyAddress": "复制",
+    "copied": "已复制！",
+    "network": "网络",
+    "instructions": "发送准确金额。人工验证。",
+    "timeRemaining": "剩余时间",
+    "confirmPayment": "我已付款",
+    "cancel": "取消",
+    "expired": "已过期",
+    "expiredDescription": "会话已过期。请重试。",
+    "retry": "重试"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "close": "关闭",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "back": "返回",
+    "next": "下一步",
+    "required": "必填"
+  },
+  "productData": {
+    "olio-dop-50cl": {
+      "name": "特级初榨橄榄油",
+      "subtitle": "DOP Aprutino Pescarese · 50cl",
+      "description": "营养功能性。高多酚含量。杏仁和洋蓟香气。"
+    },
+    "olio-dop-3l": {
+      "name": "特级初榨橄榄油",
+      "subtitle": "DOP Aprutino Pescarese · 3L罐装",
+      "description": "家庭装。天然多酚和抗氧化剂。"
+    },
+    "olio-dop-5l": {
+      "name": "特级初榨橄榄油",
+      "subtitle": "DOP Aprutino Pescarese · 5L罐装",
+      "description": "鉴赏家之选。认证抗氧化特性。"
+    },
+    "pasta-penne": {
+      "name": "管状通心粉",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "高消化性。青铜模具，慢速干燥。"
+    },
+    "pasta-mezzemaniche": {
+      "name": "半袖通心粉",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "高消化性。青铜模具，慢速干燥。"
+    },
+    "pasta-fettuccine": {
+      "name": "宽面",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "高消化性。青铜模具，慢速干燥。"
+    },
+    "pasta-tagliatelle": {
+      "name": "扁面条",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "高消化性。青铜模具，慢速干燥。"
+    },
+    "pasta-sagnette": {
+      "name": "萨涅特面",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "阿布鲁佐形状。高消化性，青铜模具。"
+    },
+    "pasta-quadrucci": {
+      "name": "小方面",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "汤面专用。高消化性。"
+    },
+    "semolato-cappelli": {
+      "name": "粗粒小麦粉",
+      "subtitle": "Senatore Cappelli · 1kg",
+      "description": "石磨研磨。低血糖指数。"
+    },
+    "farina-gentilrosso": {
+      "name": "Gentilrosso面粉",
+      "subtitle": "古老软质小麦 · 1kg",
+      "description": "石磨研磨。低血糖指数。"
+    },
+    "passata-pomodoro": {
+      "name": "番茄酱",
+      "subtitle": "Pera d'Abruzzo Bio · 70cl",
+      "description": "高番茄红素含量。果肉致密，24小时内加工。"
+    }
+  }
+}

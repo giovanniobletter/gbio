@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "GBiO | Seit 1700",
+    "description": "DOP natives Olivenöl extra und Pasta aus alten Getreidesorten aus den Abruzzen. ICEA Bio-zertifiziert."
+  },
+  "nav": {
+    "heritage": "Unsere Geschichte",
+    "products": "Produkte",
+    "territory": "Territorium",
+    "certifications": "Zertifizierungen",
+    "contact": "Kontakt"
+  },
+  "header": {
+    "openCart": "Warenkorb öffnen",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "myProfile": "Mein Profil",
+    "myOrders": "Meine Bestellungen",
+    "myAddresses": "Meine Adressen",
+    "logout": "Abmelden",
+    "login": "Anmelden",
+    "cart": "Warenkorb",
+    "account": "Konto"
+  },
+  "hero": {
+    "eyebrow": "Goldenes Dreieck des Olivenöls",
+    "tagline": "Castellana, Abruzzen.",
+    "taglineHighlight": "Bio-Exzellenz.",
+    "cta": "Entdecken",
+    "explore": "Erkunden",
+    "location": "Stadt des Olivenöls",
+    "established": "Bio ICEA"
+  },
+  "heritage": {
+    "eyebrow": "Unser Land",
+    "title": "Goldenes Dreieck",
+    "subtitle": "Moscufo · Loreto Aprutino · Pianella",
+    "founder": "Giovanni Battista Obletter",
+    "description1": "Unser Ackerland gedeiht in Via del Grano in Castellana. Das Olivenöl entsteht im Herzen des Goldenen Dreiecks, einem Gebiet, das zu Italiens Olivenölstädten gehört.",
+    "description2": "DOP Aprutino Pescarese. ICEA Bio-zertifiziert.",
+    "stats": {
+      "totalHectares": "Hektar",
+      "cropland": "Ackerland",
+      "oliveGrove": "Olivenhain"
+    }
+  },
+  "products": {
+    "eyebrow": "Kollektion",
+    "title": "Produkte",
+    "subtitle": "ICEA Bio-zertifiziert.",
+    "addToCart": "Hinzufügen",
+    "added": "Hinzugefügt",
+    "add": "Hinzufügen",
+    "requestCatalog": "Katalog",
+    "goToCart": "Warenkorb",
+    "categories": {
+      "all": {
+        "label": "Alle"
+      },
+      "olio": {
+        "label": "Olivenöl",
+        "title": "Goldenes Dreieck des Olivenöls",
+        "description": "Moscufo · Loreto Aprutino · Pianella. Nutraceutisches DOP Aprutino Pescarese Olivenöl mit hohem Polyphenolgehalt. Zertifizierte antioxidative Eigenschaften."
+      },
+      "pasta": {
+        "label": "Pasta",
+        "title": "Alte Getreidesorten · Via del Grano",
+        "description": "Castellana. Senatore Cappelli Pasta, ein hochverdauliches altes Getreide. Bronze gezogen, langsam bei niedriger Temperatur getrocknet."
+      },
+      "farina": {
+        "label": "Mehle",
+        "title": "Mehle aus alten Getreidesorten",
+        "description": "Castellana. Steingemahlen Senatore Cappelli und Gentil Rosso. Hohe Verdaulichkeit, niedriger glykämischer Index."
+      },
+      "conserve": {
+        "label": "Konserven",
+        "title": "Pera d'Abruzzo Tomate",
+        "description": "Einheimische Sorte mit hohem Lycopingehalt. Dichtes Fruchtfleisch, dünne Schale. Verarbeitung innerhalb von 24 Stunden nach der Ernte."
+      }
+    }
+  },
+  "territory": {
+    "eyebrow": "Terroir",
+    "title": "Cepagatti",
+    "subtitle": "Abruzzen. Wo der Gran Sasso auf die Adria trifft."
+  },
+  "certifications": {
+    "eyebrow": "Zertifizierungen",
+    "title": "ICEA Bio",
+    "subtitle": "Bio-zertifiziert. Ohne Kompromisse."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Sprechen wir",
+    "subtitle": "Für Bestellungen, Kooperationen oder Hofbesuche.",
+    "address": "Adresse",
+    "addressValue": "Via Sicilia 2/A, Cepagatti (PE)",
+    "phone": "Telefon",
+    "phoneValue": "+39 392 636 2254",
+    "email": "E-Mail",
+    "hours": "Öffnungszeiten",
+    "hoursValue": "Mo - Fr: 9:00 - 18:00\nSa: 9:00 - 13:00",
+    "visitUs": "Besuchen Sie uns",
+    "visitDescription": "Wir organisieren Führungen und Verkostungen nach Vereinbarung.",
+    "bookVisit": "Besuch buchen",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Ihr Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "Ihre E-Mail",
+      "phone": "Telefon",
+      "phonePlaceholder": "Ihre Nummer",
+      "subject": "Betreff",
+      "subjects": {
+        "info": "Allgemeine Informationen",
+        "orders": "Bestellungen und Versand",
+        "collaborations": "Kooperationen",
+        "other": "Sonstiges"
+      },
+      "message": "Nachricht",
+      "messagePlaceholder": "Wie können wir helfen?",
+      "required": "Pflichtfelder",
+      "submit": "Senden",
+      "sending": "Wird gesendet...",
+      "success": "Danke für Ihre Nachricht! Wir antworten bald."
+    }
+  },
+  "footer": {
+    "description": "Seit 1700. Abruzzen.",
+    "contacts": "Kontakt",
+    "navigation": "Navigation",
+    "followUs": "Social",
+    "certifications": "Zertifizierungen",
+    "copyright": "GBiO - Azienda Agricola Obletter Giovanni Battista - USt-IdNr. IT02773610692",
+    "privacyPolicy": "Datenschutz",
+    "cookiePolicy": "Cookies",
+    "yearsHistory": "Seit",
+    "hectares": "Hektar",
+    "organic": "Bio"
+  },
+  "cart": {
+    "title": "Warenkorb",
+    "empty": "Ihr Warenkorb ist leer",
+    "emptyDescription": "Entdecken Sie unsere Bio-Produkte",
+    "goToProducts": "Zu den Produkten",
+    "removeItem": "Aus Warenkorb entfernen",
+    "decreaseQuantity": "Menge verringern",
+    "increaseQuantity": "Menge erhöhen",
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "free": "Kostenlos",
+    "freeShippingRemaining": "{amount} hinzufügen für kostenlosen Versand",
+    "total": "Gesamt",
+    "checkout": "Zur Kasse",
+    "continueShopping": "Weiter einkaufen",
+    "close": "Schließen"
+  },
+  "checkout": {
+    "emptyCart": "Warenkorb leer",
+    "emptyCartDescription": "Fügen Sie Produkte hinzu, um zur Kasse zu gehen",
+    "backToProducts": "Zurück zu Produkten",
+    "backToSite": "Zurück zur Seite",
+    "steps": {
+      "shipping": "Versand",
+      "payment": "Zahlung"
+    },
+    "shippingAddress": "Lieferadresse",
+    "savedAddresses": "Gespeicherte Adressen",
+    "useNewAddress": "Neue Adresse verwenden",
+    "haveAccount": "Haben Sie ein Konto?",
+    "loginForFaster": "für schnellere Zahlung.",
+    "form": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "address": "Adresse",
+      "city": "Stadt",
+      "province": "Provinz",
+      "postalCode": "PLZ",
+      "select": "Auswählen...",
+      "deliveryNotes": "Lieferhinweise",
+      "deliveryNotesPlaceholder": "Klingel, Stockwerk, Zeiten...",
+      "required": "Erforderlich",
+      "invalidEmail": "Ungültige E-Mail",
+      "invalidPostalCode": "Ungültige PLZ"
+    },
+    "continueToPayment": "Weiter zur Zahlung",
+    "editAddress": "Bearbeiten",
+    "paymentMethod": "Zahlungsmethode",
+    "shippingTo": "Versand an:",
+    "payment": {
+      "creditCard": "Kreditkarte",
+      "creditCardTypes": "Visa, Mastercard, American Express",
+      "paypal": "PayPal",
+      "paypalDescription": "Sicher mit PayPal bezahlen",
+      "cod": "Nachnahme",
+      "codDescription": "Bei Lieferung bezahlen (+3,00€)",
+      "cardNumber": "Kartennummer",
+      "expiry": "Ablauf",
+      "cvv": "CVV",
+      "securePayment": "Sichere SSL-Zahlung",
+      "buyerProtection": "Käuferschutz",
+      "pay": "Bezahlen",
+      "processing": "Verarbeitung..."
+    },
+    "orderSummary": "Bestellübersicht",
+    "quantity": "Menge:",
+    "freeShippingOver": "Kostenloser Versand ab 50€",
+    "securePayment100": "100% sichere Zahlung",
+    "confirmation": {
+      "thanks": "Danke für Ihre Bestellung!",
+      "orderNumber": "Bestellung #",
+      "emailConfirmation": "Bestätigung an {email} gesendet.",
+      "shippingAddressLabel": "Lieferadresse",
+      "backHome": "Zurück"
+    }
+  },
+  "auth": {
+    "branding": {
+      "tagline": "Seit 1700. Bio-Exzellenz aus den Abruzzen.",
+      "yearsHistory": "Seit",
+      "hectares": "Hektar",
+      "organic": "Bio"
+    },
+    "login": {
+      "title": "Willkommen zurück",
+      "subtitle": "Melden Sie sich bei Ihrem GBiO-Konto an",
+      "email": "E-Mail",
+      "emailPlaceholder": "name@email.com",
+      "password": "Passwort",
+      "passwordPlaceholder": "Ihr Passwort",
+      "rememberMe": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "submitting": "Anmeldung...",
+      "noAccount": "Kein Konto?",
+      "register": "Registrieren",
+      "orWith": "oder",
+      "continueWithGoogle": "Mit Google fortfahren",
+      "error": "Anmeldefehler"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "subtitle": "Werden Sie Teil der GBiO-Familie",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "confirmPassword": "Bestätigen",
+      "passwordRequirements": "Mindestens 8 Zeichen",
+      "termsAgree": "Ich akzeptiere die",
+      "termsOfService": "Nutzungsbedingungen",
+      "and": "und die",
+      "privacyPolicy": "Datenschutzerklärung",
+      "submit": "Erstellen",
+      "submitting": "Erstellung...",
+      "haveAccount": "Haben Sie ein Konto?",
+      "login": "Anmelden"
+    },
+    "resetPassword": {
+      "title": "Passwort zurücksetzen",
+      "subtitle": "E-Mail für Anweisungen eingeben",
+      "email": "E-Mail",
+      "submit": "Senden",
+      "submitting": "Wird gesendet...",
+      "backToLogin": "Zurück",
+      "success": "Anweisungen per E-Mail gesendet."
+    }
+  },
+  "account": {
+    "title": "Mein Konto",
+    "tabs": {
+      "profile": "Profil",
+      "orders": "Bestellungen",
+      "addresses": "Adressen"
+    },
+    "profile": {
+      "personalInfo": "Persönliche Daten",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "saveChanges": "Speichern",
+      "saving": "Speichern...",
+      "saved": "Gespeichert!",
+      "changePassword": "Passwort ändern",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "confirmPassword": "Bestätigen",
+      "updatePassword": "Aktualisieren"
+    },
+    "orders": {
+      "title": "Meine Bestellungen",
+      "empty": "Noch keine Bestellungen",
+      "emptyDescription": "Entdecken Sie unsere Bio-Produkte",
+      "goToProducts": "Zu den Produkten"
+    },
+    "addresses": {
+      "title": "Meine Adressen",
+      "addNew": "Hinzufügen",
+      "default": "Standard",
+      "setDefault": "Als Standard setzen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "empty": "Keine gespeicherten Adressen",
+      "emptyDescription": "Adresse für schnellere Bestellung hinzufügen"
+    }
+  },
+  "payment": {
+    "crypto": "Kryptowährung",
+    "cryptoSubtitle": "BTC, SOL, DOGE, USDT, USDC",
+    "selectCrypto": "Auswählen"
+  },
+  "cryptoPayment": {
+    "payWith": "Mit {currency} bezahlen",
+    "amountToPay": "Betrag",
+    "walletAddress": "Wallet-Adresse",
+    "scanQR": "QR scannen",
+    "orCopyAddress": "oder Adresse kopieren",
+    "copyAddress": "Kopieren",
+    "copied": "Kopiert!",
+    "network": "Netzwerk",
+    "instructions": "Senden Sie den genauen Betrag. Manuelle Überprüfung.",
+    "timeRemaining": "Verbleibende Zeit",
+    "confirmPayment": "Ich habe bezahlt",
+    "cancel": "Abbrechen",
+    "expired": "Abgelaufen",
+    "expiredDescription": "Sitzung abgelaufen. Erneut versuchen.",
+    "retry": "Wiederholen"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "retry": "Wiederholen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "required": "Erforderlich"
+  },
+  "productData": {
+    "olio-dop-50cl": {
+      "name": "Natives Olivenöl Extra",
+      "subtitle": "DOP Aprutino Pescarese · 50cl",
+      "description": "Nutraceutisch. Hoher Polyphenolgehalt. Mandel- und Artischockennoten."
+    },
+    "olio-dop-3l": {
+      "name": "Natives Olivenöl Extra",
+      "subtitle": "DOP Aprutino Pescarese · 3L Kanister",
+      "description": "Familienformat. Natürliche Polyphenole und Antioxidantien."
+    },
+    "olio-dop-5l": {
+      "name": "Natives Olivenöl Extra",
+      "subtitle": "DOP Aprutino Pescarese · 5L Kanister",
+      "description": "Für Kenner. Zertifizierte antioxidative Eigenschaften."
+    },
+    "pasta-penne": {
+      "name": "Penne Rigate",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Hohe Verdaulichkeit. Bronze gezogen, langsam getrocknet."
+    },
+    "pasta-mezzemaniche": {
+      "name": "Mezzemaniche",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Hohe Verdaulichkeit. Bronze gezogen, langsam getrocknet."
+    },
+    "pasta-fettuccine": {
+      "name": "Fettuccine",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Hohe Verdaulichkeit. Bronze gezogen, langsam getrocknet."
+    },
+    "pasta-tagliatelle": {
+      "name": "Tagliatelle",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Hohe Verdaulichkeit. Bronze gezogen, langsam getrocknet."
+    },
+    "pasta-sagnette": {
+      "name": "Sagnette",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Abruzzen-Format. Hohe Verdaulichkeit, bronze gezogen."
+    },
+    "pasta-quadrucci": {
+      "name": "Quadrucci",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Für Suppen und Brühen. Hohe Verdaulichkeit."
+    },
+    "semolato-cappelli": {
+      "name": "Hartweizengriess",
+      "subtitle": "Senatore Cappelli · 1kg",
+      "description": "Steingemahlen. Niedriger glykämischer Index."
+    },
+    "farina-gentilrosso": {
+      "name": "Gentilrosso Mehl",
+      "subtitle": "Altes Weichweizen · 1kg",
+      "description": "Steingemahlen. Niedriger glykämischer Index."
+    },
+    "passata-pomodoro": {
+      "name": "Tomatenpassata",
+      "subtitle": "Pera d'Abruzzo Bio · 70cl",
+      "description": "Hoher Lycopingehalt. Dichtes Fruchtfleisch, Verarbeitung innerhalb 24h."
+    }
+  }
+}

@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "GBiO | Dal 1700",
+    "description": "Olio extravergine DOP e pasta di grani antichi dall'Abruzzo. Biologico certificato ICEA."
+  },
+  "nav": {
+    "heritage": "La Nostra Storia",
+    "products": "Prodotti",
+    "territory": "Territorio",
+    "certifications": "Certificazioni",
+    "contact": "Contatti"
+  },
+  "header": {
+    "openCart": "Apri carrello",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "myProfile": "Il mio Profilo",
+    "myOrders": "I miei Ordini",
+    "myAddresses": "I miei Indirizzi",
+    "logout": "Esci",
+    "login": "Accedi",
+    "cart": "Carrello",
+    "account": "Account"
+  },
+  "hero": {
+    "eyebrow": "Triangolo d'Oro dell'Olio",
+    "tagline": "Castellana, Abruzzo.",
+    "taglineHighlight": "Eccellenza biologica.",
+    "cta": "Esplora",
+    "explore": "Scopri",
+    "location": "Città dell'Olio",
+    "established": "Bio ICEA"
+  },
+  "heritage": {
+    "eyebrow": "La Nostra Terra",
+    "title": "Triangolo d'Oro",
+    "subtitle": "Moscufo · Loreto Aprutino · Pianella",
+    "founder": "Giovanni Battista Obletter",
+    "description1": "I nostri seminativi crescono in Via del Grano a Castellana. L'olio nasce nel cuore del Triangolo d'Oro, territorio riconosciuto tra le Città dell'Olio d'Italia.",
+    "description2": "DOP Aprutino Pescarese. Biologico certificato ICEA.",
+    "stats": {
+      "totalHectares": "Ettari",
+      "cropland": "Seminativi",
+      "oliveGrove": "Uliveto"
+    }
+  },
+  "products": {
+    "eyebrow": "Collezione",
+    "title": "I Prodotti",
+    "subtitle": "Biologico certificato ICEA.",
+    "addToCart": "Aggiungi",
+    "added": "Aggiunto",
+    "add": "Aggiungi",
+    "requestCatalog": "Catalogo",
+    "goToCart": "Carrello",
+    "categories": {
+      "all": {
+        "label": "Tutti"
+      },
+      "olio": {
+        "label": "Olio",
+        "title": "Triangolo d'Oro dell'Olio",
+        "description": "Moscufo · Loreto Aprutino · Pianella. Olio nutraceutico DOP Aprutino Pescarese ad alto contenuto di polifenoli. Proprietà antiossidanti certificate."
+      },
+      "pasta": {
+        "label": "Pasta",
+        "title": "Grani Antichi · Via del Grano",
+        "description": "Castellana. Pasta di Senatore Cappelli, grano antico altamente digeribile. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
+      },
+      "farina": {
+        "label": "Farine",
+        "title": "Farine di Grani Antichi",
+        "description": "Castellana. Senatore Cappelli e Gentil Rosso macinati a pietra. Alta digeribilità, basso indice glicemico."
+      },
+      "conserve": {
+        "label": "Conserve",
+        "title": "Pomodoro Pera d'Abruzzo",
+        "description": "Varietà autoctona ad alto contenuto di licopene. Polpa densa, buccia sottile. Lavorazione entro 24 ore dalla raccolta."
+      }
+    }
+  },
+  "territory": {
+    "eyebrow": "Terroir",
+    "title": "Cepagatti",
+    "subtitle": "Abruzzo. Dove il Gran Sasso incontra l'Adriatico."
+  },
+  "certifications": {
+    "eyebrow": "Certificazioni",
+    "title": "ICEA Bio",
+    "subtitle": "Biologico certificato. Nessun compromesso."
+  },
+  "contact": {
+    "eyebrow": "Contatti",
+    "title": "Parliamo",
+    "subtitle": "Per ordini, collaborazioni o visite in azienda.",
+    "address": "Indirizzo",
+    "addressValue": "Via Sicilia 2/A, Cepagatti (PE)",
+    "phone": "Telefono",
+    "phoneValue": "+39 392 636 2254",
+    "email": "Email",
+    "hours": "Orari",
+    "hoursValue": "Lun - Ven: 9:00 - 18:00\nSab: 9:00 - 13:00",
+    "visitUs": "Vieni a trovarci",
+    "visitDescription": "Organizziamo visite guidate dell'azienda e degustazioni su prenotazione.",
+    "bookVisit": "Prenota una visita",
+    "form": {
+      "name": "Nome",
+      "namePlaceholder": "Il tuo nome",
+      "email": "Email",
+      "emailPlaceholder": "La tua email",
+      "phone": "Telefono",
+      "phonePlaceholder": "Il tuo numero",
+      "subject": "Oggetto",
+      "subjects": {
+        "info": "Informazioni generali",
+        "orders": "Ordini e spedizioni",
+        "collaborations": "Collaborazioni",
+        "other": "Altro"
+      },
+      "message": "Messaggio",
+      "messagePlaceholder": "Come possiamo aiutarti?",
+      "required": "Campi obbligatori",
+      "submit": "Invia messaggio",
+      "sending": "Invio in corso...",
+      "success": "Grazie per il tuo messaggio! Ti risponderemo al più presto."
+    }
+  },
+  "footer": {
+    "description": "Dal 1700. Abruzzo.",
+    "contacts": "Contatti",
+    "navigation": "Navigazione",
+    "followUs": "Social",
+    "certifications": "Certificazioni",
+    "copyright": "© GBiO - Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692",
+    "privacyPolicy": "Privacy",
+    "cookiePolicy": "Cookie",
+    "yearsHistory": "Dal",
+    "hectares": "Ettari",
+    "organic": "Bio"
+  },
+  "cart": {
+    "title": "Carrello",
+    "empty": "Il carrello è vuoto",
+    "emptyDescription": "Scopri i nostri prodotti biologici",
+    "goToProducts": "Vai ai Prodotti",
+    "removeItem": "Rimuovi dal carrello",
+    "decreaseQuantity": "Diminuisci quantità",
+    "increaseQuantity": "Aumenta quantità",
+    "subtotal": "Subtotale",
+    "shipping": "Spedizione",
+    "free": "Gratuita",
+    "freeShippingRemaining": "Aggiungi {amount} per la spedizione gratuita",
+    "total": "Totale",
+    "checkout": "Procedi al Checkout",
+    "continueShopping": "Continua lo shopping",
+    "close": "Chiudi carrello"
+  },
+  "checkout": {
+    "emptyCart": "Il carrello è vuoto",
+    "emptyCartDescription": "Aggiungi dei prodotti per procedere al checkout",
+    "backToProducts": "Torna ai Prodotti",
+    "backToSite": "Torna al sito",
+    "steps": {
+      "shipping": "Spedizione",
+      "payment": "Pagamento"
+    },
+    "shippingAddress": "Indirizzo di Spedizione",
+    "savedAddresses": "Indirizzi salvati",
+    "useNewAddress": "Usa un nuovo indirizzo",
+    "haveAccount": "Hai già un account?",
+    "loginForFaster": "per un checkout più veloce.",
+    "form": {
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Email",
+      "phone": "Telefono",
+      "address": "Indirizzo",
+      "city": "Città",
+      "province": "Provincia",
+      "postalCode": "CAP",
+      "select": "Seleziona...",
+      "deliveryNotes": "Note per la consegna",
+      "deliveryNotesPlaceholder": "Citofono, piano, orari preferiti...",
+      "required": "Obbligatorio",
+      "invalidEmail": "Email non valida",
+      "invalidPostalCode": "CAP non valido"
+    },
+    "continueToPayment": "Continua al Pagamento",
+    "editAddress": "Modifica indirizzo",
+    "paymentMethod": "Metodo di Pagamento",
+    "shippingTo": "Spedizione a:",
+    "payment": {
+      "creditCard": "Carta di Credito",
+      "creditCardTypes": "Visa, Mastercard, American Express",
+      "paypal": "PayPal",
+      "paypalDescription": "Paga in sicurezza con PayPal",
+      "cod": "Contrassegno",
+      "codDescription": "Paga alla consegna (+3,00€)",
+      "cardNumber": "Numero Carta",
+      "expiry": "Scadenza",
+      "cvv": "CVV",
+      "securePayment": "Pagamento sicuro SSL",
+      "buyerProtection": "Protezione acquirente",
+      "pay": "Paga",
+      "processing": "Elaborazione..."
+    },
+    "orderSummary": "Riepilogo Ordine",
+    "quantity": "Qtà:",
+    "freeShippingOver": "Spedizione gratuita sopra i 50€",
+    "securePayment100": "Pagamento 100% sicuro",
+    "confirmation": {
+      "thanks": "Grazie per il tuo ordine!",
+      "orderNumber": "Ordine #",
+      "emailConfirmation": "Riceverai una email di conferma a {email} con tutti i dettagli del tuo ordine.",
+      "shippingAddressLabel": "Indirizzo di spedizione",
+      "backHome": "Torna alla Home"
+    }
+  },
+  "auth": {
+    "branding": {
+      "tagline": "Dal 1700. Eccellenza biologica dall'Abruzzo.",
+      "yearsHistory": "Dal",
+      "hectares": "Ettari",
+      "organic": "Bio"
+    },
+    "login": {
+      "title": "Bentornato",
+      "subtitle": "Accedi al tuo account GBiO",
+      "email": "Email",
+      "emailPlaceholder": "nome@email.it",
+      "password": "Password",
+      "passwordPlaceholder": "La tua password",
+      "rememberMe": "Ricordami",
+      "forgotPassword": "Password dimenticata?",
+      "submit": "Accedi",
+      "submitting": "Accesso in corso...",
+      "noAccount": "Non hai un account?",
+      "register": "Registrati",
+      "orWith": "oppure",
+      "continueWithGoogle": "Continua con Google",
+      "error": "Errore durante il login"
+    },
+    "register": {
+      "title": "Crea Account",
+      "subtitle": "Unisciti alla famiglia GBiO",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Conferma Password",
+      "passwordRequirements": "Minimo 8 caratteri",
+      "termsAgree": "Accetto i",
+      "termsOfService": "Termini di Servizio",
+      "and": "e la",
+      "privacyPolicy": "Privacy Policy",
+      "submit": "Crea Account",
+      "submitting": "Creazione in corso...",
+      "haveAccount": "Hai già un account?",
+      "login": "Accedi"
+    },
+    "resetPassword": {
+      "title": "Recupera Password",
+      "subtitle": "Inserisci la tua email per ricevere le istruzioni",
+      "email": "Email",
+      "submit": "Invia istruzioni",
+      "submitting": "Invio in corso...",
+      "backToLogin": "Torna al login",
+      "success": "Ti abbiamo inviato un'email con le istruzioni per reimpostare la password."
+    }
+  },
+  "account": {
+    "title": "Il mio Account",
+    "tabs": {
+      "profile": "Profilo",
+      "orders": "Ordini",
+      "addresses": "Indirizzi"
+    },
+    "profile": {
+      "personalInfo": "Informazioni Personali",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Email",
+      "phone": "Telefono",
+      "saveChanges": "Salva Modifiche",
+      "saving": "Salvataggio...",
+      "saved": "Salvato!",
+      "changePassword": "Cambia Password",
+      "currentPassword": "Password Attuale",
+      "newPassword": "Nuova Password",
+      "confirmPassword": "Conferma Nuova Password",
+      "updatePassword": "Aggiorna Password"
+    },
+    "orders": {
+      "title": "I miei Ordini",
+      "empty": "Non hai ancora effettuato ordini",
+      "emptyDescription": "Scopri i nostri prodotti biologici",
+      "goToProducts": "Vai ai Prodotti"
+    },
+    "addresses": {
+      "title": "I miei Indirizzi",
+      "addNew": "Aggiungi Indirizzo",
+      "default": "Predefinito",
+      "setDefault": "Imposta come predefinito",
+      "edit": "Modifica",
+      "delete": "Elimina",
+      "empty": "Non hai indirizzi salvati",
+      "emptyDescription": "Aggiungi un indirizzo per un checkout più veloce"
+    }
+  },
+  "payment": {
+    "crypto": "Criptovalute",
+    "cryptoSubtitle": "BTC, SOL, DOGE, USDT, USDC",
+    "selectCrypto": "Seleziona criptovaluta"
+  },
+  "cryptoPayment": {
+    "payWith": "Paga con {currency}",
+    "amountToPay": "Importo da pagare",
+    "walletAddress": "Indirizzo wallet",
+    "scanQR": "Scansiona il codice QR",
+    "orCopyAddress": "oppure copia l'indirizzo",
+    "copyAddress": "Copia indirizzo",
+    "copied": "Copiato!",
+    "network": "Network",
+    "instructions": "Invia l'importo esatto all'indirizzo sopra indicato. La transazione verrà verificata manualmente.",
+    "timeRemaining": "Tempo rimanente",
+    "confirmPayment": "Ho effettuato il pagamento",
+    "cancel": "Annulla",
+    "expired": "Tempo scaduto",
+    "expiredDescription": "La sessione di pagamento è scaduta. Riprova.",
+    "retry": "Riprova"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Si è verificato un errore",
+    "retry": "Riprova",
+    "close": "Chiudi",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "add": "Aggiungi",
+    "back": "Indietro",
+    "next": "Avanti",
+    "required": "Obbligatorio"
+  },
+  "productData": {
+    "olio-dop-50cl": {
+      "name": "Olio Extravergine",
+      "subtitle": "DOP Aprutino Pescarese · 50cl",
+      "description": "Nutraceutico. Alto contenuto di polifenoli. Note di mandorla e carciofo."
+    },
+    "olio-dop-3l": {
+      "name": "Olio Extravergine",
+      "subtitle": "DOP Aprutino Pescarese · Latta 3L",
+      "description": "Formato famiglia. Polifenoli e antiossidanti naturali."
+    },
+    "olio-dop-5l": {
+      "name": "Olio Extravergine",
+      "subtitle": "DOP Aprutino Pescarese · Latta 5L",
+      "description": "Per intenditori. Proprietà antiossidanti certificate."
+    },
+    "pasta-penne": {
+      "name": "Penne Rigate",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+    },
+    "pasta-mezzemaniche": {
+      "name": "Mezzemaniche",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+    },
+    "pasta-fettuccine": {
+      "name": "Fettuccine",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+    },
+    "pasta-tagliatelle": {
+      "name": "Tagliatelle",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+    },
+    "pasta-sagnette": {
+      "name": "Sagnette",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Formato abruzzese. Alta digeribilità, trafilatura al bronzo."
+    },
+    "pasta-quadrucci": {
+      "name": "Quadrucci",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Per minestre e brodi. Alta digeribilità."
+    },
+    "semolato-cappelli": {
+      "name": "Semolato",
+      "subtitle": "Senatore Cappelli · 1kg",
+      "description": "Macinato a pietra. Basso indice glicemico."
+    },
+    "farina-gentilrosso": {
+      "name": "Farina Gentilrosso",
+      "subtitle": "Grano Tenero Antico · 1kg",
+      "description": "Macinata a pietra. Basso indice glicemico."
+    },
+    "passata-pomodoro": {
+      "name": "Passata di Pomodoro",
+      "subtitle": "Pera d'Abruzzo Bio · 70cl",
+      "description": "Alto contenuto di licopene. Polpa densa, lavorazione entro 24 ore."
+    }
+  }
+}
