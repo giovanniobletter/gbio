@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "GBiO | Dal 1700",
+    "title": "GBiO",
     "description": "Olio extravergine DOP e pasta di grani antichi dall'Abruzzo. Biologico certificato ICEA."
   },
   "nav": {
@@ -59,13 +59,13 @@
       },
       "olio": {
         "label": "Olio",
-        "title": "Triangolo d'Oro dell'Olio",
-        "description": "Moscufo · Loreto Aprutino · Pianella. Olio nutraceutico DOP Aprutino Pescarese ad alto contenuto di polifenoli. Proprietà antiossidanti certificate."
+        "title": "Olio EVO Bio DOP Aprutino Pescarese",
+        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 24 ore al Frantoio Valentini Cerretani di Loreto Aprutino. Estrazione a freddo, alto contenuto di polifenoli, proprietà nutraceutiche certificate."
       },
       "pasta": {
         "label": "Pasta",
-        "title": "Grani Antichi · Via del Grano",
-        "description": "Castellana. Pasta di Senatore Cappelli, grano antico altamente digeribile. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
+        "title": "Pasta di Semolato di Grano Duro Senatore Cappelli",
+        "description": "Da grano 100% italiano, coltivato a Castellana in Abruzzo con metodo biologico. Alta digeribilità, basso indice glicemico, ricco di proteine e fibre. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
       },
       "farina": {
         "label": "Farine",
@@ -347,7 +347,7 @@
   "productData": {
     "olio-dop-50cl": {
       "name": "Olio Extravergine",
-      "subtitle": "DOP Aprutino Pescarese · 50cl",
+      "subtitle": "Bottiglia 0,5 L",
       "description": "Nutraceutico. Alto contenuto di polifenoli. Note di mandorla e carciofo."
     },
     "olio-dop-3l": {

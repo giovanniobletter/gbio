@@ -26,8 +26,11 @@ export function Footer() {
             <h3 className="font-serif text-3xl text-gold">GBiO</h3>
             <p className="font-sans text-sm text-bianco/60 leading-relaxed">
               Azienda Agricola Obletter Giovanni Battista.
-              Coltiviamo la terra con rispetto e passione,
-              prodotti biologici certificati ICEA.
+              Eccellenze biologiche dal cuore dell&apos;Abruzzo,
+              destinate alle tavole più raffinate.
+            </p>
+            <p className="font-serif text-sm text-gold/60 italic mt-4">
+              {`"Coltiviamo il futuro, rispettando la tradizione"`}
             </p>
             <p className="font-sans text-xs text-bianco/40">
               P.IVA IT02773610692

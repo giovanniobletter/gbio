@@ -5,8 +5,10 @@ import { motion } from 'framer-motion'
 import { Send, MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Button } from '@/components/ui/Button'
-import { fadeUp, slideInLeft, slideInRight } from '@/lib/animations'
+import { luxuryFadeUp, luxurySlideIn, luxurySlideInRight, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
+import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
+import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 const contactInfo = [
   {
@@ -36,7 +38,8 @@ const contactInfo = [
 const subjects = [
   { value: 'info', label: 'Informazioni generali' },
   { value: 'ordini', label: 'Ordini e spedizioni' },
-  { value: 'collaborazioni', label: 'Collaborazioni' },
+  { value: 'horeca', label: 'Ho.Re.Ca. & Distribuzione' },
+  { value: 'collaborazioni', label: 'Collaborazioni & Partnership' },
   { value: 'altro', label: 'Altro' },
 ]
 
@@ -83,38 +86,52 @@ export function Contact() {
   const inputStyles = `
     w-full bg-transparent border border-gold/30 px-4 py-3
     font-sans text-bianco placeholder:text-bianco/30
-    focus:border-gold focus:outline-none transition-colors duration-300
+    focus:border-gold focus:outline-none focus:glow-gold transition-all duration-500
   `
 
   return (
     <section id="contatti" className="section-padding bg-nero relative overflow-hidden">
+      {/* Subtle texture overlay */}
+      <TextureOverlay variant="linen" opacity={0.02} />
+
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-forest-dark/20 to-transparent" />
 
       <div className="container-custom relative z-10">
         <SectionTitle
           eyebrow="Contattaci"
-          title="Parliamo dei Tuoi Progetti"
-          subtitle="Che si tratti di un ordine, una collaborazione o semplicemente una domanda, siamo qui per te."
+          title="Parliamo di Eccellenza"
+          subtitle="Ristoranti, enoteche, distributori: portiamo l'autenticità abruzzese sulle tavole più raffinate."
         />
 
-        <div className="mt-20 grid lg:grid-cols-5 gap-16">
+        {/* Ornate divider */}
+        <div className="mt-12">
+          <OrnateRule variant="fleur" />
+        </div>
+
+        <div className="mt-12 grid lg:grid-cols-5 gap-16">
           {/* Contact Info */}
           <motion.div
-            variants={slideInLeft}
+            variants={luxurySlideIn}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:col-span-2 space-y-8"
+            className="lg:col-span-2"
           >
-            {contactInfo.map((item, index) => (
-              <motion.div
-                key={item.label}
-                variants={fadeUp}
-                custom={index}
-                className="flex gap-4 group"
-              >
-                <div className="flex-shrink-0 w-12 h-12 border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:bg-gold/10 transition-all duration-300">
+            <motion.div
+              variants={luxuryStaggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-8"
+            >
+              {contactInfo.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  variants={luxuryStaggerItem}
+                  className="flex gap-4 group"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 border border-gold/30 flex items-center justify-center group-hover:border-gold group-hover:bg-gold/10 group-hover:glow-gold transition-all duration-700">
                   <item.icon size={20} className="text-gold" />
                 </div>
                 <div>
@@ -135,29 +152,30 @@ export function Contact() {
                   )}
                 </div>
               </motion.div>
-            ))}
+              ))}
 
-            {/* Visit CTA */}
-            <motion.div
-              variants={fadeUp}
-              className="pt-8 border-t border-gold/20"
-            >
-              <h4 className="font-serif text-xl text-bianco mb-3">
-                Vieni a trovarci
-              </h4>
-              <p className="font-sans text-sm text-bianco/60 leading-relaxed mb-4">
-                Organizziamo visite guidate dell&apos;azienda e degustazioni
-                su prenotazione.
-              </p>
-              <Button variant="ghost" className="text-gold">
-                Prenota una visita
-              </Button>
+              {/* Visit CTA */}
+              <motion.div
+                variants={luxuryStaggerItem}
+                className="pt-8 border-t border-gold/20"
+              >
+                <h4 className="font-serif text-xl text-bianco mb-3 text-shadow-luxe">
+                  Esperienze in Azienda
+                </h4>
+                <p className="font-sans text-sm text-bianco/60 leading-relaxed mb-4">
+                  Visite private, degustazioni esclusive e percorsi sensoriali
+                  tra gli uliveti e i campi di grano antico. Su appuntamento.
+                </p>
+                <Button variant="ghost" className="text-gold hover:glow-gold transition-all duration-700">
+                  Richiedi un&apos;esperienza
+                </Button>
+              </motion.div>
             </motion.div>
           </motion.div>
 
           {/* Contact Form */}
           <motion.div
-            variants={slideInRight}
+            variants={luxurySlideInRight}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

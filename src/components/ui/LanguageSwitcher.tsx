@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useLocale } from 'next-intl'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Globe, ChevronDown } from 'lucide-react'
 import { locales, localeNames, localeFlags, type Locale } from '@/i18n/config'
@@ -13,9 +13,17 @@ interface LanguageSwitcherProps {
   className?: string
 }
 
+// Helper to get path without locale
+function getPathWithoutLocale(pathname: string): string {
+  for (const loc of locales) {
+    if (pathname === `/${loc}`) return ''
+    if (pathname.startsWith(`/${loc}/`)) return pathname.slice(loc.length + 1)
+  }
+  return pathname
+}
+
 export function LanguageSwitcher({ variant = 'default', className }: LanguageSwitcherProps) {
   const locale = useLocale() as Locale
-  const router = useRouter()
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -32,14 +40,15 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  const handleLocaleChange = (newLocale: Locale) => {
-    // Get the path without the locale prefix
-    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || '/'
-
-    // Navigate to the new locale path
-    router.push(`/${newLocale}${pathWithoutLocale}`)
-    setIsOpen(false)
+  // Don't render if only one locale is available
+  if (locales.length <= 1) {
+    return null
   }
+
+  const pathWithoutLocale = getPathWithoutLocale(pathname)
+
+  // Build href for a given locale
+  const getLocaleHref = (loc: Locale) => `/${loc}${pathWithoutLocale}`
 
   if (variant === 'minimal') {
     return (
@@ -62,11 +71,11 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
               className="absolute right-0 mt-2 w-40 bg-nero border border-gold/20 shadow-xl z-50"
             >
               {locales.map((loc) => (
-                <button
+                <a
                   key={loc}
-                  onClick={() => handleLocaleChange(loc)}
+                  href={getLocaleHref(loc)}
                   className={cn(
-                    'w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors',
+                    'block w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors',
                     loc === locale
                       ? 'bg-gold/10 text-gold'
                       : 'text-bianco/70 hover:text-gold hover:bg-gold/5'
@@ -74,7 +83,7 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
                 >
                   <span className="text-base">{localeFlags[loc]}</span>
                   <span className="font-sans">{localeNames[loc]}</span>
-                </button>
+                </a>
               ))}
             </motion.div>
           )}
@@ -110,11 +119,11 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
           >
             <div className="py-2">
               {locales.map((loc) => (
-                <button
+                <a
                   key={loc}
-                  onClick={() => handleLocaleChange(loc)}
+                  href={getLocaleHref(loc)}
                   className={cn(
-                    'w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors',
+                    'block w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors',
                     loc === locale
                       ? 'bg-gold/10 text-gold'
                       : 'text-bianco/70 hover:text-gold hover:bg-gold/5'
@@ -123,9 +132,9 @@ export function LanguageSwitcher({ variant = 'default', className }: LanguageSwi
                   <span className="text-lg">{localeFlags[loc]}</span>
                   <span className="font-sans">{localeNames[loc]}</span>
                   {loc === locale && (
-                    <span className="ml-auto text-gold text-xs">&#10003;</span>
+                    <span className="ml-auto text-gold text-xs">✓</span>
                   )}
-                </button>
+                </a>
               ))}
             </div>
           </motion.div>

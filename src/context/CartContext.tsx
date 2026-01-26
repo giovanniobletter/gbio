@@ -123,6 +123,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Load cart from localStorage on mount
   useEffect(() => {
+    if (typeof window === 'undefined') return
     const savedCart = localStorage.getItem('gbio-cart')
     if (savedCart) {
       try {
@@ -136,6 +137,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   // Save cart to localStorage on changes
   useEffect(() => {
+    if (typeof window === 'undefined') return
     localStorage.setItem('gbio-cart', JSON.stringify(state.items))
   }, [state.items])
 

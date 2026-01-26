@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Loader2, ArrowLeft, Mail, Check } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
@@ -9,6 +10,8 @@ import { staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 export default function ResetPasswordPage() {
+  const params = useParams()
+  const locale = params.locale as string
   const { resetPassword } = useAuth()
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -65,7 +68,7 @@ export default function ResetPasswordPage() {
           registrato, riceverai le istruzioni per reimpostare la password.
         </p>
         <Link
-          href="/auth/login"
+          href={`/${locale}/auth/login`}
           className="btn-primary inline-flex items-center gap-2"
         >
           <ArrowLeft size={16} />
@@ -84,7 +87,7 @@ export default function ResetPasswordPage() {
     >
       <motion.div variants={staggerItem}>
         <Link
-          href="/auth/login"
+          href={`/${locale}/auth/login`}
           className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-gold/60 hover:text-gold transition-colors mb-8"
         >
           <ArrowLeft size={14} />
@@ -157,7 +160,7 @@ export default function ResetPasswordPage() {
         <p className="font-sans text-bianco/60">
           Hai ricordato la password?{' '}
           <Link
-            href="/auth/login"
+            href={`/${locale}/auth/login`}
             className="text-gold hover:text-gold-light transition-colors"
           >
             Accedi

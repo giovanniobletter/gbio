@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
+import Image from 'next/image'
 import {
   ArrowLeft,
   CreditCard,
@@ -16,7 +17,6 @@ import {
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { CustomCursor } from '@/components/layout/CustomCursor'
-import { GrainOverlay } from '@/components/layout/GrainOverlay'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 import { ShippingAddress } from '@/types'
@@ -44,6 +44,8 @@ const provinces = [
 
 function CheckoutContent() {
   const router = useRouter()
+  const params = useParams()
+  const locale = params.locale as string
   const { items, subtotal, shipping, total, clearCart } = useCart()
   const { user, isAuthenticated } = useAuth()
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping')
@@ -155,7 +157,7 @@ function CheckoutContent() {
             Aggiungi dei prodotti per procedere al checkout
           </p>
           <Link
-            href="/#prodotti"
+            href={`/${locale}/#prodotti`}
             className="btn-primary inline-flex items-center gap-2"
           >
             <ArrowLeft size={16} />
@@ -208,7 +210,7 @@ function CheckoutContent() {
             </p>
           </div>
           <Link
-            href="/"
+            href={`/${locale}`}
             className="btn-primary inline-flex items-center gap-2"
           >
             <span>Torna alla Home</span>
@@ -223,11 +225,11 @@ function CheckoutContent() {
       {/* Header */}
       <header className="border-b border-gold/20">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-          <Link href="/" className="font-serif text-2xl text-gold">
+          <Link href={`/${locale}`} className="font-serif text-2xl text-gold">
             GBiO
           </Link>
           <Link
-            href="/"
+            href={`/${locale}`}
             className="font-sans text-xs uppercase tracking-[0.2em] text-bianco/60 hover:text-gold transition-colors flex items-center gap-2"
           >
             <ArrowLeft size={16} />
@@ -302,7 +304,7 @@ function CheckoutContent() {
                           <p className="font-sans text-sm text-bianco">
                             Hai già un account?{' '}
                             <Link
-                              href="/auth/login?returnUrl=/checkout"
+                              href={`/${locale}/auth/login?returnUrl=/${locale}/checkout`}
                               className="text-gold hover:underline"
                             >
                               Accedi
@@ -750,10 +752,14 @@ function CheckoutContent() {
               <ul className="space-y-4 mb-6">
                 {items.map((item) => (
                   <li key={item.product.id} className="flex gap-4">
-                    <div className="w-16 h-16 bg-forest/30 flex-shrink-0 flex items-center justify-center">
-                      <span className="font-serif text-lg text-gold/30">
-                        {item.product.name.charAt(0)}
-                      </span>
+                    <div className="w-16 h-16 bg-nero flex-shrink-0 relative overflow-hidden border border-gold/10">
+                      <Image
+                        src={item.product.image}
+                        alt={item.product.name}
+                        fill
+                        className="object-contain"
+                        sizes="64px"
+                      />
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="font-serif text-bianco truncate">
@@ -814,7 +820,6 @@ export default function CheckoutPage() {
   return (
     <>
       <CustomCursor />
-      <GrainOverlay />
       <CheckoutContent />
     </>
   )

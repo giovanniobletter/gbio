@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Eye, EyeOff, Loader2, ArrowRight } from 'lucide-react'
@@ -11,8 +11,10 @@ import { cn } from '@/lib/utils'
 
 export default function LoginPage() {
   const router = useRouter()
+  const params = useParams()
+  const locale = params.locale as string
   const searchParams = useSearchParams()
-  const returnUrl = searchParams.get('returnUrl') || '/'
+  const returnUrl = searchParams.get('returnUrl') || `/${locale}`
   const { login, isLoading } = useAuth()
 
   const [formData, setFormData] = useState({
@@ -130,7 +132,7 @@ export default function LoginPage() {
             <span className="font-sans text-sm text-bianco/60">Ricordami</span>
           </label>
           <Link
-            href="/auth/reset-password"
+            href={`/${locale}/auth/reset-password`}
             className="font-sans text-sm text-gold hover:text-gold-light transition-colors"
           >
             Password dimenticata?
@@ -163,7 +165,7 @@ export default function LoginPage() {
         <p className="font-sans text-bianco/60">
           Non hai un account?{' '}
           <Link
-            href={`/auth/register${returnUrl !== '/' ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`}
+            href={`/${locale}/auth/register${returnUrl !== `/${locale}` ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`}
             className="text-gold hover:text-gold-light transition-colors"
           >
             Registrati

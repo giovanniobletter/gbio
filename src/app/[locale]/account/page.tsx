@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -23,7 +23,6 @@ import {
 } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { CustomCursor } from '@/components/layout/CustomCursor'
-import { GrainOverlay } from '@/components/layout/GrainOverlay'
 import { Header } from '@/components/layout/Header'
 import { CartDrawer } from '@/components/cart/CartDrawer'
 import { staggerContainer, staggerItem } from '@/lib/animations'
@@ -53,6 +52,8 @@ const provinces = [
 
 export default function AccountPage() {
   const router = useRouter()
+  const params = useParams()
+  const locale = params.locale as string
   const {
     user,
     isAuthenticated,
@@ -117,9 +118,9 @@ export default function AccountPage() {
   // Redirect if not authenticated
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.push('/auth/login?returnUrl=/account')
+      router.push(`/${locale}/auth/login?returnUrl=/${locale}/account`)
     }
-  }, [isAuthenticated, isLoading, router])
+  }, [isAuthenticated, isLoading, router, locale])
 
   if (isLoading) {
     return (
@@ -214,7 +215,7 @@ export default function AccountPage() {
 
   const handleLogout = () => {
     logout()
-    router.push('/')
+    router.push(`/${locale}`)
   }
 
   const inputStyles = `
@@ -234,7 +235,6 @@ export default function AccountPage() {
   return (
     <>
       <CustomCursor />
-      <GrainOverlay />
       <Header />
       <CartDrawer />
 
@@ -647,7 +647,7 @@ export default function AccountPage() {
                       <p className="font-sans text-bianco/60 mb-4">
                         Non hai ancora effettuato ordini
                       </p>
-                      <Link href="/#prodotti" className="btn-primary inline-flex">
+                      <Link href={`/${locale}/#prodotti`} className="btn-primary inline-flex">
                         <span>Scopri i Prodotti</span>
                       </Link>
                     </div>
@@ -742,7 +742,15 @@ export default function AccountPage() {
                         <h3 className="font-sans text-sm uppercase tracking-[0.2em] text-red-400 mb-4">
                           Zona Pericolosa
                         </h3>
-                        <button className="px-6 py-3 border border-red-400/50 text-red-400 hover:bg-red-400/10 transition-colors text-sm">
+                        <button
+                          onClick={() => {
+                            if (window.confirm('Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile.')) {
+                              logout()
+                              router.push(`/${locale}`)
+                            }
+                          }}
+                          className="px-6 py-3 border border-red-400/50 text-red-400 hover:bg-red-400/10 transition-colors text-sm"
+                        >
                           Elimina Account
                         </button>
                         <p className="font-sans text-xs text-bianco/40 mt-2">

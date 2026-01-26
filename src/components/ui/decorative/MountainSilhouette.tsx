@@ -56,78 +56,53 @@ export function MountainSilhouette({
           </linearGradient>
           <linearGradient id="mountainStroke" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="var(--gold)" stopOpacity="0" />
-            <stop offset="20%" stopColor="var(--gold)" stopOpacity="0.3" />
-            <stop offset="50%" stopColor="var(--gold)" stopOpacity="0.5" />
-            <stop offset="80%" stopColor="var(--gold)" stopOpacity="0.3" />
+            <stop offset="20%" stopColor="var(--gold)" stopOpacity="0.5" />
+            <stop offset="50%" stopColor="var(--gold)" stopOpacity="0.8" />
+            <stop offset="80%" stopColor="var(--gold)" stopOpacity="0.5" />
             <stop offset="100%" stopColor="var(--gold)" stopOpacity="0" />
           </linearGradient>
         </defs>
 
-        {/* Gran Sasso / Bella Addormentata silhouette */}
+        {/* Gran Sasso silhouette - elegant mountain range */}
         <motion.path
           d="M0 300
-             L50 280
-             L100 265
-             L150 270
-             L200 250
-             L280 220
-             L320 200
-             L380 180
-             L420 150
-             L460 120
-             L500 95
-             L540 75
-             L580 60
-             L620 50
-             L660 55
-             L700 70
-             L740 90
-             L780 115
-             L820 140
-             L860 160
-             L900 175
-             L940 185
-             L980 200
-             L1020 220
-             L1060 240
-             L1100 255
-             L1150 270
-             L1200 280
+             L0 240
+             Q100 235, 180 220
+             Q260 205, 340 180
+             Q400 160, 450 130
+             Q500 100, 540 75
+             Q570 55, 600 50
+             Q630 55, 660 75
+             Q700 100, 750 130
+             Q800 160, 860 180
+             Q940 205, 1020 220
+             Q1100 235, 1200 240
              L1200 300
              Z"
           fill="url(#mountainGradient)"
           stroke="url(#mountainStroke)"
-          strokeWidth="1"
+          strokeWidth="1.5"
           initial={animated ? { pathLength: 0, opacity: 0 } : undefined}
           animate={animated ? { pathLength: 1, opacity: 1 } : undefined}
           transition={{ duration: 2, ease: 'easeOut' }}
         />
 
-        {/* Secondary ridge - creates depth */}
+        {/* Secondary layer for depth */}
         <motion.path
           d="M0 300
-             L100 290
-             L200 275
-             L300 260
-             L400 230
-             L480 200
-             L540 175
-             L600 155
-             L660 145
-             L720 150
-             L780 165
-             L840 185
-             L900 210
-             L1000 245
-             L1100 270
-             L1200 285
+             L0 260
+             Q150 255, 300 240
+             Q450 220, 550 190
+             Q600 175, 650 190
+             Q750 220, 900 240
+             Q1050 255, 1200 260
              L1200 300
              Z"
           fill="url(#mountainGradient)"
           opacity="0.5"
           initial={animated ? { opacity: 0 } : undefined}
           animate={animated ? { opacity: 0.5 } : undefined}
-          transition={{ duration: 2, delay: 0.5 }}
+          transition={{ duration: 2, delay: 0.3 }}
         />
       </motion.svg>
     </div>

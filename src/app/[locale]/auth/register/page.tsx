@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Eye, EyeOff, Loader2, ArrowRight, Check } from 'lucide-react'
@@ -11,8 +11,10 @@ import { cn } from '@/lib/utils'
 
 export default function RegisterPage() {
   const router = useRouter()
+  const params = useParams()
+  const locale = params.locale as string
   const searchParams = useSearchParams()
-  const returnUrl = searchParams.get('returnUrl') || '/'
+  const returnUrl = searchParams.get('returnUrl') || `/${locale}`
   const { register, isLoading } = useAuth()
 
   const [formData, setFormData] = useState({
@@ -301,13 +303,13 @@ export default function RegisterPage() {
             />
             <span className="font-sans text-sm text-bianco/60">
               Accetto i{' '}
-              <Link href="/terms" className="text-gold hover:underline">
+              <a href="#contatti" className="text-gold hover:underline">
                 Termini e Condizioni
-              </Link>{' '}
+              </a>{' '}
               e la{' '}
-              <Link href="/privacy" className="text-gold hover:underline">
+              <a href="#contatti" className="text-gold hover:underline">
                 Privacy Policy
-              </Link>{' '}
+              </a>{' '}
               *
             </span>
           </label>
@@ -354,7 +356,7 @@ export default function RegisterPage() {
         <p className="font-sans text-bianco/60">
           Hai già un account?{' '}
           <Link
-            href={`/auth/login${returnUrl !== '/' ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`}
+            href={`/${locale}/auth/login${returnUrl !== `/${locale}` ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`}
             className="text-gold hover:text-gold-light transition-colors"
           >
             Accedi

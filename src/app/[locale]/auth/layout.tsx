@@ -2,14 +2,15 @@
 
 import { ReactNode } from 'react'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import { CustomCursor } from '@/components/layout/CustomCursor'
-import { GrainOverlay } from '@/components/layout/GrainOverlay'
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
+  const params = useParams()
+  const locale = params.locale as string
   return (
     <div className="min-h-screen bg-nero flex">
       <CustomCursor />
-      <GrainOverlay />
 
       {/* Left side - Branding */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
@@ -21,21 +22,20 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           }}
         />
         <div className="relative z-10 flex flex-col justify-center items-center w-full p-12 text-center">
-          <Link href="/" className="font-serif text-6xl text-gold mb-6">
+          <Link href={`/${locale}`} className="font-serif text-6xl text-gold mb-6">
             GBiO
           </Link>
-          <p className="font-sans text-bianco/70 text-lg max-w-md leading-relaxed">
-            Entra nel mondo dell&apos;eccellenza biologica abruzzese.
-            Tre generazioni di passione per la terra.
+          <p className="font-sans text-gold/80 text-sm uppercase tracking-[0.3em] max-w-md">
+            GREATNESS BEYOND ORDINARY
           </p>
           <div className="mt-12 flex gap-8">
             <div className="text-center">
-              <span className="font-serif text-4xl text-gold">70+</span>
-              <p className="font-sans text-xs text-bianco/50 mt-1">Anni di Storia</p>
+              <span className="font-serif text-4xl text-gold">49</span>
+              <p className="font-sans text-xs text-bianco/50 mt-1">Ettari</p>
             </div>
             <div className="text-center">
-              <span className="font-serif text-4xl text-gold">51</span>
-              <p className="font-sans text-xs text-bianco/50 mt-1">Ettari</p>
+              <span className="font-serif text-4xl text-gold">DOP</span>
+              <p className="font-sans text-xs text-bianco/50 mt-1">Certificato</p>
             </div>
             <div className="text-center">
               <span className="font-serif text-4xl text-gold">100%</span>
@@ -49,7 +49,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       <div className="w-full lg:w-1/2 flex flex-col">
         <div className="p-6 lg:p-8">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="font-serif text-2xl text-gold lg:hidden"
           >
             GBiO

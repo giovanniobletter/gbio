@@ -2,11 +2,15 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import { useCart } from '@/context/CartContext'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
 
 export function CartDrawer() {
+  const params = useParams()
+  const locale = params.locale as string || 'it'
   const {
     items,
     isOpen,
@@ -94,10 +98,14 @@ export function CartDrawer() {
                       className="flex gap-4 pb-6 border-b border-gold/10"
                     >
                       {/* Product Image */}
-                      <div className="w-20 h-20 bg-forest/30 flex-shrink-0 flex items-center justify-center">
-                        <span className="font-serif text-2xl text-gold/30">
-                          {item.product.name.charAt(0)}
-                        </span>
+                      <div className="w-20 h-20 bg-nero flex-shrink-0 relative overflow-hidden border border-gold/10">
+                        <Image
+                          src={item.product.image}
+                          alt={item.product.name}
+                          fill
+                          className="object-contain"
+                          sizes="80px"
+                        />
                       </div>
 
                       {/* Product Info */}
@@ -185,7 +193,7 @@ export function CartDrawer() {
 
                 {/* Checkout Button */}
                 <Link
-                  href="/checkout"
+                  href={`/${locale}/checkout`}
                   onClick={closeCart}
                   className="btn-primary w-full flex items-center justify-center gap-2"
                 >

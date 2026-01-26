@@ -64,8 +64,8 @@ export function CustomCursor() {
       <motion.div
         className="cursor-dot"
         animate={{
-          x: position.x,
-          y: position.y,
+          x: position.x - 4,
+          y: position.y - 4,
           scale: isHovering ? 0 : 1,
           opacity: isVisible ? 1 : 0,
         }}
@@ -79,8 +79,8 @@ export function CustomCursor() {
       <motion.div
         className="cursor-outline"
         animate={{
-          x: position.x,
-          y: position.y,
+          x: position.x - 20,
+          y: position.y - 20,
           scale: isHovering ? 1.5 : 1,
           opacity: isVisible ? 1 : 0,
         }}

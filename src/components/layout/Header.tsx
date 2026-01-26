@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ShoppingBag, User, LogOut, Package, MapPin, ChevronDown, Globe } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter, usePathname } from 'next/navigation'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { navigation } from '@/data/navigation'
 import { useCart } from '@/context/CartContext'
@@ -14,6 +15,7 @@ import { cn } from '@/lib/utils'
 
 export function Header() {
   const router = useRouter()
+  const locale = useLocale()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
@@ -54,7 +56,7 @@ export function Header() {
   const handleLogout = () => {
     logout()
     setIsUserMenuOpen(false)
-    router.push('/')
+    router.push(`/${locale}`)
   }
 
   return (
@@ -71,11 +73,15 @@ export function Header() {
         )}
       >
         <div className="container-custom flex items-center justify-between">
-          <Link
-            href="/"
-            className="font-serif text-2xl md:text-3xl text-gold tracking-wide"
-          >
-            GBiO
+          <Link href={`/${locale}`} className="flex items-center">
+            <Image
+              src="/logo-gbo-short.svg"
+              alt="GBO - Home"
+              width={105}
+              height={62}
+              className="h-10 md:h-12 w-auto"
+              priority
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-10">
@@ -133,7 +139,7 @@ export function Header() {
                           </div>
                           <div className="py-2">
                             <Link
-                              href="/account"
+                              href={`/${locale}/account`}
                               onClick={() => setIsUserMenuOpen(false)}
                               className="flex items-center gap-3 px-4 py-2 text-sm text-bianco/70 hover:text-gold hover:bg-gold/5 transition-colors"
                             >
@@ -141,7 +147,7 @@ export function Header() {
                               Il mio Profilo
                             </Link>
                             <Link
-                              href="/account?tab=orders"
+                              href={`/${locale}/account?tab=orders`}
                               onClick={() => setIsUserMenuOpen(false)}
                               className="flex items-center gap-3 px-4 py-2 text-sm text-bianco/70 hover:text-gold hover:bg-gold/5 transition-colors"
                             >
@@ -149,7 +155,7 @@ export function Header() {
                               I miei Ordini
                             </Link>
                             <Link
-                              href="/account?tab=addresses"
+                              href={`/${locale}/account?tab=addresses`}
                               onClick={() => setIsUserMenuOpen(false)}
                               className="flex items-center gap-3 px-4 py-2 text-sm text-bianco/70 hover:text-gold hover:bg-gold/5 transition-colors"
                             >
@@ -172,7 +178,7 @@ export function Header() {
                   </>
                 ) : (
                   <Link
-                    href="/auth/login"
+                    href={`/${locale}/auth/login`}
                     className="p-2 text-gold hover:text-gold-light transition-colors"
                   >
                     <User size={22} />
@@ -241,7 +247,14 @@ export function Header() {
               className="absolute right-0 top-0 bottom-0 w-full max-w-md bg-nero border-l border-gold/20 flex flex-col"
             >
               <div className="flex items-center justify-between p-6 border-b border-gold/20">
-                <span className="font-serif text-2xl text-gold">GBiO</span>
+                <Image
+                  src="/logo-gbo.svg"
+                  alt="GBO"
+                  width={80}
+                  height={86}
+                  className="h-8 w-auto"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(75%) sepia(30%) saturate(500%) hue-rotate(5deg) brightness(95%)' }}
+                />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-gold p-2"
@@ -296,7 +309,7 @@ export function Header() {
                       transition={{ delay: navigation.length * 0.1 }}
                     >
                       <Link
-                        href="/account"
+                        href={`/${locale}/account`}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="font-serif text-3xl text-gold hover:text-gold-light transition-colors duration-300 py-4 border-b border-gold/10 flex items-center gap-3"
                       >
@@ -325,7 +338,7 @@ export function Header() {
                     transition={{ delay: navigation.length * 0.1 }}
                   >
                     <Link
-                      href="/auth/login"
+                      href={`/${locale}/auth/login`}
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="font-serif text-3xl text-gold hover:text-gold-light transition-colors duration-300 py-4 border-b border-gold/10 flex items-center gap-3"
                     >

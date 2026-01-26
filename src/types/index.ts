@@ -5,6 +5,7 @@ export interface Product {
   description: string
   price: number
   image: string
+  images?: string[] // Array of images for gallery (front, back, etc.)
   category: 'olio' | 'pasta' | 'farina' | 'conserve'
   details: {
     origin: string

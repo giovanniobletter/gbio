@@ -2,10 +2,13 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import { MapPin, Sun, Droplets, Mountain } from 'lucide-react'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
+import { luxuryFadeUp, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
 import { MountainSilhouette } from '@/components/ui/decorative/MountainSilhouette'
+import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
+import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 const features = [
   {
@@ -46,6 +49,9 @@ export function Territory() {
       ref={containerRef}
       className="section-padding bg-forest-dark relative overflow-hidden"
     >
+      {/* Subtle texture overlay */}
+      <TextureOverlay variant="linen" opacity={0.025} />
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -62,47 +68,32 @@ export function Territory() {
         <SectionTitle
           eyebrow="Il Nostro Territorio"
           title="49 Ettari di Biodiversità"
-          subtitle="Situata nel cuore dell'Abruzzo, a Cepagatti, la nostra azienda si estende su 43 ettari di seminativi e 6 ettari di uliveto."
+          subtitle="Dove il Gran Sasso incontra l'Adriatico, nasce l'eccellenza."
         />
 
         <div className="mt-20 grid lg:grid-cols-2 gap-16 items-center">
           {/* Map / Image Area */}
           <motion.div
             style={{ scale: mapScale, opacity: mapOpacity }}
-            className="relative aspect-square"
+            className="relative aspect-[2/3]"
           >
-            <div className="absolute inset-0 border border-gold/30 bg-nero/50">
-              {/* Map placeholder - replace with actual map or image */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin size={48} className="text-gold mx-auto mb-4" />
-                  <span className="font-serif text-xl text-bianco">Cepagatti, Pescara</span>
-                  <p className="font-sans text-sm text-bianco/50 mt-2">
-                    42.4612° N, 14.2111° E
-                  </p>
-                </div>
-              </div>
-
-              {/* Decorative markers */}
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="absolute top-1/3 left-1/4 w-3 h-3 bg-gold rounded-full"
-              />
-              <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                className="absolute top-1/2 right-1/3 w-3 h-3 bg-gold rounded-full"
+            <div className="absolute inset-0 border border-gold/30 overflow-hidden">
+              <Image
+                src="/images/mappa-abruzzo.png"
+                alt="Mappa storica dell'Abruzzo - Castellana"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
 
             {/* Stats overlay */}
             <motion.div
-              variants={fadeUp}
+              variants={luxuryFadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="absolute -bottom-8 -right-8 bg-nero border border-gold p-6"
+              className="absolute -bottom-8 -right-8 bg-nero border border-gold p-6 glow-gold"
             >
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
@@ -119,7 +110,7 @@ export function Territory() {
 
           {/* Features */}
           <motion.div
-            variants={staggerContainer}
+            variants={luxuryStaggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -128,7 +119,7 @@ export function Territory() {
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                variants={staggerItem}
+                variants={luxuryStaggerItem}
                 className="flex gap-6 items-start group"
               >
                 <div className="flex-shrink-0 w-14 h-14 border border-gold/50 flex items-center justify-center group-hover:bg-gold group-hover:border-gold transition-colors duration-300">
@@ -148,17 +139,20 @@ export function Territory() {
               </motion.div>
             ))}
 
+            {/* Ornate divider before quote */}
+            <OrnateRule variant="fleur" className="py-4" />
+
             <motion.div
-              variants={staggerItem}
-              className="pt-8 border-t border-gold/20"
+              variants={luxuryStaggerItem}
+              className="pt-4"
             >
-              <p className="font-sans text-bianco/70 leading-relaxed italic">
-                &ldquo;La qualità dei nostri prodotti nasce dalla terra.
-                Ogni olivo, ogni spiga di grano, racconta la storia di
-                un territorio unico al mondo.&rdquo;
+              <p className="font-sans text-bianco/70 leading-relaxed italic text-shadow-luxe">
+                &ldquo;La vera eccellenza non si coltiva, si custodisce.
+                Ogni olivo secolare, ogni spiga di grano Cappelli, è il
+                risultato di scelte precise e rispetto assoluto per la terra.&rdquo;
               </p>
-              <p className="font-sans text-xs text-gold mt-4 uppercase tracking-wider">
-                — Famiglia Obletter
+              <p className="font-sans text-xs text-gold mt-4 uppercase tracking-luxe glow-gold-text">
+                — Giovanni Battista Obletter
               </p>
             </motion.div>
           </motion.div>
