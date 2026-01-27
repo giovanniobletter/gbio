@@ -9,7 +9,6 @@ const productImages = [
   '/images/olio-3l.jpg',
   '/images/pasta-penne.jpg',
   '/images/olio-latta-5l.jpg',
-  '/images/pasta-fettuccine.jpg',
 ]
 
 export function Hero() {
@@ -55,7 +54,7 @@ export function Hero() {
 
         {/* Logo - Centered and prominent */}
         <motion.div
-          className="absolute inset-x-0 top-[3%] z-20 flex flex-col items-center"
+          className="absolute inset-x-0 top-[15%] z-20 flex flex-col items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}

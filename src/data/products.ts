@@ -54,6 +54,7 @@ export const products: Product[] = [
     description: 'Alta digeribilità. Trafilatura al bronzo, essiccazione lenta.',
     price: 4.50,
     image: '/images/pasta-mezzemaniche.jpg',
+    images: ['/images/pasta-mezzemaniche.jpg', '/images/pasta-mezzemaniche-retro.jpg'],
     category: 'pasta',
     details: {
       origin: 'Via del Grano - Castellana',
@@ -69,6 +70,7 @@ export const products: Product[] = [
     description: 'Alta digeribilità. Trafilatura al bronzo, essiccazione lenta.',
     price: 4.50,
     image: '/images/pasta-penne.jpg',
+    images: ['/images/pasta-penne.jpg', '/images/pasta-penne-retro.jpg'],
     category: 'pasta',
     details: {
       origin: 'Via del Grano - Castellana',
