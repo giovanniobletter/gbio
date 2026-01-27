@@ -5,8 +5,11 @@ import Image from 'next/image'
 
 const productImages = [
   '/images/olio-05l.jpg',
+  '/images/pasta-mezzemaniche.jpg',
   '/images/olio-3l.jpg',
+  '/images/pasta-penne.jpg',
   '/images/olio-latta-5l.jpg',
+  '/images/pasta-fettuccine.jpg',
 ]
 
 export function Hero() {

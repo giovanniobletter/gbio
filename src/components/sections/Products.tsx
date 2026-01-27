@@ -53,7 +53,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       layout
       className="group relative"
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-nero mb-6 product-image-clean">
+      <div className="relative aspect-[3/4] overflow-hidden mb-6 product-image-clean">
         {/* Product Image or Fallback */}
         <motion.div
           className="absolute inset-0 cursor-pointer"
