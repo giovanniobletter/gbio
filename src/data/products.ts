@@ -130,9 +130,10 @@ export const products: Product[] = [
     id: 'pasta-quadrucci',
     name: 'Quadrucci Senatore Cappelli',
     subtitle: 'Grano Antico Bio',
-    description: 'Per minestre e brodi. Alta digeribilità.',
+    description: 'Per minestre e brodi. Alta digeribilità. Trafilatura al bronzo, essiccazione lenta.',
     price: 4.50,
     image: '/images/pasta-quadrucci.jpg',
+    images: ['/images/pasta-quadrucci.jpg', '/images/pasta-quadrucci-retro.jpg'],
     category: 'pasta',
     details: {
       origin: 'Via del Grano - Castellana',
