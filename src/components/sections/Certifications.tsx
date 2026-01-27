@@ -10,29 +10,29 @@ import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 const certifications = [
   {
-    icon: Award,
-    logo: '/images/logo-dop.png',
-    title: 'Denominazione di Origine Protetta',
-    code: 'DOP Aprutino Pescarese • Reg. CE 1263/96',
-    description: 'Una delle prime DOP italiane per l\'olio, riconosciuta dal 1996. Garantisce che ogni goccia sia prodotta, trasformata e confezionata esclusivamente nei 34 comuni della provincia di Pescara, seguendo un disciplinare rigoroso che tutela duemila anni di tradizione olivicola.',
+    icon: Leaf,
+    logo: '/images/logo-bio-eu.png',
+    title: 'Biologico Certificato ICEA',
+    code: 'IT-BIO-006 • Operatore S2451',
+    description: 'Tutti i nostri prodotti sono certificati biologici dall\'Istituto per la Certificazione Etica e Ambientale secondo il Reg. UE 2018/848. Nessun pesticida, nessun OGM, solo natura.',
     features: [
-      'Prodotto nei 34 comuni della provincia di Pescara',
-      'Disciplinare di produzione rigoroso',
-      'Duemila anni di tradizione olivicola',
-      'Tracciabilità completa',
+      'Coltivazione senza pesticidi chimici',
+      'Fertilizzazione naturale',
+      'Rispetto della biodiversità',
+      'Rotazione delle colture',
     ],
   },
   {
-    icon: Leaf,
-    logo: '/images/logo-bio-eu.png',
-    title: 'Certificazione Biologica IT-BIO-006',
-    code: 'Biologico ICEA • Operatore S2451',
-    description: 'Operatore ICEA S2451. Zero pesticidi, zero fertilizzanti chimici, zero OGM. Controlli annuali in campo e analisi di laboratorio garantiscono la purezza assoluta dei nostri prodotti.',
+    icon: Award,
+    logo: '/images/logo-dop.png',
+    title: 'DOP Aprutino Pescarese',
+    code: 'Reg. CE 1263/96',
+    description: 'Il nostro olio extravergine è certificato DOP, a garanzia dell\'origine e della qualità superiore riconosciuta a livello europeo.',
     features: [
-      'Zero pesticidi chimici',
-      'Zero fertilizzanti chimici',
-      'Zero OGM',
-      'Controlli annuali in campo',
+      'Origine garantita',
+      'Disciplinare di produzione rigoroso',
+      'Controlli di qualità continui',
+      'Tracciabilità completa',
     ],
   },
 ]
@@ -48,9 +48,9 @@ export function Certifications() {
 
       <div className="container-custom">
         <SectionTitle
-          eyebrow="Certificazioni"
-          title="Garanzie di Eccellenza"
-          subtitle="Certificazioni che parlano per noi"
+          eyebrow="Garanzia di Qualità"
+          title="Le Nostre Certificazioni"
+          subtitle="La qualità non è un caso, ma il risultato di scelte consapevoli e standard rigorosi."
         />
 
         {/* Ornate divider */}

@@ -29,8 +29,7 @@ export function Heritage() {
       <div className="container-custom relative">
         <SectionTitle
           eyebrow="La Nostra Storia"
-          title="Tradizione e Innovazione"
-          subtitle="In ogni raccolto"
+          title="Heritage"
         />
 
         <motion.p
@@ -41,10 +40,10 @@ export function Heritage() {
           className="text-center mt-6 max-w-2xl mx-auto"
         >
           <span className="font-serif text-xl md:text-2xl italic text-bianco/80 leading-relaxed">
-            {`"Non vendo prodotti. Condivido ciò in cui credo."`}
+            {`"O fortunatos nimium, sua si bona norint, agricolas."`}
           </span>
           <span className="block mt-3 font-sans text-sm text-gold/60 tracking-wide">
-            — Giovanni Battista Obletter
+            — Virgilio, Georgiche
           </span>
         </motion.p>
 
@@ -103,36 +102,26 @@ export function Heritage() {
                 variants={luxuryStaggerItem}
                 className="font-sans text-xs uppercase tracking-luxe text-gold"
               >
-                Fondatore
+                Founder
               </motion.p>
 
               <motion.p
                 variants={luxuryStaggerItem}
                 className="font-sans text-bianco/70 leading-relaxed"
               >
-                Giovanni Battista Obletter, classe 1996, ha scelto di non seguire il percorso
-                più facile. In un&apos;epoca in cui molti giovani lasciano la terra, lui ha deciso
-                di tornare a coltivarla — ma in modo diverso.
+                Nato tra queste colline, Giovanni Battista Obletter ha scelto di partire
+                per poter tornare. Un viaggio attraverso i terroir più celebri del mondo
+                — dalla Toscana alla Provenza, dalla Napa Valley all&apos;Alentejo — per
+                riscoprire ciò che aveva sempre avuto sotto i piedi.
               </motion.p>
 
               <motion.p
                 variants={luxuryStaggerItem}
                 className="font-sans text-bianco/70 leading-relaxed"
               >
-                Sui 50 ettari tra Cepagatti, Moscufo e Pianella, Giovanni pratica un&apos;agricoltura
-                che guarda al futuro riscoprendo il passato: varietà antiche come il Senatore Cappelli
-                e il Gentilrosso, cultivar autoctone come la Dritta, metodi biologici certificati
-                che rigenerano il suolo invece di impoverirlo.
-              </motion.p>
-
-              <motion.p
-                variants={luxuryStaggerItem}
-                className="font-sans text-bianco/70 leading-relaxed"
-              >
-                La filosofia è semplice: produrre alimenti che facciano davvero bene. Ogni bottiglia
-                d&apos;olio, ogni pacco di pasta porta con sé non solo il sapore dell&apos;Abruzzo, ma i
-                valori di un giovane imprenditore che crede che il cibo possa essere medicina,
-                piacere e rispetto per la terra — tutto insieme.
+                Oggi applica tecnologie di ultima generazione a metodi tramandati da secoli.
+                Il risultato: materie prime di valore inestimabile, dove ogni goccia e ogni
+                chicco raccontano una terra unica.
               </motion.p>
             </motion.div>
 
@@ -147,9 +136,9 @@ export function Heritage() {
               className="grid grid-cols-3 gap-6 pt-4"
             >
               <div>
-                <span className="font-serif text-4xl text-gold">50</span>
+                <span className="font-serif text-4xl text-gold">49</span>
                 <p className="font-sans text-xs uppercase tracking-wider text-bianco/50 mt-2">
-                  Ettari Bio
+                  Ettari Totali
                 </p>
               </div>
               <div>

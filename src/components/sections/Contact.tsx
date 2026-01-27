@@ -14,7 +14,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Indirizzo',
-    value: 'Via Sicilia 2/A\n65012 Cepagatti (PE)',
+    value: 'Via Sicilia, Fraz. Villanova 2/a\n65012 Cepagatti (PE)',
   },
   {
     icon: Phone,
@@ -99,9 +99,9 @@ export function Contact() {
 
       <div className="container-custom relative z-10">
         <SectionTitle
-          eyebrow="Contatti"
-          title="Parliamo"
-          subtitle="Siamo qui per te"
+          eyebrow="Contattaci"
+          title="Parliamo di Eccellenza"
+          subtitle="Ristoranti, enoteche, distributori: portiamo l'autenticità abruzzese sulle tavole più raffinate."
         />
 
         {/* Ornate divider */}
@@ -160,15 +160,14 @@ export function Contact() {
                 className="pt-8 border-t border-gold/20"
               >
                 <h4 className="font-serif text-xl text-bianco mb-3 text-shadow-luxe">
-                  Vieni a Trovarci
+                  Esperienze in Azienda
                 </h4>
                 <p className="font-sans text-sm text-bianco/60 leading-relaxed mb-4">
-                  Hai domande sui nostri prodotti? Vuoi conoscere la disponibilità o organizzare
-                  una visita in azienda? Scrivici: rispondiamo personalmente a ogni messaggio.
-                  Visite in azienda su appuntamento.
+                  Visite private, degustazioni esclusive e percorsi sensoriali
+                  tra gli uliveti e i campi di grano antico. Su appuntamento.
                 </p>
                 <Button variant="ghost" className="text-gold hover:glow-gold transition-all duration-700">
-                  Prenota una visita
+                  Richiedi un&apos;esperienza
                 </Button>
               </motion.div>
             </motion.div>

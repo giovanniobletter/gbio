@@ -62,7 +62,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-serif text-3xl md:text-4xl text-bianco mb-4"
           >
-            Pagina non trovata
+            Pagina Non Trovata
           </motion.h1>
 
           {/* Description */}
@@ -72,9 +72,9 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="font-sans text-bianco/60 mb-12 leading-relaxed"
           >
-            La pagina che cerchi non esiste o è stata spostata.
+            La pagina che stai cercando non esiste o è stata spostata.
             <br />
-            Torna alla homepage per continuare l&apos;esperienza.
+            Ti invitiamo a tornare alla nostra home page.
           </motion.p>
 
           {/* Buttons */}
@@ -110,7 +110,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-16 font-serif text-sm text-gold/40 italic"
           >
-            {`"Non vendo prodotti. Condivido ciò in cui credo."`}
+            {`"Anche chi si perde, trova la strada verso l'eccellenza"`}
           </motion.p>
         </div>
 
