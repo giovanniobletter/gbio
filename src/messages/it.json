@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "GBiO",
-    "description": "Olio extravergine DOP e pasta di grani antichi dall'Abruzzo. Biologico certificato ICEA."
+    "title": "GBiO - Azienda Agricola G.B. Obletter",
+    "description": "Olio extravergine DOP Aprutino Pescarese e pasta di grani antichi dall'Abruzzo. Biologico certificato ICEA. Dal 1996, coltiviamo la tradizione."
   },
   "nav": {
     "heritage": "La Nostra Storia",
@@ -23,31 +23,33 @@
     "account": "Account"
   },
   "hero": {
-    "eyebrow": "Triangolo d'Oro dell'Olio",
-    "tagline": "Castellana, Abruzzo.",
-    "taglineHighlight": "Eccellenza biologica.",
-    "cta": "Esplora",
-    "explore": "Scopri",
-    "location": "Città dell'Olio",
-    "established": "Bio ICEA"
+    "eyebrow": "Azienda Agricola G.B. Obletter",
+    "tagline": "Eccellenza Abruzzese",
+    "taglineHighlight": "Dal 1996, coltiviamo la tradizione",
+    "cta": "Scopri la Collezione",
+    "explore": "Esplora i Prodotti",
+    "location": "Abruzzo · Italia",
+    "established": "Dal 1996"
   },
   "heritage": {
-    "eyebrow": "La Nostra Terra",
-    "title": "Triangolo d'Oro",
-    "subtitle": "Moscufo · Loreto Aprutino · Pianella",
+    "eyebrow": "La Nostra Storia",
+    "title": "Tradizione e Innovazione",
+    "subtitle": "In ogni raccolto",
     "founder": "Giovanni Battista Obletter",
-    "description1": "I nostri seminativi crescono in Via del Grano a Castellana. L'olio nasce nel cuore del Triangolo d'Oro, territorio riconosciuto tra le Città dell'Olio d'Italia.",
-    "description2": "DOP Aprutino Pescarese. Biologico certificato ICEA.",
+    "description1": "Giovanni Battista Obletter, classe 1996, ha scelto di non seguire il percorso più facile. In un'epoca in cui molti giovani lasciano la terra, lui ha deciso di tornare a coltivarla — ma in modo diverso.",
+    "description2": "Sui 50 ettari tra Cepagatti, Moscufo e Pianella, Giovanni pratica un'agricoltura che guarda al futuro riscoprendo il passato: varietà antiche come il Senatore Cappelli e il Gentilrosso, cultivar autoctone come la Dritta, metodi biologici certificati che rigenerano il suolo.",
+    "description3": "La filosofia è semplice: produrre alimenti che facciano davvero bene. Ogni bottiglia d'olio, ogni pacco di pasta porta con sé non solo il sapore dell'Abruzzo, ma i valori di un giovane imprenditore che crede che il cibo possa essere medicina, piacere e rispetto per la terra.",
+    "quote": "Non vendo prodotti. Condivido ciò in cui credo.",
     "stats": {
-      "totalHectares": "Ettari",
+      "totalHectares": "Ettari Bio",
       "cropland": "Seminativi",
-      "oliveGrove": "Uliveto"
+      "oliveGrove": "Uliveto DOP"
     }
   },
   "products": {
     "eyebrow": "Collezione",
-    "title": "I Prodotti",
-    "subtitle": "Biologico certificato ICEA.",
+    "title": "La Nostra Selezione",
+    "subtitle": "Ogni prodotto racconta una storia di terra, tempo e dedizione",
     "addToCart": "Aggiungi",
     "added": "Aggiunto",
     "add": "Aggiungi",
@@ -59,49 +61,51 @@
       },
       "olio": {
         "label": "Olio",
-        "title": "Olio EVO Bio DOP Aprutino Pescarese",
-        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 24 ore al Frantoio Valentini Cerretani di Loreto Aprutino. Estrazione a freddo, alto contenuto di polifenoli, proprietà nutraceutiche certificate."
+        "title": "Olio Extravergine di Oliva DOP Aprutino Pescarese",
+        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 24 ore al Frantoio Valentini di Loreto Aprutino. 444 mg/kg di polifenoli, estrazione a freddo, proprietà nutraceutiche certificate."
       },
       "pasta": {
         "label": "Pasta",
-        "title": "Pasta di Semolato di Grano Duro Senatore Cappelli",
-        "description": "Da grano 100% italiano, coltivato a Castellana in Abruzzo con metodo biologico. Alta digeribilità, basso indice glicemico, ricco di proteine e fibre. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
+        "title": "Pasta di Grano Antico Senatore Cappelli",
+        "description": "Grano coltivato nei nostri campi, macinato a pietra al Mulino Cappelli. 14% di proteine, doppia concentrazione di antiossidanti rispetto ai grani moderni. Trafilata al bronzo con essiccazione lenta a bassa temperatura."
       },
       "farina": {
         "label": "Farine",
         "title": "Farine di Grani Antichi",
-        "description": "Castellana. Senatore Cappelli e Gentil Rosso macinati a pietra. Alta digeribilità, basso indice glicemico."
+        "description": "Senatore Cappelli e Gentilrosso macinati a pietra. Dal nostro campo alla tua cucina: tracciabilità completa, biologico certificato."
       },
       "conserve": {
         "label": "Conserve",
         "title": "Pomodoro Pera d'Abruzzo",
-        "description": "Varietà autoctona ad alto contenuto di licopene. Polpa densa, buccia sottile. Lavorazione entro 24 ore dalla raccolta."
+        "description": "Pomodoro Pera d'Abruzzo biologico, raccolto a mano e trasformato artigianalmente presso La Giara entro poche ore dalla raccolta. Cottura lenta in caldaie di rame, zero conservanti."
       }
     }
   },
   "territory": {
     "eyebrow": "Terroir",
-    "title": "Cepagatti",
-    "subtitle": "Abruzzo. Dove il Gran Sasso incontra l'Adriatico."
+    "title": "Il Triangolo d'Oro",
+    "subtitle": "Dove nasce l'eccellenza"
   },
   "certifications": {
     "eyebrow": "Certificazioni",
-    "title": "ICEA Bio",
-    "subtitle": "Biologico certificato. Nessun compromesso."
+    "title": "Garanzie di Eccellenza",
+    "subtitle": "Certificazioni che parlano per noi"
   },
   "contact": {
     "eyebrow": "Contatti",
     "title": "Parliamo",
-    "subtitle": "Per ordini, collaborazioni o visite in azienda.",
+    "subtitle": "Siamo qui per te",
     "address": "Indirizzo",
-    "addressValue": "Via Sicilia 2/A, Cepagatti (PE)",
+    "addressValue": "Via Sicilia 2/A, 65012 Cepagatti (PE)",
     "phone": "Telefono",
     "phoneValue": "+39 392 636 2254",
     "email": "Email",
+    "emailValue": "gb.obletter@gmail.com",
+    "vatNumber": "P.IVA: IT02773610692",
     "hours": "Orari",
-    "hoursValue": "Lun - Ven: 9:00 - 18:00\nSab: 9:00 - 13:00",
+    "hoursValue": "Visite in azienda su appuntamento | Spedizioni in tutta Italia",
     "visitUs": "Vieni a trovarci",
-    "visitDescription": "Organizziamo visite guidate dell'azienda e degustazioni su prenotazione.",
+    "visitDescription": "Hai domande sui nostri prodotti? Vuoi conoscere la disponibilità o organizzare una visita in azienda? Scrivici: rispondiamo personalmente a ogni messaggio.",
     "bookVisit": "Prenota una visita",
     "form": {
       "name": "Nome",
@@ -126,22 +130,22 @@
     }
   },
   "footer": {
-    "description": "Dal 1700. Abruzzo.",
+    "description": "Azienda Agricola G.B. Obletter. Via Sicilia 2/A, 65012 Cepagatti (PE).",
     "contacts": "Contatti",
     "navigation": "Navigazione",
     "followUs": "Social",
     "certifications": "Certificazioni",
-    "copyright": "© GBiO - Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692",
+    "copyright": "© GBiO - Azienda Agricola G.B. Obletter | Via Sicilia 2/A, 65012 Cepagatti (PE) | P.IVA IT02773610692 | Biologico ICEA IT-BIO-006",
     "privacyPolicy": "Privacy",
     "cookiePolicy": "Cookie",
-    "yearsHistory": "Dal",
-    "hectares": "Ettari",
-    "organic": "Bio"
+    "yearsHistory": "Dal 1996",
+    "hectares": "50 Ettari",
+    "organic": "Bio ICEA"
   },
   "cart": {
     "title": "Carrello",
-    "empty": "Il carrello è vuoto",
-    "emptyDescription": "Scopri i nostri prodotti biologici",
+    "empty": "Il tuo carrello è vuoto",
+    "emptyDescription": "Il tuo carrello è vuoto. Scopri i nostri prodotti.",
     "goToProducts": "Vai ai Prodotti",
     "removeItem": "Rimuovi dal carrello",
     "decreaseQuantity": "Diminuisci quantità",
@@ -150,6 +154,7 @@
     "shipping": "Spedizione",
     "free": "Gratuita",
     "freeShippingRemaining": "Aggiungi {amount} per la spedizione gratuita",
+    "freeShippingReached": "Complimenti! Hai ottenuto la spedizione gratuita",
     "total": "Totale",
     "checkout": "Procedi al Checkout",
     "continueShopping": "Continua lo shopping",
@@ -161,8 +166,10 @@
     "backToProducts": "Torna ai Prodotti",
     "backToSite": "Torna al sito",
     "steps": {
+      "data": "I tuoi dati",
       "shipping": "Spedizione",
-      "payment": "Pagamento"
+      "payment": "Pagamento",
+      "confirmation": "Conferma"
     },
     "shippingAddress": "Indirizzo di Spedizione",
     "savedAddresses": "Indirizzi salvati",
@@ -210,18 +217,24 @@
     "securePayment100": "Pagamento 100% sicuro",
     "confirmation": {
       "thanks": "Grazie per il tuo ordine!",
+      "message": "Il tuo ordine è stato ricevuto. Riceverai una conferma via email con i dettagli della spedizione. Grazie per aver scelto l'eccellenza abruzzese.",
       "orderNumber": "Ordine #",
       "emailConfirmation": "Riceverai una email di conferma a {email} con tutti i dettagli del tuo ordine.",
       "shippingAddressLabel": "Indirizzo di spedizione",
       "backHome": "Torna alla Home"
     }
   },
+  "newsletter": {
+    "title": "Resta in contatto",
+    "subtitle": "Ricevi ricette, novità e offerte esclusive",
+    "cta": "Iscriviti"
+  },
   "auth": {
     "branding": {
-      "tagline": "Dal 1700. Eccellenza biologica dall'Abruzzo.",
-      "yearsHistory": "Dal",
-      "hectares": "Ettari",
-      "organic": "Bio"
+      "tagline": "Dal 1996. Eccellenza biologica dall'Abruzzo.",
+      "yearsHistory": "Dal 1996",
+      "hectares": "50 Ettari",
+      "organic": "Bio ICEA"
     },
     "login": {
       "title": "Bentornato",
@@ -344,66 +357,72 @@
     "next": "Avanti",
     "required": "Obbligatorio"
   },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "message": "La pagina che cerchi non esiste o è stata spostata. Torna alla homepage per continuare l'esperienza.",
+    "backHome": "Torna alla Home",
+    "goBack": "Torna Indietro"
+  },
   "productData": {
     "olio-dop-50cl": {
-      "name": "Olio Extravergine",
-      "subtitle": "Bottiglia 0,5 L",
-      "description": "Nutraceutico. Alto contenuto di polifenoli. Note di mandorla e carciofo."
+      "name": "Olio Extravergine di Oliva DOP",
+      "subtitle": "Cultivar Dritta, Leccino, Intosso | 0,5L",
+      "description": "444 mg/kg di polifenoli. Spremuto a freddo entro 24 ore dalla raccolta. Note di carciofo crudo, mandorla verde ed erbe officinali."
     },
     "olio-dop-3l": {
-      "name": "Olio Extravergine",
+      "name": "Olio Extravergine DOP Bio",
       "subtitle": "DOP Aprutino Pescarese · Latta 3L",
-      "description": "Formato famiglia. Polifenoli e antiossidanti naturali."
+      "description": "Il formato ideale per chi ha scoperto l'eccellenza e non vuole più farne a meno. Preserva intatte le proprietà nutraceutiche."
     },
     "olio-dop-5l": {
-      "name": "Olio Extravergine",
+      "name": "Olio Extravergine DOP Bio",
       "subtitle": "DOP Aprutino Pescarese · Latta 5L",
-      "description": "Per intenditori. Proprietà antiossidanti certificate."
-    },
-    "pasta-penne": {
-      "name": "Penne Rigate",
-      "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "La scelta del conoscitore. Cinque litri di pura eccellenza abruzzese, il miglior rapporto qualità-prezzo."
     },
     "pasta-mezzemaniche": {
       "name": "Mezzemaniche",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "Perfette per sughi corposi e ragù. La forma trattiene il condimento all'interno."
+    },
+    "pasta-penne": {
+      "name": "Penne",
+      "subtitle": "Senatore Cappelli · 500g",
+      "description": "Il classico italiano, versatile e amato. Ideali con sughi di verdure o pomodoro fresco."
     },
     "pasta-fettuccine": {
       "name": "Fettuccine",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "La tradizione abruzzese. Sposano magnificamente il nostro olio DOP a crudo o con ragù d'agnello."
     },
     "pasta-tagliatelle": {
       "name": "Tagliatelle",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "Più sottili delle fettuccine, catturano i sughi delicati. Eccellenti con tartufo o funghi porcini."
     },
     "pasta-sagnette": {
       "name": "Sagnette",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Formato abruzzese. Alta digeribilità, trafilatura al bronzo."
+      "description": "Formato tipico abruzzese, irregolare e rustico. Tradizionalmente servite con fagioli o ceci."
     },
     "pasta-quadrucci": {
       "name": "Quadrucci",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Per minestre e brodi. Alta digeribilità."
+      "description": "Piccoli quadrati perfetti per minestre e brodi. La pasta della domenica in famiglia."
     },
     "semolato-cappelli": {
-      "name": "Semolato",
-      "subtitle": "Senatore Cappelli · 1kg",
-      "description": "Macinato a pietra. Basso indice glicemico."
+      "name": "Semolato Senatore Cappelli",
+      "subtitle": "Semola Rimacinata · 1kg",
+      "description": "Macinata a pietra. Ideale per pasta fresca, pane pugliese, focacce e pizze gourmet."
     },
     "farina-gentilrosso": {
       "name": "Farina Gentilrosso",
       "subtitle": "Grano Tenero Antico · 1kg",
-      "description": "Macinata a pietra. Basso indice glicemico."
+      "description": "Varietà italiana dei primi '900. La più alta concentrazione naturale di vanillina tra i grani teneri."
     },
     "passata-pomodoro": {
       "name": "Passata di Pomodoro",
       "subtitle": "Pera d'Abruzzo Bio · 70cl",
-      "description": "Alto contenuto di licopene. Polpa densa, lavorazione entro 24 ore."
+      "description": "Raccolto a mano, trasformato artigianalmente presso La Giara. Cottura lenta in caldaie di rame, zero conservanti."
     }
   }
 }

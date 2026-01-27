@@ -25,12 +25,11 @@ export function Footer() {
           <motion.div variants={staggerItem} className="space-y-6">
             <h3 className="font-serif text-3xl text-gold">GBiO</h3>
             <p className="font-sans text-sm text-bianco/60 leading-relaxed">
-              Azienda Agricola Obletter Giovanni Battista.
-              Eccellenze biologiche dal cuore dell&apos;Abruzzo,
-              destinate alle tavole più raffinate.
+              Azienda Agricola G.B. Obletter.
+              Via Sicilia 2/A, 65012 Cepagatti (PE).
             </p>
             <p className="font-serif text-sm text-gold/60 italic mt-4">
-              {`"Coltiviamo il futuro, rispettando la tradizione"`}
+              {`"Non vendo prodotti. Condivido ciò in cui credo."`}
             </p>
             <p className="font-sans text-xs text-bianco/40">
               P.IVA IT02773610692
@@ -64,7 +63,7 @@ export function Footer() {
                 <div className="flex items-start gap-3 text-bianco/60">
                   <MapPin size={16} className="mt-1 flex-shrink-0" />
                   <span className="text-sm">
-                    Via Sicilia, Fraz. Villanova 2/a
+                    Via Sicilia 2/A
                     <br />
                     65012 Cepagatti (PE)
                   </span>
@@ -140,7 +139,7 @@ export function Footer() {
           className="mt-16 pt-8 border-t border-gold/10 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-xs text-bianco/40">
-            &copy; {currentYear} Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692 - Operatore BIO ICEA IT-BIO-006
+            &copy; {currentYear} GBiO - Azienda Agricola G.B. Obletter | Via Sicilia 2/A, 65012 Cepagatti (PE) | P.IVA IT02773610692 | Biologico ICEA IT-BIO-006
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-bianco/40 hover:text-gold transition-colors">

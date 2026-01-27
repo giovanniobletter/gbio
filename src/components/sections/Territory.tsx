@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import { MapPin, Sun, Droplets, Mountain } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { luxuryFadeUp, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
 import { MountainSilhouette } from '@/components/ui/decorative/MountainSilhouette'
@@ -12,24 +12,24 @@ import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 const features = [
   {
-    icon: Sun,
-    title: '300+ giorni di sole',
-    description: 'Il clima mediterraneo abruzzese garantisce una maturazione ottimale.',
-  },
-  {
-    icon: Droplets,
-    title: 'Irrigazione naturale',
-    description: 'Le sorgenti appenniniche nutrono i nostri terreni.',
-  },
-  {
-    icon: Mountain,
-    title: 'Altitudine perfetta',
-    description: 'Tra i 200 e i 400 metri, ideale per olive e grani antichi.',
+    icon: MapPin,
+    title: 'Moscufo',
+    description: 'Città dell\'Olio, patria della cultivar Dritta.',
   },
   {
     icon: MapPin,
-    title: 'Terroir unico',
-    description: 'Suoli argilloso-calcarei ricchi di minerali.',
+    title: 'Pianella',
+    description: 'Città dell\'Olio, tradizione olivicola millenaria.',
+  },
+  {
+    icon: MapPin,
+    title: 'Loreto Aprutino',
+    description: 'Sede del Frantoio Valentini dove spremiamo le nostre olive.',
+  },
+  {
+    icon: MapPin,
+    title: 'Cepagatti',
+    description: 'Sede dell\'azienda, cuore dei nostri campi di grano antico.',
   },
 ]
 
@@ -66,9 +66,9 @@ export function Territory() {
 
       <div className="container-custom relative z-10">
         <SectionTitle
-          eyebrow="Il Nostro Territorio"
-          title="49 Ettari di Biodiversità"
-          subtitle="Dove il Gran Sasso incontra l'Adriatico, nasce l'eccellenza."
+          eyebrow="Terroir"
+          title="Il Triangolo d'Oro"
+          subtitle="Dove nasce l'eccellenza"
         />
 
         <div className="mt-20 grid lg:grid-cols-2 gap-16 items-center">
@@ -97,12 +97,12 @@ export function Territory() {
             >
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <span className="font-serif text-3xl text-gold">43</span>
-                  <p className="font-sans text-xs text-bianco/60 mt-1">Ha Seminativi</p>
+                  <span className="font-serif text-3xl text-gold">50</span>
+                  <p className="font-sans text-xs text-bianco/60 mt-1">Ettari Bio</p>
                 </div>
                 <div className="text-center">
-                  <span className="font-serif text-3xl text-gold">6</span>
-                  <p className="font-sans text-xs text-bianco/60 mt-1">Ha Uliveto</p>
+                  <span className="font-serif text-3xl text-gold">4</span>
+                  <p className="font-sans text-xs text-bianco/60 mt-1">Comuni</p>
                 </div>
               </div>
             </motion.div>
@@ -147,9 +147,10 @@ export function Territory() {
               className="pt-4"
             >
               <p className="font-sans text-bianco/70 leading-relaxed italic text-shadow-luxe">
-                &ldquo;La vera eccellenza non si coltiva, si custodisce.
-                Ogni olivo secolare, ogni spiga di grano Cappelli, è il
-                risultato di scelte precise e rispetto assoluto per la terra.&rdquo;
+                &ldquo;Nel cuore dell&apos;Abruzzo, tra le dolci colline che degradano verso l&apos;Adriatico,
+                si trova un territorio unico al mondo. Qui, dove i Romani già coltivavano l&apos;olivo
+                duemila anni fa, microclima e terroir creano le condizioni perfette per produrre
+                olio extravergine di qualità superiore.&rdquo;
               </p>
               <p className="font-sans text-xs text-gold mt-4 uppercase tracking-luxe glow-gold-text">
                 — Giovanni Battista Obletter

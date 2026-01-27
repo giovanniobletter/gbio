@@ -84,7 +84,7 @@ export function Hero() {
             transition={{ delay: 0.8, duration: 1 }}
             className="font-sans text-xs uppercase tracking-[0.4em] text-gold mt-4"
           >
-            Olio DOP Bio • Grani Antichi • Conserve
+            Dal 1996, coltiviamo la tradizione
           </motion.p>
         </motion.div>
 
@@ -144,7 +144,7 @@ export function Hero() {
           className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden lg:block"
         >
           <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-gold/30 writing-vertical">
-            Dal 2020
+            Dal 1996
           </span>
         </motion.div>
       </div>
