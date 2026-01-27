@@ -102,6 +102,7 @@ export const products: Product[] = [
     description: 'Alta digeribilità. Trafilatura al bronzo, essiccazione lenta.',
     price: 4.50,
     image: '/images/pasta-tagliatelle.jpg',
+    images: ['/images/pasta-tagliatelle.jpg', '/images/pasta-tagliatelle-retro.jpg'],
     category: 'pasta',
     details: {
       origin: 'Via del Grano - Castellana',
