@@ -66,7 +66,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               src={product.image}
               alt={product.name}
               fill
-              className={`object-contain ${product.id.includes('3l') || product.id.includes('5l') ? 'scale-125 -translate-y-4' : product.id === 'olio-dop-50cl' ? 'scale-125' : ''}`}
+              className={`object-contain ${product.id.includes('3l') || product.id.includes('5l') ? 'scale-125 -translate-y-4' : product.id === 'olio-dop-50cl' ? 'scale-125' : product.id === 'pasta-penne' || product.id === 'pasta-fettuccine' ? 'scale-125' : ''}`}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               onError={() => setImageError(true)}
             />
