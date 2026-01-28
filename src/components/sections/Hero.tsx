@@ -14,6 +14,7 @@ const productImages = [
   '/images/pasta-tagliatelle.jpg',
   '/images/olio-latta-5l.jpg',
   '/images/pasta-quadrucci.jpg',
+  '/images/passata-pomodoro.jpg',
 ]
 
 export function Hero() {
