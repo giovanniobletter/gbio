@@ -4,17 +4,17 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const productImages = [
-  '/images/olio-05l.jpg',
-  '/images/pasta-mezzemaniche.jpg',
-  '/images/semolato-cappelli.jpg',
   '/images/pasta-penne.jpg',
-  '/images/olio-3l.jpg',
-  '/images/pasta-fettuccine.jpg',
-  '/images/farina-gentilrosso.jpg',
+  '/images/olio-05l.jpg',
   '/images/pasta-tagliatelle.jpg',
-  '/images/olio-latta-5l.jpg',
-  '/images/pasta-quadrucci.jpg',
   '/images/passata-pomodoro.jpg',
+  '/images/pasta-mezzemaniche.jpg',
+  '/images/olio-3l.jpg',
+  '/images/pasta-quadrucci.jpg',
+  '/images/semolato-cappelli.jpg',
+  '/images/pasta-fettuccine.jpg',
+  '/images/olio-latta-5l.jpg',
+  '/images/farina-gentilrosso.jpg',
 ]
 
 export function Hero() {
