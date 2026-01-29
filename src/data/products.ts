@@ -120,6 +120,7 @@ export const products: Product[] = [
     description: 'Formato tipico abruzzese. Con fagioli o ceci.',
     price: 4.50,
     image: '/images/pasta-sagnette.jpg',
+    images: ['/images/pasta-sagnette.jpg', '/images/pasta-sagnette-retro.jpg'],
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',

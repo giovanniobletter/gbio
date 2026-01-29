@@ -80,17 +80,8 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 1 }}
             className="font-serif text-3xl md:text-4xl lg:text-5xl text-bianco text-center mt-40"
           >
-            Per Chi Vuole Di Più.
+            Eccellenza Abruzzese
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="font-sans text-xs uppercase tracking-[0.4em] text-gold mt-4"
-          >
-            Greatness Beyond Ordinary
-          </motion.p>
         </motion.div>
 
         {/* Decorative line */}
