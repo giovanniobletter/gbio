@@ -6,6 +6,7 @@ export interface Product {
   price: number
   image: string
   images?: string[] // Array of images for gallery (front, back, etc.)
+  imagePosition?: string // CSS object-position value (e.g., 'center top', 'center 30%')
   category: 'olio' | 'pasta' | 'farina' | 'conserve'
   details: {
     origin: string

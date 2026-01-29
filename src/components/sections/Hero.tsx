@@ -8,12 +8,12 @@ const productImages = [
   '/images/olio-05l.jpg',
   '/images/pasta-tagliatelle.jpg',
   '/images/passata-pomodoro.jpg',
+  '/images/olio-latta-5l.jpg',
   '/images/pasta-mezzemaniche.jpg',
+  '/images/semolato-cappelli.jpg',
   '/images/olio-3l.jpg',
   '/images/pasta-quadrucci.jpg',
-  '/images/semolato-cappelli.jpg',
   '/images/pasta-fettuccine.jpg',
-  '/images/olio-latta-5l.jpg',
   '/images/farina-gentilrosso.jpg',
 ]
 
@@ -78,9 +78,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="font-serif text-3xl md:text-4xl lg:text-5xl text-bianco text-center mt-28"
+            className="font-serif text-3xl md:text-4xl lg:text-5xl text-bianco text-center mt-40"
           >
-            Eccellenza Abruzzese
+            Per Chi Vuole Di Più.
           </motion.h1>
 
           <motion.p
@@ -89,7 +89,7 @@ export function Hero() {
             transition={{ delay: 0.8, duration: 1 }}
             className="font-sans text-xs uppercase tracking-[0.4em] text-gold mt-4"
           >
-            Olio DOP Bio • Grani Antichi • Conserve
+            Greatness Beyond Ordinary
           </motion.p>
         </motion.div>
 

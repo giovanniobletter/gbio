@@ -73,7 +73,7 @@ export function Header() {
         )}
       >
         <div className="container-custom flex items-center justify-between">
-          <Link href={`/${locale}`} className="flex items-center">
+          <Link href={`/${locale}`} className="flex flex-col items-center">
             <Image
               src="/logo-gbo-short.svg"
               alt="GBO - Home"
@@ -82,6 +82,12 @@ export function Header() {
               className="h-10 md:h-12 w-auto"
               priority
             />
+            {/* Italian flag - subtle underline */}
+            <div className="hidden sm:flex mt-1 opacity-60">
+              <div className="w-5 h-[2px] bg-gradient-to-r from-transparent to-[#009246]" />
+              <div className="w-4 h-[2px] bg-white" />
+              <div className="w-5 h-[2px] bg-gradient-to-r from-[#CE2B37] to-transparent" />
+            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-10">

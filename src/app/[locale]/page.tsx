@@ -23,8 +23,8 @@ export default function Home() {
       <main>
         <Hero />
         <Products />
-        <Territory />
         <Certifications />
+        <Territory />
         <Heritage />
         <Contact />
       </main>

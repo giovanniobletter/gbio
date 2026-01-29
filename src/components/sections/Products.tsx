@@ -66,7 +66,11 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               src={product.image}
               alt={product.name}
               fill
-              className="object-contain"
+              className="object-contain object-center"
+              style={product.imagePosition ? {
+                transform: product.imagePosition,
+                transformOrigin: 'center center'
+              } : undefined}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               onError={() => setImageError(true)}
             />
@@ -147,13 +151,16 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-2">
         <span className="font-sans text-xs uppercase tracking-[0.2em] text-gold">
           {product.subtitle}
         </span>
         <h3 className="font-serif text-xl text-bianco group-hover:text-gold transition-colors duration-300">
           {product.name}
         </h3>
+        <p className="font-sans text-sm text-bianco/60 leading-relaxed">
+          {product.description}
+        </p>
 
         <div className="flex items-center justify-between pt-2">
           <span className="font-serif text-2xl text-gold">
