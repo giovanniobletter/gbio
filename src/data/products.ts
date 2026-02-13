@@ -7,7 +7,7 @@ export const products: Product[] = [
     name: 'Bottiglia 0,5L',
     subtitle: 'DOP Aprutino Pescarese Bio',
     description: "L'introduzione all'eccellenza. Note di carciofo, mandorla verde, erbe selvatiche.",
-    price: 25.00,
+    price: 20.00,
     image: '/images/olio-05l.jpg',
     images: ['/images/olio-05l.jpg'],
     category: 'olio',
