@@ -22,7 +22,7 @@ export const products: Product[] = [
     id: 'olio-dop-3l',
     name: 'Latta 3L',
     subtitle: 'DOP Aprutino Pescarese Bio',
-    description: 'Per chi ha scelto di non tornare indietro. 444 mg/kg di polifenoli certificati.',
+    description: 'Per chi ha scelto di non tornare indietro.',
     price: 55.00,
     image: '/images/olio-3l.jpg',
     category: 'olio',
@@ -37,7 +37,7 @@ export const products: Product[] = [
     id: 'olio-dop-5l',
     name: 'Latta 5L',
     subtitle: 'DOP Aprutino Pescarese Bio',
-    description: 'La scelta del conoscitore. Spremuto a freddo entro 24 ore dalla raccolta.',
+    description: 'La scelta del conoscitore. Spremuto a freddo entro 6 ore dalla raccolta.',
     price: 80.00,
     image: '/images/olio-latta-5l.jpg',
     category: 'olio',
@@ -52,7 +52,7 @@ export const products: Product[] = [
   {
     id: 'pasta-mezzemaniche',
     name: 'Mezzemaniche',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Per ragù e sughi corposi. Trattiene il condimento dentro.',
     price: 4.50,
     image: '/images/pasta-mezzemaniche.jpg',
@@ -60,7 +60,7 @@ export const products: Product[] = [
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '500g',
       harvest: '2025',
     },
@@ -68,7 +68,7 @@ export const products: Product[] = [
   {
     id: 'pasta-penne',
     name: 'Penne',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Il classico versatile. Perfette con verdure e pomodoro.',
     price: 4.50,
     image: '/images/pasta-penne.jpg',
@@ -76,7 +76,7 @@ export const products: Product[] = [
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '500g',
       harvest: '2025',
     },
@@ -84,7 +84,7 @@ export const products: Product[] = [
   {
     id: 'pasta-fettuccine',
     name: 'Fettuccine',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Tradizione abruzzese. Divine con il nostro olio a crudo.',
     price: 4.50,
     image: '/images/pasta-fettuccine.jpg',
@@ -92,7 +92,7 @@ export const products: Product[] = [
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '500g',
       harvest: '2025',
     },
@@ -100,7 +100,7 @@ export const products: Product[] = [
   {
     id: 'pasta-tagliatelle',
     name: 'Tagliatelle',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Eleganti e sottili. Per tartufo e funghi porcini.',
     price: 4.50,
     image: '/images/pasta-tagliatelle.jpg',
@@ -108,7 +108,7 @@ export const products: Product[] = [
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '500g',
       harvest: '2025',
     },
@@ -116,7 +116,7 @@ export const products: Product[] = [
   {
     id: 'pasta-sagnette',
     name: 'Sagnette',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Formato tipico abruzzese. Con fagioli o ceci.',
     price: 4.50,
     image: '/images/pasta-sagnette.jpg',
@@ -124,7 +124,7 @@ export const products: Product[] = [
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '500g',
       harvest: '2025',
     },
@@ -132,7 +132,7 @@ export const products: Product[] = [
   {
     id: 'pasta-quadrucci',
     name: 'Quadrucci',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Per minestre e brodi. La domenica in famiglia.',
     price: 4.50,
     image: '/images/pasta-quadrucci.jpg',
@@ -140,7 +140,7 @@ export const products: Product[] = [
     category: 'pasta',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '500g',
       harvest: '2025',
     },
@@ -149,14 +149,14 @@ export const products: Product[] = [
   {
     id: 'semolato-cappelli',
     name: 'Semolato',
-    subtitle: 'Senatore Cappelli Bio',
+    subtitle: 'Senatore Cappelli',
     description: 'Per pasta fresca, pane e pizze che sanno di casa. Macinato a pietra.',
     price: 3.00,
     image: '/images/semolato-cappelli.jpg',
     category: 'farina',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '1kg',
       harvest: '2025',
     },
@@ -164,14 +164,14 @@ export const products: Product[] = [
   {
     id: 'farina-gentilrosso',
     name: 'Farina Gentilrosso',
-    subtitle: 'Grano Tenero Antico Bio',
+    subtitle: 'Grano Tenero Antico',
     description: 'Il segreto di pane e dolci dal profumo inconfondibile. Alta vanillina naturale.',
     price: 3.00,
     image: '/images/farina-gentilrosso.jpg',
     category: 'farina',
     details: {
       origin: 'Castellana - Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '1kg',
       harvest: '2025',
     },
@@ -180,14 +180,14 @@ export const products: Product[] = [
   {
     id: 'passata-pomodoro',
     name: 'Passata di Pomodoro',
-    subtitle: 'Pera d\'Abruzzo Bio',
+    subtitle: 'Pera d\'Abruzzo',
     description: 'Raccolto a mano, trasformato entro ore. Il sapore pieno dell\'estate abruzzese.',
     price: 4.00,
     image: '/images/passata-pomodoro.jpg',
     category: 'conserve',
     details: {
       origin: 'Abruzzo',
-      certification: ['Biologico ICEA'],
+      certification: ['In conversione biologica'],
       weight: '70cl',
       harvest: '2025',
     },

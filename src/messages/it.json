@@ -51,7 +51,7 @@
     "addToCart": "Aggiungi",
     "added": "Aggiunto",
     "add": "Aggiungi",
-    "requestCatalog": "Catalogo",
+    "requestCatalog": "Contattaci",
     "goToCart": "Carrello",
     "categories": {
       "all": {
@@ -60,17 +60,17 @@
       "olio": {
         "label": "Olio",
         "title": "Olio EVO Bio DOP Aprutino Pescarese",
-        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 24 ore al Frantoio Valentini Cerretani di Loreto Aprutino. Estrazione a freddo, alto contenuto di polifenoli, proprietà nutraceutiche certificate."
+        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 6 ore al Frantoio Valentini Cerretani di Loreto Aprutino. Estrazione a freddo, alto contenuto di polifenoli, proprietà nutraceutiche. <em>Il nostro DOP Aprutino Pescarese contiene 444 mg/kg di biofenoli — oltre 4 volte il minimo richiesto dal disciplinare DOP (100 mg/kg) e quasi il doppio della soglia riconosciuta dall'Unione Europea. I polifenoli dell'olio di oliva contribuiscono alla protezione dei lipidi ematici dallo stress ossidativo. L'effetto benefico si ottiene con l'assunzione giornaliera di 20 g di olio di oliva. (Reg. UE 432/2012 – Analisi BIOCHEM, RdP n° 297-059/25)</em>"
       },
       "pasta": {
         "label": "Pasta",
         "title": "Pasta di Semolato di Grano Duro Senatore Cappelli",
-        "description": "Da grano 100% italiano, coltivato a Castellana in Abruzzo con metodo biologico. Alta digeribilità, basso indice glicemico, ricco di proteine e fibre. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
+        "description": "Da grano 100% italiano, coltivato a Castellana in Abruzzo con metodo biologico. Alta digeribilità, un carico glicemico più favorevole, ricco di proteine e fibre. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
       },
       "farina": {
         "label": "Farine",
         "title": "Farine di Grani Antichi",
-        "description": "Castellana. Senatore Cappelli e Gentil Rosso macinati a pietra. Alta digeribilità, basso indice glicemico."
+        "description": "Castellana. Senatore Cappelli e Gentil Rosso macinati a pietra. Alta digeribilità, un carico glicemico più favorevole."
       },
       "conserve": {
         "label": "Conserve",
@@ -393,12 +393,12 @@
     "semolato-cappelli": {
       "name": "Semolato",
       "subtitle": "Senatore Cappelli · 1kg",
-      "description": "Macinato a pietra. Basso indice glicemico."
+      "description": "Macinato a pietra. Un carico glicemico più favorevole."
     },
     "farina-gentilrosso": {
       "name": "Farina Gentilrosso",
       "subtitle": "Grano Tenero Antico · 1kg",
-      "description": "Macinata a pietra. Basso indice glicemico."
+      "description": "Macinata a pietra. Un carico glicemico più favorevole."
     },
     "passata-pomodoro": {
       "name": "Passata di Pomodoro",
