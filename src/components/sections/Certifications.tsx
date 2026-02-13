@@ -73,7 +73,7 @@ export function Certifications() {
             >
               <div className="border border-gold/30 p-8 lg:p-12 h-full bg-gradient-to-br from-nero to-forest-dark/30 group-hover:border-gold/60 group-hover:glow-gold transition-all duration-700">
                 {/* Logo */}
-                <div className="w-56 h-44 mb-8 relative -ml-2">
+                <div className="w-64 h-52 mb-8 relative -ml-2">
                   <Image
                     src={cert.logo}
                     alt={cert.title}
