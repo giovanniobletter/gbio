@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
@@ -23,7 +24,13 @@ export function Footer() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
         >
           <motion.div variants={staggerItem} className="space-y-6">
-            <h3 className="font-serif text-3xl text-gold">GBiO</h3>
+            <Image
+              src="/logo-gbio.svg"
+              alt="GBiO"
+              width={120}
+              height={48}
+              className="h-12 w-auto"
+            />
             <p className="font-sans text-sm text-bianco/60 leading-relaxed">
               Azienda Agricola Obletter Giovanni Battista.
               Eccellenze biologiche dal cuore dell&apos;Abruzzo,
@@ -107,7 +114,7 @@ export function Footer() {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/gbio.farm/directory_intro"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-nero transition-all duration-300"
