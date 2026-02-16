@@ -114,7 +114,7 @@ export function Footer() {
                 <Instagram size={18} />
               </a>
               <a
-                href="https://www.facebook.com/gbio.farm/directory_intro"
+                href="https://www.facebook.com/profile.php?id=61588334991528"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-nero transition-all duration-300"
