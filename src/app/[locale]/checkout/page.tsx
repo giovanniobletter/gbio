@@ -123,11 +123,33 @@ function CheckoutContent() {
 
   const handlePayment = async () => {
     setIsProcessing(true)
-    // Simulate payment processing
-    await new Promise((resolve) => setTimeout(resolve, 2500))
-    setIsProcessing(false)
-    setStep('confirmation')
-    clearCart()
+
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items,
+          shippingAddress: formData,
+          locale,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url
+      } else {
+        throw new Error(data.error || 'Errore durante il pagamento')
+      }
+    } catch (error) {
+      console.error('Payment error:', error)
+      alert('Si e verificato un errore. Riprova.')
+      setIsProcessing(false)
+    }
   }
 
   const handleChange = (
@@ -225,8 +247,14 @@ function CheckoutContent() {
       {/* Header */}
       <header className="border-b border-gold/20">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
-          <Link href={`/${locale}`} className="font-serif text-2xl text-gold">
-            GBiO
+          <Link href={`/${locale}`}>
+            <Image
+              src="/logo-gbio.svg"
+              alt="GBiO"
+              width={100}
+              height={40}
+              className="h-8 w-auto"
+            />
           </Link>
           <Link
             href={`/${locale}`}
@@ -612,97 +640,54 @@ function CheckoutContent() {
                     </div>
                   </label>
 
-                  <label
-                    className={cn(
-                      'block border p-6 cursor-pointer transition-colors',
-                      paymentMethod === 'paypal'
-                        ? 'border-gold bg-gold/5'
-                        : 'border-gold/30 hover:border-gold/60'
-                    )}
-                  >
+                  {/* PayPal - Coming soon */}
+                  <div className="block border p-6 border-gold/10 opacity-50 cursor-not-allowed">
                     <div className="flex items-center gap-4">
                       <input
                         type="radio"
                         name="payment"
-                        checked={paymentMethod === 'paypal'}
-                        onChange={() => setPaymentMethod('paypal')}
+                        disabled
                         className="w-4 h-4 accent-gold"
                       />
                       <div className="w-6 h-6 bg-[#0070ba] rounded flex items-center justify-center text-white text-xs font-bold">
                         P
                       </div>
                       <div>
-                        <p className="font-sans text-bianco">PayPal</p>
-                        <p className="font-sans text-xs text-bianco/50">
-                          Paga in sicurezza con PayPal
+                        <p className="font-sans text-bianco/50">PayPal</p>
+                        <p className="font-sans text-xs text-bianco/30">
+                          Presto disponibile
                         </p>
                       </div>
                     </div>
-                  </label>
+                  </div>
 
-                  <label
-                    className={cn(
-                      'block border p-6 cursor-pointer transition-colors',
-                      paymentMethod === 'cod'
-                        ? 'border-gold bg-gold/5'
-                        : 'border-gold/30 hover:border-gold/60'
-                    )}
-                  >
+                  {/* COD - Coming soon */}
+                  <div className="block border p-6 border-gold/10 opacity-50 cursor-not-allowed">
                     <div className="flex items-center gap-4">
                       <input
                         type="radio"
                         name="payment"
-                        checked={paymentMethod === 'cod'}
-                        onChange={() => setPaymentMethod('cod')}
+                        disabled
                         className="w-4 h-4 accent-gold"
                       />
-                      <Truck size={24} className="text-gold/60" />
+                      <Truck size={24} className="text-gold/30" />
                       <div>
-                        <p className="font-sans text-bianco">Contrassegno</p>
-                        <p className="font-sans text-xs text-bianco/50">
-                          Paga alla consegna (+3,00€)
+                        <p className="font-sans text-bianco/50">Contrassegno</p>
+                        <p className="font-sans text-xs text-bianco/30">
+                          Presto disponibile
                         </p>
                       </div>
                     </div>
-                  </label>
+                  </div>
 
                 </motion.div>
 
-                {/* Card Details (simplified) - only show when card is selected */}
+                {/* Info: Stripe handles card details securely */}
                 {paymentMethod === 'card' && (
-                  <motion.div variants={staggerItem} className="space-y-6 p-6 border border-gold/20">
-                    <div>
-                      <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                        Numero Carta
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="1234 5678 9012 3456"
-                        className={inputStyles}
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-6">
-                      <div>
-                        <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                          Scadenza
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="MM/AA"
-                          className={inputStyles}
-                        />
-                      </div>
-                      <div>
-                        <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                          CVV
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="123"
-                          className={inputStyles}
-                        />
-                      </div>
-                    </div>
+                  <motion.div variants={staggerItem} className="p-4 border border-gold/20 bg-gold/5">
+                    <p className="font-sans text-sm text-bianco/70">
+                      Cliccando &quot;Paga&quot; verrai reindirizzato alla pagina sicura di Stripe per completare il pagamento.
+                    </p>
                   </motion.div>
                 )}
 

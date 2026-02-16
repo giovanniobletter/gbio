@@ -27,15 +27,15 @@ export function Hero() {
         {/* Background - Scrolling product carousel */}
         <div className="absolute inset-0 flex overflow-hidden">
           <motion.div
-            className="flex gap-8 px-8"
-            animate={{ x: [0, -1200] }}
+            className="flex gap-8"
+            animate={{ x: [0, -3652] }}
             transition={{
-              duration: 20,
+              duration: 30,
               repeat: Infinity,
               ease: 'linear',
             }}
           >
-            {[...productImages, ...productImages, ...productImages, ...productImages].map((img, idx) => (
+            {[...productImages, ...productImages].map((img, idx) => (
               <div
                 key={idx}
                 className="relative w-[300px] h-screen flex-shrink-0 opacity-50"
@@ -78,10 +78,29 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="font-serif text-3xl md:text-4xl lg:text-5xl text-bianco text-center mt-40"
+            className="font-serif text-3xl md:text-4xl lg:text-5xl text-gold text-center mt-40"
           >
-            Eccellenza Abruzzese
+            L&apos;origine conta.
           </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 1 }}
+            className="font-sans text-sm md:text-base lg:text-lg text-bianco/80 text-center mt-4 tracking-wide"
+          >
+            Olio EVO Bio DOP e grani antichi d&apos;Abruzzo.
+          </motion.p>
+
+          <motion.a
+            href="#prodotti"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 1 }}
+            className="mt-8 px-8 py-3 border border-gold text-gold font-sans text-xs uppercase tracking-[0.2em] hover:bg-gold hover:text-nero transition-all duration-300"
+          >
+            Scopri i prodotti
+          </motion.a>
         </motion.div>
 
         {/* Decorative line */}
@@ -140,7 +159,7 @@ export function Hero() {
           className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden lg:block"
         >
           <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-gold/30 writing-vertical">
-            Dal 2020
+            100% Italiano
           </span>
         </motion.div>
       </div>

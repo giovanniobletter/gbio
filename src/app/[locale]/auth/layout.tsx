@@ -2,6 +2,7 @@
 
 import { ReactNode } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { CustomCursor } from '@/components/layout/CustomCursor'
 
@@ -22,8 +23,14 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           }}
         />
         <div className="relative z-10 flex flex-col justify-center items-center w-full p-12 text-center">
-          <Link href={`/${locale}`} className="font-serif text-6xl text-gold mb-6">
-            GBiO
+          <Link href={`/${locale}`} className="mb-6">
+            <Image
+              src="/logo-gbio.svg"
+              alt="GBiO"
+              width={180}
+              height={72}
+              className="h-16 w-auto"
+            />
           </Link>
           <p className="font-sans text-gold/80 text-sm uppercase tracking-[0.3em] max-w-md">
             GREATNESS BEYOND ORDINARY
@@ -50,9 +57,15 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         <div className="p-6 lg:p-8">
           <Link
             href={`/${locale}`}
-            className="font-serif text-2xl text-gold lg:hidden"
+            className="lg:hidden"
           >
-            GBiO
+            <Image
+              src="/logo-gbio.svg"
+              alt="GBiO"
+              width={100}
+              height={40}
+              className="h-8 w-auto"
+            />
           </Link>
         </div>
         <div className="flex-1 flex items-center justify-center p-6 lg:p-12">

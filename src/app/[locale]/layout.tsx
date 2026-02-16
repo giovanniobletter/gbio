@@ -50,15 +50,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: 'GBiO',
       locale: localeMap[locale] || 'it_IT',
       type: 'website',
+      images: [
+        {
+          url: 'https://gbio.it/logo-gbio.svg',
+          width: 600,
+          height: 120,
+          alt: 'GBiO - Azienda Agricola Biologica',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
+      images: ['https://gbio.it/logo-gbio.svg'],
     },
     robots: {
       index: true,
       follow: true,
+    },
+    alternates: {
+      canonical: 'https://gbio.it',
     },
   }
 }

@@ -150,10 +150,10 @@ export function Footer() {
             &copy; {currentYear} Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692 - Operatore BIO ICEA IT-BIO-006
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-xs text-bianco/40 hover:text-gold transition-colors">
+            <a href="/it/privacy" className="text-xs text-bianco/40 hover:text-gold transition-colors">
               Privacy Policy
             </a>
-            <a href="#" className="text-xs text-bianco/40 hover:text-gold transition-colors">
+            <a href="/it/cookies" className="text-xs text-bianco/40 hover:text-gold transition-colors">
               Cookie Policy
             </a>
           </div>

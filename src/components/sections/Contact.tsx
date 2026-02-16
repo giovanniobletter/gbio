@@ -53,25 +53,40 @@ export function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setError('')
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: 'info',
-      message: '',
-    })
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || 'Errore nell\'invio del messaggio.')
+      }
 
-    setTimeout(() => setIsSubmitted(false), 5000)
+      setIsSubmitted(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: 'info',
+        message: '',
+      })
+
+      setTimeout(() => setIsSubmitted(false), 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Errore nell\'invio del messaggio.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (
@@ -312,6 +327,17 @@ export function Contact() {
                   </span>
                 </motion.button>
               </div>
+
+              {/* Error message */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 border border-burgundy bg-burgundy/20 text-center"
+                >
+                  <p className="font-sans text-sm text-bianco">{error}</p>
+                </motion.div>
+              )}
 
               {/* Success message */}
               {isSubmitted && (

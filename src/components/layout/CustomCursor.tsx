@@ -60,40 +60,40 @@ export function CustomCursor() {
   if (isMobile) return null
 
   return (
-    <>
-      <motion.div
-        className="cursor-dot"
-        animate={{
-          x: position.x - 4,
-          y: position.y - 4,
-          scale: isHovering ? 0 : 1,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
-        }}
-      />
-      <motion.div
-        className="cursor-outline"
-        animate={{
-          x: position.x - 20,
-          y: position.y - 20,
-          scale: isHovering ? 1.5 : 1,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 250,
-          damping: 20,
-          mass: 0.8,
-        }}
+    <motion.div
+      className="fixed top-0 left-0 pointer-events-none z-[9999]"
+      animate={{
+        x: position.x,
+        y: position.y,
+        scale: isHovering ? 1.2 : 1,
+        opacity: isVisible ? 1 : 0,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 500,
+        damping: 28,
+        mass: 0.5,
+      }}
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
         style={{
-          backgroundColor: isHovering ? 'rgba(201, 169, 97, 0.1)' : 'transparent',
+          filter: isHovering ? 'drop-shadow(0 0 8px rgba(201, 169, 97, 0.6))' : 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))',
+          transition: 'filter 0.2s ease',
         }}
-      />
-    </>
+      >
+        {/* Elegant arrow cursor */}
+        <path
+          d="M5 2L5 18L9 14L13 22L15 21L11 13L17 13L5 2Z"
+          fill="#C9A961"
+          stroke="#0D0D0D"
+          strokeWidth="0.5"
+        />
+      </svg>
+    </motion.div>
   )
 }

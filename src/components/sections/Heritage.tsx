@@ -1,177 +1,220 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
-import Image from 'next/image'
-import { SectionTitle } from '@/components/ui/SectionTitle'
-import { luxuryFadeUp, luxurySlideIn, luxurySlideInRight, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
-import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
+import { motion } from 'framer-motion'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
+import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 export function Heritage() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start'],
-  })
+  const slowReveal = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.1, 0.25, 1]
+      }
+    }
+  }
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ['10%', '-10%'])
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+        delayChildren: 0.2
+      }
+    }
+  }
 
   return (
     <section
       id="heritage"
-      ref={containerRef}
       className="section-padding bg-nero relative overflow-hidden"
     >
       {/* Subtle texture overlay */}
       <TextureOverlay variant="linen" opacity={0.02} />
 
-      <div className="container-custom relative">
-        <SectionTitle
-          eyebrow="La Nostra Storia"
-          title="Heritage"
-        />
+      <div className="container-custom relative max-w-4xl mx-auto">
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center mt-6 max-w-2xl mx-auto"
+        {/* La Nostra Storia */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10%" }}
+          className="text-center mb-20"
         >
-          <span className="font-serif text-xl md:text-2xl italic text-bianco/80 leading-relaxed">
-            {`"O fortunatos nimium, sua si bona norint, agricolas."`}
-          </span>
-          <span className="block mt-3 font-sans text-sm text-gold/60 tracking-wide">
-            — Virgilio, Georgiche
-          </span>
-        </motion.p>
-
-        <div className="mt-20 grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <motion.div
-            variants={luxurySlideIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="relative aspect-[4/5] overflow-hidden"
+          <motion.p
+            variants={slowReveal}
+            className="font-sans text-xs uppercase tracking-[0.5em] text-gold/60 mb-6"
           >
-            <motion.div style={{ y: imageY }} className="absolute inset-0">
-              <Image
-                src="/images/founder.jpg"
-                alt="Giovanni Battista Obletter"
-                fill
-                className="object-cover grayscale"
-              />
-            </motion.div>
-            <div className="absolute inset-0 border border-gold/20" />
+            Heritage
+          </motion.p>
 
-            {/* Decorative element - enhanced */}
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
+          <motion.h2
+            variants={slowReveal}
+            className="font-serif text-4xl md:text-5xl lg:text-6xl text-gold mb-12"
+          >
+            La Nostra Storia
+          </motion.h2>
+
+          <motion.p
+            variants={slowReveal}
+            className="font-serif text-lg md:text-xl text-bianco/80 leading-relaxed mb-8"
+          >
+            Nel cuore dell&apos;Abruzzo, tra le dolci colline della provincia di Pescara, sorge l&apos;Azienda Agricola G.B. Obletter: un progetto nato dalla visione di un giovane imprenditore che ha scelto di guardare al futuro riscoprendo le radici più autentiche della terra.
+          </motion.p>
+
+          <motion.p
+            variants={slowReveal}
+            className="font-serif text-lg md:text-xl text-bianco/80 leading-relaxed"
+          >
+            Giovanni Battista Obletter, classe 1996, rappresenta una nuova generazione di agricoltori che coniuga la sapienza contadina tramandata nei secoli con le più avanzate pratiche di coltivazione sostenibile. Cinquanta ettari di terreni distribuiti tra Cepagatti, Moscufo e Pianella — borghi dove il tempo scorre ancora al ritmo delle stagioni — costituiscono il patrimonio verde da cui nascono i nostri prodotti biologici certificati.
+          </motion.p>
+        </motion.div>
+
+        <OrnateRule variant="fleur" className="my-16" />
+
+        {/* Tradizione e Innovazione */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-10%" }}
+          className="text-center"
+        >
+          <motion.h3
+            variants={slowReveal}
+            className="font-serif text-3xl md:text-4xl text-gold mb-12"
+          >
+            Tradizione e Innovazione
+          </motion.h3>
+
+          <motion.p
+            variants={slowReveal}
+            className="font-serif text-lg md:text-xl text-bianco/80 leading-relaxed mb-8"
+          >
+            La scelta di coltivare il <span className="text-gold">grano duro Senatore Cappelli</span>, antica varietà italiana quasi dimenticata dall&apos;agricoltura intensiva, racconta la nostra filosofia: recuperare il meglio del passato per offrire al presente un&apos;alimentazione genuina e consapevole. Dalla stessa passione nasce il nostro <span className="text-gold">Olio Extravergine DOP Aprutino Pescarese</span>, spremuto a freddo da olive raccolte a mano negli uliveti che da generazioni punteggiano questo paesaggio.
+          </motion.p>
+
+          <motion.p
+            variants={slowReveal}
+            className="font-serif text-lg md:text-xl text-bianco/70 leading-relaxed italic"
+          >
+            Ogni prodotto che porta il nostro nome è il risultato di un impegno quotidiano verso la qualità, la sostenibilità e il rispetto per un territorio che ci ha insegnato tutto. Perché essere giovani agricoltori oggi significa avere il coraggio di innovare, senza mai dimenticare da dove veniamo.
+          </motion.p>
+        </motion.div>
+
+        {/* Citazione Virgilio con animazione */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="mt-24 relative py-16"
+        >
+          {/* Linea animata sinistra */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="absolute left-0 top-1/2 w-1/4 h-px bg-gradient-to-r from-transparent via-gold/40 to-gold/20 origin-left"
+          />
+
+          {/* Linea animata destra */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="absolute right-0 top-1/2 w-1/4 h-px bg-gradient-to-l from-transparent via-gold/40 to-gold/20 origin-right"
+          />
+
+          {/* Decorazione centrale superiore */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="absolute top-0 left-1/2 -translate-x-1/2"
+          >
+            <svg width="40" height="20" viewBox="0 0 40 20" className="text-gold/40">
+              <path d="M20 20 L0 0 M20 20 L40 0" stroke="currentColor" strokeWidth="1" fill="none" />
+              <circle cx="20" cy="20" r="2" fill="currentColor" />
+            </svg>
+          </motion.div>
+
+          {/* Citazione */}
+          <div className="text-center px-8">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.8, duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -bottom-6 -right-6 w-32 h-32 border border-gold glow-gold"
+              transition={{ duration: 1.2, delay: 0.6 }}
+              className="font-serif text-2xl md:text-3xl italic text-bianco/80 leading-relaxed"
+            >
+              &quot;O fortunatos nimium,
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.9 }}
+              className="font-serif text-2xl md:text-3xl italic text-gold/80 leading-relaxed mt-2"
+            >
+              sua si bona norint, agricolas.&quot;
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 1.4 }}
+              className="font-sans text-sm text-bianco/40 mt-6 tracking-[0.3em] uppercase"
+            >
+              Virgilio — Georgiche
+            </motion.p>
+          </div>
+
+          {/* Decorazione centrale inferiore */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2"
+          >
+            <svg width="40" height="20" viewBox="0 0 40 20" className="text-gold/40">
+              <path d="M20 0 L0 20 M20 0 L40 20" stroke="currentColor" strokeWidth="1" fill="none" />
+              <circle cx="20" cy="0" r="2" fill="currentColor" />
+            </svg>
+          </motion.div>
+
+          {/* Particelle dorate fluttuanti */}
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-gold/30 rounded-full"
+              style={{
+                left: `${20 + i * 12}%`,
+                top: `${30 + (i % 3) * 20}%`,
+              }}
+              animate={{
+                y: [0, -15, 0],
+                opacity: [0.2, 0.6, 0.2],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                delay: i * 0.4,
+                ease: "easeInOut"
+              }}
             />
-          </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Content */}
-          <motion.div
-            variants={luxurySlideInRight}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <motion.div
-              variants={luxuryStaggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <motion.h3
-                variants={luxuryStaggerItem}
-                className="font-serif text-2xl md:text-3xl lg:text-4xl text-bianco text-shadow-luxe"
-              >
-                Giovanni Battista Obletter
-              </motion.h3>
-
-              <motion.p
-                variants={luxuryStaggerItem}
-                className="font-sans text-xs uppercase tracking-luxe text-gold"
-              >
-                Founder
-              </motion.p>
-
-              <motion.p
-                variants={luxuryStaggerItem}
-                className="font-sans text-bianco/70 leading-relaxed"
-              >
-                Nato tra queste colline, Giovanni Battista Obletter ha scelto di partire
-                per poter tornare. Un viaggio attraverso i terroir più celebri del mondo
-                — dalla Toscana alla Provenza, dalla Napa Valley all&apos;Alentejo — per
-                riscoprire ciò che aveva sempre avuto sotto i piedi.
-              </motion.p>
-
-              <motion.p
-                variants={luxuryStaggerItem}
-                className="font-sans text-bianco/70 leading-relaxed"
-              >
-                Oggi applica tecnologie di ultima generazione a metodi tramandati da secoli.
-                Il risultato: materie prime di valore inestimabile, dove ogni goccia e ogni
-                chicco raccontano una terra unica.
-              </motion.p>
-            </motion.div>
-
-            {/* Ornate divider before stats */}
-            <OrnateRule variant="diamond" className="py-4" />
-
-            <motion.div
-              variants={luxuryFadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-3 gap-6 pt-4"
-            >
-              <div>
-                <span className="font-serif text-4xl text-gold">49</span>
-                <p className="font-sans text-xs uppercase tracking-wider text-bianco/50 mt-2">
-                  Ettari Totali
-                </p>
-              </div>
-              <div>
-                <span className="font-serif text-4xl text-gold">43</span>
-                <p className="font-sans text-xs uppercase tracking-wider text-bianco/50 mt-2">
-                  Seminativi
-                </p>
-              </div>
-              <div>
-                <span className="font-serif text-4xl text-gold">6</span>
-                <p className="font-sans text-xs uppercase tracking-wider text-bianco/50 mt-2">
-                  Uliveto DOP
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Certification Badge */}
-            <motion.div
-              variants={luxuryFadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex items-center gap-4 pt-6"
-            >
-              <div className="px-4 py-2 border border-forest text-forest text-xs font-sans uppercase tracking-luxe hover:glow-gold hover:border-gold hover:text-gold transition-all duration-700">
-                Bio ICEA
-              </div>
-              <div className="px-4 py-2 border border-gold text-gold text-xs font-sans uppercase tracking-luxe hover:glow-gold transition-all duration-700">
-                DOP Aprutino Pescarese
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
       </div>
     </section>
   )
