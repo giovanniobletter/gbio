@@ -70,7 +70,7 @@ export function Header() {
             {navigation.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                href={`/${locale}${item.href}`}
                 className="font-sans text-xs uppercase tracking-[0.2em] text-bianco/80 hover:text-gold transition-colors duration-300"
               >
                 {item.label}
@@ -162,7 +162,7 @@ export function Header() {
                 {navigation.map((item, i) => (
                   <motion.a
                     key={item.href}
-                    href={item.href}
+                    href={`/${locale}${item.href}`}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}

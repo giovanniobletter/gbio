@@ -50,6 +50,7 @@ function CheckoutContent() {
   const { user, isAuthenticated } = useAuth()
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping')
   const [isProcessing, setIsProcessing] = useState(false)
+  const [paymentError, setPaymentError] = useState('')
   const [selectedAddressIndex, setSelectedAddressIndex] = useState<number | null>(null)
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card')
   const [formData, setFormData] = useState<ShippingAddress>({
@@ -147,7 +148,7 @@ function CheckoutContent() {
       }
     } catch (error) {
       console.error('Payment error:', error)
-      alert('Si e verificato un errore. Riprova.')
+      setPaymentError('Si è verificato un errore. Riprova.')
       setIsProcessing(false)
     }
   }
@@ -722,6 +723,16 @@ function CheckoutContent() {
                     )}
                   </button>
                 </motion.div>
+
+                {paymentError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 border border-burgundy bg-burgundy/20 text-center"
+                  >
+                    <p className="font-sans text-sm text-bianco">{paymentError}</p>
+                  </motion.div>
+                )}
               </motion.div>
             )}
 

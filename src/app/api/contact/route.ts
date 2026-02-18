@@ -3,10 +3,23 @@ import { NextResponse } from 'next/server'
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 const TO_EMAIL = 'gb.obletter@gmail.com'
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, phone, subject, message } = body
+    const { name: rawName, email: rawEmail, phone: rawPhone, subject, message: rawMessage } = body
+    const name = escapeHtml(String(rawName || ''))
+    const email = escapeHtml(String(rawEmail || ''))
+    const phone = escapeHtml(String(rawPhone || ''))
+    const message = escapeHtml(String(rawMessage || ''))
 
     // Validation
     if (!name || !email || !message) {

@@ -5,6 +5,7 @@ import {
   useContext,
   useReducer,
   useEffect,
+  useCallback,
   ReactNode,
 } from 'react'
 import { CartItem, Product } from '@/types'
@@ -150,33 +151,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [state.isOpen])
 
-  const addItem = (product: Product) => {
+  const addItem = useCallback((product: Product) => {
     dispatch({ type: 'ADD_ITEM', payload: product })
-  }
+  }, [])
 
-  const removeItem = (productId: string) => {
+  const removeItem = useCallback((productId: string) => {
     dispatch({ type: 'REMOVE_ITEM', payload: productId })
-  }
+  }, [])
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = useCallback((productId: string, quantity: number) => {
     dispatch({ type: 'UPDATE_QUANTITY', payload: { id: productId, quantity } })
-  }
+  }, [])
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     dispatch({ type: 'CLEAR_CART' })
-  }
+  }, [])
 
-  const toggleCart = () => {
+  const toggleCart = useCallback(() => {
     dispatch({ type: 'TOGGLE_CART' })
-  }
+  }, [])
 
-  const openCart = () => {
+  const openCart = useCallback(() => {
     dispatch({ type: 'OPEN_CART' })
-  }
+  }, [])
 
-  const closeCart = () => {
+  const closeCart = useCallback(() => {
     dispatch({ type: 'CLOSE_CART' })
-  }
+  }, [])
 
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0)
 

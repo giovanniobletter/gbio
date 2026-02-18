@@ -28,7 +28,7 @@ export function Hero() {
         <div className="absolute inset-0 flex overflow-hidden">
           <motion.div
             className="flex gap-8"
-            animate={{ x: [0, -3652] }}
+            animate={{ x: [0, -3620] }}
             transition={{
               duration: 30,
               repeat: Infinity,

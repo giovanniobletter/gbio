@@ -54,7 +54,7 @@ export default function NotFound() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="font-serif text-3xl md:text-4xl text-[#f5f5f0] mb-4"
         >
-          Page Not Found
+          Pagina Non Trovata
         </motion.h1>
 
         {/* Description */}
@@ -64,9 +64,9 @@ export default function NotFound() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="font-sans text-[#f5f5f0]/60 mb-12 leading-relaxed"
         >
-          The page you are looking for does not exist or has been moved.
+          La pagina che stai cercando non esiste o è stata spostata.
           <br />
-          Please return to our home page.
+          Ti invitiamo a tornare alla nostra home page.
         </motion.p>
 
         {/* Buttons */}
@@ -81,7 +81,7 @@ export default function NotFound() {
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#c9a961] text-[#0a0a0a] font-sans text-sm uppercase tracking-wider hover:bg-[#d4b872] transition-colors"
           >
             <Home size={16} />
-            <span>Go to Home</span>
+            <span>Torna alla Home</span>
           </Link>
 
           <button
@@ -90,7 +90,7 @@ export default function NotFound() {
           >
             <ArrowLeft size={16} />
             <span className="font-sans text-sm uppercase tracking-wider">
-              Go Back
+              Torna Indietro
             </span>
           </button>
         </motion.div>
@@ -102,7 +102,7 @@ export default function NotFound() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 font-serif text-sm text-[#c9a961]/40 italic"
         >
-          {`"Even those who are lost find their way to excellence"`}
+          {`"Anche chi si perde, trova la strada verso l'eccellenza"`}
         </motion.p>
       </div>
 
