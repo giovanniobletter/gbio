@@ -633,10 +633,18 @@ function CheckoutContent() {
                       />
                       <CreditCard size={24} className="text-gold" />
                       <div>
-                        <p className="font-sans text-bianco">Carta di Credito</p>
+                        <p className="font-sans text-bianco">Carta, Apple Pay, Google Pay</p>
                         <p className="font-sans text-xs text-bianco/50">
-                          Visa, Mastercard, American Express
+                          Visa, Mastercard, Amex, Apple Pay, Google Pay
                         </p>
+                      </div>
+                      <div className="ml-auto flex items-center gap-2">
+                        <svg viewBox="0 0 24 24" className="w-8 h-5 text-bianco/70" fill="currentColor">
+                          <path d="M17.72 9.01l1.18-2.37C17.41 5.59 15.3 4.97 13.04 4.97c-4.41 0-7.3 2.33-7.3 5.56 0 2.46 2.17 3.82 3.82 4.64 1.69.84 2.27 1.38 2.26 2.14-.03 1.15-1.35 1.66-2.6 1.66-1.63 0-2.5-.23-3.84-.81l-.54-.25-.58 2.47c.96.43 2.73.81 4.57.83 4.69 0 7.74-2.31 7.77-5.75.02-1.91-1.14-3.37-3.65-4.57-1.52-.77-2.45-1.29-2.44-2.07 0-.7.79-1.44 2.49-1.44 1.42-.02 2.45.3 3.25.64l.39.18.59-2.4z"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" className="w-8 h-5 text-bianco/70" fill="currentColor">
+                          <path d="M11.5 1l-1.4 4.5H5.6l3.6 2.7-1.4 4.5 3.7-2.7 3.7 2.7-1.4-4.5 3.6-2.7h-4.5z"/>
+                        </svg>
                       </div>
                     </div>
                   </label>
@@ -687,7 +695,7 @@ function CheckoutContent() {
                 {paymentMethod === 'card' && (
                   <motion.div variants={staggerItem} className="p-4 border border-gold/20 bg-gold/5">
                     <p className="font-sans text-sm text-bianco/70">
-                      Cliccando &quot;Paga&quot; verrai reindirizzato alla pagina sicura di Stripe per completare il pagamento.
+                      Cliccando &quot;Paga&quot; verrai reindirizzato alla pagina sicura di Stripe dove potrai pagare con carta, Apple Pay o Google Pay.
                     </p>
                   </motion.div>
                 )}
