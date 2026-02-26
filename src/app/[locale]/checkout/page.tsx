@@ -7,7 +7,6 @@ import { useRouter, useParams } from 'next/navigation'
 import Image from 'next/image'
 import {
   ArrowLeft,
-  CreditCard,
   Truck,
   Shield,
   Check,
@@ -17,11 +16,10 @@ import {
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { CustomCursor } from '@/components/layout/CustomCursor'
+import StripePaymentForm from '@/components/checkout/StripePaymentForm'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 import { ShippingAddress } from '@/types'
-
-type PaymentMethod = 'card' | 'paypal' | 'cod'
 
 const provinces = [
   'Agrigento', 'Alessandria', 'Ancona', 'Aosta', 'Arezzo', 'Ascoli Piceno',
@@ -52,7 +50,7 @@ function CheckoutContent() {
   const [isProcessing, setIsProcessing] = useState(false)
   const [paymentError, setPaymentError] = useState('')
   const [selectedAddressIndex, setSelectedAddressIndex] = useState<number | null>(null)
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card')
+  const [clientSecret, setClientSecret] = useState<string | null>(null)
   const [formData, setFormData] = useState<ShippingAddress>({
     firstName: '',
     lastName: '',
@@ -115,40 +113,32 @@ function CheckoutContent() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleShippingSubmit = (e: React.FormEvent) => {
+  const handleShippingSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (validateShipping()) {
-      setStep('payment')
-    }
-  }
+    if (!validateShipping()) return
 
-  const handlePayment = async () => {
     setIsProcessing(true)
+    setPaymentError('')
 
     try {
-      const response = await fetch('/api/checkout', {
+      const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items,
-          shippingAddress: formData,
-          locale,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items }),
       })
 
       const data = await response.json()
 
-      if (data.url) {
-        // Redirect to Stripe Checkout
-        window.location.href = data.url
+      if (data.clientSecret) {
+        setClientSecret(data.clientSecret)
+        setStep('payment')
       } else {
-        throw new Error(data.error || 'Errore durante il pagamento')
+        throw new Error(data.error || 'Errore durante la creazione del pagamento')
       }
     } catch (error) {
-      console.error('Payment error:', error)
+      console.error('PaymentIntent error:', error)
       setPaymentError('Si è verificato un errore. Riprova.')
+    } finally {
       setIsProcessing(false)
     }
   }
@@ -582,14 +572,33 @@ function CheckoutContent() {
                 </motion.div>
 
                 <motion.div variants={staggerItem}>
-                  <button type="submit" className="btn-primary w-full md:w-auto">
-                    <span>Continua al Pagamento</span>
+                  <button
+                    type="submit"
+                    disabled={isProcessing}
+                    className={cn(
+                      'btn-primary w-full md:w-auto flex items-center justify-center gap-2',
+                      isProcessing && 'opacity-50 cursor-not-allowed'
+                    )}
+                  >
+                    {isProcessing ? (
+                      <>
+                        <Loader2 size={16} className="animate-spin" />
+                        <span>Caricamento...</span>
+                      </>
+                    ) : (
+                      <span>Continua al Pagamento</span>
+                    )}
                   </button>
+                  {paymentError && (
+                    <div className="mt-4 p-4 border border-burgundy bg-burgundy/20 text-center">
+                      <p className="font-sans text-sm text-bianco">{paymentError}</p>
+                    </div>
+                  )}
                 </motion.div>
               </motion.form>
             )}
 
-            {step === 'payment' && (
+            {step === 'payment' && clientSecret && (
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -613,92 +622,15 @@ function CheckoutContent() {
                   </p>
                 </motion.div>
 
-                {/* Payment Methods */}
-                <motion.div variants={staggerItem} className="space-y-4">
-                  <label
-                    className={cn(
-                      'block border p-6 cursor-pointer transition-colors',
-                      paymentMethod === 'card'
-                        ? 'border-gold bg-gold/5'
-                        : 'border-gold/30 hover:border-gold/60'
-                    )}
-                  >
-                    <div className="flex items-center gap-4">
-                      <input
-                        type="radio"
-                        name="payment"
-                        checked={paymentMethod === 'card'}
-                        onChange={() => setPaymentMethod('card')}
-                        className="w-4 h-4 accent-gold"
-                      />
-                      <CreditCard size={24} className="text-gold" />
-                      <div>
-                        <p className="font-sans text-bianco">Carta, Apple Pay, Google Pay</p>
-                        <p className="font-sans text-xs text-bianco/50">
-                          Visa, Mastercard, Amex, Apple Pay, Google Pay
-                        </p>
-                      </div>
-                      <div className="ml-auto flex items-center gap-2">
-                        <svg viewBox="0 0 24 24" className="w-8 h-5 text-bianco/70" fill="currentColor">
-                          <path d="M17.72 9.01l1.18-2.37C17.41 5.59 15.3 4.97 13.04 4.97c-4.41 0-7.3 2.33-7.3 5.56 0 2.46 2.17 3.82 3.82 4.64 1.69.84 2.27 1.38 2.26 2.14-.03 1.15-1.35 1.66-2.6 1.66-1.63 0-2.5-.23-3.84-.81l-.54-.25-.58 2.47c.96.43 2.73.81 4.57.83 4.69 0 7.74-2.31 7.77-5.75.02-1.91-1.14-3.37-3.65-4.57-1.52-.77-2.45-1.29-2.44-2.07 0-.7.79-1.44 2.49-1.44 1.42-.02 2.45.3 3.25.64l.39.18.59-2.4z"/>
-                        </svg>
-                        <svg viewBox="0 0 24 24" className="w-8 h-5 text-bianco/70" fill="currentColor">
-                          <path d="M11.5 1l-1.4 4.5H5.6l3.6 2.7-1.4 4.5 3.7-2.7 3.7 2.7-1.4-4.5 3.6-2.7h-4.5z"/>
-                        </svg>
-                      </div>
-                    </div>
-                  </label>
-
-                  {/* PayPal - Coming soon */}
-                  <div className="block border p-6 border-gold/10 opacity-50 cursor-not-allowed">
-                    <div className="flex items-center gap-4">
-                      <input
-                        type="radio"
-                        name="payment"
-                        disabled
-                        className="w-4 h-4 accent-gold"
-                      />
-                      <div className="w-6 h-6 bg-[#0070ba] rounded flex items-center justify-center text-white text-xs font-bold">
-                        P
-                      </div>
-                      <div>
-                        <p className="font-sans text-bianco/50">PayPal</p>
-                        <p className="font-sans text-xs text-bianco/30">
-                          Presto disponibile
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* COD - Coming soon */}
-                  <div className="block border p-6 border-gold/10 opacity-50 cursor-not-allowed">
-                    <div className="flex items-center gap-4">
-                      <input
-                        type="radio"
-                        name="payment"
-                        disabled
-                        className="w-4 h-4 accent-gold"
-                      />
-                      <Truck size={24} className="text-gold/30" />
-                      <div>
-                        <p className="font-sans text-bianco/50">Contrassegno</p>
-                        <p className="font-sans text-xs text-bianco/30">
-                          Presto disponibile
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
+                {/* Stripe Payment Element inline */}
+                <motion.div variants={staggerItem}>
+                  <StripePaymentForm
+                    clientSecret={clientSecret}
+                    total={formatPrice(total)}
+                    locale={locale}
+                    returnUrl={`${window.location.origin}/${locale}/checkout/success`}
+                  />
                 </motion.div>
-
-                {/* Info: Stripe handles card details securely */}
-                {paymentMethod === 'card' && (
-                  <motion.div variants={staggerItem} className="p-4 border border-gold/20 bg-gold/5">
-                    <p className="font-sans text-sm text-bianco/70">
-                      Cliccando &quot;Paga&quot; verrai reindirizzato alla pagina sicura di Stripe dove potrai pagare con carta, Apple Pay o Google Pay.
-                    </p>
-                  </motion.div>
-                )}
 
                 {/* Security badges */}
                 <motion.div variants={staggerItem} className="flex items-center gap-6 text-bianco/40">
@@ -712,35 +644,29 @@ function CheckoutContent() {
                   </div>
                 </motion.div>
 
-                <motion.div variants={staggerItem}>
-                  <button
-                    onClick={handlePayment}
-                    disabled={isProcessing}
-                    className={cn(
-                      'btn-primary w-full flex items-center justify-center gap-2',
-                      isProcessing && 'opacity-50 cursor-not-allowed'
-                    )}
-                  >
-                    {isProcessing ? (
-                      <>
-                        <Loader2 size={16} className="animate-spin" />
-                        <span>Elaborazione...</span>
-                      </>
-                    ) : (
-                      <span>Paga {formatPrice(total)}</span>
-                    )}
-                  </button>
+                {/* PayPal - Coming soon */}
+                <motion.div variants={staggerItem} className="space-y-3">
+                  <div className="block border p-4 border-gold/10 opacity-50 cursor-not-allowed">
+                    <div className="flex items-center gap-4">
+                      <div className="w-6 h-6 bg-[#0070ba] rounded flex items-center justify-center text-white text-xs font-bold">
+                        P
+                      </div>
+                      <div>
+                        <p className="font-sans text-bianco/50 text-sm">PayPal</p>
+                        <p className="font-sans text-xs text-bianco/30">Presto disponibile</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="block border p-4 border-gold/10 opacity-50 cursor-not-allowed">
+                    <div className="flex items-center gap-4">
+                      <Truck size={20} className="text-gold/30" />
+                      <div>
+                        <p className="font-sans text-bianco/50 text-sm">Contrassegno</p>
+                        <p className="font-sans text-xs text-bianco/30">Presto disponibile</p>
+                      </div>
+                    </div>
+                  </div>
                 </motion.div>
-
-                {paymentError && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mt-4 p-4 border border-burgundy bg-burgundy/20 text-center"
-                  >
-                    <p className="font-sans text-sm text-bianco">{paymentError}</p>
-                  </motion.div>
-                )}
               </motion.div>
             )}
 
