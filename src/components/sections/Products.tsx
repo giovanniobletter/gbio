@@ -281,7 +281,7 @@ export function Products() {
             <span className="text-gold">✓</span> DOP Aprutino Pescarese
           </span>
           <span className="flex items-center gap-2 text-[10px] sm:text-xs font-sans uppercase tracking-wider">
-            <span className="text-bianco/60">✓</span> Spedizione in Italia
+            <span className="text-bianco/60">✓</span> Spedizione in Italia e Europa
           </span>
         </motion.div>
 

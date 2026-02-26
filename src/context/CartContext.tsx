@@ -6,9 +6,11 @@ import {
   useReducer,
   useEffect,
   useCallback,
+  useState,
   ReactNode,
 } from 'react'
 import { CartItem, Product } from '@/types'
+import { ShippingZone, getShippingCost } from '@/lib/shipping'
 
 interface CartState {
   items: CartItem[]
@@ -39,12 +41,12 @@ interface CartContextType {
   subtotal: number
   shipping: number
   total: number
+  shippingZone: ShippingZone
+  setShippingZone: (zone: ShippingZone) => void
+  freeShippingThreshold: number | null
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
-
-const SHIPPING_THRESHOLD = 50
-const SHIPPING_COST = 7.90
 
 function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
@@ -121,8 +123,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     items: [],
     isOpen: false,
   })
+  const [shippingZone, setShippingZone] = useState<ShippingZone>('italia')
 
-  // Load cart from localStorage on mount
+  // Load cart and shipping zone from localStorage on mount
   useEffect(() => {
     if (typeof window === 'undefined') return
     const savedCart = localStorage.getItem('gbio-cart')
@@ -134,6 +137,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
         console.error('Failed to load cart from localStorage')
       }
     }
+    const savedZone = localStorage.getItem('gbio-shipping-zone')
+    if (savedZone === 'italia' || savedZone === 'europa' || savedZone === 'extra_eu') {
+      setShippingZone(savedZone)
+    }
   }, [])
 
   // Save cart to localStorage on changes
@@ -141,6 +148,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (typeof window === 'undefined') return
     localStorage.setItem('gbio-cart', JSON.stringify(state.items))
   }, [state.items])
+
+  // Save shipping zone to localStorage on changes
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    localStorage.setItem('gbio-shipping-zone', shippingZone)
+  }, [shippingZone])
 
   // Prevent body scroll when cart is open
   useEffect(() => {
@@ -186,7 +199,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     0
   )
 
-  const shipping = subtotal >= SHIPPING_THRESHOLD ? 0 : SHIPPING_COST
+  const { cost: shipping, freeThreshold: freeShippingThreshold } = getShippingCost(shippingZone, subtotal)
 
   const total = subtotal + shipping
 
@@ -206,6 +219,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
         subtotal,
         shipping,
         total,
+        shippingZone,
+        setShippingZone,
+        freeShippingThreshold,
       }}
     >
       {children}

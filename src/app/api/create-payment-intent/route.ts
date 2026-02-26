@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { products } from '@/data/products'
+import { getShippingCost, isValidShippingZone, ShippingZone } from '@/lib/shipping'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-
-const SHIPPING_THRESHOLD = 50
-const SHIPPING_COST = 7.90
 
 function getServerProduct(productId: string) {
   return products.find(p => p.id === productId)
@@ -14,7 +12,9 @@ function getServerProduct(productId: string) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { items } = body
+    const { items, shippingZone: rawZone } = body
+
+    const shippingZone: ShippingZone = isValidShippingZone(rawZone) ? rawZone : 'italia'
 
     if (!items || items.length === 0) {
       return NextResponse.json(
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       (sum, item) => sum + item.product.price * item.quantity,
       0
     )
-    const shippingCost = subtotal >= SHIPPING_THRESHOLD ? 0 : SHIPPING_COST
+    const { cost: shippingCost } = getShippingCost(shippingZone, subtotal)
     const total = subtotal + shippingCost
 
     // Amount in cents for Stripe
@@ -72,6 +72,7 @@ export async function POST(request: NextRequest) {
         ),
         subtotal: subtotal.toFixed(2),
         shipping: shippingCost.toFixed(2),
+        shippingZone,
       },
     })
 

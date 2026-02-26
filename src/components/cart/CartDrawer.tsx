@@ -21,6 +21,8 @@ export function CartDrawer() {
     subtotal,
     shipping,
     total,
+    shippingZone,
+    freeShippingThreshold,
   } = useCart()
 
   const formatPrice = (price: number) => {
@@ -180,15 +182,23 @@ export function CartDrawer() {
                       )}
                     </span>
                   </div>
-                  {subtotal < 50 && (
+                  {freeShippingThreshold !== null && subtotal < freeShippingThreshold && (
                     <p className="font-sans text-xs text-gold/60 text-center py-2 border border-gold/20">
-                      Aggiungi {formatPrice(50 - subtotal)} per la spedizione gratuita
+                      Aggiungi {formatPrice(freeShippingThreshold - subtotal)} per la spedizione gratuita
+                    </p>
+                  )}
+                  {shippingZone === 'extra_eu' && (
+                    <p className="font-sans text-xs text-bianco/40 text-center py-2 border border-gold/20">
+                      Spedizione extra-UE &mdash; tariffa fissa
                     </p>
                   )}
                   <div className="flex justify-between font-serif text-xl pt-3 border-t border-gold/20">
                     <span className="text-bianco">Totale</span>
                     <span className="text-gold">{formatPrice(total)}</span>
                   </div>
+                  <p className="font-sans text-[10px] text-bianco/30 text-center pt-1">
+                    {shippingZone === 'italia' ? 'Spedizione in Italia' : shippingZone === 'europa' ? 'Spedizione in Europa' : 'Spedizione extra-UE'} &mdash; cambia paese al checkout
+                  </p>
                 </div>
 
                 {/* Checkout Button */}

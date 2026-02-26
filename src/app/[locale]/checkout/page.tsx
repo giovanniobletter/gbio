@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
+import { COUNTRIES, getShippingZone } from '@/lib/shipping'
 import { CustomCursor } from '@/components/layout/CustomCursor'
 import StripePaymentForm from '@/components/checkout/StripePaymentForm'
 import { staggerContainer, staggerItem } from '@/lib/animations'
@@ -44,7 +45,7 @@ function CheckoutContent() {
   const router = useRouter()
   const params = useParams()
   const locale = params.locale as string
-  const { items, subtotal, shipping, total, clearCart } = useCart()
+  const { items, subtotal, shipping, total, clearCart, shippingZone, setShippingZone, freeShippingThreshold } = useCart()
   const { user, isAuthenticated } = useAuth()
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping')
   const [isProcessing, setIsProcessing] = useState(false)
@@ -63,6 +64,7 @@ function CheckoutContent() {
     country: 'Italia',
     notes: '',
   })
+  const [countryCode, setCountryCode] = useState('IT')
   const [errors, setErrors] = useState<Partial<ShippingAddress>>({})
 
   // Pre-fill form with user data or default address
@@ -103,10 +105,14 @@ function CheckoutContent() {
     if (!formData.phone.trim()) newErrors.phone = 'Obbligatorio'
     if (!formData.address.trim()) newErrors.address = 'Obbligatorio'
     if (!formData.city.trim()) newErrors.city = 'Obbligatorio'
-    if (!formData.province.trim()) newErrors.province = 'Obbligatorio'
-    if (!formData.postalCode.trim()) newErrors.postalCode = 'Obbligatorio'
-    else if (!/^\d{5}$/.test(formData.postalCode)) {
-      newErrors.postalCode = 'CAP non valido'
+    if (countryCode === 'IT') {
+      if (!formData.province.trim()) newErrors.province = 'Obbligatorio'
+      if (!formData.postalCode.trim()) newErrors.postalCode = 'Obbligatorio'
+      else if (!/^\d{5}$/.test(formData.postalCode)) {
+        newErrors.postalCode = 'CAP non valido'
+      }
+    } else {
+      if (!formData.postalCode.trim()) newErrors.postalCode = 'Obbligatorio'
     }
 
     setErrors(newErrors)
@@ -124,7 +130,7 @@ function CheckoutContent() {
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({ items, shippingZone }),
       })
 
       const data = await response.json()
@@ -141,6 +147,19 @@ function CheckoutContent() {
     } finally {
       setIsProcessing(false)
     }
+  }
+
+  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const code = e.target.value
+    const country = COUNTRIES.find((c) => c.code === code)
+    setCountryCode(code)
+    setFormData((prev) => ({
+      ...prev,
+      country: country?.name || code,
+      province: code !== 'IT' ? '' : prev.province,
+    }))
+    setShippingZone(getShippingZone(code))
+    setErrors((prev) => ({ ...prev, province: undefined }))
   }
 
   const handleChange = (
@@ -389,6 +408,8 @@ function CheckoutContent() {
                               checked={selectedAddressIndex === null}
                               onChange={() => {
                                 setSelectedAddressIndex(null)
+                                setCountryCode('IT')
+                                setShippingZone('italia')
                                 setFormData({
                                   firstName: user.firstName,
                                   lastName: user.lastName,
@@ -500,7 +521,24 @@ function CheckoutContent() {
                   )}
                 </motion.div>
 
-                <motion.div variants={staggerItem} className="grid md:grid-cols-3 gap-6">
+                <motion.div variants={staggerItem}>
+                  <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                    Paese *
+                  </label>
+                  <select
+                    value={countryCode}
+                    onChange={handleCountryChange}
+                    className={cn(inputStyles, 'appearance-none')}
+                  >
+                    {COUNTRIES.map((c) => (
+                      <option key={c.code} value={c.code} className="bg-nero">
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                </motion.div>
+
+                <motion.div variants={staggerItem} className={cn('grid gap-6', countryCode === 'IT' ? 'md:grid-cols-3' : 'md:grid-cols-2')}>
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
                       Città *
@@ -517,39 +555,41 @@ function CheckoutContent() {
                       <p className="text-red-400 text-xs mt-1">{errors.city}</p>
                     )}
                   </div>
+                  {countryCode === 'IT' && (
+                    <div>
+                      <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                        Provincia *
+                      </label>
+                      <select
+                        name="province"
+                        value={formData.province}
+                        onChange={handleChange}
+                        className={cn(inputStyles, 'appearance-none', errors.province && 'border-red-400')}
+                      >
+                        <option value="" className="bg-nero">Seleziona...</option>
+                        {provinces.map((prov) => (
+                          <option key={prov} value={prov} className="bg-nero">
+                            {prov}
+                          </option>
+                        ))}
+                      </select>
+                      {errors.province && (
+                        <p className="text-red-400 text-xs mt-1">{errors.province}</p>
+                      )}
+                    </div>
+                  )}
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                      Provincia *
-                    </label>
-                    <select
-                      name="province"
-                      value={formData.province}
-                      onChange={handleChange}
-                      className={cn(inputStyles, 'appearance-none', errors.province && 'border-red-400')}
-                    >
-                      <option value="" className="bg-nero">Seleziona...</option>
-                      {provinces.map((prov) => (
-                        <option key={prov} value={prov} className="bg-nero">
-                          {prov}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.province && (
-                      <p className="text-red-400 text-xs mt-1">{errors.province}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                      CAP *
+                      {countryCode === 'IT' ? 'CAP' : 'Codice postale'} *
                     </label>
                     <input
                       type="text"
                       name="postalCode"
                       value={formData.postalCode}
                       onChange={handleChange}
-                      maxLength={5}
+                      maxLength={countryCode === 'IT' ? 5 : 10}
                       className={cn(inputStyles, errors.postalCode && 'border-red-400')}
-                      placeholder="00100"
+                      placeholder={countryCode === 'IT' ? '00100' : ''}
                     />
                     {errors.postalCode && (
                       <p className="text-red-400 text-xs mt-1">{errors.postalCode}</p>
@@ -731,7 +771,11 @@ function CheckoutContent() {
               <div className="mt-6 pt-6 border-t border-gold/10 space-y-3">
                 <div className="flex items-center gap-3 text-bianco/50">
                   <Truck size={16} />
-                  <span className="text-xs">Spedizione gratuita sopra i 50€</span>
+                  <span className="text-xs">
+                    {freeShippingThreshold !== null
+                      ? `Spedizione gratuita sopra i ${freeShippingThreshold}€`
+                      : 'Spedizione extra-UE a tariffa fissa'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 text-bianco/50">
                   <Shield size={16} />
