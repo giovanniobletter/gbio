@@ -12,7 +12,7 @@ function getServerProduct(productId: string) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { items, shippingZone: rawZone } = body
+    const { items, shippingZone: rawZone, shippingAddress } = body
 
     const shippingZone: ShippingZone = isValidShippingZone(rawZone) ? rawZone : 'italia'
 
@@ -59,6 +59,21 @@ export async function POST(request: NextRequest) {
     // Amount in cents for Stripe
     const amount = Math.round(total * 100)
 
+    // Build readable product list for metadata (Stripe metadata max 500 chars per value)
+    const productList = validatedItems
+      .map(i => `${i.quantity}x ${i.product.name} (${i.product.price.toFixed(2)}€)`)
+      .join(', ')
+
+    // Extract shipping address fields safely
+    const addr = shippingAddress || {}
+    const customerName = [addr.firstName, addr.lastName].filter(Boolean).join(' ')
+    const customerEmail = addr.email || ''
+    const fullAddress = [
+      addr.address,
+      [addr.postalCode, addr.city, addr.province ? `(${addr.province})` : ''].filter(Boolean).join(' '),
+      addr.country,
+    ].filter(Boolean).join(', ')
+
     // Create PaymentIntent with automatic payment methods (cards, Apple Pay, Google Pay)
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
@@ -66,13 +81,31 @@ export async function POST(request: NextRequest) {
       automatic_payment_methods: {
         enabled: true,
       },
+      // Stripe invia ricevuta automatica a questa email
+      receipt_email: customerEmail || undefined,
+      // Descrizione visibile nella dashboard Stripe e nella ricevuta
+      description: `Ordine GBiO — ${productList}`,
+      shipping: customerName ? {
+        name: customerName,
+        phone: addr.phone || undefined,
+        address: {
+          line1: addr.address || '',
+          city: addr.city || '',
+          state: addr.province || '',
+          postal_code: addr.postalCode || '',
+          country: addr.country || 'Italia',
+        },
+      } : undefined,
       metadata: {
-        items: JSON.stringify(
-          validatedItems.map(i => ({ id: i.product.id, qty: i.quantity }))
-        ),
-        subtotal: subtotal.toFixed(2),
-        shipping: shippingCost.toFixed(2),
-        shippingZone,
+        prodotti: productList.substring(0, 500),
+        cliente_nome: customerName,
+        cliente_email: customerEmail,
+        cliente_telefono: addr.phone || '',
+        indirizzo: fullAddress.substring(0, 500),
+        note_consegna: (addr.notes || '').substring(0, 500),
+        subtotale: subtotal.toFixed(2),
+        spedizione: shippingCost.toFixed(2),
+        zona_spedizione: shippingZone,
       },
     })
 

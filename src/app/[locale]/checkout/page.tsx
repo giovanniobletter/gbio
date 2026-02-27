@@ -130,7 +130,7 @@ function CheckoutContent() {
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, shippingZone }),
+        body: JSON.stringify({ items, shippingZone, shippingAddress: formData }),
       })
 
       const data = await response.json()
