@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useParams, useSearchParams } from 'next/navigation'
 import { Check, Package, Mail, ArrowRight, AlertTriangle } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
-import { CustomCursor } from '@/components/layout/CustomCursor'
 
 function SuccessContent() {
   const params = useParams()
@@ -189,7 +188,6 @@ export default function CheckoutSuccessPage() {
         <div className="text-gold font-sans">Caricamento...</div>
       </div>
     }>
-      <CustomCursor />
       <SuccessContent />
     </Suspense>
   )

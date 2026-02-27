@@ -16,7 +16,6 @@ import {
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { COUNTRIES, getShippingZone } from '@/lib/shipping'
-import { CustomCursor } from '@/components/layout/CustomCursor'
 import StripePaymentForm from '@/components/checkout/StripePaymentForm'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
@@ -792,9 +791,6 @@ function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <>
-      <CustomCursor />
-      <CheckoutContent />
-    </>
+    <CheckoutContent />
   )
 }
