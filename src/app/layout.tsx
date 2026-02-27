@@ -20,11 +20,38 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gbio.it'),
-  title: 'GBiO - Azienda Agricola Obletter Giovanni Battista',
-  description: 'Prodotti biologici certificati ICEA dalle colline di Cepagatti, Abruzzo.',
+  title: {
+    default: 'GBiO — Olio DOP Bio e Prodotti Biologici dall\'Abruzzo',
+    template: '%s | GBiO',
+  },
+  description: 'Olio extravergine DOP Aprutino Pescarese biologico, pasta Senatore Cappelli e prodotti artigianali dalle colline di Cepagatti, Abruzzo. Certificazione ICEA.',
+  keywords: ['olio extravergine biologico', 'DOP Aprutino Pescarese', 'olio bio Abruzzo', 'pasta Senatore Cappelli', 'prodotti biologici', 'azienda agricola Cepagatti', 'olio DOP', 'GBiO'],
+  authors: [{ name: 'GBiO - Azienda Agricola Obletter' }],
   icons: {
     icon: '/logo-gbo-short.svg',
     apple: '/logo-gbo-short.svg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'it_IT',
+    url: 'https://gbio.it',
+    siteName: 'GBiO — Azienda Agricola Biologica',
+    title: 'GBiO — Olio DOP Bio e Prodotti Biologici dall\'Abruzzo',
+    description: 'Olio extravergine DOP Aprutino Pescarese biologico, pasta Senatore Cappelli e prodotti artigianali dalle colline di Cepagatti, Abruzzo.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'GBiO — Azienda Agricola Biologica',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GBiO — Olio DOP Bio e Prodotti Biologici dall\'Abruzzo',
+    description: 'Olio extravergine DOP Aprutino Pescarese biologico, pasta Senatore Cappelli e prodotti artigianali dalle colline di Cepagatti.',
+    images: ['/og-image.jpg'],
   },
 }
 
