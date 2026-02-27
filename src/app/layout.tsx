@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Inter, Noto_Sans_SC, Bodoni_Moda } from 'next/font/google'
+import { Cormorant_Garamond, Inter } from 'next/font/google'
 import { CookieBanner } from '@/components/ui/CookieBanner'
 import './globals.css'
 
@@ -17,19 +17,6 @@ const inter = Inter({
   display: 'swap',
 })
 
-const notoSansSC = Noto_Sans_SC({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-noto-sc',
-  display: 'swap',
-})
-
-const bodoni = Bodoni_Moda({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-bodoni',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://gbio.it'),
@@ -49,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${cormorant.variable} ${inter.variable} ${notoSansSC.variable} ${bodoni.variable}`}
+      className={`${cormorant.variable} ${inter.variable}`}
     >
       <body className="cursor-custom">
         {children}
