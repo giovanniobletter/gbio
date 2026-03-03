@@ -12,7 +12,7 @@ export const products: Product[] = [
     images: ['/images/olio-05l.jpg'],
     category: 'olio',
     details: {
-      origin: 'Triangolo d\'Oro - Abruzzo',
+      origin: 'Abruzzo',
       certification: ['DOP Aprutino Pescarese', 'Biologico ICEA'],
       weight: '0,5 L',
       harvest: '2025',
@@ -27,7 +27,7 @@ export const products: Product[] = [
     image: '/images/olio-3l.jpg',
     category: 'olio',
     details: {
-      origin: 'Triangolo d\'Oro - Abruzzo',
+      origin: 'Abruzzo',
       certification: ['DOP Aprutino Pescarese', 'Biologico ICEA'],
       weight: '3L',
       harvest: '2025',
@@ -42,7 +42,7 @@ export const products: Product[] = [
     image: '/images/olio-latta-5l.jpg',
     category: 'olio',
     details: {
-      origin: 'Triangolo d\'Oro - Abruzzo',
+      origin: 'Abruzzo',
       certification: ['DOP Aprutino Pescarese', 'Biologico ICEA'],
       weight: '5L',
       harvest: '2025',

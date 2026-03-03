@@ -158,7 +158,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             {/* Add to Cart Button */}
             <motion.button
               onClick={handleAddToCart}
-              className="w-full py-2 sm:py-3 px-2 border border-gold text-gold font-sans text-[10px] sm:text-xs uppercase tracking-normal sm:tracking-wider flex items-center justify-center gap-1 sm:gap-2 hover:bg-gold hover:text-nero transition-all duration-300 overflow-visible"
+              className="w-full py-2 sm:py-3 px-2 border border-gold text-gold font-sans text-[10px] sm:text-xs uppercase tracking-normal sm:tracking-wider flex items-center justify-center gap-1 sm:gap-2 hover:bg-gold hover:text-nero transition-all duration-300 overflow-hidden"
               whileTap={{ scale: 0.98 }}
             >
               <AnimatePresence mode="wait">
