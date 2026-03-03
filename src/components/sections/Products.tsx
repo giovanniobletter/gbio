@@ -156,37 +156,24 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             </div>
 
             {/* Add to Cart Button */}
-            <motion.button
+            <button
               onClick={handleAddToCart}
-              className="w-full py-2 sm:py-3 px-2 border border-gold text-gold font-sans text-[10px] sm:text-xs uppercase tracking-normal sm:tracking-wider flex items-center justify-center gap-1 sm:gap-2 hover:bg-gold hover:text-nero transition-all duration-300 overflow-hidden"
-              whileTap={{ scale: 0.98 }}
+              className="w-full py-2 sm:py-3 px-2 border border-gold text-gold font-sans text-[10px] sm:text-xs uppercase tracking-normal sm:tracking-wider hover:bg-gold hover:text-nero transition-all duration-300 active:scale-[0.98]"
             >
-              <AnimatePresence mode="wait">
+              <span className="flex items-center justify-center gap-1 sm:gap-2 whitespace-nowrap">
                 {isAdded ? (
-                  <motion.span
-                    key="added"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center justify-center gap-1 whitespace-nowrap"
-                  >
+                  <>
                     <Check size={14} className="flex-shrink-0" />
                     <span>{t('added')}</span>
-                  </motion.span>
+                  </>
                 ) : (
-                  <motion.span
-                    key="add"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex items-center justify-center gap-1 whitespace-nowrap"
-                  >
+                  <>
                     <ShoppingBag size={14} className="flex-shrink-0" />
                     <span>{t('addToCart')}</span>
-                  </motion.span>
+                  </>
                 )}
-              </AnimatePresence>
-            </motion.button>
+              </span>
+            </button>
           </div>
         </div>
 
