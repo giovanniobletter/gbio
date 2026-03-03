@@ -185,7 +185,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 </div>
 
                 {/* Certification badges */}
-                <div className="absolute top-4 right-4 flex flex-col gap-2">
+                <div className="absolute top-4 right-4 flex flex-col gap-2 z-10 pointer-events-none">
                   {product.details.certification.map((cert) => (
                     <span
                       key={cert}
