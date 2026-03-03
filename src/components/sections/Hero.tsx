@@ -49,6 +49,7 @@ export function Hero() {
                   alt=""
                   fill
                   className="object-contain object-center brightness-110"
+                  priority={idx < 4}
                 />
               </div>
             ))}

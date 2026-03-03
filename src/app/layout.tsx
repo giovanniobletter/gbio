@@ -66,6 +66,88 @@ export default function RootLayout({
       className={`${cormorant.variable} ${inter.variable}`}
     >
       <body className="cursor-custom">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'LocalBusiness',
+                  '@id': 'https://gbio.it/#business',
+                  name: 'GBiO — Azienda Agricola Biologica Obletter',
+                  url: 'https://gbio.it',
+                  logo: 'https://gbio.it/logo-gbio.svg',
+                  image: 'https://gbio.it/og-image.jpg',
+                  description: 'Olio extravergine DOP Aprutino Pescarese biologico, pasta Senatore Cappelli e prodotti artigianali dalle colline di Cepagatti, Abruzzo.',
+                  address: {
+                    '@type': 'PostalAddress',
+                    addressLocality: 'Cepagatti',
+                    addressRegion: 'PE',
+                    addressCountry: 'IT',
+                  },
+                  geo: {
+                    '@type': 'GeoCoordinates',
+                    latitude: 42.3667,
+                    longitude: 14.0167,
+                  },
+                  priceRange: '€€',
+                  sameAs: [],
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://gbio.it/#website',
+                  url: 'https://gbio.it',
+                  name: 'GBiO',
+                  publisher: { '@id': 'https://gbio.it/#business' },
+                  inLanguage: 'it-IT',
+                },
+                {
+                  '@type': 'Product',
+                  name: 'Olio Extravergine DOP Aprutino Pescarese Bio 0,5L',
+                  description: "Note di carciofo, mandorla verde, erbe selvatiche. Spremuto a freddo entro 6 ore dalla raccolta.",
+                  image: 'https://gbio.it/images/olio-05l.jpg',
+                  brand: { '@type': 'Brand', name: 'GBiO' },
+                  offers: {
+                    '@type': 'Offer',
+                    price: '20.00',
+                    priceCurrency: 'EUR',
+                    availability: 'https://schema.org/InStock',
+                    url: 'https://gbio.it/it#prodotti',
+                  },
+                },
+                {
+                  '@type': 'Product',
+                  name: 'Olio Extravergine DOP Aprutino Pescarese Bio 5L',
+                  description: 'La scelta del conoscitore. Spremuto a freddo entro 6 ore dalla raccolta.',
+                  image: 'https://gbio.it/images/olio-latta-5l.jpg',
+                  brand: { '@type': 'Brand', name: 'GBiO' },
+                  offers: {
+                    '@type': 'Offer',
+                    price: '80.00',
+                    priceCurrency: 'EUR',
+                    availability: 'https://schema.org/InStock',
+                    url: 'https://gbio.it/it#prodotti',
+                  },
+                },
+                {
+                  '@type': 'Product',
+                  name: 'Pasta Senatore Cappelli — Penne 500g',
+                  description: 'Il classico versatile. Perfette con verdure e pomodoro.',
+                  image: 'https://gbio.it/images/pasta-penne.jpg',
+                  brand: { '@type': 'Brand', name: 'GBiO' },
+                  offers: {
+                    '@type': 'Offer',
+                    price: '4.50',
+                    priceCurrency: 'EUR',
+                    availability: 'https://schema.org/InStock',
+                    url: 'https://gbio.it/it#prodotti',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
         {children}
         <CookieBanner />
       </body>
