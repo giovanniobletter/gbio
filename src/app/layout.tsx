@@ -113,7 +113,7 @@ export default function RootLayout({
                     price: '20.00',
                     priceCurrency: 'EUR',
                     availability: 'https://schema.org/InStock',
-                    url: 'https://gbio.it/it#prodotti',
+                    url: 'https://gbio.it/it/prodotti/olio-dop-50cl',
                   },
                 },
                 {
@@ -127,7 +127,7 @@ export default function RootLayout({
                     price: '80.00',
                     priceCurrency: 'EUR',
                     availability: 'https://schema.org/InStock',
-                    url: 'https://gbio.it/it#prodotti',
+                    url: 'https://gbio.it/it/prodotti/olio-dop-5l',
                   },
                 },
                 {
@@ -141,7 +141,7 @@ export default function RootLayout({
                     price: '4.50',
                     priceCurrency: 'EUR',
                     availability: 'https://schema.org/InStock',
-                    url: 'https://gbio.it/it#prodotti',
+                    url: 'https://gbio.it/it/prodotti/pasta-penne',
                   },
                 },
               ],

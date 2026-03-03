@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, ShoppingBag, Check, Droplets, Wheat, Salad, Expand } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useLocale } from 'next-intl'
 import { products, getProductsByCategory } from '@/data/products'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { ProductGalleryModal } from '@/components/ui/ProductGalleryModal'
@@ -26,6 +28,7 @@ const categoryIcons = {
 }
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
+  const locale = useLocale()
   const { addItem } = useCart()
   const [isAdded, setIsAdded] = useState(false)
   const [imageError, setImageError] = useState(false)
@@ -126,11 +129,20 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               {product.subtitle}
             </span>
             <h3 className="font-serif text-sm sm:text-lg lg:text-xl text-bianco group-hover:text-gold transition-colors duration-300">
-              {product.name}
+              <Link href={`/${locale}/prodotti/${product.id}`} className="hover:text-gold transition-colors">
+                {product.name}
+              </Link>
             </h3>
             <p className="font-sans text-xs sm:text-sm text-bianco/60 leading-relaxed line-clamp-2 hidden sm:block">
               {product.description}
             </p>
+            <Link
+              href={`/${locale}/prodotti/${product.id}`}
+              className="hidden sm:inline-flex items-center gap-1 font-sans text-[10px] uppercase tracking-wider text-gold/60 hover:text-gold transition-colors"
+            >
+              Scopri di più
+              <ArrowRight size={10} />
+            </Link>
           </div>
 
           <div className="space-y-2 sm:space-y-4 mt-2 sm:mt-4">

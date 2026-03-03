@@ -1,7 +1,15 @@
 import { MetadataRoute } from 'next'
+import { products } from '@/data/products'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://gbio.it'
+
+  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${baseUrl}/it/prodotti/${product.id}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }))
 
   return [
     {
@@ -10,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
+    ...productPages,
     {
       url: `${baseUrl}/it/privacy`,
       lastModified: new Date(),
