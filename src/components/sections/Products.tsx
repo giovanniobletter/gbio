@@ -57,7 +57,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       className="group relative"
     >
       {/* Card unificata con altezza responsive */}
-      <div className="relative h-[420px] sm:h-[580px] lg:h-[780px] bg-nero/60 backdrop-blur-sm border border-gold/20 group-hover:border-gold/40 transition-all duration-500 overflow-hidden flex flex-col">
+      <div className="relative h-[440px] sm:h-[620px] lg:h-[820px] bg-nero/60 backdrop-blur-sm border border-gold/20 group-hover:border-gold/40 transition-all duration-500 overflow-hidden flex flex-col">
 
         {/* Zona immagine - altezza responsive */}
         <div className="relative h-[240px] sm:h-[360px] lg:h-[520px] flex-shrink-0 overflow-hidden">
