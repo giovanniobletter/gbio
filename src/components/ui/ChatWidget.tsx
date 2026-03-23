@@ -2,11 +2,21 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, X, Send, Loader2, Leaf } from 'lucide-react'
+import { X, Send, Loader2, Leaf } from 'lucide-react'
+import Image from 'next/image'
+
+interface ProductCard {
+  id: string
+  name: string
+  price: number
+  image: string
+  weight: string
+}
 
 interface Message {
   role: 'user' | 'assistant'
   content: string
+  products?: ProductCard[]
 }
 
 const QUICK_ACTIONS = [
@@ -74,7 +84,7 @@ export function ChatWidget() {
       if (res.ok && data.response) {
         setMessages(prev => [
           ...prev,
-          { role: 'assistant', content: data.response },
+          { role: 'assistant', content: data.response, products: data.products || [] },
         ])
       } else {
         setMessages(prev => [
@@ -169,19 +179,55 @@ export function ChatWidget() {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 scrollbar-hide">
               {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                >
+                <div key={i}>
                   <div
-                    className={`max-w-[85%] px-4 py-2.5 rounded-xl font-sans text-sm leading-relaxed ${
-                      msg.role === 'user'
-                        ? 'bg-gold/20 text-bianco rounded-br-sm'
-                        : 'bg-white/5 text-bianco/80 border border-gold/10 rounded-bl-sm'
-                    }`}
+                    className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
-                    {formatMessage(msg.content)}
+                    <div
+                      className={`max-w-[85%] px-4 py-2.5 rounded-xl font-sans text-sm leading-relaxed ${
+                        msg.role === 'user'
+                          ? 'bg-gold/20 text-bianco rounded-br-sm'
+                          : 'bg-white/5 text-bianco/80 border border-gold/10 rounded-bl-sm'
+                      }`}
+                    >
+                      {formatMessage(msg.content)}
+                    </div>
                   </div>
+                  {/* Product Cards */}
+                  {msg.products && msg.products.length > 0 && (
+                    <div className="flex gap-2 mt-2 overflow-x-auto pb-1 scrollbar-hide">
+                      {msg.products.map((product) => (
+                        <a
+                          key={product.id}
+                          href={`/it/prodotti/${product.id}`}
+                          className="flex-shrink-0 w-[140px] bg-white/5 border border-gold/15 rounded-lg overflow-hidden hover:border-gold/40 transition-colors duration-300 group"
+                        >
+                          <div className="relative w-full h-[100px] bg-white/10">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                              sizes="140px"
+                            />
+                          </div>
+                          <div className="px-2.5 py-2">
+                            <p className="font-sans text-[11px] text-bianco/80 leading-tight line-clamp-2">
+                              {product.name}
+                            </p>
+                            <div className="flex items-center justify-between mt-1.5">
+                              <span className="font-sans text-xs font-semibold text-gold">
+                                €{product.price.toFixed(2)}
+                              </span>
+                              <span className="font-sans text-[9px] text-bianco/30">
+                                {product.weight}
+                              </span>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
 

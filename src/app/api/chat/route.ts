@@ -83,7 +83,11 @@ REGOLE:
 - Se chiedono cosa cucinare, suggerisci abbinamenti con i prodotti GBiO
 - Non inventare informazioni che non conosci
 - Usa emoji con moderazione per essere accogliente ma professionale
-- NON usare MAI markdown: no asterischi (**), no cancelletti (#), no underscore (_). Scrivi testo semplice e pulito.`
+- NON usare MAI markdown: no asterischi (**), no cancelletti (#), no underscore (_). Scrivi testo semplice e pulito.
+- Quando menzioni o consigli prodotti specifici, AGGIUNGI alla fine del messaggio una riga con i product ID separati da virgola nel formato: [PRODOTTI:id1,id2,id3]
+- I product ID disponibili sono: ${products.map(p => p.id).join(', ')}
+- Esempio: se consigli olio e pasta, aggiungi alla fine: [PRODOTTI:olio-dop-50cl,pasta-fettuccine]
+- La riga [PRODOTTI:...] non verrà mostrata come testo, verrà usata per mostrare le card dei prodotti con foto.`
 
 interface ChatMessage {
   role: 'user' | 'assistant'
@@ -116,10 +120,25 @@ export async function POST(request: NextRequest) {
       messages,
     })
 
-    const text =
+    let text =
       response.content[0].type === 'text' ? response.content[0].text : ''
 
-    return NextResponse.json({ response: text })
+    // Estrai product IDs dal tag [PRODOTTI:...]
+    const productMatch = text.match(/\[PRODOTTI:([\w,-]+)\]/)
+    let productCards: Array<{ id: string; name: string; price: number; image: string; weight: string }> = []
+    if (productMatch) {
+      text = text.replace(/\[PRODOTTI:[\w,-]+\]/, '').trim()
+      const ids = productMatch[1].split(',').map(s => s.trim())
+      productCards = ids
+        .map(id => {
+          const p = products.find(prod => prod.id === id)
+          if (!p) return null
+          return { id: p.id, name: p.name, price: p.price, image: p.image, weight: p.details.weight }
+        })
+        .filter(Boolean) as typeof productCards
+    }
+
+    return NextResponse.json({ response: text, products: productCards })
   } catch (error) {
     console.error('Chat API error:', error)
     return NextResponse.json(
