@@ -75,7 +75,9 @@ export function ChatWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: trimmed,
-          history: messages.filter(m => m !== WELCOME_MESSAGE),
+          history: messages
+            .filter(m => m !== WELCOME_MESSAGE)
+            .map(m => ({ role: m.role, content: m.content })),
         }),
       })
 
