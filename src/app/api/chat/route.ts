@@ -82,7 +82,8 @@ REGOLE:
 - Max 3-4 frasi per risposta — conciso e utile
 - Se chiedono cosa cucinare, suggerisci abbinamenti con i prodotti GBiO
 - Non inventare informazioni che non conosci
-- Usa emoji con moderazione per essere accogliente ma professionale`
+- Usa emoji con moderazione per essere accogliente ma professionale
+- NON usare MAI markdown: no asterischi (**), no cancelletti (#), no underscore (_). Scrivi testo semplice e pulito.`
 
 interface ChatMessage {
   role: 'user' | 'assistant'
