@@ -31,6 +31,12 @@
     "location": "橄榄油之城",
     "established": "Bio ICEA"
   },
+  "boxedSets": {
+    "eyebrow": "礼盒套装",
+    "title": "礼盒",
+    "subtitle": "卓越品质，囤货之选。来自阿布鲁佐的完美礼物。",
+    "exploreAll": "探索所有产品"
+  },
   "heritage": {
     "eyebrow": "我们的土地",
     "title": "黄金三角",
@@ -56,6 +62,9 @@
     "categories": {
       "all": {
         "label": "全部"
+      },
+      "box": {
+        "label": "礼盒"
       },
       "olio": {
         "label": "橄榄油",

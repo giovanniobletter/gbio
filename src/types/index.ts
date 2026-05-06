@@ -7,7 +7,7 @@ export interface Product {
   image: string
   images?: string[] // Array of images for gallery (front, back, etc.)
   imagePosition?: string // CSS object-position value (e.g., 'center top', 'center 30%')
-  category: 'olio' | 'pasta' | 'farina' | 'conserve'
+  category: 'olio' | 'pasta' | 'farina' | 'conserve' | 'box'
   details: {
     origin: string
     certification: string[]

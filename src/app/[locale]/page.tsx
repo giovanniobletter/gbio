@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer'
 import { ScrollProgress } from '@/components/layout/ScrollProgress'
 import { CartDrawer } from '@/components/cart/CartDrawer'
 import { Hero } from '@/components/sections/Hero'
+import { BoxedSets } from '@/components/sections/BoxedSets'
 import { Heritage } from '@/components/sections/Heritage'
 import { Products } from '@/components/sections/Products'
 import { Territory } from '@/components/sections/Territory'
@@ -21,6 +22,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <BoxedSets />
         <Products />
         <Certifications />
         <Territory />

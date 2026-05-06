@@ -31,6 +31,12 @@
     "location": "Cité de l'Huile d'Olive",
     "established": "Bio ICEA"
   },
+  "boxedSets": {
+    "eyebrow": "Coffrets",
+    "title": "Les Box",
+    "subtitle": "L'excellence en format réserve. Le cadeau parfait, des Abruzzes à votre table.",
+    "exploreAll": "Découvrir tous les produits"
+  },
   "heritage": {
     "eyebrow": "Notre Terre",
     "title": "Triangle d'Or",
@@ -56,6 +62,9 @@
     "categories": {
       "all": {
         "label": "Tous"
+      },
+      "box": {
+        "label": "Box"
       },
       "olio": {
         "label": "Huile",

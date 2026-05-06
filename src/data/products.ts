@@ -1,6 +1,39 @@
 import { Product } from '@/types'
 
 export const products: Product[] = [
+  // BOX
+  {
+    id: 'box-olio-6',
+    name: 'Box Olio 6×0,5L',
+    subtitle: 'Cofanetto DOP Aprutino Pescarese',
+    description: 'Sei bottiglie del nostro Olio EVO DOP Aprutino Pescarese Bio. La scorta che racconta l\'Abruzzo, in un unico cofanetto.',
+    price: 100.00,
+    image: '/images/box-olio-6.jpg',
+    images: ['/images/box-olio-6.jpg', '/images/olio-05l.jpg'],
+    category: 'box',
+    details: {
+      origin: 'Abruzzo',
+      certification: ['DOP Aprutino Pescarese', 'Biologico ICEA'],
+      weight: '6 × 0,5L',
+      harvest: '2025',
+    },
+  },
+  {
+    id: 'box-pasta-6',
+    name: 'Box Pasta 6 Formati',
+    subtitle: 'Cofanetto Senatore Cappelli',
+    description: 'Sei formati di pasta Senatore Cappelli: penne, fettuccine, mezzemaniche, tagliatelle, sagnette, quadrucci.',
+    price: 25.00,
+    image: '/images/box-pasta-6.jpg',
+    images: ['/images/box-pasta-6.jpg'],
+    category: 'box',
+    details: {
+      origin: 'Castellana - Abruzzo',
+      certification: ['In conversione biologica'],
+      weight: '6 × 500g',
+      harvest: '2025',
+    },
+  },
   // OLIO
   {
     id: 'olio-dop-50cl',

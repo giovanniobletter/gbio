@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, ShoppingBag, Check, Droplets, Wheat, Salad, Expand } from 'lucide-react'
+import { ArrowRight, ShoppingBag, Check, Droplets, Wheat, Salad, Expand, Package } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale } from 'next-intl'
@@ -16,15 +16,16 @@ import { Product } from '@/types'
 import { useCart } from '@/context/CartContext'
 import { useTranslations } from 'next-intl'
 
-type Category = 'all' | 'olio' | 'pasta' | 'farina' | 'conserve'
+type Category = 'all' | 'box' | 'olio' | 'pasta' | 'farina' | 'conserve'
 
-const categoryIds: Category[] = ['all', 'olio', 'pasta', 'farina', 'conserve']
+const categoryIds: Category[] = ['all', 'box', 'olio', 'pasta', 'farina', 'conserve']
 
 const categoryIcons = {
   olio: Droplets,
   pasta: Wheat,
   farina: Wheat,
   conserve: Salad,
+  box: Package,
 }
 
 function ProductCard({ product, index }: { product: Product; index: number }) {

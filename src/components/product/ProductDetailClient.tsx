@@ -28,6 +28,7 @@ const categoryLabels: Record<Product['category'], string> = {
   pasta: 'Pasta',
   farina: 'Farine',
   conserve: 'Conserve',
+  box: 'Box',
 }
 
 function formatPrice(price: number) {
