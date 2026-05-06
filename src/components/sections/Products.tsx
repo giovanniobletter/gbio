@@ -16,9 +16,9 @@ import { Product } from '@/types'
 import { useCart } from '@/context/CartContext'
 import { useTranslations } from 'next-intl'
 
-type Category = 'all' | 'box' | 'olio' | 'pasta' | 'farina' | 'conserve'
+type Category = 'all' | 'olio' | 'pasta' | 'farina' | 'conserve'
 
-const categoryIds: Category[] = ['all', 'box', 'olio', 'pasta', 'farina', 'conserve']
+const categoryIds: Category[] = ['all', 'olio', 'pasta', 'farina', 'conserve']
 
 const categoryIcons = {
   olio: Droplets,
@@ -201,7 +201,7 @@ export function Products() {
   const t = useTranslations('products')
 
   const filteredProducts = activeCategory === 'all'
-    ? products
+    ? products.filter(p => p.category !== 'box')
     : getProductsByCategory(activeCategory as Product['category'])
 
   // Get video source based on category
