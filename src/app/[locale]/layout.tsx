@@ -92,8 +92,12 @@ export default async function LocaleLayout({
   // Enable static rendering for this locale
   setRequestLocale(locale)
 
-  // Load messages for this specific locale directly
-  const messages = (await import(`../../messages/${locale}.json`)).default
+  // Load messages for this specific locale directly (explicit imports
+  // so webpack can statically resolve and bundle each language file)
+  const messages =
+    locale === 'en'
+      ? (await import('../../messages/en.json')).default
+      : (await import('../../messages/it.json')).default
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

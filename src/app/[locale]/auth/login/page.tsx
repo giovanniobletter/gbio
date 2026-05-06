@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -9,7 +9,7 @@ import { useAuth } from '@/context/AuthContext'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter()
   const params = useParams()
   const locale = params.locale as string
@@ -210,5 +210,13 @@ export default function LoginPage() {
         </div>
       </motion.div>
     </motion.div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   )
 }

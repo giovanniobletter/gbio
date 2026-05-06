@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -9,7 +9,7 @@ import { useAuth } from '@/context/AuthContext'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
-export default function RegisterPage() {
+function RegisterForm() {
   const router = useRouter()
   const params = useParams()
   const locale = params.locale as string
@@ -364,5 +364,13 @@ export default function RegisterPage() {
         </p>
       </motion.div>
     </motion.div>
+  )
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={null}>
+      <RegisterForm />
+    </Suspense>
   )
 }
