@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useLocale } from 'next-intl'
 import { Product } from '@/types'
 import { useCart } from '@/context/CartContext'
+import { useProductT } from '@/lib/useProductT'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { CartDrawer } from '@/components/cart/CartDrawer'
@@ -38,7 +39,8 @@ function formatPrice(price: number) {
   }).format(price)
 }
 
-function RelatedProductCard({ product }: { product: Product }) {
+function RelatedProductCard({ product: rawProduct }: { product: Product }) {
+  const product = useProductT(rawProduct)
   const locale = useLocale()
   const { addItem } = useCart()
   const [isAdded, setIsAdded] = useState(false)
@@ -93,7 +95,8 @@ function RelatedProductCard({ product }: { product: Product }) {
   )
 }
 
-export function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+export function ProductDetailClient({ product: rawProduct, relatedProducts }: ProductDetailClientProps) {
+  const product = useProductT(rawProduct)
   const locale = useLocale()
   const { addItem } = useCart()
   const [quantity, setQuantity] = useState(1)

@@ -8,17 +8,19 @@ import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
 import { products } from '@/data/products'
 import { useCart } from '@/context/CartContext'
+import { useProductT } from '@/lib/useProductT'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 function BoxCard({ id }: { id: string }) {
-  const product = products.find((p) => p.id === id)
+  const rawProduct = products.find((p) => p.id === id)
   const locale = useLocale()
   const { addItem } = useCart()
   const [isAdded, setIsAdded] = useState(false)
   const t = useTranslations('products')
 
-  if (!product) return null
+  const product = useProductT(rawProduct as never)
+  if (!rawProduct) return null
 
   const handleAdd = () => {
     addItem(product)

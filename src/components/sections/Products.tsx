@@ -15,6 +15,7 @@ import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { Product } from '@/types'
 import { useCart } from '@/context/CartContext'
 import { useTranslations } from 'next-intl'
+import { useProductT } from '@/lib/useProductT'
 
 type Category = 'all' | 'olio' | 'pasta' | 'farina' | 'conserve'
 
@@ -28,7 +29,8 @@ const categoryIcons = {
   box: Package,
 }
 
-function ProductCard({ product, index }: { product: Product; index: number }) {
+function ProductCard({ product: rawProduct, index }: { product: Product; index: number }) {
+  const product = useProductT(rawProduct)
   const locale = useLocale()
   const { addItem } = useCart()
   const [isAdded, setIsAdded] = useState(false)
