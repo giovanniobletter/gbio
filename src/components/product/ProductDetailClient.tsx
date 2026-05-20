@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Check, Expand, MapPin, Award, Scale, CalendarDays } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Product } from '@/types'
 import { useCart } from '@/context/CartContext'
 import { useProductT } from '@/lib/useProductT'
@@ -24,16 +24,8 @@ interface ProductDetailClientProps {
   relatedProducts: Product[]
 }
 
-const categoryLabels: Record<Product['category'], string> = {
-  olio: 'Olio',
-  pasta: 'Pasta',
-  farina: 'Farine',
-  conserve: 'Conserve',
-  box: 'Box',
-}
-
-function formatPrice(price: number) {
-  return new Intl.NumberFormat('it-IT', {
+function formatPrice(price: number, locale: string) {
+  return new Intl.NumberFormat(locale === 'en' ? 'en-GB' : 'it-IT', {
     style: 'currency',
     currency: 'EUR',
   }).format(price)
@@ -42,6 +34,7 @@ function formatPrice(price: number) {
 function RelatedProductCard({ product: rawProduct }: { product: Product }) {
   const product = useProductT(rawProduct)
   const locale = useLocale()
+  const t = useTranslations('productDetail')
   const { addItem } = useCart()
   const [isAdded, setIsAdded] = useState(false)
 
@@ -75,7 +68,7 @@ function RelatedProductCard({ product: rawProduct }: { product: Product }) {
             </h3>
             <div className="flex items-center justify-between pt-2">
               <span className="font-serif text-xl text-gold">
-                {formatPrice(product.price)}
+                {formatPrice(product.price, locale)}
               </span>
               <span className="font-sans text-xs text-bianco/40">
                 {product.details.weight}
@@ -87,7 +80,7 @@ function RelatedProductCard({ product: rawProduct }: { product: Product }) {
       <button
         onClick={handleAddToCart}
         className="absolute bottom-4 right-4 p-2 border border-gold/30 text-gold hover:bg-gold hover:text-nero transition-all duration-300"
-        aria-label="Aggiungi al carrello"
+        aria-label={t('ariaAddToCart')}
       >
         {isAdded ? <Check size={16} /> : <ShoppingBag size={16} />}
       </button>
@@ -98,7 +91,17 @@ function RelatedProductCard({ product: rawProduct }: { product: Product }) {
 export function ProductDetailClient({ product: rawProduct, relatedProducts }: ProductDetailClientProps) {
   const product = useProductT(rawProduct)
   const locale = useLocale()
+  const t = useTranslations('productDetail')
+  const tCats = useTranslations('products.categories')
   const { addItem } = useCart()
+
+  const categoryLabels: Record<Product['category'], string> = {
+    olio: tCats('olio.label'),
+    pasta: tCats('pasta.label'),
+    farina: tCats('farina.label'),
+    conserve: tCats('conserve.label'),
+    box: tCats('box.label'),
+  }
   const [quantity, setQuantity] = useState(1)
   const [isAdded, setIsAdded] = useState(false)
   const [isGalleryOpen, setIsGalleryOpen] = useState(false)
@@ -119,16 +122,16 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
   }
 
   const breadcrumbItems = [
-    { label: 'Prodotti', href: `/${locale}/#prodotti` },
+    { label: t('breadcrumbProducts'), href: `/${locale}/#prodotti` },
     { label: categoryLabels[product.category], href: `/${locale}/#prodotti` },
     { label: product.name },
   ]
 
   const details = [
-    { icon: MapPin, label: 'Origine', value: product.details.origin },
-    { icon: Award, label: 'Certificazioni', value: product.details.certification.join(', ') },
-    { icon: Scale, label: 'Peso', value: product.details.weight },
-    ...(product.details.harvest ? [{ icon: CalendarDays, label: 'Raccolta', value: product.details.harvest }] : []),
+    { icon: MapPin, label: t('origin'), value: product.details.origin },
+    { icon: Award, label: t('certifications'), value: product.details.certification.join(', ') },
+    { icon: Scale, label: t('weight'), value: product.details.weight },
+    ...(product.details.harvest ? [{ icon: CalendarDays, label: t('harvest'), value: product.details.harvest }] : []),
   ]
 
   return (
@@ -195,7 +198,7 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
                       key={cert}
                       className="px-2 py-1 text-[10px] font-sans uppercase tracking-wider bg-nero/80 text-gold border border-gold/30"
                     >
-                      {cert.includes('DOP') ? 'DOP' : cert.includes('conversione') ? 'Conv. Bio' : 'Bio'}
+                      {cert.includes('DOP') ? t('dop') : cert.includes('conversione') ? t('convBio') : t('bio')}
                     </span>
                   ))}
                 </div>
@@ -216,13 +219,13 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
                     >
                       <Image
                         src={img}
-                        alt={`${product.name} - ${index === 0 ? 'Fronte' : 'Retro'}`}
+                        alt={`${product.name} - ${index === 0 ? t('front') : t('back')}`}
                         fill
                         className="object-contain p-1"
                         sizes="80px"
                       />
                       <span className="absolute bottom-0 left-0 right-0 bg-nero/80 text-[9px] text-center text-gold py-0.5">
-                        {index === 0 ? 'Fronte' : 'Retro'}
+                        {index === 0 ? t('front') : t('back')}
                       </span>
                     </button>
                   ))}
@@ -250,7 +253,7 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
               {/* Price */}
               <div className="mt-6 flex items-baseline gap-4">
                 <span className="font-serif text-3xl md:text-4xl text-gold">
-                  {formatPrice(product.price)}
+                  {formatPrice(product.price, locale)}
                 </span>
                 <span className="font-sans text-sm text-bianco/40">
                   {product.details.weight}
@@ -302,7 +305,7 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
                         className="flex items-center gap-2"
                       >
                         <Check size={18} />
-                        Aggiunto
+                        {t('addedToCart')}
                       </motion.span>
                     ) : (
                       <motion.span
@@ -313,7 +316,7 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
                         className="flex items-center gap-2"
                       >
                         <ShoppingBag size={18} />
-                        Aggiungi al carrello
+                        {t('addToCart')}
                       </motion.span>
                     )}
                   </AnimatePresence>
@@ -334,10 +337,10 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
 
               <div className="text-center mb-12">
                 <span className="font-sans text-xs uppercase tracking-[0.3em] text-gold/60">
-                  Collezione
+                  {t('relatedEyebrow')}
                 </span>
                 <h2 className="font-serif text-3xl md:text-4xl text-bianco mt-3">
-                  Potrebbe interessarti
+                  {t('relatedTitle')}
                 </h2>
               </div>
 
@@ -359,7 +362,7 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
                   href={`/${locale}/#prodotti`}
                   className="inline-flex items-center gap-2 font-sans text-sm uppercase tracking-[0.2em] text-gold hover:text-gold-light transition-colors"
                 >
-                  Tutti i Prodotti
+                  {t('allProducts')}
                 </Link>
               </div>
             </motion.section>

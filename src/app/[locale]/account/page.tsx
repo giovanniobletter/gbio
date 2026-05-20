@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import {
   User,
   MapPin,
@@ -54,6 +55,7 @@ export default function AccountPage() {
   const router = useRouter()
   const params = useParams()
   const locale = params.locale as string
+  const t = useTranslations('account')
   const {
     user,
     isAuthenticated,
@@ -141,10 +143,10 @@ export default function AccountPage() {
     })
 
     if (result.success) {
-      setMessage({ type: 'success', text: 'Profilo aggiornato con successo' })
+      setMessage({ type: 'success', text: t('successProfileSaved') })
       setIsEditing(false)
     } else {
-      setMessage({ type: 'error', text: result.error || 'Errore durante il salvataggio' })
+      setMessage({ type: 'error', text: result.error || t('errorSaving') })
     }
     setIsSaving(false)
     setTimeout(() => setMessage(null), 3000)
@@ -157,7 +159,7 @@ export default function AccountPage() {
       addAddress(addressData)
     }
     resetAddressForm()
-    setMessage({ type: 'success', text: 'Indirizzo salvato con successo' })
+    setMessage({ type: 'success', text: t('successAddressSaved') })
     setTimeout(() => setMessage(null), 3000)
   }
 
@@ -169,7 +171,7 @@ export default function AccountPage() {
 
   const handleAddressDelete = (index: number) => {
     deleteAddress(index)
-    setMessage({ type: 'success', text: 'Indirizzo eliminato' })
+    setMessage({ type: 'success', text: t('successAddressDeleted') })
     setTimeout(() => setMessage(null), 3000)
   }
 
@@ -191,12 +193,12 @@ export default function AccountPage() {
 
   const handlePasswordChange = async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
-      setMessage({ type: 'error', text: 'Le password non coincidono' })
+      setMessage({ type: 'error', text: t('errorPasswordMismatch') })
       return
     }
 
     if (passwordData.newPassword.length < 8) {
-      setMessage({ type: 'error', text: 'La password deve essere di almeno 8 caratteri' })
+      setMessage({ type: 'error', text: t('errorPasswordTooShort') })
       return
     }
 
@@ -204,10 +206,10 @@ export default function AccountPage() {
     const result = await changePassword(passwordData.currentPassword, passwordData.newPassword)
 
     if (result.success) {
-      setMessage({ type: 'success', text: 'Password aggiornata con successo' })
+      setMessage({ type: 'success', text: t('successPasswordSaved') })
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' })
     } else {
-      setMessage({ type: 'error', text: result.error || 'Errore durante il cambio password' })
+      setMessage({ type: 'error', text: result.error || t('errorPasswordChange') })
     }
     setIsSaving(false)
     setTimeout(() => setMessage(null), 3000)
@@ -226,10 +228,10 @@ export default function AccountPage() {
   `
 
   const tabs = [
-    { id: 'profile' as const, label: 'Profilo', icon: User },
-    { id: 'addresses' as const, label: 'Indirizzi', icon: MapPin },
-    { id: 'orders' as const, label: 'Ordini', icon: Package },
-    { id: 'settings' as const, label: 'Impostazioni', icon: Settings },
+    { id: 'profile' as const, label: t('tabs.profile'), icon: User },
+    { id: 'addresses' as const, label: t('tabs.addresses'), icon: MapPin },
+    { id: 'orders' as const, label: t('tabs.orders'), icon: Package },
+    { id: 'settings' as const, label: t('tabs.settings'), icon: Settings },
   ]
 
   return (
@@ -247,10 +249,10 @@ export default function AccountPage() {
             className="mb-12"
           >
             <h1 className="font-serif text-4xl text-bianco mb-2">
-              Ciao, {user.firstName}
+              {t('greeting', { name: user.firstName })}
             </h1>
             <p className="font-sans text-bianco/60">
-              Gestisci il tuo account e le tue preferenze
+              {t('subtitle')}
             </p>
           </motion.div>
 
@@ -302,7 +304,7 @@ export default function AccountPage() {
                   className="w-full flex items-center gap-3 px-4 py-3 font-sans text-sm text-red-400 hover:bg-red-400/10 transition-all mt-4"
                 >
                   <LogOut size={18} />
-                  Esci
+                  {t('logout')}
                 </button>
               </nav>
             </motion.div>
@@ -319,7 +321,7 @@ export default function AccountPage() {
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="font-serif text-2xl text-bianco">
-                        Il tuo Profilo
+                        {t('profile.title')}
                       </h2>
                       {!isEditing ? (
                         <button
@@ -327,7 +329,7 @@ export default function AccountPage() {
                           className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
                         >
                           <Edit2 size={16} />
-                          <span className="text-sm">Modifica</span>
+                          <span className="text-sm">{t('edit')}</span>
                         </button>
                       ) : (
                         <div className="flex gap-2">
@@ -363,7 +365,7 @@ export default function AccountPage() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                          Nome
+                          {t('profile.firstName')}
                         </label>
                         <input
                           type="text"
@@ -377,7 +379,7 @@ export default function AccountPage() {
                       </div>
                       <div>
                         <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                          Cognome
+                          {t('profile.lastName')}
                         </label>
                         <input
                           type="text"
@@ -391,7 +393,7 @@ export default function AccountPage() {
                       </div>
                       <div>
                         <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                          Email
+                          {t('profile.email')}
                         </label>
                         <input
                           type="email"
@@ -400,12 +402,12 @@ export default function AccountPage() {
                           className={cn(inputStyles, 'opacity-50')}
                         />
                         <p className="text-xs text-bianco/40 mt-1">
-                          L&apos;email non può essere modificata
+                          {t('profile.emailReadOnly')}
                         </p>
                       </div>
                       <div>
                         <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                          Telefono
+                          {t('profile.phone')}
                         </label>
                         <input
                           type="tel"
@@ -415,18 +417,19 @@ export default function AccountPage() {
                           }
                           disabled={!isEditing}
                           className={inputStyles}
-                          placeholder="+39 333 123 4567"
+                          placeholder={t('profile.phonePlaceholder')}
                         />
                       </div>
                     </div>
 
                     <div className="mt-8 pt-6 border-t border-gold/10">
                       <p className="font-sans text-xs text-bianco/40">
-                        Membro dal{' '}
-                        {new Date(user.createdAt).toLocaleDateString('it-IT', {
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric',
+                        {t('memberSince', {
+                          date: new Date(user.createdAt).toLocaleDateString(locale === 'en' ? 'en-GB' : 'it-IT', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                          }),
                         })}
                       </p>
                     </div>
@@ -438,7 +441,7 @@ export default function AccountPage() {
                   <div>
                     <div className="flex items-center justify-between mb-6">
                       <h2 className="font-serif text-2xl text-bianco">
-                        I tuoi Indirizzi
+                        {t('addresses.title')}
                       </h2>
                       {!showAddressForm && (
                         <button
@@ -446,7 +449,7 @@ export default function AccountPage() {
                           className="flex items-center gap-2 text-gold hover:text-gold-light transition-colors"
                         >
                           <Plus size={16} />
-                          <span className="text-sm">Aggiungi</span>
+                          <span className="text-sm">{t('addNew')}</span>
                         </button>
                       )}
                     </div>
@@ -468,7 +471,7 @@ export default function AccountPage() {
                                 setAddressData({ ...addressData, firstName: e.target.value })
                               }
                               className={inputStyles}
-                              placeholder="Nome"
+                              placeholder={t('addresses.placeholders.firstName')}
                             />
                             <input
                               type="text"
@@ -477,7 +480,7 @@ export default function AccountPage() {
                                 setAddressData({ ...addressData, lastName: e.target.value })
                               }
                               className={inputStyles}
-                              placeholder="Cognome"
+                              placeholder={t('addresses.placeholders.lastName')}
                             />
                           </div>
                           <input
@@ -487,7 +490,7 @@ export default function AccountPage() {
                               setAddressData({ ...addressData, address: e.target.value })
                             }
                             className={inputStyles}
-                            placeholder="Indirizzo"
+                            placeholder={t('addresses.placeholders.address')}
                           />
                           <div className="grid md:grid-cols-3 gap-4">
                             <input
@@ -497,7 +500,7 @@ export default function AccountPage() {
                                 setAddressData({ ...addressData, city: e.target.value })
                               }
                               className={inputStyles}
-                              placeholder="Città"
+                              placeholder={t('addresses.placeholders.city')}
                             />
                             <select
                               value={addressData.province}
@@ -506,7 +509,7 @@ export default function AccountPage() {
                               }
                               className={cn(inputStyles, 'appearance-none')}
                             >
-                              <option value="" className="bg-nero">Provincia</option>
+                              <option value="" className="bg-nero">{t('addresses.placeholders.province')}</option>
                               {provinces.map((prov) => (
                                 <option key={prov} value={prov} className="bg-nero">
                                   {prov}
@@ -520,7 +523,7 @@ export default function AccountPage() {
                                 setAddressData({ ...addressData, postalCode: e.target.value })
                               }
                               className={inputStyles}
-                              placeholder="CAP"
+                              placeholder={t('addresses.placeholders.postalCode')}
                               maxLength={5}
                             />
                           </div>
@@ -532,7 +535,7 @@ export default function AccountPage() {
                                 setAddressData({ ...addressData, email: e.target.value })
                               }
                               className={inputStyles}
-                              placeholder="Email"
+                              placeholder={t('addresses.placeholders.email')}
                             />
                             <input
                               type="tel"
@@ -541,7 +544,7 @@ export default function AccountPage() {
                                 setAddressData({ ...addressData, phone: e.target.value })
                               }
                               className={inputStyles}
-                              placeholder="Telefono"
+                              placeholder={t('addresses.placeholders.phone')}
                             />
                           </div>
                           <div className="flex gap-3 pt-4">
@@ -549,13 +552,13 @@ export default function AccountPage() {
                               onClick={resetAddressForm}
                               className="px-6 py-3 border border-gold/30 text-bianco/60 hover:text-bianco transition-colors"
                             >
-                              Annulla
+                              {t('cancel')}
                             </button>
                             <button
                               onClick={handleAddressSave}
                               className="btn-primary"
                             >
-                              <span>Salva Indirizzo</span>
+                              <span>{t('addresses.saveAddress')}</span>
                             </button>
                           </div>
                         </motion.div>
@@ -568,7 +571,7 @@ export default function AccountPage() {
                         >
                           <MapPin size={48} className="text-gold/30 mx-auto mb-4" />
                           <p className="font-sans text-bianco/60">
-                            Non hai ancora salvato nessun indirizzo
+                            {t('addresses.empty')}
                           </p>
                         </motion.div>
                       ) : (
@@ -600,7 +603,7 @@ export default function AccountPage() {
                                   </p>
                                   {user.defaultAddressIndex === index && (
                                     <span className="inline-block mt-2 px-2 py-1 bg-gold/20 text-gold text-xs">
-                                      Predefinito
+                                      {t('addresses.default')}
                                     </span>
                                   )}
                                 </div>
@@ -621,7 +624,7 @@ export default function AccountPage() {
                                     <button
                                       onClick={() => setDefaultAddress(index)}
                                       className="p-2 text-bianco/40 hover:text-gold transition-colors"
-                                      title="Imposta come predefinito"
+                                      title={t('addresses.setDefault')}
                                     >
                                       <Check size={16} />
                                     </button>
@@ -640,15 +643,15 @@ export default function AccountPage() {
                 {activeTab === 'orders' && (
                   <div>
                     <h2 className="font-serif text-2xl text-bianco mb-6">
-                      I tuoi Ordini
+                      {t('orders.title')}
                     </h2>
                     <div className="text-center py-12">
                       <ShoppingBag size={48} className="text-gold/30 mx-auto mb-4" />
                       <p className="font-sans text-bianco/60 mb-4">
-                        Non hai ancora effettuato ordini
+                        {t('orders.empty')}
                       </p>
                       <Link href={`/${locale}/#prodotti`} className="btn-primary inline-flex">
-                        <span>Scopri i Prodotti</span>
+                        <span>{t('orders.goToProducts')}</span>
                       </Link>
                     </div>
                   </div>
@@ -658,14 +661,14 @@ export default function AccountPage() {
                 {activeTab === 'settings' && (
                   <div>
                     <h2 className="font-serif text-2xl text-bianco mb-6">
-                      Impostazioni
+                      {t('settings.title')}
                     </h2>
 
                     <div className="space-y-8">
                       {/* Change Password */}
                       <div>
                         <h3 className="font-sans text-sm uppercase tracking-[0.2em] text-gold mb-4">
-                          Cambia Password
+                          {t('settings.changePassword')}
                         </h3>
                         <div className="space-y-4">
                           <div className="relative">
@@ -679,7 +682,7 @@ export default function AccountPage() {
                                 })
                               }
                               className={cn(inputStyles, 'pr-12')}
-                              placeholder="Password attuale"
+                              placeholder={t('settings.currentPassword')}
                             />
                             <button
                               type="button"
@@ -699,7 +702,7 @@ export default function AccountPage() {
                               })
                             }
                             className={inputStyles}
-                            placeholder="Nuova password (min. 8 caratteri)"
+                            placeholder={t('settings.newPasswordPlaceholder')}
                           />
                           <input
                             type={showPasswords ? 'text' : 'password'}
@@ -711,7 +714,7 @@ export default function AccountPage() {
                               })
                             }
                             className={inputStyles}
-                            placeholder="Conferma nuova password"
+                            placeholder={t('settings.confirmNewPassword')}
                           />
                           <button
                             onClick={handlePasswordChange}
@@ -731,7 +734,7 @@ export default function AccountPage() {
                             {isSaving ? (
                               <Loader2 size={16} className="animate-spin" />
                             ) : (
-                              <span>Aggiorna Password</span>
+                              <span>{t('settings.updatePassword')}</span>
                             )}
                           </button>
                         </div>
@@ -740,21 +743,21 @@ export default function AccountPage() {
                       {/* Danger Zone */}
                       <div className="pt-6 border-t border-gold/10">
                         <h3 className="font-sans text-sm uppercase tracking-[0.2em] text-red-400 mb-4">
-                          Zona Pericolosa
+                          {t('settings.dangerZone')}
                         </h3>
                         <button
                           onClick={() => {
-                            if (window.confirm('Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile.')) {
+                            if (window.confirm(t('confirmDeleteAccount'))) {
                               logout()
                               router.push(`/${locale}`)
                             }
                           }}
                           className="px-6 py-3 border border-red-400/50 text-red-400 hover:bg-red-400/10 transition-colors text-sm"
                         >
-                          Elimina Account
+                          {t('settings.deleteAccount')}
                         </button>
                         <p className="font-sans text-xs text-bianco/40 mt-2">
-                          Questa azione è irreversibile e comporterà la perdita di tutti i dati.
+                          {t('settings.deleteWarning')}
                         </p>
                       </div>
                     </div>

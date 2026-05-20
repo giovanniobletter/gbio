@@ -4,6 +4,7 @@ import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { Eye, EyeOff, Loader2, ArrowRight, Check } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
@@ -16,6 +17,7 @@ function RegisterForm() {
   const searchParams = useSearchParams()
   const returnUrl = searchParams.get('returnUrl') || `/${locale}`
   const { register, isLoading } = useAuth()
+  const t = useTranslations('auth')
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -35,21 +37,21 @@ function RegisterForm() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
 
-    if (!formData.firstName.trim()) newErrors.firstName = 'Obbligatorio'
-    if (!formData.lastName.trim()) newErrors.lastName = 'Obbligatorio'
-    if (!formData.email.trim()) newErrors.email = 'Obbligatorio'
+    if (!formData.firstName.trim()) newErrors.firstName = t('errors.required')
+    if (!formData.lastName.trim()) newErrors.lastName = t('errors.required')
+    if (!formData.email.trim()) newErrors.email = t('errors.required')
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email non valida'
+      newErrors.email = t('errors.invalidEmail')
     }
-    if (!formData.password) newErrors.password = 'Obbligatorio'
+    if (!formData.password) newErrors.password = t('errors.required')
     else if (formData.password.length < 8) {
-      newErrors.password = 'Minimo 8 caratteri'
+      newErrors.password = t('errors.passwordTooShort')
     }
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Le password non coincidono'
+      newErrors.confirmPassword = t('errors.passwordMismatch')
     }
     if (!acceptTerms) {
-      newErrors.terms = 'Devi accettare i termini'
+      newErrors.terms = t('errors.mustAcceptTerms')
     }
 
     setErrors(newErrors)
@@ -75,7 +77,7 @@ function RegisterForm() {
     if (result.success) {
       router.push(returnUrl)
     } else {
-      setError(result.error || 'Errore durante la registrazione')
+      setError(result.error || t('errors.registerError'))
       setIsSubmitting(false)
     }
   }
@@ -105,7 +107,7 @@ function RegisterForm() {
     if (/[0-9]/.test(password)) strength++
     if (/[^A-Za-z0-9]/.test(password)) strength++
 
-    const labels = ['', 'Debole', 'Media', 'Buona', 'Forte']
+    const labels = ['', t('passwordStrength.weak'), t('passwordStrength.medium'), t('passwordStrength.good'), t('passwordStrength.strong')]
     const colors = ['', 'bg-red-400', 'bg-yellow-400', 'bg-gold', 'bg-green-400']
 
     return { strength, label: labels[strength], color: colors[strength] }
@@ -122,10 +124,10 @@ function RegisterForm() {
     >
       <motion.div variants={staggerItem} className="text-center mb-8">
         <h1 className="font-serif text-3xl lg:text-4xl text-bianco mb-2">
-          Crea il tuo account
+          {t('createAccount')}
         </h1>
         <p className="font-sans text-bianco/60">
-          Unisciti alla famiglia GBiO
+          {t('registerDescription')}
         </p>
       </motion.div>
 
@@ -147,7 +149,7 @@ function RegisterForm() {
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-              Nome *
+              {t('labels.firstName')} *
             </label>
             <input
               type="text"
@@ -155,7 +157,7 @@ function RegisterForm() {
               value={formData.firstName}
               onChange={handleChange}
               className={cn(inputStyles, errors.firstName && 'border-red-400')}
-              placeholder="Mario"
+              placeholder={t('placeholders.firstName')}
               autoComplete="given-name"
             />
             {errors.firstName && (
@@ -164,7 +166,7 @@ function RegisterForm() {
           </div>
           <div>
             <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-              Cognome *
+              {t('labels.lastName')} *
             </label>
             <input
               type="text"
@@ -172,7 +174,7 @@ function RegisterForm() {
               value={formData.lastName}
               onChange={handleChange}
               className={cn(inputStyles, errors.lastName && 'border-red-400')}
-              placeholder="Rossi"
+              placeholder={t('placeholders.lastName')}
               autoComplete="family-name"
             />
             {errors.lastName && (
@@ -183,7 +185,7 @@ function RegisterForm() {
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Email *
+            {t('labels.email')} *
           </label>
           <input
             type="email"
@@ -191,7 +193,7 @@ function RegisterForm() {
             value={formData.email}
             onChange={handleChange}
             className={cn(inputStyles, errors.email && 'border-red-400')}
-            placeholder="nome@email.it"
+            placeholder={t('placeholders.email')}
             autoComplete="email"
           />
           {errors.email && (
@@ -201,7 +203,7 @@ function RegisterForm() {
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Telefono
+            {t('labels.phone')}
           </label>
           <input
             type="tel"
@@ -209,14 +211,14 @@ function RegisterForm() {
             value={formData.phone}
             onChange={handleChange}
             className={inputStyles}
-            placeholder="+39 333 123 4567"
+            placeholder={t('placeholders.phone')}
             autoComplete="tel"
           />
         </div>
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Password *
+            {t('labels.password')} *
           </label>
           <div className="relative">
             <input
@@ -225,7 +227,7 @@ function RegisterForm() {
               value={formData.password}
               onChange={handleChange}
               className={cn(inputStyles, 'pr-12', errors.password && 'border-red-400')}
-              placeholder="Minimo 8 caratteri"
+              placeholder={t('placeholders.passwordNew')}
               autoComplete="new-password"
             />
             <button
@@ -250,7 +252,7 @@ function RegisterForm() {
                 ))}
               </div>
               <p className="text-xs text-bianco/50">
-                Sicurezza: <span className="text-bianco">{label}</span>
+                {t('passwordStrength.label')} <span className="text-bianco">{label}</span>
               </p>
             </div>
           )}
@@ -261,7 +263,7 @@ function RegisterForm() {
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Conferma Password *
+            {t('confirmPassword')} *
           </label>
           <div className="relative">
             <input
@@ -277,7 +279,7 @@ function RegisterForm() {
                   formData.password === formData.confirmPassword &&
                   'border-green-400'
               )}
-              placeholder="Ripeti la password"
+              placeholder={t('placeholders.passwordRepeat')}
               autoComplete="new-password"
             />
             {formData.confirmPassword &&
@@ -302,13 +304,13 @@ function RegisterForm() {
               className="w-4 h-4 mt-0.5 accent-gold"
             />
             <span className="font-sans text-sm text-bianco/60">
-              Accetto i{' '}
-              <a href="#contatti" className="text-gold hover:underline">
-                Termini e Condizioni
+              {t('acceptTerms')}{' '}
+              <a href={`/${locale}/cookies`} className="text-gold hover:underline">
+                {t('terms')}
               </a>{' '}
-              e la{' '}
-              <a href="#contatti" className="text-gold hover:underline">
-                Privacy Policy
+              {t('andThe')}{' '}
+              <a href={`/${locale}/privacy`} className="text-gold hover:underline">
+                {t('privacy')}
               </a>{' '}
               *
             </span>
@@ -325,7 +327,7 @@ function RegisterForm() {
               className="w-4 h-4 mt-0.5 accent-gold"
             />
             <span className="font-sans text-sm text-bianco/60">
-              Desidero ricevere novità e offerte esclusive via email
+              {t('newsletterOptIn')}
             </span>
           </label>
         </div>
@@ -341,11 +343,11 @@ function RegisterForm() {
           {isSubmitting || isLoading ? (
             <>
               <Loader2 size={16} className="animate-spin" />
-              <span>Registrazione in corso...</span>
+              <span>{t('registerInProgress')}</span>
             </>
           ) : (
             <>
-              <span>Crea Account</span>
+              <span>{t('createAccountBtn')}</span>
               <ArrowRight size={16} />
             </>
           )}
@@ -354,12 +356,12 @@ function RegisterForm() {
 
       <motion.div variants={staggerItem} className="mt-8 text-center">
         <p className="font-sans text-bianco/60">
-          Hai già un account?{' '}
+          {t('haveAccount')}{' '}
           <Link
             href={`/${locale}/auth/login${returnUrl !== `/${locale}` ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`}
             className="text-gold hover:text-gold-light transition-colors"
           >
-            Accedi
+            {t('login')}
           </Link>
         </p>
       </motion.div>

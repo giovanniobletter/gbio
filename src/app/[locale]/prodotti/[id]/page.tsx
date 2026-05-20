@@ -14,16 +14,16 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params
+  const { locale, id } = await params
   const product = getProductById(id)
 
   if (!product) {
-    return { title: 'Prodotto non trovato' }
+    return { title: locale === 'en' ? 'Product not found' : 'Prodotto non trovato' }
   }
 
   const title = `${product.name} ${product.subtitle} — GBiO`
   const description = product.description
-  const url = `https://gbio.it/it/prodotti/${product.id}`
+  const url = `https://gbio.it/${locale}/prodotti/${product.id}`
   const image = `https://gbio.it${product.image}`
 
   return {
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url,
       type: 'website',
-      locale: 'it_IT',
+      locale: locale === 'en' ? 'en_GB' : 'it_IT',
       siteName: 'GBiO',
       images: [{ url: image, alt: `${product.name} — GBiO` }],
     },
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { id } = await params
+  const { locale, id } = await params
   const product = getProductById(id)
 
   if (!product) {
@@ -62,6 +62,8 @@ export default async function ProductPage({ params }: Props) {
   const related = getProductsByCategory(product.category)
     .filter((p) => p.id !== product.id)
     .slice(0, 4)
+
+  const productsLabel = locale === 'en' ? 'Products' : 'Prodotti'
 
   // JSON-LD for this product
   const productJsonLd = {
@@ -78,7 +80,7 @@ export default async function ProductPage({ params }: Props) {
           price: product.price.toFixed(2),
           priceCurrency: 'EUR',
           availability: 'https://schema.org/InStock',
-          url: `https://gbio.it/it/prodotti/${product.id}`,
+          url: `https://gbio.it/${locale}/prodotti/${product.id}`,
         },
       },
       {
@@ -88,19 +90,19 @@ export default async function ProductPage({ params }: Props) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://gbio.it/it',
+            item: `https://gbio.it/${locale}`,
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Prodotti',
-            item: 'https://gbio.it/it/#prodotti',
+            name: productsLabel,
+            item: `https://gbio.it/${locale}/#prodotti`,
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: `${product.name} ${product.subtitle}`,
-            item: `https://gbio.it/it/prodotti/${product.id}`,
+            item: `https://gbio.it/${locale}/prodotti/${product.id}`,
           },
         ],
       },

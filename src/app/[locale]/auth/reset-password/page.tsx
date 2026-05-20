@@ -4,7 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Loader2, ArrowLeft, Mail, Check } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { Loader2, ArrowLeft, Mail } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
@@ -13,6 +14,7 @@ export default function ResetPasswordPage() {
   const params = useParams()
   const locale = params.locale as string
   const { resetPassword } = useAuth()
+  const t = useTranslations('auth')
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -24,7 +26,7 @@ export default function ResetPasswordPage() {
     setIsSubmitting(true)
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Inserisci un indirizzo email valido')
+      setError(t('errors.invalidEmail'))
       setIsSubmitting(false)
       return
     }
@@ -34,7 +36,7 @@ export default function ResetPasswordPage() {
     if (result.success) {
       setIsSubmitted(true)
     } else {
-      setError(result.error || 'Errore durante la richiesta')
+      setError(result.error || t('errors.resetError'))
     }
     setIsSubmitting(false)
   }
@@ -61,18 +63,19 @@ export default function ResetPasswordPage() {
           <Mail size={32} className="text-gold" />
         </motion.div>
         <h1 className="font-serif text-3xl text-bianco mb-4">
-          Controlla la tua email
+          {t('checkEmail')}
         </h1>
         <p className="font-sans text-bianco/60 mb-8">
-          Se l&apos;indirizzo <span className="text-gold">{email}</span> è
-          registrato, riceverai le istruzioni per reimpostare la password.
+          {t('checkEmailPre')}{' '}
+          <span className="text-gold">{email}</span>{' '}
+          {t('checkEmailPost')}
         </p>
         <Link
           href={`/${locale}/auth/login`}
           className="btn-primary inline-flex items-center gap-2"
         >
           <ArrowLeft size={16} />
-          <span>Torna al Login</span>
+          <span>{t('backToLogin')}</span>
         </Link>
       </motion.div>
     )
@@ -91,16 +94,16 @@ export default function ResetPasswordPage() {
           className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.2em] text-gold/60 hover:text-gold transition-colors mb-8"
         >
           <ArrowLeft size={14} />
-          Torna al login
+          {t('backToLogin')}
         </Link>
       </motion.div>
 
       <motion.div variants={staggerItem} className="text-center mb-8">
         <h1 className="font-serif text-3xl lg:text-4xl text-bianco mb-2">
-          Password dimenticata?
+          {t('resetTitle')}
         </h1>
         <p className="font-sans text-bianco/60">
-          Inserisci la tua email e ti invieremo le istruzioni per reimpostarla.
+          {t('resetDescription')}
         </p>
       </motion.div>
 
@@ -121,7 +124,7 @@ export default function ResetPasswordPage() {
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Email
+            {t('labels.email')}
           </label>
           <input
             type="email"
@@ -132,7 +135,7 @@ export default function ResetPasswordPage() {
             }}
             required
             className={inputStyles}
-            placeholder="nome@email.it"
+            placeholder={t('placeholders.email')}
             autoComplete="email"
           />
         </div>
@@ -148,22 +151,22 @@ export default function ResetPasswordPage() {
           {isSubmitting ? (
             <>
               <Loader2 size={16} className="animate-spin" />
-              <span>Invio in corso...</span>
+              <span>{t('sendingInstructions')}</span>
             </>
           ) : (
-            <span>Invia Istruzioni</span>
+            <span>{t('sendInstructions')}</span>
           )}
         </button>
       </motion.form>
 
       <motion.div variants={staggerItem} className="mt-8 text-center">
         <p className="font-sans text-bianco/60">
-          Hai ricordato la password?{' '}
+          {t('rememberedPassword')}{' '}
           <Link
             href={`/${locale}/auth/login`}
             className="text-gold hover:text-gold-light transition-colors"
           >
-            Accedi
+            {t('login')}
           </Link>
         </p>
       </motion.div>

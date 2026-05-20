@@ -2,9 +2,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { Sun, Droplets, Mountain, MapPin } from 'lucide-react'
 
 export function Territory() {
+  const t = useTranslations('territory')
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -42,26 +44,26 @@ export function Territory() {
     {
       icon: Sun,
       value: '300+',
-      label: 'giorni di sole',
-      description: 'Clima mediterraneo abruzzese, maturazione ottimale.',
+      label: t('features.sunLabel'),
+      description: t('features.sunDesc'),
     },
     {
       icon: Droplets,
       value: '',
-      label: 'Irrigazione naturale',
-      description: 'Le sorgenti appenniniche nutrono i nostri terreni.',
+      label: t('features.waterLabel'),
+      description: t('features.waterDesc'),
     },
     {
       icon: Mountain,
       value: '200-400',
-      label: 'metri di altitudine',
-      description: 'Ideale per olive e grani antichi.',
+      label: t('features.altitudeLabel'),
+      description: t('features.altitudeDesc'),
     },
     {
       icon: MapPin,
       value: '',
-      label: 'Terroir unico',
-      description: 'Suoli argilloso-calcarei ricchi di minerali.',
+      label: t('features.terroirLabel'),
+      description: t('features.terroirDesc'),
     },
   ]
 

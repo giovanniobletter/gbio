@@ -1,9 +1,9 @@
 import { NavItem } from '@/types'
 
 export const navigation: NavItem[] = [
-  { label: 'Prodotti', href: '#prodotti' },
-  { label: 'Certificazioni', href: '#certificazioni' },
-  { label: 'Territorio', href: '#territorio' },
-  { label: 'Heritage', href: '#heritage' },
-  { label: 'Contatti', href: '#contatti' },
+  { label: 'Prodotti', labelKey: 'products', href: '#prodotti' },
+  { label: 'Certificazioni', labelKey: 'certifications', href: '#certificazioni' },
+  { label: 'Territorio', labelKey: 'territory', href: '#territorio' },
+  { label: 'Heritage', labelKey: 'heritage', href: '#heritage' },
+  { label: 'Contatti', labelKey: 'contact', href: '#contatti' },
 ]

@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useParams, useSearchParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { Check, Package, Mail, ArrowRight, AlertTriangle } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
 
@@ -11,6 +12,7 @@ function SuccessContent() {
   const params = useParams()
   const searchParams = useSearchParams()
   const locale = params.locale as string
+  const t = useTranslations('checkout')
   const { clearCart } = useCart()
 
   const paymentIntent = searchParams.get('payment_intent')
@@ -55,7 +57,7 @@ function SuccessContent() {
             transition={{ delay: 0.3 }}
             className="font-serif text-4xl md:text-5xl text-bianco mb-4"
           >
-            Pagamento non riuscito
+            {t('paymentFailed')}
           </motion.h1>
 
           <motion.p
@@ -64,7 +66,7 @@ function SuccessContent() {
             transition={{ delay: 0.4 }}
             className="font-sans text-bianco/60 mb-8"
           >
-            Il pagamento non è andato a buon fine. Nessun addebito è stato effettuato.
+            {t('paymentFailedMessage')}
           </motion.p>
 
           <motion.div
@@ -76,7 +78,7 @@ function SuccessContent() {
               href={`/${locale}/checkout`}
               className="btn-primary inline-flex items-center gap-2"
             >
-              <span>Riprova il pagamento</span>
+              <span>{t('retryPayment')}</span>
               <ArrowRight size={16} />
             </Link>
           </motion.div>
@@ -109,7 +111,7 @@ function SuccessContent() {
           transition={{ delay: 0.3 }}
           className="font-serif text-4xl md:text-5xl text-bianco mb-4"
         >
-          Grazie per il tuo ordine!
+          {t('orderThanks')}
         </motion.h1>
 
         {/* Order Number */}
@@ -119,7 +121,7 @@ function SuccessContent() {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <p className="font-sans text-bianco/60 mb-2">Numero ordine</p>
+          <p className="font-sans text-bianco/60 mb-2">{t('orderNumberLabel')}</p>
           <p className="font-mono text-xl text-gold">{orderNumber}</p>
         </motion.div>
 
@@ -134,7 +136,7 @@ function SuccessContent() {
             <Mail size={20} className="text-gold mt-1 flex-shrink-0" />
             <div>
               <p className="font-sans text-bianco text-sm">
-                Riceverai una email di conferma con tutti i dettagli del tuo ordine.
+                {t('successEmailMessage')}
               </p>
             </div>
           </div>
@@ -143,7 +145,7 @@ function SuccessContent() {
             <Package size={20} className="text-gold mt-1 flex-shrink-0" />
             <div>
               <p className="font-sans text-bianco text-sm">
-                Il tuo ordine sarà spedito entro 2-3 giorni lavorativi.
+                {t('successShipMessage')}
               </p>
             </div>
           </div>
@@ -159,7 +161,7 @@ function SuccessContent() {
             href={`/${locale}`}
             className="btn-primary inline-flex items-center gap-2"
           >
-            <span>Torna alla Home</span>
+            <span>{t('backToHome')}</span>
             <ArrowRight size={16} />
           </Link>
         </motion.div>
@@ -171,7 +173,7 @@ function SuccessContent() {
           transition={{ delay: 0.8 }}
           className="mt-12 font-sans text-xs text-bianco/40"
         >
-          Per qualsiasi domanda, contattaci a{' '}
+          {t('footerNotePre')}{' '}
           <a href="mailto:gb.obletter@gmail.com" className="text-gold hover:underline">
             gb.obletter@gmail.com
           </a>
@@ -185,7 +187,7 @@ export default function CheckoutSuccessPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-nero flex items-center justify-center">
-        <div className="text-gold font-sans">Caricamento...</div>
+        <div className="text-gold font-sans">Loading…</div>
       </div>
     }>
       <SuccessContent />

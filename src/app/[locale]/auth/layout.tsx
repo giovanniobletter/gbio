@@ -4,11 +4,13 @@ import { ReactNode } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { CustomCursor } from '@/components/layout/CustomCursor'
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   const params = useParams()
   const locale = params.locale as string
+  const t = useTranslations('auth')
   return (
     <div className="min-h-screen bg-nero flex">
       <CustomCursor />
@@ -33,20 +35,20 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             />
           </Link>
           <p className="font-sans text-gold/80 text-sm uppercase tracking-[0.3em] max-w-md">
-            GREATNESS BEYOND ORDINARY
+            {t('brandTagline')}
           </p>
           <div className="mt-12 flex gap-8">
             <div className="text-center">
               <span className="font-serif text-4xl text-gold">49</span>
-              <p className="font-sans text-xs text-bianco/50 mt-1">Ettari</p>
+              <p className="font-sans text-xs text-bianco/50 mt-1">{t('statHectares')}</p>
             </div>
             <div className="text-center">
               <span className="font-serif text-4xl text-gold">DOP</span>
-              <p className="font-sans text-xs text-bianco/50 mt-1">Certificato</p>
+              <p className="font-sans text-xs text-bianco/50 mt-1">{t('statCertified')}</p>
             </div>
             <div className="text-center">
               <span className="font-serif text-4xl text-gold">100%</span>
-              <p className="font-sans text-xs text-bianco/50 mt-1">Biologico</p>
+              <p className="font-sans text-xs text-bianco/50 mt-1">{t('statOrganic')}</p>
             </div>
           </div>
         </div>

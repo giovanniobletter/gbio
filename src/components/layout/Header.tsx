@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { navigation } from '@/data/navigation'
 import { useCart } from '@/context/CartContext'
 import { LanguageSwitcher } from '@/components/ui/LanguageSwitcher'
@@ -13,6 +13,8 @@ import { cn } from '@/lib/utils'
 
 export function Header() {
   const locale = useLocale()
+  const tNav = useTranslations('footer.links')
+  const tCommon = useTranslations('common')
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -73,7 +75,7 @@ export function Header() {
                 href={`/${locale}${item.href}`}
                 className="font-sans text-xs uppercase tracking-[0.2em] text-bianco/80 hover:text-gold transition-colors duration-300"
               >
-                {item.label}
+                {tNav(item.labelKey)}
               </a>
             ))}
           </nav>
@@ -87,7 +89,7 @@ export function Header() {
             <button
               onClick={openCart}
               className="relative p-2 text-gold hover:text-gold-light transition-colors"
-              aria-label="Apri carrello"
+              aria-label={tCommon('cart')}
             >
               <ShoppingBag size={22} />
               <AnimatePresence>
@@ -108,7 +110,7 @@ export function Header() {
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="lg:hidden text-gold p-2"
-              aria-label="Apri menu"
+              aria-label="Menu"
             >
               <Menu size={24} />
             </button>
@@ -151,7 +153,7 @@ export function Header() {
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-gold p-2"
-                  aria-label="Chiudi menu"
+                  aria-label="Close menu"
                 >
                   <X size={24} />
                 </button>
@@ -169,7 +171,7 @@ export function Header() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="font-serif text-3xl text-bianco hover:text-gold transition-colors duration-300 py-4 border-b border-gold/10"
                   >
-                    {item.label}
+                    {tNav(item.labelKey)}
                   </motion.a>
                 ))}
 
@@ -186,7 +188,7 @@ export function Header() {
                   className="font-serif text-3xl text-gold hover:text-gold-light transition-colors duration-300 py-4 border-b border-gold/10 text-left flex items-center gap-3"
                 >
                   <ShoppingBag size={28} />
-                  Carrello
+                  {tCommon('cart')}
                   {itemCount > 0 && (
                     <span className="text-lg">({itemCount})</span>
                   )}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslations, useLocale } from 'next-intl'
 import { X } from 'lucide-react'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
@@ -32,6 +33,8 @@ declare global {
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
+  const t = useTranslations('cookies')
+  const locale = useLocale()
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent')
@@ -69,7 +72,7 @@ export function CookieBanner() {
             <button
               onClick={reject}
               className="absolute top-4 right-4 text-bianco/40 hover:text-gold transition-colors"
-              aria-label="Chiudi"
+              aria-label={t('close')}
             >
               <X size={18} />
             </button>
@@ -77,16 +80,15 @@ export function CookieBanner() {
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="flex-1">
                 <h3 className="font-serif text-lg text-gold mb-2">
-                  Questo sito utilizza i cookie
+                  {t('title')}
                 </h3>
                 <p className="font-sans text-sm text-bianco/60 leading-relaxed">
-                  Utilizziamo cookie tecnici necessari e, con il tuo consenso, cookie analitici
-                  per migliorare la tua esperienza. Leggi la nostra{' '}
-                  <a href="/it/cookies" className="text-gold hover:underline">
-                    Cookie Policy
+                  {t('message')}{' '}
+                  <a href={`/${locale}/cookies`} className="text-gold hover:underline">
+                    {t('policy')}
                   </a>{' '}
-                  e la{' '}
-                  <a href="/it/privacy" className="text-gold hover:underline">
+                  {t('andOur')}{' '}
+                  <a href={`/${locale}/privacy`} className="text-gold hover:underline">
                     Privacy Policy
                   </a>.
                 </p>
@@ -97,13 +99,13 @@ export function CookieBanner() {
                   onClick={reject}
                   className="px-5 py-2.5 border border-gold/30 text-bianco/60 font-sans text-xs uppercase tracking-[0.15em] hover:border-gold hover:text-bianco transition-all duration-300"
                 >
-                  Rifiuta
+                  {t('reject')}
                 </button>
                 <button
                   onClick={accept}
                   className="px-5 py-2.5 bg-gold text-nero font-sans text-xs uppercase tracking-[0.15em] hover:bg-gold-light transition-all duration-300"
                 >
-                  Accetta
+                  {t('accept')}
                 </button>
               </div>
             </div>

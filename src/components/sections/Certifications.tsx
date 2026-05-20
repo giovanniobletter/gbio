@@ -2,42 +2,45 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { Leaf, Award, Shield, CheckCircle } from 'lucide-react'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { luxuryFadeUp, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
-const certifications = [
-  {
-    icon: Leaf,
-    logo: '/images/logo-bio-eu.png',
-    title: 'Biologico Certificato ICEA',
-    code: 'IT-BIO-006 • Operatore S2451',
-    description: 'Tutti i nostri prodotti sono certificati biologici dall\'Istituto per la Certificazione Etica e Ambientale secondo il Reg. UE 2018/848. Nessun pesticida, nessun OGM, solo natura.',
-    features: [
-      'Coltivazione senza pesticidi chimici',
-      'Fertilizzazione naturale',
-      'Rispetto della biodiversità',
-      'Rotazione delle colture',
-    ],
-  },
-  {
-    icon: Award,
-    logo: '/images/logo-dop.png',
-    title: 'DOP Aprutino Pescarese',
-    code: 'Reg. CE 1263/96',
-    description: 'Il nostro olio extravergine è certificato DOP, a garanzia dell\'origine e della qualità superiore riconosciuta a livello europeo.',
-    features: [
-      'Origine garantita',
-      'Disciplinare di produzione rigoroso',
-      'Controlli di qualità continui',
-      'Tracciabilità completa',
-    ],
-  },
-]
-
 export function Certifications() {
+  const t = useTranslations('certifications')
+
+  const certifications = [
+    {
+      icon: Leaf,
+      logo: '/images/logo-bio-eu.png',
+      title: t('icea.title'),
+      code: t('icea.code'),
+      description: t('icea.description'),
+      features: [
+        t('icea.feature1'),
+        t('icea.feature2'),
+        t('icea.feature3'),
+        t('icea.feature4'),
+      ],
+    },
+    {
+      icon: Award,
+      logo: '/images/logo-dop.png',
+      title: t('dop.title'),
+      code: t('dop.code'),
+      description: t('dop.description'),
+      features: [
+        t('dop.feature1'),
+        t('dop.feature2'),
+        t('dop.feature3'),
+        t('dop.feature4'),
+      ],
+    },
+  ]
+
   return (
     <section id="certificazioni" className="section-padding bg-nero relative">
       {/* Subtle texture overlay */}
@@ -48,9 +51,9 @@ export function Certifications() {
 
       <div className="container-custom">
         <SectionTitle
-          eyebrow="Garanzia di Qualità"
-          title="Le Nostre Certificazioni"
-          subtitle="La qualità non è un caso, ma il risultato di scelte consapevoli e standard rigorosi."
+          eyebrow={t('eyebrow')}
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
 
         {/* Ornate divider */}
@@ -65,7 +68,7 @@ export function Certifications() {
           viewport={{ once: true, margin: '-100px' }}
           className="mt-12 grid md:grid-cols-2 gap-8 lg:gap-12"
         >
-          {certifications.map((cert, index) => (
+          {certifications.map((cert) => (
             <motion.article
               key={cert.title}
               variants={luxuryStaggerItem}
@@ -125,19 +128,19 @@ export function Certifications() {
           <div className="flex items-center gap-3 px-6 py-3 border border-gold/30 hover:border-gold/60 hover:glow-gold transition-all duration-700 cursor-default">
             <Shield size={20} className="text-gold" />
             <span className="font-sans text-xs uppercase tracking-luxe text-bianco/60">
-              Filiera Controllata
+              {t('badges.supplyChain')}
             </span>
           </div>
           <div className="flex items-center gap-3 px-6 py-3 border border-gold/30 hover:border-gold/60 hover:glow-gold transition-all duration-700 cursor-default">
             <Award size={20} className="text-gold" />
             <span className="font-sans text-xs uppercase tracking-luxe text-bianco/60">
-              Made in Italy
+              {t('badges.madeInItaly')}
             </span>
           </div>
           <div className="flex items-center gap-3 px-6 py-3 border border-gold/30 hover:border-gold/60 hover:glow-gold transition-all duration-700 cursor-default">
             <Leaf size={20} className="text-gold" />
             <span className="font-sans text-xs uppercase tracking-luxe text-bianco/60">
-              Zero Residui
+              {t('badges.zeroResidues')}
             </span>
           </div>
         </motion.div>

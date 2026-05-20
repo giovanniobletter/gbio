@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Providers } from '@/components/Providers'
+import { CookieBanner } from '@/components/ui/CookieBanner'
 import { locales, type Locale } from '@/i18n/config'
 
 type Props = {
@@ -102,6 +103,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <Providers>{children}</Providers>
+      <CookieBanner />
     </NextIntlClientProvider>
   )
 }

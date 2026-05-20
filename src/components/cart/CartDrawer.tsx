@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { useCart } from '@/context/CartContext'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
@@ -11,6 +12,8 @@ import { useParams } from 'next/navigation'
 export function CartDrawer() {
   const params = useParams()
   const locale = params.locale as string || 'it'
+  const t = useTranslations('cartDrawer')
+  const tCart = useTranslations('cart')
   const {
     items,
     isOpen,
@@ -58,7 +61,7 @@ export function CartDrawer() {
               <div className="flex items-center gap-3">
                 <ShoppingBag size={20} className="text-gold" />
                 <h2 className="font-serif text-xl text-bianco">
-                  Carrello
+                  {tCart('title')}
                   {itemCount > 0 && (
                     <span className="text-gold ml-2">({itemCount})</span>
                   )}
@@ -67,7 +70,7 @@ export function CartDrawer() {
               <button
                 onClick={closeCart}
                 className="text-bianco/60 hover:text-gold transition-colors p-2"
-                aria-label="Chiudi carrello"
+                aria-label={tCart('close')}
               >
                 <X size={24} />
               </button>
@@ -79,13 +82,13 @@ export function CartDrawer() {
                 <div className="h-full flex flex-col items-center justify-center text-center">
                   <ShoppingBag size={48} className="text-gold/30 mb-4" />
                   <p className="font-serif text-xl text-bianco mb-2">
-                    Il carrello è vuoto
+                    {tCart('empty')}
                   </p>
                   <p className="font-sans text-sm text-bianco/50 mb-6">
-                    Scopri i nostri prodotti biologici
+                    {tCart('emptyDescription')}
                   </p>
-                  <Button onClick={closeCart} href="#prodotti">
-                    Vai ai Prodotti
+                  <Button onClick={closeCart} href={`/${locale}/#prodotti`}>
+                    {tCart('goToProducts')}
                   </Button>
                 </div>
               ) : (
@@ -128,7 +131,7 @@ export function CartDrawer() {
                         <button
                           onClick={() => removeItem(item.product.id)}
                           className="text-bianco/40 hover:text-red-400 transition-colors p-1"
-                          aria-label="Rimuovi dal carrello"
+                          aria-label={tCart('removeItem')}
                         >
                           <Trash2 size={16} />
                         </button>
@@ -139,7 +142,7 @@ export function CartDrawer() {
                               updateQuantity(item.product.id, item.quantity - 1)
                             }
                             className="w-8 h-8 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-nero transition-all"
-                            aria-label="Diminuisci quantità"
+                            aria-label={tCart('decreaseQuantity')}
                           >
                             <Minus size={14} />
                           </button>
@@ -151,7 +154,7 @@ export function CartDrawer() {
                               updateQuantity(item.product.id, item.quantity + 1)
                             }
                             className="w-8 h-8 border border-gold/30 flex items-center justify-center text-gold hover:bg-gold hover:text-nero transition-all"
-                            aria-label="Aumenta quantità"
+                            aria-label={tCart('increaseQuantity')}
                           >
                             <Plus size={14} />
                           </button>
@@ -169,14 +172,14 @@ export function CartDrawer() {
                 {/* Subtotals */}
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between font-sans text-sm">
-                    <span className="text-bianco/60">Subtotale</span>
+                    <span className="text-bianco/60">{t('subtotal')}</span>
                     <span className="text-bianco">{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between font-sans text-sm">
-                    <span className="text-bianco/60">Spedizione</span>
+                    <span className="text-bianco/60">{t('shipping')}</span>
                     <span className="text-bianco">
                       {shipping === 0 ? (
-                        <span className="text-forest">Gratuita</span>
+                        <span className="text-forest">{t('free')}</span>
                       ) : (
                         formatPrice(shipping)
                       )}
@@ -184,20 +187,20 @@ export function CartDrawer() {
                   </div>
                   {freeShippingThreshold !== null && subtotal < freeShippingThreshold && (
                     <p className="font-sans text-xs text-gold/60 text-center py-2 border border-gold/20">
-                      Aggiungi {formatPrice(freeShippingThreshold - subtotal)} per la spedizione gratuita
+                      {t('addForFreeShipping', { amount: formatPrice(freeShippingThreshold - subtotal) })}
                     </p>
                   )}
                   {shippingZone === 'extra_eu' && (
                     <p className="font-sans text-xs text-bianco/40 text-center py-2 border border-gold/20">
-                      Spedizione extra-UE &mdash; tariffa fissa
+                      {t('extraEuShipping')}
                     </p>
                   )}
                   <div className="flex justify-between font-serif text-xl pt-3 border-t border-gold/20">
-                    <span className="text-bianco">Totale</span>
+                    <span className="text-bianco">{t('total')}</span>
                     <span className="text-gold">{formatPrice(total)}</span>
                   </div>
                   <p className="font-sans text-[10px] text-bianco/30 text-center pt-1">
-                    {shippingZone === 'italia' ? 'Spedizione in Italia' : shippingZone === 'europa' ? 'Spedizione in Europa' : 'Spedizione extra-UE'} &mdash; cambia paese al checkout
+                    {shippingZone === 'italia' ? t('shippingItaly') : shippingZone === 'europa' ? t('shippingEurope') : t('shippingExtraEu')} {t('changeCountry')}
                   </p>
                 </div>
 
@@ -207,7 +210,7 @@ export function CartDrawer() {
                   onClick={closeCart}
                   className="btn-primary w-full flex items-center justify-center gap-2"
                 >
-                  <span>Procedi al Checkout</span>
+                  <span>{t('proceedCheckout')}</span>
                   <ArrowRight size={16} />
                 </Link>
 
@@ -215,7 +218,7 @@ export function CartDrawer() {
                   onClick={closeCart}
                   className="w-full mt-3 py-3 font-sans text-xs uppercase tracking-[0.2em] text-bianco/50 hover:text-gold transition-colors"
                 >
-                  Continua lo shopping
+                  {t('continueShopping')}
                 </button>
               </div>
             )}

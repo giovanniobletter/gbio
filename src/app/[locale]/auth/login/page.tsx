@@ -4,6 +4,7 @@ import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { Eye, EyeOff, Loader2, ArrowRight } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
@@ -16,6 +17,7 @@ function LoginForm() {
   const searchParams = useSearchParams()
   const returnUrl = searchParams.get('returnUrl') || `/${locale}`
   const { login, isLoading } = useAuth()
+  const t = useTranslations('auth')
 
   const [formData, setFormData] = useState({
     email: '',
@@ -35,7 +37,7 @@ function LoginForm() {
     if (result.success) {
       router.push(returnUrl)
     } else {
-      setError(result.error || 'Errore durante il login')
+      setError(result.error || t('errors.loginError'))
       setIsSubmitting(false)
     }
   }
@@ -60,10 +62,10 @@ function LoginForm() {
     >
       <motion.div variants={staggerItem} className="text-center mb-8">
         <h1 className="font-serif text-3xl lg:text-4xl text-bianco mb-2">
-          Bentornato
+          {t('welcomeBack')}
         </h1>
         <p className="font-sans text-bianco/60">
-          Accedi al tuo account GBiO
+          {t('loginDescription')}
         </p>
       </motion.div>
 
@@ -84,7 +86,7 @@ function LoginForm() {
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Email
+            {t('labels.email')}
           </label>
           <input
             type="email"
@@ -93,14 +95,14 @@ function LoginForm() {
             onChange={handleChange}
             required
             className={inputStyles}
-            placeholder="nome@email.it"
+            placeholder={t('placeholders.email')}
             autoComplete="email"
           />
         </div>
 
         <div>
           <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-            Password
+            {t('labels.password')}
           </label>
           <div className="relative">
             <input
@@ -110,7 +112,7 @@ function LoginForm() {
               onChange={handleChange}
               required
               className={cn(inputStyles, 'pr-12')}
-              placeholder="La tua password"
+              placeholder={t('placeholders.password')}
               autoComplete="current-password"
             />
             <button
@@ -129,13 +131,13 @@ function LoginForm() {
               type="checkbox"
               className="w-4 h-4 accent-gold"
             />
-            <span className="font-sans text-sm text-bianco/60">Ricordami</span>
+            <span className="font-sans text-sm text-bianco/60">{t('rememberMe')}</span>
           </label>
           <Link
             href={`/${locale}/auth/reset-password`}
             className="font-sans text-sm text-gold hover:text-gold-light transition-colors"
           >
-            Password dimenticata?
+            {t('forgotPassword')}
           </Link>
         </div>
 
@@ -150,11 +152,11 @@ function LoginForm() {
           {isSubmitting || isLoading ? (
             <>
               <Loader2 size={16} className="animate-spin" />
-              <span>Accesso in corso...</span>
+              <span>{t('loginInProgress')}</span>
             </>
           ) : (
             <>
-              <span>Accedi</span>
+              <span>{t('login')}</span>
               <ArrowRight size={16} />
             </>
           )}
@@ -163,12 +165,12 @@ function LoginForm() {
 
       <motion.div variants={staggerItem} className="mt-8 text-center">
         <p className="font-sans text-bianco/60">
-          Non hai un account?{' '}
+          {t('noAccount')}{' '}
           <Link
             href={`/${locale}/auth/register${returnUrl !== `/${locale}` ? `?returnUrl=${encodeURIComponent(returnUrl)}` : ''}`}
             className="text-gold hover:text-gold-light transition-colors"
           >
-            Registrati
+            {t('register')}
           </Link>
         </p>
       </motion.div>
@@ -180,7 +182,7 @@ function LoginForm() {
           </div>
           <div className="relative flex justify-center">
             <span className="px-4 bg-nero font-sans text-xs text-bianco/40">
-              oppure
+              {t('or')}
             </span>
           </div>
         </div>
@@ -205,7 +207,7 @@ function LoginForm() {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            Continua con Google
+            {t('continueWithGoogle')}
           </button>
         </div>
       </motion.div>

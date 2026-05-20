@@ -3,12 +3,14 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import { ArrowLeft, Home } from 'lucide-react'
 import { CustomCursor } from '@/components/layout/CustomCursor'
 
 export default function NotFound() {
   const params = useParams()
   const locale = (params?.locale as string) || 'it'
+  const t = useTranslations('notFound')
 
   return (
     <>
@@ -62,7 +64,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-serif text-3xl md:text-4xl text-bianco mb-4"
           >
-            Pagina Non Trovata
+            {t('title')}
           </motion.h1>
 
           {/* Description */}
@@ -72,9 +74,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="font-sans text-bianco/60 mb-12 leading-relaxed"
           >
-            La pagina che stai cercando non esiste o è stata spostata.
-            <br />
-            Ti invitiamo a tornare alla nostra home page.
+            {t('message')}
           </motion.p>
 
           {/* Buttons */}
@@ -89,7 +89,7 @@ export default function NotFound() {
               className="btn-primary inline-flex items-center gap-2"
             >
               <Home size={16} />
-              <span>Torna alla Home</span>
+              <span>{t('home')}</span>
             </Link>
 
             <button
@@ -98,7 +98,7 @@ export default function NotFound() {
             >
               <ArrowLeft size={16} />
               <span className="font-sans text-sm uppercase tracking-wider">
-                Torna Indietro
+                {t('goBack')}
               </span>
             </button>
           </motion.div>
@@ -110,7 +110,7 @@ export default function NotFound() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-16 font-serif text-sm text-gold/40 italic"
           >
-            {`"Anche chi si perde, trova la strada verso l'eccellenza"`}
+            {t('quote')}
           </motion.p>
         </div>
 

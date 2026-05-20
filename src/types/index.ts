@@ -23,6 +23,7 @@ export interface CartItem {
 
 export interface NavItem {
   label: string
+  labelKey: string
   href: string
 }
 

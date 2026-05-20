@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import {
   ArrowLeft,
@@ -44,6 +45,7 @@ function CheckoutContent() {
   const router = useRouter()
   const params = useParams()
   const locale = params.locale as string
+  const t = useTranslations('checkout')
   const { items, subtotal, shipping, total, clearCart, shippingZone, setShippingZone, freeShippingThreshold } = useCart()
   const { user, isAuthenticated } = useAuth()
   const [step, setStep] = useState<'shipping' | 'payment' | 'confirmation'>('shipping')
@@ -86,7 +88,7 @@ function CheckoutContent() {
   }, [user])
 
   const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('it-IT', {
+    return new Intl.NumberFormat(locale === 'en' ? 'en-GB' : 'it-IT', {
       style: 'currency',
       currency: 'EUR',
     }).format(price)
@@ -95,23 +97,23 @@ function CheckoutContent() {
   const validateShipping = () => {
     const newErrors: Partial<ShippingAddress> = {}
 
-    if (!formData.firstName.trim()) newErrors.firstName = 'Obbligatorio'
-    if (!formData.lastName.trim()) newErrors.lastName = 'Obbligatorio'
-    if (!formData.email.trim()) newErrors.email = 'Obbligatorio'
+    if (!formData.firstName.trim()) newErrors.firstName = t('required')
+    if (!formData.lastName.trim()) newErrors.lastName = t('required')
+    if (!formData.email.trim()) newErrors.email = t('required')
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email non valida'
+      newErrors.email = t('invalidEmail')
     }
-    if (!formData.phone.trim()) newErrors.phone = 'Obbligatorio'
-    if (!formData.address.trim()) newErrors.address = 'Obbligatorio'
-    if (!formData.city.trim()) newErrors.city = 'Obbligatorio'
+    if (!formData.phone.trim()) newErrors.phone = t('required')
+    if (!formData.address.trim()) newErrors.address = t('required')
+    if (!formData.city.trim()) newErrors.city = t('required')
     if (countryCode === 'IT') {
-      if (!formData.province.trim()) newErrors.province = 'Obbligatorio'
-      if (!formData.postalCode.trim()) newErrors.postalCode = 'Obbligatorio'
+      if (!formData.province.trim()) newErrors.province = t('required')
+      if (!formData.postalCode.trim()) newErrors.postalCode = t('required')
       else if (!/^\d{5}$/.test(formData.postalCode)) {
-        newErrors.postalCode = 'CAP non valido'
+        newErrors.postalCode = t('invalidPostalCode')
       }
     } else {
-      if (!formData.postalCode.trim()) newErrors.postalCode = 'Obbligatorio'
+      if (!formData.postalCode.trim()) newErrors.postalCode = t('required')
     }
 
     setErrors(newErrors)
@@ -138,11 +140,11 @@ function CheckoutContent() {
         setClientSecret(data.clientSecret)
         setStep('payment')
       } else {
-        throw new Error(data.error || 'Errore durante la creazione del pagamento')
+        throw new Error(data.error || t('paymentIntentError'))
       }
     } catch (error) {
       console.error('PaymentIntent error:', error)
-      setPaymentError('Si è verificato un errore. Riprova.')
+      setPaymentError(t('paymentError'))
     } finally {
       setIsProcessing(false)
     }
@@ -182,17 +184,17 @@ function CheckoutContent() {
       <div className="min-h-screen bg-nero flex items-center justify-center p-6">
         <div className="text-center">
           <h1 className="font-serif text-3xl text-bianco mb-4">
-            Il carrello è vuoto
+            {t('cartEmpty')}
           </h1>
           <p className="font-sans text-bianco/60 mb-8">
-            Aggiungi dei prodotti per procedere al checkout
+            {t('emptyMessage')}
           </p>
           <Link
             href={`/${locale}/#prodotti`}
             className="btn-primary inline-flex items-center gap-2"
           >
             <ArrowLeft size={16} />
-            <span>Torna ai Prodotti</span>
+            <span>{t('backToProducts')}</span>
           </Link>
         </div>
       </div>
@@ -216,19 +218,19 @@ function CheckoutContent() {
             <Check size={40} className="text-gold" />
           </motion.div>
           <h1 className="font-serif text-4xl text-bianco mb-4">
-            Grazie per il tuo ordine!
+            {t('orderThanks')}
           </h1>
           <p className="font-sans text-bianco/70 mb-2">
-            Ordine #{Math.random().toString(36).substring(2, 10).toUpperCase()}
+            {t('orderNumber', { number: Math.random().toString(36).substring(2, 10).toUpperCase() })}
           </p>
           <p className="font-sans text-bianco/60 mb-8">
-            Riceverai una email di conferma a{' '}
-            <span className="text-gold">{formData.email}</span> con tutti i
-            dettagli del tuo ordine.
+            {t('orderEmailConfirmationPre')}
+            <span className="text-gold">{formData.email}</span>
+            {t('orderEmailConfirmationPost')}
           </p>
           <div className="p-6 border border-gold/20 mb-8 text-left">
             <h3 className="font-sans text-xs uppercase tracking-[0.2em] text-gold mb-4">
-              Indirizzo di spedizione
+              {t('shippingAddressLabel')}
             </h3>
             <p className="font-sans text-bianco/80">
               {formData.firstName} {formData.lastName}
@@ -244,7 +246,7 @@ function CheckoutContent() {
             href={`/${locale}`}
             className="btn-primary inline-flex items-center gap-2"
           >
-            <span>Torna alla Home</span>
+            <span>{t('backToHome')}</span>
           </Link>
         </motion.div>
       </div>
@@ -270,7 +272,7 @@ function CheckoutContent() {
             className="font-sans text-xs uppercase tracking-[0.2em] text-bianco/60 hover:text-gold transition-colors flex items-center gap-2"
           >
             <ArrowLeft size={16} />
-            Torna al sito
+            {t('backToSite')}
           </Link>
         </div>
       </header>
@@ -291,7 +293,7 @@ function CheckoutContent() {
                 1
               </div>
               <span className="font-sans text-sm text-bianco hidden sm:inline">
-                Spedizione
+                {t('stepShipping')}
               </span>
             </div>
             <div className="w-12 h-px bg-gold/30" />
@@ -307,7 +309,7 @@ function CheckoutContent() {
                 2
               </div>
               <span className="font-sans text-sm text-bianco hidden sm:inline">
-                Pagamento
+                {t('stepPayment')}
               </span>
             </div>
           </div>
@@ -329,7 +331,7 @@ function CheckoutContent() {
               >
                 <motion.div variants={staggerItem}>
                   <h2 className="font-serif text-2xl text-bianco mb-6">
-                    Indirizzo di Spedizione
+                    {t('shippingAddress')}
                   </h2>
 
                   {/* Login prompt for guests */}
@@ -339,14 +341,14 @@ function CheckoutContent() {
                         <User size={20} className="text-gold" />
                         <div>
                           <p className="font-sans text-sm text-bianco">
-                            Hai già un account?{' '}
+                            {t('loginPromptPre')}{' '}
                             <Link
                               href={`/${locale}/auth/login?returnUrl=/${locale}/checkout`}
                               className="text-gold hover:underline"
                             >
-                              Accedi
+                              {t('loginLink')}
                             </Link>
-                            {' '}per un checkout più veloce.
+                            {' '}{t('loginPromptPost')}
                           </p>
                         </div>
                       </div>
@@ -357,7 +359,7 @@ function CheckoutContent() {
                   {isAuthenticated && user && user.addresses.length > 0 && (
                     <div className="mb-6">
                       <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-3">
-                        Indirizzi salvati
+                        {t('savedAddresses')}
                       </label>
                       <div className="space-y-3">
                         {user.addresses.map((addr, index) => (
@@ -424,7 +426,7 @@ function CheckoutContent() {
                               className="accent-gold"
                             />
                             <span className="font-sans text-bianco">
-                              Usa un nuovo indirizzo
+                              {t('useNewAddress')}
                             </span>
                           </div>
                         </label>
@@ -435,7 +437,7 @@ function CheckoutContent() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                        Nome *
+                        {t('firstName')} *
                       </label>
                       <input
                         type="text"
@@ -443,7 +445,7 @@ function CheckoutContent() {
                         value={formData.firstName}
                         onChange={handleChange}
                         className={cn(inputStyles, errors.firstName && 'border-red-400')}
-                        placeholder="Mario"
+                        placeholder={t('placeholders.firstName')}
                       />
                       {errors.firstName && (
                         <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>
@@ -451,7 +453,7 @@ function CheckoutContent() {
                     </div>
                     <div>
                       <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                        Cognome *
+                        {t('lastName')} *
                       </label>
                       <input
                         type="text"
@@ -459,7 +461,7 @@ function CheckoutContent() {
                         value={formData.lastName}
                         onChange={handleChange}
                         className={cn(inputStyles, errors.lastName && 'border-red-400')}
-                        placeholder="Rossi"
+                        placeholder={t('placeholders.lastName')}
                       />
                       {errors.lastName && (
                         <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>
@@ -471,7 +473,7 @@ function CheckoutContent() {
                 <motion.div variants={staggerItem} className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                      Email *
+                      {t('email')} *
                     </label>
                     <input
                       type="email"
@@ -479,7 +481,7 @@ function CheckoutContent() {
                       value={formData.email}
                       onChange={handleChange}
                       className={cn(inputStyles, errors.email && 'border-red-400')}
-                      placeholder="mario.rossi@email.it"
+                      placeholder={t('placeholders.email')}
                     />
                     {errors.email && (
                       <p className="text-red-400 text-xs mt-1">{errors.email}</p>
@@ -487,7 +489,7 @@ function CheckoutContent() {
                   </div>
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                      Telefono *
+                      {t('phone')} *
                     </label>
                     <input
                       type="tel"
@@ -495,7 +497,7 @@ function CheckoutContent() {
                       value={formData.phone}
                       onChange={handleChange}
                       className={cn(inputStyles, errors.phone && 'border-red-400')}
-                      placeholder="+39 333 123 4567"
+                      placeholder={t('placeholders.phone')}
                     />
                     {errors.phone && (
                       <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
@@ -505,7 +507,7 @@ function CheckoutContent() {
 
                 <motion.div variants={staggerItem}>
                   <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                    Indirizzo *
+                    {t('address')} *
                   </label>
                   <input
                     type="text"
@@ -513,7 +515,7 @@ function CheckoutContent() {
                     value={formData.address}
                     onChange={handleChange}
                     className={cn(inputStyles, errors.address && 'border-red-400')}
-                    placeholder="Via Roma, 123"
+                    placeholder={t('placeholders.address')}
                   />
                   {errors.address && (
                     <p className="text-red-400 text-xs mt-1">{errors.address}</p>
@@ -522,7 +524,7 @@ function CheckoutContent() {
 
                 <motion.div variants={staggerItem}>
                   <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                    Paese *
+                    {t('country')} *
                   </label>
                   <select
                     value={countryCode}
@@ -540,7 +542,7 @@ function CheckoutContent() {
                 <motion.div variants={staggerItem} className={cn('grid gap-6', countryCode === 'IT' ? 'md:grid-cols-3' : 'md:grid-cols-2')}>
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                      Città *
+                      {t('city')} *
                     </label>
                     <input
                       type="text"
@@ -548,7 +550,7 @@ function CheckoutContent() {
                       value={formData.city}
                       onChange={handleChange}
                       className={cn(inputStyles, errors.city && 'border-red-400')}
-                      placeholder="Roma"
+                      placeholder={t('placeholders.city')}
                     />
                     {errors.city && (
                       <p className="text-red-400 text-xs mt-1">{errors.city}</p>
@@ -557,7 +559,7 @@ function CheckoutContent() {
                   {countryCode === 'IT' && (
                     <div>
                       <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                        Provincia *
+                        {t('province')} *
                       </label>
                       <select
                         name="province"
@@ -565,7 +567,7 @@ function CheckoutContent() {
                         onChange={handleChange}
                         className={cn(inputStyles, 'appearance-none', errors.province && 'border-red-400')}
                       >
-                        <option value="" className="bg-nero">Seleziona...</option>
+                        <option value="" className="bg-nero">{t('selectPlaceholder')}</option>
                         {provinces.map((prov) => (
                           <option key={prov} value={prov} className="bg-nero">
                             {prov}
@@ -579,7 +581,7 @@ function CheckoutContent() {
                   )}
                   <div>
                     <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                      {countryCode === 'IT' ? 'CAP' : 'Codice postale'} *
+                      {countryCode === 'IT' ? t('postalCode') : t('postalCodeIntl')} *
                     </label>
                     <input
                       type="text"
@@ -588,7 +590,7 @@ function CheckoutContent() {
                       onChange={handleChange}
                       maxLength={countryCode === 'IT' ? 5 : 10}
                       className={cn(inputStyles, errors.postalCode && 'border-red-400')}
-                      placeholder={countryCode === 'IT' ? '00100' : ''}
+                      placeholder={countryCode === 'IT' ? t('placeholders.postalCode') : ''}
                     />
                     {errors.postalCode && (
                       <p className="text-red-400 text-xs mt-1">{errors.postalCode}</p>
@@ -598,7 +600,7 @@ function CheckoutContent() {
 
                 <motion.div variants={staggerItem}>
                   <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
-                    Note per la consegna
+                    {t('deliveryNotes')}
                   </label>
                   <textarea
                     name="notes"
@@ -606,7 +608,7 @@ function CheckoutContent() {
                     onChange={handleChange}
                     rows={3}
                     className={cn(inputStyles, 'resize-none')}
-                    placeholder="Citofono, piano, orari preferiti..."
+                    placeholder={t('deliveryNotesPlaceholder')}
                   />
                 </motion.div>
 
@@ -622,10 +624,10 @@ function CheckoutContent() {
                     {isProcessing ? (
                       <>
                         <Loader2 size={16} className="animate-spin" />
-                        <span>Caricamento...</span>
+                        <span>{t('loading')}</span>
                       </>
                     ) : (
-                      <span>Continua al Pagamento</span>
+                      <span>{t('continueToPayment')}</span>
                     )}
                   </button>
                   {paymentError && (
@@ -650,14 +652,14 @@ function CheckoutContent() {
                     className="font-sans text-xs uppercase tracking-[0.2em] text-gold/60 hover:text-gold transition-colors flex items-center gap-2 mb-6"
                   >
                     <ArrowLeft size={14} />
-                    Modifica indirizzo
+                    {t('editAddress')}
                   </button>
 
                   <h2 className="font-serif text-2xl text-bianco mb-2">
-                    Metodo di Pagamento
+                    {t('paymentMethod')}
                   </h2>
                   <p className="font-sans text-bianco/60 mb-6">
-                    Spedizione a: {formData.firstName} {formData.lastName}, {formData.city}
+                    {t('shippingTo')} {formData.firstName} {formData.lastName}, {formData.city}
                   </p>
                 </motion.div>
 
@@ -675,11 +677,11 @@ function CheckoutContent() {
                 <motion.div variants={staggerItem} className="flex items-center gap-6 text-bianco/40">
                   <div className="flex items-center gap-2">
                     <Shield size={16} />
-                    <span className="text-xs">Pagamento sicuro SSL</span>
+                    <span className="text-xs">{t('secureSSL')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Check size={16} />
-                    <span className="text-xs">Protezione acquirente</span>
+                    <span className="text-xs">{t('buyerProtection')}</span>
                   </div>
                 </motion.div>
 
@@ -692,7 +694,7 @@ function CheckoutContent() {
                       </div>
                       <div>
                         <p className="font-sans text-bianco/50 text-sm">PayPal</p>
-                        <p className="font-sans text-xs text-bianco/30">Presto disponibile</p>
+                        <p className="font-sans text-xs text-bianco/30">{t('comingSoon')}</p>
                       </div>
                     </div>
                   </div>
@@ -700,8 +702,8 @@ function CheckoutContent() {
                     <div className="flex items-center gap-4">
                       <Truck size={20} className="text-gold/30" />
                       <div>
-                        <p className="font-sans text-bianco/50 text-sm">Contrassegno</p>
-                        <p className="font-sans text-xs text-bianco/30">Presto disponibile</p>
+                        <p className="font-sans text-bianco/50 text-sm">{t('cashOnDelivery')}</p>
+                        <p className="font-sans text-xs text-bianco/30">{t('comingSoon')}</p>
                       </div>
                     </div>
                   </div>
@@ -715,7 +717,7 @@ function CheckoutContent() {
           <div className="lg:col-span-2">
             <div className="sticky top-8 border border-gold/20 p-6">
               <h3 className="font-serif text-xl text-bianco mb-6">
-                Riepilogo Ordine
+                {t('orderSummary')}
               </h3>
 
               <ul className="space-y-4 mb-6">
@@ -735,7 +737,7 @@ function CheckoutContent() {
                         {item.product.name}
                       </h4>
                       <p className="font-sans text-xs text-bianco/50">
-                        Qtà: {item.quantity}
+                        {t('quantity')}: {item.quantity}
                       </p>
                     </div>
                     <p className="font-sans text-bianco">
@@ -747,21 +749,21 @@ function CheckoutContent() {
 
               <div className="border-t border-gold/20 pt-4 space-y-3">
                 <div className="flex justify-between font-sans text-sm">
-                  <span className="text-bianco/60">Subtotale</span>
+                  <span className="text-bianco/60">{t('subtotal')}</span>
                   <span className="text-bianco">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between font-sans text-sm">
-                  <span className="text-bianco/60">Spedizione</span>
+                  <span className="text-bianco/60">{t('shipping')}</span>
                   <span className="text-bianco">
                     {shipping === 0 ? (
-                      <span className="text-forest">Gratuita</span>
+                      <span className="text-forest">{t('free')}</span>
                     ) : (
                       formatPrice(shipping)
                     )}
                   </span>
                 </div>
                 <div className="flex justify-between font-serif text-xl pt-3 border-t border-gold/20">
-                  <span className="text-bianco">Totale</span>
+                  <span className="text-bianco">{t('total')}</span>
                   <span className="text-gold">{formatPrice(total)}</span>
                 </div>
               </div>
@@ -772,13 +774,13 @@ function CheckoutContent() {
                   <Truck size={16} />
                   <span className="text-xs">
                     {freeShippingThreshold !== null
-                      ? `Spedizione gratuita sopra i ${freeShippingThreshold}€`
-                      : 'Spedizione extra-UE a tariffa fissa'}
+                      ? t('freeShippingAbove', { amount: freeShippingThreshold })
+                      : t('extraEuFlatRate')}
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-bianco/50">
                   <Shield size={16} />
-                  <span className="text-xs">Pagamento 100% sicuro</span>
+                  <span className="text-xs">{t('securePayment')}</span>
                 </div>
               </div>
             </div>

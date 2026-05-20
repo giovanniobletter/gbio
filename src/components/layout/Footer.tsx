@@ -2,12 +2,23 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useTranslations, useLocale } from 'next-intl'
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
 import { MountainSilhouette } from '@/components/ui/decorative/MountainSilhouette'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const t = useTranslations('footer')
+  const locale = useLocale()
+
+  const navItems = [
+    { labelKey: 'heritage', href: '#heritage' },
+    { labelKey: 'products', href: '#prodotti' },
+    { labelKey: 'territory', href: '#territorio' },
+    { labelKey: 'certifications', href: '#certificazioni' },
+    { labelKey: 'contact', href: '#contatti' },
+  ] as const
 
   return (
     <footer className="bg-nero border-t border-gold/20 relative overflow-hidden">
@@ -32,12 +43,10 @@ export function Footer() {
               className="h-12 w-auto"
             />
             <p className="font-sans text-sm text-bianco/60 leading-relaxed">
-              Azienda Agricola Obletter Giovanni Battista.
-              Eccellenze biologiche dal cuore dell&apos;Abruzzo,
-              destinate alle tavole più raffinate.
+              {t('tagline')}
             </p>
             <p className="font-serif text-sm text-gold/60 italic mt-4">
-              {`"Coltiviamo il futuro, rispettando la tradizione"`}
+              {t('quote')}
             </p>
             <p className="font-sans text-xs text-bianco/40">
               P.IVA IT02773610692
@@ -46,7 +55,7 @@ export function Footer() {
 
           <motion.div variants={staggerItem} className="space-y-6">
             <h4 className="font-sans text-xs uppercase tracking-[0.2em] text-gold">
-              Contatti
+              {t('contactTitle')}
             </h4>
             <ul className="space-y-4">
               <li>
@@ -82,27 +91,25 @@ export function Footer() {
 
           <motion.div variants={staggerItem} className="space-y-6">
             <h4 className="font-sans text-xs uppercase tracking-[0.2em] text-gold">
-              Navigazione
+              {t('navTitle')}
             </h4>
             <ul className="space-y-3">
-              {['Heritage', 'Prodotti', 'Territorio', 'Certificazioni', 'Contatti'].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`#${item.toLowerCase()}`}
-                      className="text-sm text-bianco/60 hover:text-gold transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {navItems.map((item) => (
+                <li key={item.labelKey}>
+                  <a
+                    href={`/${locale}/${item.href}`}
+                    className="text-sm text-bianco/60 hover:text-gold transition-colors"
+                  >
+                    {t(`links.${item.labelKey}`)}
+                  </a>
+                </li>
+              ))}
             </ul>
           </motion.div>
 
           <motion.div variants={staggerItem} className="space-y-6">
             <h4 className="font-sans text-xs uppercase tracking-[0.2em] text-gold">
-              Seguici
+              {t('followTitle')}
             </h4>
             <div className="flex gap-4">
               <a
@@ -125,7 +132,7 @@ export function Footer() {
 
             <div className="pt-4">
               <h5 className="font-sans text-xs uppercase tracking-[0.2em] text-gold mb-4">
-                Certificazioni
+                {t('certTitle')}
               </h5>
               <div className="flex gap-4">
                 <div className="px-3 py-2 border border-forest text-forest text-xs font-sans uppercase tracking-wider">
@@ -147,14 +154,14 @@ export function Footer() {
           className="mt-16 pt-8 border-t border-gold/10 flex flex-col md:flex-row justify-between items-center gap-4"
         >
           <p className="text-xs text-bianco/40">
-            &copy; {currentYear} Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692 - Operatore BIO ICEA IT-BIO-006
+            {t('copyright', { year: currentYear })}
           </p>
           <div className="flex gap-6">
-            <a href="/it/privacy" className="text-xs text-bianco/40 hover:text-gold transition-colors">
-              Privacy Policy
+            <a href={`/${locale}/privacy`} className="text-xs text-bianco/40 hover:text-gold transition-colors">
+              {t('privacyPolicy')}
             </a>
-            <a href="/it/cookies" className="text-xs text-bianco/40 hover:text-gold transition-colors">
-              Cookie Policy
+            <a href={`/${locale}/cookies`} className="text-xs text-bianco/40 hover:text-gold transition-colors">
+              {t('cookiePolicy')}
             </a>
           </div>
         </motion.div>
