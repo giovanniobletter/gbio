@@ -23,13 +23,12 @@
     "account": "Account"
   },
   "hero": {
-    "eyebrow": "Golden Triangle of Olive Oil",
-    "tagline": "Castellana, Abruzzo.",
-    "taglineHighlight": "Organic excellence.",
-    "cta": "Explore",
-    "explore": "Discover",
-    "location": "City of Olive Oil",
-    "established": "Bio ICEA"
+    "tagline": "Origin matters.",
+    "subtitle": "Organic DOP extra virgin olive oil and ancient grains from Abruzzo.",
+    "cta": "Discover our products",
+    "scroll": "Scroll",
+    "sideLeft": "Abruzzo • Italy",
+    "sideRight": "100% Italian"
   },
   "boxedSets": {
     "eyebrow": "Gift Sets",
@@ -38,17 +37,18 @@
     "exploreAll": "Explore all products"
   },
   "heritage": {
-    "eyebrow": "Our Land",
-    "title": "Golden Triangle",
-    "subtitle": "Moscufo · Loreto Aprutino · Pianella",
-    "founder": "Giovanni Battista Obletter",
-    "description1": "Our croplands grow in Via del Grano in Castellana. The olive oil is born in the heart of the Golden Triangle, a territory recognized among Italy's Cities of Olive Oil.",
-    "description2": "DOP Aprutino Pescarese. ICEA certified organic.",
-    "stats": {
-      "totalHectares": "Hectares",
-      "cropland": "Cropland",
-      "oliveGrove": "Olive Grove"
-    }
+    "eyebrow": "Heritage",
+    "title": "Our Story",
+    "paragraph1": "In the heart of Abruzzo, among the gentle hills of the province of Pescara, lies the G.B. Obletter Farm: a project born from the vision of a young entrepreneur who chose to look to the future by rediscovering the most authentic roots of the land.",
+    "paragraph2": "Giovanni Battista Obletter, born in 1996, represents a new generation of farmers who combines centuries-old peasant wisdom with the most advanced sustainable cultivation practices. Fifty hectares of land spread across Cepagatti, Moscufo and Pianella — villages where time still moves to the rhythm of the seasons — form the green heritage from which our certified organic products are born.",
+    "sectionTwoTitle": "Tradition and Innovation",
+    "sectionTwoP1Pre": "Choosing to cultivate ",
+    "sectionTwoP1Mid1": "Senatore Cappelli durum wheat",
+    "sectionTwoP1Mid2": ", an ancient Italian variety almost forgotten by intensive agriculture, tells our philosophy: recovering the best of the past to offer the present a genuine and conscious diet. From the same passion comes our ",
+    "sectionTwoP1Mid3": "DOP Aprutino Pescarese Extra Virgin Olive Oil",
+    "sectionTwoP1End": ", cold-pressed from olives hand-picked in the olive groves that have dotted this landscape for generations.",
+    "sectionTwoP2": "Every product that bears our name is the result of a daily commitment to quality, sustainability and respect for a land that has taught us everything. Because being young farmers today means having the courage to innovate, without ever forgetting where we come from.",
+    "quoteAttribution": "Virgil — Georgics"
   },
   "products": {
     "eyebrow": "Collection",
@@ -123,8 +123,9 @@
       "subjects": {
         "info": "General information",
         "orders": "Orders and shipping",
-        "collaborations": "Collaborations",
-        "other": "Other"
+        "collaborations": "Collaborations & Partnership",
+        "other": "Other",
+        "horeca": "Ho.Re.Ca. & Distribution"
       },
       "message": "Message",
       "messagePlaceholder": "How can we help?",
@@ -132,7 +133,14 @@
       "submit": "Send message",
       "sending": "Sending...",
       "success": "Thank you for your message! We'll respond shortly."
-    }
+    },
+    "sectionEyebrow": "Contact us",
+    "sectionTitle": "Let's Talk Excellence",
+    "sectionSubtitle": "Restaurants, wine shops, distributors: bringing Abruzzo's authenticity to the most refined tables.",
+    "experiencesTitle": "On-Farm Experiences",
+    "experiencesText": "Private tours, exclusive tastings and sensory walks through olive groves and ancient grain fields. By appointment only.",
+    "experiencesCta": "Request an experience",
+    "errorGeneric": "Error sending the message."
   },
   "footer": {
     "description": "Since 1700. Abruzzo.",

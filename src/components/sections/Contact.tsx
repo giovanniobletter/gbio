@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { Send, MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Button } from '@/components/ui/Button'
@@ -10,40 +11,42 @@ import { cn } from '@/lib/utils'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
-const contactInfo = [
-  {
-    icon: MapPin,
-    label: 'Indirizzo',
-    value: 'Via Sicilia, Fraz. Villanova 2/a\n65012 Cepagatti (PE)',
-  },
-  {
-    icon: Phone,
-    label: 'Telefono',
-    value: '+39 392 636 2254',
-    href: 'tel:+393926362254',
-  },
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'gb.obletter@gmail.com',
-    href: 'mailto:gb.obletter@gmail.com',
-  },
-  {
-    icon: Clock,
-    label: 'Orari',
-    value: 'Lun - Ven: 9:00 - 18:00\nSab: 9:00 - 13:00',
-  },
-]
-
-const subjects = [
-  { value: 'info', label: 'Informazioni generali' },
-  { value: 'ordini', label: 'Ordini e spedizioni' },
-  { value: 'horeca', label: 'Ho.Re.Ca. & Distribuzione' },
-  { value: 'collaborazioni', label: 'Collaborazioni & Partnership' },
-  { value: 'altro', label: 'Altro' },
-]
-
 export function Contact() {
+  const t = useTranslations('contact')
+
+  const contactInfo = [
+    {
+      icon: MapPin,
+      label: t('address'),
+      value: t('addressValue'),
+    },
+    {
+      icon: Phone,
+      label: t('phone'),
+      value: t('phoneValue'),
+      href: 'tel:+393926362254',
+    },
+    {
+      icon: Mail,
+      label: t('email'),
+      value: 'gb.obletter@gmail.com',
+      href: 'mailto:gb.obletter@gmail.com',
+    },
+    {
+      icon: Clock,
+      label: t('hours'),
+      value: t('hoursValue'),
+    },
+  ]
+
+  const subjects = [
+    { value: 'info', label: t('form.subjects.info') },
+    { value: 'ordini', label: t('form.subjects.orders') },
+    { value: 'horeca', label: t('form.subjects.horeca') },
+    { value: 'collaborazioni', label: t('form.subjects.collaborations') },
+    { value: 'altro', label: t('form.subjects.other') },
+  ]
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -69,7 +72,7 @@ export function Contact() {
 
       if (!res.ok) {
         const data = await res.json()
-        throw new Error(data.error || 'Errore nell\'invio del messaggio.')
+        throw new Error(data.error || t('errorGeneric'))
       }
 
       setIsSubmitted(true)
@@ -83,7 +86,7 @@ export function Contact() {
 
       setTimeout(() => setIsSubmitted(false), 5000)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Errore nell\'invio del messaggio.')
+      setError(err instanceof Error ? err.message : t('errorGeneric'))
     } finally {
       setIsSubmitting(false)
     }
@@ -114,9 +117,9 @@ export function Contact() {
 
       <div className="container-custom relative z-10">
         <SectionTitle
-          eyebrow="Contattaci"
-          title="Parliamo di Eccellenza"
-          subtitle="Ristoranti, enoteche, distributori: portiamo l'autenticità abruzzese sulle tavole più raffinate."
+          eyebrow={t('sectionEyebrow')}
+          title={t('sectionTitle')}
+          subtitle={t('sectionSubtitle')}
         />
 
         {/* Ornate divider */}
@@ -175,14 +178,13 @@ export function Contact() {
                 className="pt-8 border-t border-gold/20"
               >
                 <h4 className="font-serif text-xl text-bianco mb-3 text-shadow-luxe">
-                  Esperienze in Azienda
+                  {t('experiencesTitle')}
                 </h4>
                 <p className="font-sans text-sm text-bianco/60 leading-relaxed mb-4">
-                  Visite private, degustazioni esclusive e percorsi sensoriali
-                  tra gli uliveti e i campi di grano antico. Su appuntamento.
+                  {t('experiencesText')}
                 </p>
                 <Button variant="ghost" className="text-gold hover:glow-gold transition-all duration-700">
-                  Richiedi un&apos;esperienza
+                  {t('experiencesCta')}
                 </Button>
               </motion.div>
             </motion.div>
@@ -203,7 +205,7 @@ export function Contact() {
                     htmlFor="name"
                     className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2"
                   >
-                    Nome *
+                    {t('form.name')} *
                   </label>
                   <input
                     type="text"
@@ -213,7 +215,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     className={inputStyles}
-                    placeholder="Il tuo nome"
+                    placeholder={t('form.namePlaceholder')}
                   />
                 </div>
                 <div>
@@ -221,7 +223,7 @@ export function Contact() {
                     htmlFor="email"
                     className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2"
                   >
-                    Email *
+                    {t('form.email')} *
                   </label>
                   <input
                     type="email"
@@ -231,7 +233,7 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     className={inputStyles}
-                    placeholder="La tua email"
+                    placeholder={t('form.emailPlaceholder')}
                   />
                 </div>
               </div>
@@ -242,7 +244,7 @@ export function Contact() {
                     htmlFor="phone"
                     className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2"
                   >
-                    Telefono
+                    {t('form.phone')}
                   </label>
                   <input
                     type="tel"
@@ -251,7 +253,7 @@ export function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     className={inputStyles}
-                    placeholder="Il tuo numero"
+                    placeholder={t('form.phonePlaceholder')}
                   />
                 </div>
                 <div>
@@ -259,7 +261,7 @@ export function Contact() {
                     htmlFor="subject"
                     className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2"
                   >
-                    Oggetto
+                    {t('form.subject')}
                   </label>
                   <select
                     id="subject"
@@ -286,7 +288,7 @@ export function Contact() {
                   htmlFor="message"
                   className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2"
                 >
-                  Messaggio *
+                  {t('form.message')} *
                 </label>
                 <textarea
                   id="message"
@@ -296,13 +298,13 @@ export function Contact() {
                   required
                   rows={6}
                   className={cn(inputStyles, 'resize-none')}
-                  placeholder="Come possiamo aiutarti?"
+                  placeholder={t('form.messagePlaceholder')}
                 />
               </div>
 
               <div className="flex items-center justify-between">
                 <p className="font-sans text-xs text-bianco/40">
-                  * Campi obbligatori
+                  * {t('form.required')}
                 </p>
 
                 <motion.button
@@ -317,10 +319,10 @@ export function Contact() {
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {isSubmitting ? (
-                      'Invio in corso...'
+                      t('form.sending')
                     ) : (
                       <>
-                        Invia messaggio
+                        {t('form.submit')}
                         <Send size={16} />
                       </>
                     )}
@@ -347,7 +349,7 @@ export function Contact() {
                   className="p-4 border border-forest bg-forest/20 text-center"
                 >
                   <p className="font-sans text-sm text-bianco">
-                    Grazie per il tuo messaggio! Ti risponderemo al più presto.
+                    {t('form.success')}
                   </p>
                 </motion.div>
               )}

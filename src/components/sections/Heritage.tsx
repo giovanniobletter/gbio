@@ -1,10 +1,12 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
 export function Heritage() {
+  const t = useTranslations('heritage')
   const slowReveal = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -50,28 +52,28 @@ export function Heritage() {
             variants={slowReveal}
             className="font-sans text-xs uppercase tracking-[0.5em] text-gold/60 mb-6"
           >
-            Heritage
+            {t('eyebrow')}
           </motion.p>
 
           <motion.h2
             variants={slowReveal}
             className="font-serif text-4xl md:text-5xl lg:text-6xl text-gold mb-12"
           >
-            La Nostra Storia
+            {t('title')}
           </motion.h2>
 
           <motion.p
             variants={slowReveal}
             className="font-serif text-lg md:text-xl text-bianco/80 leading-relaxed mb-8"
           >
-            Nel cuore dell&apos;Abruzzo, tra le dolci colline della provincia di Pescara, sorge l&apos;Azienda Agricola G.B. Obletter: un progetto nato dalla visione di un giovane imprenditore che ha scelto di guardare al futuro riscoprendo le radici più autentiche della terra.
+            {t('paragraph1')}
           </motion.p>
 
           <motion.p
             variants={slowReveal}
             className="font-serif text-lg md:text-xl text-bianco/80 leading-relaxed"
           >
-            Giovanni Battista Obletter, classe 1996, rappresenta una nuova generazione di agricoltori che coniuga la sapienza contadina tramandata nei secoli con le più avanzate pratiche di coltivazione sostenibile. Cinquanta ettari di terreni distribuiti tra Cepagatti, Moscufo e Pianella — borghi dove il tempo scorre ancora al ritmo delle stagioni — costituiscono il patrimonio verde da cui nascono i nostri prodotti biologici certificati.
+            {t('paragraph2')}
           </motion.p>
         </motion.div>
 
@@ -89,21 +91,21 @@ export function Heritage() {
             variants={slowReveal}
             className="font-serif text-3xl md:text-4xl text-gold mb-12"
           >
-            Tradizione e Innovazione
+            {t('sectionTwoTitle')}
           </motion.h3>
 
           <motion.p
             variants={slowReveal}
             className="font-serif text-lg md:text-xl text-bianco/80 leading-relaxed mb-8"
           >
-            La scelta di coltivare il <span className="text-gold">grano duro Senatore Cappelli</span>, antica varietà italiana quasi dimenticata dall&apos;agricoltura intensiva, racconta la nostra filosofia: recuperare il meglio del passato per offrire al presente un&apos;alimentazione genuina e consapevole. Dalla stessa passione nasce il nostro <span className="text-gold">Olio Extravergine DOP Aprutino Pescarese</span>, spremuto a freddo da olive raccolte a mano negli uliveti che da generazioni punteggiano questo paesaggio.
+            {t('sectionTwoP1Pre')}<span className="text-gold">{t('sectionTwoP1Mid1')}</span>{t('sectionTwoP1Mid2')}<span className="text-gold">{t('sectionTwoP1Mid3')}</span>{t('sectionTwoP1End')}
           </motion.p>
 
           <motion.p
             variants={slowReveal}
             className="font-serif text-lg md:text-xl text-bianco/70 leading-relaxed italic"
           >
-            Ogni prodotto che porta il nostro nome è il risultato di un impegno quotidiano verso la qualità, la sostenibilità e il rispetto per un territorio che ci ha insegnato tutto. Perché essere giovani agricoltori oggi significa avere il coraggio di innovare, senza mai dimenticare da dove veniamo.
+            {t('sectionTwoP2')}
           </motion.p>
         </motion.div>
 
@@ -174,7 +176,7 @@ export function Heritage() {
               transition={{ duration: 1, delay: 1.4 }}
               className="font-sans text-sm text-bianco/40 mt-6 tracking-[0.3em] uppercase"
             >
-              Virgilio — Georgiche
+              {t('quoteAttribution')}
             </motion.p>
           </div>
 

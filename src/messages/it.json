@@ -23,13 +23,12 @@
     "account": "Account"
   },
   "hero": {
-    "eyebrow": "Triangolo d'Oro dell'Olio",
-    "tagline": "Castellana, Abruzzo.",
-    "taglineHighlight": "Eccellenza biologica.",
-    "cta": "Esplora",
-    "explore": "Scopri",
-    "location": "Città dell'Olio",
-    "established": "Bio ICEA"
+    "tagline": "L'origine conta.",
+    "subtitle": "Olio EVO Bio DOP e grani antichi d'Abruzzo.",
+    "cta": "Scopri i prodotti",
+    "scroll": "Scorri",
+    "sideLeft": "Abruzzo • Italia",
+    "sideRight": "100% Italiano"
   },
   "boxedSets": {
     "eyebrow": "Cofanetti",
@@ -38,17 +37,18 @@
     "exploreAll": "Scopri tutti i prodotti"
   },
   "heritage": {
-    "eyebrow": "La Nostra Terra",
-    "title": "Triangolo d'Oro",
-    "subtitle": "Moscufo · Loreto Aprutino · Pianella",
-    "founder": "Giovanni Battista Obletter",
-    "description1": "I nostri seminativi crescono in Via del Grano a Castellana. L'olio nasce nel cuore del Triangolo d'Oro, territorio riconosciuto tra le Città dell'Olio d'Italia.",
-    "description2": "DOP Aprutino Pescarese. Biologico certificato ICEA.",
-    "stats": {
-      "totalHectares": "Ettari",
-      "cropland": "Seminativi",
-      "oliveGrove": "Uliveto"
-    }
+    "eyebrow": "Heritage",
+    "title": "La Nostra Storia",
+    "paragraph1": "Nel cuore dell'Abruzzo, tra le dolci colline della provincia di Pescara, sorge l'Azienda Agricola G.B. Obletter: un progetto nato dalla visione di un giovane imprenditore che ha scelto di guardare al futuro riscoprendo le radici più autentiche della terra.",
+    "paragraph2": "Giovanni Battista Obletter, classe 1996, rappresenta una nuova generazione di agricoltori che coniuga la sapienza contadina tramandata nei secoli con le più avanzate pratiche di coltivazione sostenibile. Cinquanta ettari di terreni distribuiti tra Cepagatti, Moscufo e Pianella — borghi dove il tempo scorre ancora al ritmo delle stagioni — costituiscono il patrimonio verde da cui nascono i nostri prodotti biologici certificati.",
+    "sectionTwoTitle": "Tradizione e Innovazione",
+    "sectionTwoP1Pre": "La scelta di coltivare il ",
+    "sectionTwoP1Mid1": "grano duro Senatore Cappelli",
+    "sectionTwoP1Mid2": ", antica varietà italiana quasi dimenticata dall'agricoltura intensiva, racconta la nostra filosofia: recuperare il meglio del passato per offrire al presente un'alimentazione genuina e consapevole. Dalla stessa passione nasce il nostro ",
+    "sectionTwoP1Mid3": "Olio Extravergine DOP Aprutino Pescarese",
+    "sectionTwoP1End": ", spremuto a freddo da olive raccolte a mano negli uliveti che da generazioni punteggiano questo paesaggio.",
+    "sectionTwoP2": "Ogni prodotto che porta il nostro nome è il risultato di un impegno quotidiano verso la qualità, la sostenibilità e il rispetto per un territorio che ci ha insegnato tutto. Perché essere giovani agricoltori oggi significa avere il coraggio di innovare, senza mai dimenticare da dove veniamo.",
+    "quoteAttribution": "Virgilio — Georgiche"
   },
   "products": {
     "eyebrow": "Collezione",
@@ -123,8 +123,9 @@
       "subjects": {
         "info": "Informazioni generali",
         "orders": "Ordini e spedizioni",
-        "collaborations": "Collaborazioni",
-        "other": "Altro"
+        "collaborations": "Collaborazioni & Partnership",
+        "other": "Altro",
+        "horeca": "Ho.Re.Ca. & Distribuzione"
       },
       "message": "Messaggio",
       "messagePlaceholder": "Come possiamo aiutarti?",
@@ -132,7 +133,14 @@
       "submit": "Invia messaggio",
       "sending": "Invio in corso...",
       "success": "Grazie per il tuo messaggio! Ti risponderemo al più presto."
-    }
+    },
+    "sectionEyebrow": "Contattaci",
+    "sectionTitle": "Parliamo di Eccellenza",
+    "sectionSubtitle": "Ristoranti, enoteche, distributori: portiamo l'autenticità abruzzese sulle tavole più raffinate.",
+    "experiencesTitle": "Esperienze in Azienda",
+    "experiencesText": "Visite private, degustazioni esclusive e percorsi sensoriali tra gli uliveti e i campi di grano antico. Su appuntamento.",
+    "experiencesCta": "Richiedi un'esperienza",
+    "errorGeneric": "Errore nell'invio del messaggio."
   },
   "footer": {
     "description": "Dal 1700. Abruzzo.",

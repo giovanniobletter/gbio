@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 const productImages = [
   '/images/pasta-penne.jpg',
@@ -18,6 +19,7 @@ const productImages = [
 ]
 
 export function Hero() {
+  const t = useTranslations('hero')
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-nero">
@@ -81,7 +83,7 @@ export function Hero() {
             transition={{ delay: 0.5, duration: 1 }}
             className="font-serif text-3xl md:text-4xl lg:text-5xl text-gold text-center mt-40"
           >
-            L&apos;origine conta.
+            {t('tagline')}
           </motion.h1>
 
           <motion.p
@@ -90,7 +92,7 @@ export function Hero() {
             transition={{ delay: 0.7, duration: 1 }}
             className="font-sans text-sm md:text-base lg:text-lg text-bianco/80 text-center mt-4 tracking-wide"
           >
-            Olio EVO Bio DOP e grani antichi d&apos;Abruzzo.
+            {t('subtitle')}
           </motion.p>
 
           <motion.a
@@ -100,7 +102,7 @@ export function Hero() {
             transition={{ delay: 0.9, duration: 1 }}
             className="mt-8 px-8 py-3 border border-gold text-gold font-sans text-xs uppercase tracking-[0.2em] hover:bg-gold hover:text-nero transition-all duration-300"
           >
-            Scopri i prodotti
+            {t('cta')}
           </motion.a>
         </motion.div>
 
@@ -125,7 +127,7 @@ export function Hero() {
             className="flex flex-col items-center gap-2 text-gold/60"
           >
             <span className="font-sans text-[10px] uppercase tracking-[0.3em]">
-              Scorri
+              {t('scroll')}
             </span>
             <svg width="20" height="30" viewBox="0 0 20 30" className="text-gold/40">
               <rect x="1" y="1" width="18" height="28" rx="9" stroke="currentColor" strokeWidth="1" fill="none" />
@@ -149,7 +151,7 @@ export function Hero() {
           className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden lg:block"
         >
           <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-gold/30 writing-vertical">
-            Abruzzo • Italia
+            {t('sideLeft')}
           </span>
         </motion.div>
 
@@ -160,7 +162,7 @@ export function Hero() {
           className="absolute right-6 top-1/2 -translate-y-1/2 z-10 hidden lg:block"
         >
           <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-gold/30 writing-vertical">
-            100% Italiano
+            {t('sideRight')}
           </span>
         </motion.div>
       </div>
