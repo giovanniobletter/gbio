@@ -22,6 +22,10 @@ export function ProductShowcase() {
       { src: '/images/lifestyle/pasta-6-formati.jpg', altKey: 'altFormati' },
       { src: '/images/lifestyle/farine.jpg', altKey: 'altFarine' },
     ],
+    [
+      { src: '/images/lifestyle/olio-bottiglia.jpg', altKey: 'altOlioBottiglia' },
+      { src: '/images/lifestyle/passata.jpg', altKey: 'altPassata' },
+    ],
   ]
 
   return (
@@ -76,22 +80,6 @@ export function ProductShowcase() {
               ))}
             </div>
           ))}
-
-          {/* Last image centered */}
-          <div className="flex justify-center">
-            <motion.div
-              variants={luxuryStaggerItem}
-              className="relative aspect-[4/5] w-full max-w-md overflow-hidden border border-gold/20 group"
-            >
-              <Image
-                src="/images/lifestyle/passata.jpg"
-                alt={t('altPassata')}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 400px"
-              />
-            </motion.div>
-          </div>
         </motion.div>
 
         {/* CTA */}
