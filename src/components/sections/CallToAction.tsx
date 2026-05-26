@@ -26,7 +26,7 @@ export function CallToAction() {
   }, [])
 
   return (
-    <section className="relative py-24 sm:py-32 border-t border-b border-gold/20 overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center py-24 sm:py-32 border-t border-b border-gold/20 overflow-hidden">
       {/* Background slideshow */}
       <div className="absolute inset-0 bg-nero">
         <AnimatePresence mode="sync">
@@ -42,14 +42,14 @@ export function CallToAction() {
               src={slides[index]}
               alt=""
               fill
-              className="object-cover"
+              className="object-cover object-[center_25%] scale-110 blur-[3px]"
               priority={index === 0}
               sizes="100vw"
             />
           </motion.div>
         </AnimatePresence>
         {/* Dark overlay for legibility */}
-        <div className="absolute inset-0 bg-nero/70" />
+        <div className="absolute inset-0 bg-nero/65" />
         <div className="absolute inset-0 bg-gradient-to-b from-nero/40 via-transparent to-nero/40" />
       </div>
 
