@@ -10,7 +10,7 @@ import { Heritage } from '@/components/sections/Heritage'
 import { Products } from '@/components/sections/Products'
 import { Territory } from '@/components/sections/Territory'
 import { Certifications } from '@/components/sections/Certifications'
-import { CallToAction } from '@/components/sections/CallToAction'
+import { ProductShowcase } from '@/components/sections/ProductShowcase'
 import { Contact } from '@/components/sections/Contact'
 
 export default function Home() {
@@ -27,7 +27,7 @@ export default function Home() {
         <Certifications />
         <Territory />
         <Heritage />
-        <CallToAction />
+        <ProductShowcase />
         <Contact />
       </main>
 

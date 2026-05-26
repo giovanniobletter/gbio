@@ -573,6 +573,18 @@
     "buyNow": "Shop now",
     "contactUs": "Contact us"
   },
+  "showcase": {
+    "eyebrow": "Excellence on display",
+    "title": "Bring Abruzzo to your table",
+    "subtitle": "Certified products, short supply chain, guaranteed quality.",
+    "buyNow": "Shop now",
+    "contactUs": "Contact us",
+    "altOlio": "GBO extra virgin olive oil",
+    "altMezzemaniche": "Mezzemaniche Senatore Cappelli pasta",
+    "altFormati": "The six Senatore Cappelli pasta formats",
+    "altFarine": "GBO ancient grain flours",
+    "altPassata": "Pera d'Abruzzo tomato passata"
+  },
   "certifSec": {
     "organicTitle": "ICEA Certified Organic",
     "organicSubtitle": "Guaranteed origin"

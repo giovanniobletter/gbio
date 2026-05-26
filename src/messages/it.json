@@ -573,6 +573,18 @@
     "buyNow": "Acquista ora",
     "contactUs": "Contattaci"
   },
+  "showcase": {
+    "eyebrow": "L'eccellenza in vetrina",
+    "title": "Porta l'Abruzzo sulla tua tavola",
+    "subtitle": "Prodotti certificati, filiera corta, qualità garantita.",
+    "buyNow": "Acquista ora",
+    "contactUs": "Contattaci",
+    "altOlio": "Olio extravergine GBO",
+    "altMezzemaniche": "Pasta Mezzemaniche Senatore Cappelli",
+    "altFormati": "I sei formati di pasta Senatore Cappelli",
+    "altFarine": "Farine di grani antichi GBO",
+    "altPassata": "Passata di pomodoro Pera d'Abruzzo"
+  },
   "certifSec": {
     "organicTitle": "Biologico Certificato ICEA",
     "organicSubtitle": "Origine garantita"
