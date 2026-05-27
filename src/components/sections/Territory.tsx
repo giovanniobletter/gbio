@@ -1,17 +1,43 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Sun, Droplets, Mountain, MapPin } from 'lucide-react'
+
+const slides = [
+  '/images/territory/05-albero-tramonto.jpg',
+  '/images/territory/12-spighe-grano.jpg',
+  '/images/territory/09-fiore-mandorlo.jpg',
+  '/images/territory/11-albero-fiorito.jpg',
+  '/images/territory/04-germogli.jpg',
+  '/images/territory/08-alberi-nebbia.jpg',
+  '/images/territory/07-edificio-nebbia.jpg',
+  '/images/territory/10-prato-erba.jpg',
+  '/images/territory/14-campo-verde.jpg',
+  '/images/territory/03-seminatrice.jpg',
+  '/images/territory/02-trattore.jpg',
+  '/images/territory/01-grano-sacchi.jpg',
+  '/images/territory/13-cane-prato.jpg',
+  '/images/territory/06-piante-muro.jpg',
+]
 
 export function Territory() {
   const t = useTranslations('territory')
   const sectionRef = useRef<HTMLElement>(null)
+  const [slideIdx, setSlideIdx] = useState(0)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   })
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlideIdx((i) => (i + 1) % slides.length)
+    }, 4500)
+    return () => clearInterval(id)
+  }, [])
 
   // Parallax transforms
   const fogOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.6, 0.3])
@@ -73,12 +99,41 @@ export function Territory() {
       id="territorio"
       className="relative min-h-[200vh] bg-nero overflow-hidden"
     >
+      {/* Sticky slideshow background */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={slides[slideIdx]}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1 }}
+            transition={{
+              opacity: { duration: 2, ease: 'easeInOut' },
+              scale: { duration: 6, ease: 'easeOut' },
+            }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={slides[slideIdx]}
+              alt=""
+              fill
+              className="object-cover"
+              priority={slideIdx === 0}
+              sizes="100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
+        {/* Dark overlay for legibility */}
+        <div className="absolute inset-0 bg-nero/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-nero/50 via-nero/30 to-nero/80" />
+      </div>
+
       {/* Gradiente che respira */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-[1] pointer-events-none">
         <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-nero via-forest-dark/40 to-nero"
+          className="absolute inset-0 bg-gradient-to-b from-nero/40 via-forest-dark/20 to-nero/40"
           animate={{
-            opacity: [0.7, 1, 0.7],
+            opacity: [0.5, 0.8, 0.5],
           }}
           transition={{
             duration: 8,
@@ -112,8 +167,8 @@ export function Territory() {
       </motion.div>
 
 
-      {/* Contenuto */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-8">
+      {/* Contenuto - offset sopra il bg sticky */}
+      <div className="relative z-10 -mt-[100vh] flex flex-col items-center justify-center px-8">
 
         {/* BLOCCO 1 - Apertura */}
         <motion.div
