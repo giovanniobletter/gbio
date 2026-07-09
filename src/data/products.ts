@@ -36,19 +36,6 @@ const NUTRITION_PASTA: NutritionFacts = {
   salt: 0.01,
 }
 
-// TODO(Giovanni): verificare valori nutrizionali con etichette reali farine
-const NUTRITION_SEMOLATO: NutritionFacts = {
-  per: '100g',
-  energyKj: 1493,
-  energyKcal: 352,
-  fat: 1.8,
-  saturatedFat: 0.4,
-  carbohydrates: 70,
-  sugars: 3.2,
-  protein: 12.5,
-  salt: 0.01,
-}
-
 // TODO(Giovanni): verificare valori nutrizionali con etichetta reale passata
 const NUTRITION_PASSATA: NutritionFacts = {
   per: '100g',
@@ -64,33 +51,42 @@ const NUTRITION_PASSATA: NutritionFacts = {
 
 function makeOlioFoodInfo(netQuantity: string): FoodInfo {
   return {
-    legalName: 'Olio extravergine di oliva DOP "Aprutino Pescarese" biologico',
-    ingredients: 'Olive biologiche. Olio di categoria superiore ottenuto direttamente dalle olive e unicamente mediante procedimenti meccanici.',
+    // Denominazione legale e dicitura categoria: art. 6 Reg. delegato (UE) 2022/2104
+    legalName: 'Olio extra vergine di oliva DOP "Aprutino Pescarese" biologico',
+    ingredients: 'Olive biologiche. Olio di oliva di categoria superiore ottenuto direttamente dalle olive e unicamente mediante procedimenti meccanici.',
     allergens: [],
     netQuantity,
-    storage: 'Conservare al riparo dalla luce e da fonti di calore.',
-    operator: OSA,
-    originLabel: 'Prodotto e confezionato in Italia — olive coltivate a Moscufo (PE), zona DOP Aprutino Pescarese',
+    // Formula ICQRF, art. 7 Reg. 2022/2104
+    storage: 'Da conservare al riparo della luce e dal calore.',
+    operator: OSA, // Dal 14/5/2026 il nome del produttore va accostato alla DOP (art. 37.5 Reg. 2024/1143)
+    originLabel: 'DOP Aprutino Pescarese — olive coltivate a Moscufo (PE); estratto e confezionato nella zona DOP',
     organicCode: 'IT-BIO-006', // ICEA — TODO(Giovanni): confermare codice su etichetta
     organicOrigin: 'Agricoltura Italia',
-    nutrition: NUTRITION_OLIO,
+    nutrition: NUTRITION_OLIO, // obbligatoria: l'olio NON è esente (Q&A Commissione 3.6.2)
     extraLabel: [
-      'Campagna olearia 2025/2026', // TODO(Giovanni): aggiornare a ogni raccolta
+      'Campagna di raccolta 2025/2026', // TODO(Giovanni): aggiornare a ogni raccolta (obbligo L. 9/2013 + disciplinare DOP)
       'DOP — Denominazione di Origine Protetta "Aprutino Pescarese"',
     ],
   }
 }
 
+// Dicitura per prodotti in conversione: art. 30.3 Reg. (UE) 2018/848 —
+// NIENTE logo bio UE, ma codice OdC comunque obbligatorio (art. 32.1)
+const IN_CONVERSIONE = 'Prodotto in conversione all\'agricoltura biologica'
+
 function makePastaFoodInfo(formato: string): FoodInfo {
   return {
     legalName: `Pasta di semola di grano duro Senatore Cappelli — ${formato}`,
-    ingredients: 'Semola di GRANO duro Senatore Cappelli, acqua. Può contenere tracce di soia e senape.', // TODO(Giovanni): verificare tracce su etichetta reale
+    ingredients: 'Semola di GRANO duro Senatore Cappelli. Può contenere tracce di soia e senape.', // TODO(Giovanni): verificare ingredienti e tracce su etichetta reale
     allergens: ['Glutine (grano)'],
     netQuantity: '500 g',
     storage: 'Conservare in luogo fresco e asciutto, al riparo dalla luce.',
     operator: OSA, // TODO(Giovanni): se prodotta da pastificio terzo, indicare lo stabilimento
-    originLabel: 'Grano coltivato in Italia (Abruzzo) — Paese di molitura: Italia',
+    // Diciture esatte DM 26/7/2017 (prorogato al 31/12/2026)
+    originLabel: 'Paese di coltivazione del grano: Italia — Paese di molitura: Italia',
+    organicCode: 'IT-BIO-006', // TODO(Giovanni): confermare codice OdC su etichetta
     nutrition: NUTRITION_PASTA,
+    extraLabel: [IN_CONVERSIONE],
   }
 }
 
@@ -104,6 +100,10 @@ const FOOD_INFO: Record<string, FoodInfo> = {
   'pasta-tagliatelle': makePastaFoodInfo('Tagliatelle'),
   'pasta-sagnette': makePastaFoodInfo('Sagnette'),
   'pasta-quadrucci': makePastaFoodInfo('Quadrucci'),
+  // Farine mono-ingrediente: ESENTI dalla dichiarazione nutrizionale
+  // (All. V punto 1 Reg. 1169/2011, Q&A Commissione 3.6.2 — la sola
+  // macinatura non è "trasformazione"). Se si aggiunge volontariamente,
+  // deve essere accurata da etichetta reale (art. 36).
   'semolato-cappelli': {
     legalName: 'Semolato di grano duro Senatore Cappelli',
     ingredients: 'Semolato di GRANO duro Senatore Cappelli macinato a pietra.',
@@ -112,9 +112,11 @@ const FOOD_INFO: Record<string, FoodInfo> = {
     storage: 'Conservare in luogo fresco e asciutto, al riparo dalla luce.',
     operator: OSA, // TODO(Giovanni): se molito da mulino terzo, indicare lo stabilimento
     originLabel: 'Grano coltivato in Italia (Abruzzo)',
-    nutrition: NUTRITION_SEMOLATO,
+    organicCode: 'IT-BIO-006', // TODO(Giovanni): confermare codice OdC su etichetta
+    extraLabel: [IN_CONVERSIONE],
   },
   'farina-gentilrosso': {
+    // TODO(Giovanni): il "tipo" (00/0/1/2/integrale) va preso dall'etichetta del molino
     legalName: 'Farina di grano tenero Gentilrosso',
     ingredients: 'Farina di GRANO tenero Gentilrosso macinata a pietra.',
     allergens: ['Glutine (grano)'],
@@ -122,7 +124,8 @@ const FOOD_INFO: Record<string, FoodInfo> = {
     storage: 'Conservare in luogo fresco e asciutto, al riparo dalla luce.',
     operator: OSA, // TODO(Giovanni): se molita da mulino terzo, indicare lo stabilimento
     originLabel: 'Grano coltivato in Italia (Abruzzo)',
-    nutrition: NUTRITION_SEMOLATO, // TODO(Giovanni): valori specifici farina Gentilrosso da etichetta
+    organicCode: 'IT-BIO-006', // TODO(Giovanni): confermare codice OdC su etichetta
+    extraLabel: [IN_CONVERSIONE],
   },
   'passata-pomodoro': {
     legalName: 'Passata di pomodoro',
@@ -131,8 +134,11 @@ const FOOD_INFO: Record<string, FoodInfo> = {
     netQuantity: '700 g', // TODO(Giovanni): verificare peso netto in g su etichetta (70 cl)
     storage: 'Conservare in luogo fresco e asciutto. Dopo l\'apertura conservare in frigorifero e consumare entro 3-4 giorni.',
     operator: OSA, // TODO(Giovanni): se trasformata da terzi, indicare lo stabilimento
-    originLabel: 'Origine del pomodoro: Italia (Abruzzo)',
+    // Formula DM 17/2/2006 (obbligo permanente): zona di coltivazione del pomodoro fresco
+    originLabel: 'Pomodoro coltivato in Abruzzo (Italia)',
+    organicCode: 'IT-BIO-006', // TODO(Giovanni): confermare codice OdC su etichetta
     nutrition: NUTRITION_PASSATA,
+    extraLabel: [IN_CONVERSIONE],
   },
 }
 
