@@ -38,6 +38,15 @@ export async function POST(request: NextRequest) {
       shippingZone: metadata.zona_spedizione || 'italia',
       total: (paymentIntent.amount / 100).toFixed(2),
       paymentId: paymentIntent.id,
+      invoice: metadata.fattura_richiesta === 'si' ? {
+        requested: true,
+        type: metadata.fattura_tipo || 'privato',
+        codiceFiscale: metadata.fattura_cf || '',
+        businessName: metadata.fattura_ragione_sociale || '',
+        partitaIva: metadata.fattura_piva || '',
+        sdiCode: metadata.fattura_sdi || '',
+        pecEmail: metadata.fattura_pec || '',
+      } : undefined,
     }
 
     // Send both emails in parallel

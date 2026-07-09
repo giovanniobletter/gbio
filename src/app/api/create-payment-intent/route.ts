@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { products } from '@/data/products'
 import { getShippingCost, isValidShippingZone, ShippingZone } from '@/lib/shipping'
+import { isValidCodiceFiscale, isValidPartitaIva, isValidCodiceSdi, isValidEmailFormat } from '@/lib/fiscal'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
@@ -12,7 +13,7 @@ function getServerProduct(productId: string) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { items, shippingZone: rawZone, shippingAddress } = body
+    const { items, shippingZone: rawZone, shippingAddress, billing } = body
 
     const shippingZone: ShippingZone = isValidShippingZone(rawZone) ? rawZone : 'italia'
 
@@ -74,6 +75,47 @@ export async function POST(request: NextRequest) {
       addr.country,
     ].filter(Boolean).join(', ')
 
+    // Fattura richiesta al momento dell'ordine (art. 22 DPR 633/72):
+    // i dati vengono rivalidati qui e salvati nei metadata per l'emissione
+    const invoiceMetadata: Record<string, string> = {}
+    if (billing?.requested) {
+      if (billing.type === 'privato') {
+        const cf = String(billing.codiceFiscale || '').trim().toUpperCase()
+        if (!isValidCodiceFiscale(cf)) {
+          return NextResponse.json({ error: 'Codice fiscale non valido' }, { status: 400 })
+        }
+        invoiceMetadata.fattura_richiesta = 'si'
+        invoiceMetadata.fattura_tipo = 'privato'
+        invoiceMetadata.fattura_cf = cf
+      } else if (billing.type === 'azienda') {
+        const piva = String(billing.partitaIva || '').trim()
+        const sdi = String(billing.sdiCode || '').trim().toUpperCase()
+        const pec = String(billing.pecEmail || '').trim()
+        const ragioneSociale = String(billing.businessName || '').trim()
+        if (!ragioneSociale) {
+          return NextResponse.json({ error: 'Ragione sociale mancante' }, { status: 400 })
+        }
+        if (!isValidPartitaIva(piva)) {
+          return NextResponse.json({ error: 'Partita IVA non valida' }, { status: 400 })
+        }
+        if (!sdi && !pec) {
+          return NextResponse.json({ error: 'Indicare codice SDI o PEC' }, { status: 400 })
+        }
+        if (sdi && !isValidCodiceSdi(sdi)) {
+          return NextResponse.json({ error: 'Codice SDI non valido' }, { status: 400 })
+        }
+        if (pec && !isValidEmailFormat(pec)) {
+          return NextResponse.json({ error: 'PEC non valida' }, { status: 400 })
+        }
+        invoiceMetadata.fattura_richiesta = 'si'
+        invoiceMetadata.fattura_tipo = 'azienda'
+        invoiceMetadata.fattura_ragione_sociale = ragioneSociale.substring(0, 500)
+        invoiceMetadata.fattura_piva = piva
+        if (sdi) invoiceMetadata.fattura_sdi = sdi
+        if (pec) invoiceMetadata.fattura_pec = pec
+      }
+    }
+
     // Create PaymentIntent with automatic payment methods (cards, Apple Pay, Google Pay)
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
@@ -106,6 +148,7 @@ export async function POST(request: NextRequest) {
         subtotale: subtotal.toFixed(2),
         spedizione: shippingCost.toFixed(2),
         zona_spedizione: shippingZone,
+        ...invoiceMetadata,
       },
     })
 

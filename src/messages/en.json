@@ -197,7 +197,11 @@
     "followTitle": "Follow us",
     "certTitle": "Certifications",
     "privacyPolicy": "Privacy Policy",
-    "copyright": "© {year} Obletter Giovanni Battista Farm - VAT IT02773610692 - ICEA Organic Operator IT-BIO-006"
+    "copyright": "© {year} Obletter Giovanni Battista Farm - VAT IT02773610692 - ICEA Organic Operator IT-BIO-006",
+    "termsLink": "Terms and conditions of sale",
+    "withdrawalLink": "Right of withdrawal",
+    "manageCookies": "Manage cookies",
+    "legalTitle": "Legal information"
   },
   "cart": {
     "title": "Cart",
@@ -288,6 +292,24 @@
       "address": "123 Main St",
       "city": "London",
       "postalCode": "SW1A 1AA"
+    },
+    "vatIncluded": "VAT and shipping included",
+    "invoice": {
+      "request": "Request an invoice for this order",
+      "hint": "Invoices can only be requested at the time of ordering. You will receive an electronic invoice.",
+      "type_privato": "Individual",
+      "type_azienda": "Business / VAT number",
+      "codiceFiscale": "Italian tax code (Codice Fiscale)",
+      "businessName": "Company name",
+      "partitaIva": "VAT number (Partita IVA)",
+      "sdiCode": "SDI recipient code",
+      "pecEmail": "Certified email (PEC)",
+      "sdiOrPecHint": "Provide either the SDI recipient code or the PEC address for e-invoicing.",
+      "invalidCF": "Invalid tax code (check digit mismatch)",
+      "invalidPiva": "Invalid VAT number (check digit mismatch)",
+      "invalidSdi": "The SDI code must be 7 alphanumeric characters",
+      "invalidPec": "Invalid PEC address",
+      "sdiOrPecRequired": "Provide either the SDI code or the PEC address"
     }
   },
   "auth": {
@@ -608,7 +630,27 @@
     "convBio": "Conv. Organic",
     "bio": "Organic",
     "dop": "DOP",
-    "notFound": "Product not found"
+    "notFound": "Product not found",
+    "foodInfo": {
+      "eyebrow": "Transparency",
+      "title": "Food information",
+      "legalName": "Legal name",
+      "ingredients": "Ingredients",
+      "allergens": "Allergens",
+      "netQuantity": "Net quantity",
+      "origin": "Origin",
+      "storage": "Storage",
+      "operator": "Food business operator",
+      "organicControl": "Organic control body",
+      "nutritionTitle": "Average nutrition facts per {per}",
+      "energy": "Energy",
+      "fat": "Fat",
+      "saturatedFat": "of which saturates",
+      "carbohydrates": "Carbohydrates",
+      "sugars": "of which sugars",
+      "protein": "Protein",
+      "salt": "Salt"
+    }
   },
   "notFound": {
     "title": "Page Not Found",

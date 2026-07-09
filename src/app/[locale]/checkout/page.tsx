@@ -17,10 +17,11 @@ import {
 import { useCart } from '@/context/CartContext'
 import { useAuth } from '@/context/AuthContext'
 import { COUNTRIES, getShippingZone } from '@/lib/shipping'
+import { isValidCodiceFiscale, isValidPartitaIva, isValidCodiceSdi, isValidEmailFormat } from '@/lib/fiscal'
 import StripePaymentForm from '@/components/checkout/StripePaymentForm'
 import { staggerContainer, staggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
-import { ShippingAddress } from '@/types'
+import { ShippingAddress, BillingInfo } from '@/types'
 
 const provinces = [
   'Agrigento', 'Alessandria', 'Ancona', 'Aosta', 'Arezzo', 'Ascoli Piceno',
@@ -67,6 +68,16 @@ function CheckoutContent() {
   })
   const [countryCode, setCountryCode] = useState('IT')
   const [errors, setErrors] = useState<Partial<ShippingAddress>>({})
+  const [billing, setBilling] = useState<BillingInfo>({
+    requested: false,
+    type: 'privato',
+    codiceFiscale: '',
+    businessName: '',
+    partitaIva: '',
+    sdiCode: '',
+    pecEmail: '',
+  })
+  const [billingErrors, setBillingErrors] = useState<Partial<Record<keyof BillingInfo, string>>>({})
 
   // Pre-fill form with user data or default address
   useEffect(() => {
@@ -120,9 +131,57 @@ function CheckoutContent() {
     return Object.keys(newErrors).length === 0
   }
 
+  const validateBilling = () => {
+    if (!billing.requested) {
+      setBillingErrors({})
+      return true
+    }
+    const newErrors: Partial<Record<keyof BillingInfo, string>> = {}
+
+    if (billing.type === 'privato') {
+      if (!billing.codiceFiscale.trim()) newErrors.codiceFiscale = t('required')
+      else if (!isValidCodiceFiscale(billing.codiceFiscale)) {
+        newErrors.codiceFiscale = t('invoice.invalidCF')
+      }
+    } else {
+      if (!billing.businessName.trim()) newErrors.businessName = t('required')
+      if (!billing.partitaIva.trim()) newErrors.partitaIva = t('required')
+      else if (!isValidPartitaIva(billing.partitaIva)) {
+        newErrors.partitaIva = t('invoice.invalidPiva')
+      }
+      const hasSdi = billing.sdiCode.trim().length > 0
+      const hasPec = billing.pecEmail.trim().length > 0
+      if (!hasSdi && !hasPec) {
+        newErrors.sdiCode = t('invoice.sdiOrPecRequired')
+      } else {
+        if (hasSdi && !isValidCodiceSdi(billing.sdiCode)) {
+          newErrors.sdiCode = t('invoice.invalidSdi')
+        }
+        if (hasPec && !isValidEmailFormat(billing.pecEmail)) {
+          newErrors.pecEmail = t('invoice.invalidPec')
+        }
+      }
+    }
+
+    setBillingErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleBillingChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target
+    setBilling((prev) => ({ ...prev, [name]: value }))
+    if (billingErrors[name as keyof BillingInfo]) {
+      setBillingErrors((prev) => ({ ...prev, [name]: undefined }))
+    }
+  }
+
   const handleShippingSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!validateShipping()) return
+    const shippingOk = validateShipping()
+    const billingOk = validateBilling()
+    if (!shippingOk || !billingOk) return
 
     setIsProcessing(true)
     setPaymentError('')
@@ -131,7 +190,12 @@ function CheckoutContent() {
       const response = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, shippingZone, shippingAddress: formData }),
+        body: JSON.stringify({
+          items,
+          shippingZone,
+          shippingAddress: formData,
+          billing: billing.requested ? billing : undefined,
+        }),
       })
 
       const data = await response.json()
@@ -612,6 +676,151 @@ function CheckoutContent() {
                   />
                 </motion.div>
 
+                {/* Richiesta fattura (art. 22 DPR 633/72: va richiesta al momento dell'ordine) */}
+                <motion.div variants={staggerItem} className="border border-gold/20 p-5 space-y-5">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={billing.requested}
+                      onChange={(e) => {
+                        setBilling((prev) => ({ ...prev, requested: e.target.checked }))
+                        if (!e.target.checked) setBillingErrors({})
+                      }}
+                      className="mt-1 accent-gold"
+                    />
+                    <span>
+                      <span className="font-sans text-sm text-bianco block">
+                        {t('invoice.request')}
+                      </span>
+                      <span className="font-sans text-xs text-bianco/50 block mt-1">
+                        {t('invoice.hint')}
+                      </span>
+                    </span>
+                  </label>
+
+                  {billing.requested && (
+                    <div className="space-y-5">
+                      <div className="flex gap-6">
+                        {(['privato', 'azienda'] as const).map((type) => (
+                          <label key={type} className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="billingType"
+                              checked={billing.type === type}
+                              onChange={() => {
+                                setBilling((prev) => ({ ...prev, type }))
+                                setBillingErrors({})
+                              }}
+                              className="accent-gold"
+                            />
+                            <span className="font-sans text-sm text-bianco/80">
+                              {t(`invoice.type_${type}`)}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+
+                      {billing.type === 'privato' ? (
+                        <div>
+                          <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                            {t('invoice.codiceFiscale')} *
+                          </label>
+                          <input
+                            type="text"
+                            name="codiceFiscale"
+                            value={billing.codiceFiscale}
+                            onChange={handleBillingChange}
+                            maxLength={16}
+                            autoCapitalize="characters"
+                            className={cn(inputStyles, 'uppercase', billingErrors.codiceFiscale && 'border-red-400')}
+                            placeholder="RSSMRA80A01G482R"
+                          />
+                          {billingErrors.codiceFiscale && (
+                            <p className="text-red-400 text-xs mt-1">{billingErrors.codiceFiscale}</p>
+                          )}
+                        </div>
+                      ) : (
+                        <>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                                {t('invoice.businessName')} *
+                              </label>
+                              <input
+                                type="text"
+                                name="businessName"
+                                value={billing.businessName}
+                                onChange={handleBillingChange}
+                                className={cn(inputStyles, billingErrors.businessName && 'border-red-400')}
+                              />
+                              {billingErrors.businessName && (
+                                <p className="text-red-400 text-xs mt-1">{billingErrors.businessName}</p>
+                              )}
+                            </div>
+                            <div>
+                              <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                                {t('invoice.partitaIva')} *
+                              </label>
+                              <input
+                                type="text"
+                                name="partitaIva"
+                                value={billing.partitaIva}
+                                onChange={handleBillingChange}
+                                maxLength={13}
+                                inputMode="numeric"
+                                className={cn(inputStyles, billingErrors.partitaIva && 'border-red-400')}
+                                placeholder="02773610692"
+                              />
+                              {billingErrors.partitaIva && (
+                                <p className="text-red-400 text-xs mt-1">{billingErrors.partitaIva}</p>
+                              )}
+                            </div>
+                          </div>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                                {t('invoice.sdiCode')}
+                              </label>
+                              <input
+                                type="text"
+                                name="sdiCode"
+                                value={billing.sdiCode}
+                                onChange={handleBillingChange}
+                                maxLength={7}
+                                autoCapitalize="characters"
+                                className={cn(inputStyles, 'uppercase', billingErrors.sdiCode && 'border-red-400')}
+                                placeholder="M5UXCR1"
+                              />
+                              {billingErrors.sdiCode && (
+                                <p className="text-red-400 text-xs mt-1">{billingErrors.sdiCode}</p>
+                              )}
+                            </div>
+                            <div>
+                              <label className="block font-sans text-xs uppercase tracking-[0.2em] text-gold/60 mb-2">
+                                {t('invoice.pecEmail')}
+                              </label>
+                              <input
+                                type="email"
+                                name="pecEmail"
+                                value={billing.pecEmail}
+                                onChange={handleBillingChange}
+                                className={cn(inputStyles, billingErrors.pecEmail && 'border-red-400')}
+                                placeholder="azienda@pec.it"
+                              />
+                              {billingErrors.pecEmail && (
+                                <p className="text-red-400 text-xs mt-1">{billingErrors.pecEmail}</p>
+                              )}
+                            </div>
+                          </div>
+                          <p className="font-sans text-xs text-bianco/50">
+                            {t('invoice.sdiOrPecHint')}
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </motion.div>
+
                 <motion.div variants={staggerItem}>
                   <button
                     type="submit"
@@ -766,6 +975,9 @@ function CheckoutContent() {
                   <span className="text-bianco">{t('total')}</span>
                   <span className="text-gold">{formatPrice(total)}</span>
                 </div>
+                <p className="font-sans text-[11px] text-bianco/40 text-right">
+                  {t('vatIncluded')}
+                </p>
               </div>
 
               {/* Trust badges */}

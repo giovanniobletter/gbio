@@ -197,7 +197,11 @@
     "followTitle": "Seguici",
     "certTitle": "Certificazioni",
     "privacyPolicy": "Privacy Policy",
-    "copyright": "© {year} Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692 - Operatore BIO ICEA IT-BIO-006"
+    "copyright": "© {year} Azienda Agricola Obletter Giovanni Battista - P.IVA IT02773610692 - Operatore BIO ICEA IT-BIO-006",
+    "termsLink": "Termini e condizioni di vendita",
+    "withdrawalLink": "Diritto di recesso",
+    "manageCookies": "Gestisci cookie",
+    "legalTitle": "Informazioni legali"
   },
   "cart": {
     "title": "Carrello",
@@ -288,6 +292,24 @@
       "address": "Via Roma, 123",
       "city": "Roma",
       "postalCode": "00100"
+    },
+    "vatIncluded": "IVA e spese di spedizione incluse",
+    "invoice": {
+      "request": "Richiedi fattura per questo ordine",
+      "hint": "La fattura può essere richiesta solo al momento dell’ordine. Riceverai fattura elettronica.",
+      "type_privato": "Privato",
+      "type_azienda": "Azienda / P.IVA",
+      "codiceFiscale": "Codice Fiscale",
+      "businessName": "Ragione sociale",
+      "partitaIva": "Partita IVA",
+      "sdiCode": "Codice destinatario SDI",
+      "pecEmail": "PEC",
+      "sdiOrPecHint": "Indica il codice destinatario SDI oppure la PEC per la fattura elettronica.",
+      "invalidCF": "Codice fiscale non valido (verifica il carattere di controllo)",
+      "invalidPiva": "Partita IVA non valida (verifica la cifra di controllo)",
+      "invalidSdi": "Il codice SDI deve avere 7 caratteri alfanumerici",
+      "invalidPec": "Indirizzo PEC non valido",
+      "sdiOrPecRequired": "Indica il codice SDI oppure la PEC"
     }
   },
   "auth": {
@@ -608,7 +630,27 @@
     "convBio": "Conv. Bio",
     "bio": "Bio",
     "dop": "DOP",
-    "notFound": "Prodotto non trovato"
+    "notFound": "Prodotto non trovato",
+    "foodInfo": {
+      "eyebrow": "Trasparenza",
+      "title": "Informazioni alimentari",
+      "legalName": "Denominazione",
+      "ingredients": "Ingredienti",
+      "allergens": "Allergeni",
+      "netQuantity": "Quantità netta",
+      "origin": "Origine",
+      "storage": "Conservazione",
+      "operator": "Operatore del settore alimentare",
+      "organicControl": "Organismo di controllo bio",
+      "nutritionTitle": "Valori nutrizionali medi per {per}",
+      "energy": "Energia",
+      "fat": "Grassi",
+      "saturatedFat": "di cui acidi grassi saturi",
+      "carbohydrates": "Carboidrati",
+      "sugars": "di cui zuccheri",
+      "protein": "Proteine",
+      "salt": "Sale"
+    }
   },
   "notFound": {
     "title": "Pagina Non Trovata",
