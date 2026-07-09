@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShoppingBag, Check, Expand, MapPin, Award, Scale, CalendarDays } from 'lucide-react'
+import { ShoppingBag, Check, Expand, MapPin, Award, Scale, CalendarDays, AlertTriangle, Info } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLocale, useTranslations } from 'next-intl'
@@ -324,6 +324,105 @@ export function ProductDetailClient({ product: rawProduct, relatedProducts }: Pr
               </div>
             </motion.div>
           </div>
+
+          {/* Informazioni alimentari (Reg. UE 1169/2011, art. 14: disponibili prima dell'acquisto) */}
+          {product.foodInfo && (
+            <motion.section
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mt-20"
+              id="informazioni-alimentari"
+            >
+              <OrnateRule variant="diamond" className="mb-12" />
+              <div className="text-center mb-10">
+                <span className="font-sans text-xs uppercase tracking-[0.3em] text-gold/60">
+                  {t('foodInfo.eyebrow')}
+                </span>
+                <h2 className="font-serif text-3xl md:text-4xl text-bianco mt-3">
+                  {t('foodInfo.title')}
+                </h2>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="space-y-5 border border-gold/20 p-6">
+                  <div>
+                    <span className="font-sans text-xs uppercase tracking-wider text-gold/60">{t('foodInfo.legalName')}</span>
+                    <p className="font-sans text-sm text-bianco/80 mt-1">{product.foodInfo.legalName}</p>
+                  </div>
+                  <div>
+                    <span className="font-sans text-xs uppercase tracking-wider text-gold/60">{t('foodInfo.ingredients')}</span>
+                    <p className="font-sans text-sm text-bianco/80 mt-1">{product.foodInfo.ingredients}</p>
+                  </div>
+                  {product.foodInfo.allergens.length > 0 && (
+                    <div className="flex items-start gap-2 border border-gold/30 bg-gold/5 p-3">
+                      <AlertTriangle size={16} className="text-gold mt-0.5 flex-shrink-0" />
+                      <div>
+                        <span className="font-sans text-xs uppercase tracking-wider text-gold">{t('foodInfo.allergens')}</span>
+                        <p className="font-sans text-sm text-bianco/90 mt-1">{product.foodInfo.allergens.join(', ')}</p>
+                      </div>
+                    </div>
+                  )}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <span className="font-sans text-xs uppercase tracking-wider text-gold/60">{t('foodInfo.netQuantity')}</span>
+                      <p className="font-sans text-sm text-bianco/80 mt-1">{product.foodInfo.netQuantity}</p>
+                    </div>
+                    <div>
+                      <span className="font-sans text-xs uppercase tracking-wider text-gold/60">{t('foodInfo.origin')}</span>
+                      <p className="font-sans text-sm text-bianco/80 mt-1">{product.foodInfo.originLabel}</p>
+                    </div>
+                  </div>
+                  <div>
+                    <span className="font-sans text-xs uppercase tracking-wider text-gold/60">{t('foodInfo.storage')}</span>
+                    <p className="font-sans text-sm text-bianco/80 mt-1">{product.foodInfo.storage}</p>
+                  </div>
+                  <div>
+                    <span className="font-sans text-xs uppercase tracking-wider text-gold/60">{t('foodInfo.operator')}</span>
+                    <p className="font-sans text-sm text-bianco/80 mt-1">{product.foodInfo.operator}</p>
+                  </div>
+                  {(product.foodInfo.organicCode || product.foodInfo.extraLabel) && (
+                    <div className="flex items-start gap-2 pt-1">
+                      <Info size={14} className="text-gold/50 mt-0.5 flex-shrink-0" />
+                      <p className="font-sans text-xs text-bianco/60 leading-relaxed">
+                        {[
+                          product.foodInfo.organicCode && `${t('foodInfo.organicControl')}: ${product.foodInfo.organicCode}`,
+                          product.foodInfo.organicOrigin,
+                          ...(product.foodInfo.extraLabel || []),
+                        ].filter(Boolean).join(' · ')}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {product.foodInfo.nutrition && (
+                  <div className="border border-gold/20 p-6">
+                    <h3 className="font-sans text-xs uppercase tracking-wider text-gold mb-4">
+                      {t('foodInfo.nutritionTitle', { per: product.foodInfo.nutrition.per === '100ml' ? '100 ml' : '100 g' })}
+                    </h3>
+                    <table className="w-full font-sans text-sm">
+                      <tbody>
+                        {([
+                          { label: t('foodInfo.energy'), value: `${product.foodInfo.nutrition.energyKj} kJ / ${product.foodInfo.nutrition.energyKcal} kcal`, indent: false },
+                          { label: t('foodInfo.fat'), value: `${product.foodInfo.nutrition.fat} g`, indent: false },
+                          { label: t('foodInfo.saturatedFat'), value: `${product.foodInfo.nutrition.saturatedFat} g`, indent: true },
+                          { label: t('foodInfo.carbohydrates'), value: `${product.foodInfo.nutrition.carbohydrates} g`, indent: false },
+                          { label: t('foodInfo.sugars'), value: `${product.foodInfo.nutrition.sugars} g`, indent: true },
+                          { label: t('foodInfo.protein'), value: `${product.foodInfo.nutrition.protein} g`, indent: false },
+                          { label: t('foodInfo.salt'), value: `${product.foodInfo.nutrition.salt} g`, indent: false },
+                        ]).map((row, i) => (
+                          <tr key={row.label} className={i % 2 === 0 ? 'bg-gold/5' : ''}>
+                            <td className={`py-2 px-3 text-bianco/70 ${row.indent ? 'pl-8 text-bianco/50' : ''}`}>{row.label}</td>
+                            <td className="py-2 px-3 text-right text-bianco/80">{row.value}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            </motion.section>
+          )}
 
           {/* Related Products */}
           {relatedProducts.length > 0 && (
