@@ -57,7 +57,8 @@ export default function PrivacyPolicy() {
                   <ul className="list-disc pl-6 space-y-2 mt-3">
                     <li>Responding to enquiries submitted via the contact form.</li>
                     <li>Managing orders and shipments of purchased products.</li>
-                    <li>Anonymous statistical analysis of web traffic (Google Analytics).</li>
+                    <li>Statistical analysis of web traffic (Google Analytics).</li>
+                    <li>Responding to questions submitted to the &quot;Robin&quot; chat assistant.</li>
                     <li>Legal compliance and tax obligations.</li>
                   </ul>
                 </section>
@@ -65,10 +66,11 @@ export default function PrivacyPolicy() {
                 <section>
                   <h2 className="font-serif text-xl text-gold mb-4">4. Legal Basis</h2>
                   <p>
-                    Data processing is based on: consent of the data subject (art. 6.1.a GDPR) for sending communications;
-                    performance of a contract (art. 6.1.b GDPR) for order management;
-                    legal obligation (art. 6.1.c GDPR) for tax compliance;
-                    legitimate interest (art. 6.1.f GDPR) for anonymous statistical analysis.
+                    Data processing is based on: consent of the data subject (art. 6.1.a GDPR) for sending communications
+                    and for analytics cookies (Google Analytics), which are activated only after your consent via the
+                    cookie banner; performance of a contract (art. 6.1.b GDPR) for order management;
+                    legal obligation (art. 6.1.c GDPR) for tax compliance.
+                    You can withdraw your cookie consent at any time via the &quot;Manage cookies&quot; link in the footer.
                   </p>
                 </section>
 
@@ -91,6 +93,8 @@ export default function PrivacyPolicy() {
                     <li><strong className="text-bianco">Stripe Inc.</strong> — for payment processing.</li>
                     <li><strong className="text-bianco">Google LLC</strong> — for statistical analysis (Google Analytics).</li>
                     <li><strong className="text-bianco">Vercel Inc.</strong> — for website hosting.</li>
+                    <li><strong className="text-bianco">Resend Inc.</strong> — for sending transactional emails (order confirmations, contact form).</li>
+                    <li><strong className="text-bianco">Anthropic PBC</strong> — for the &quot;Robin&quot; chat assistant: messages you type in the chat are processed by the Claude API to generate replies. Do not enter personal data in the chat.</li>
                   </ul>
                   <p className="mt-3">Data is never sold to third parties.</p>
                 </section>
@@ -157,7 +161,8 @@ export default function PrivacyPolicy() {
                   <ul className="list-disc pl-6 space-y-2 mt-3">
                     <li>Rispondere alle richieste inviate tramite il modulo di contatto.</li>
                     <li>Gestire gli ordini e le spedizioni dei prodotti acquistati.</li>
-                    <li>Analisi statistica anonima del traffico web (Google Analytics).</li>
+                    <li>Analisi statistica del traffico web (Google Analytics).</li>
+                    <li>Risposta alle domande poste all&apos;assistente virtuale &quot;Robin&quot;.</li>
                     <li>Adempimenti di legge e obblighi fiscali.</li>
                   </ul>
                 </section>
@@ -165,10 +170,11 @@ export default function PrivacyPolicy() {
                 <section>
                   <h2 className="font-serif text-xl text-gold mb-4">4. Base Giuridica</h2>
                   <p>
-                    Il trattamento dei dati si basa su: consenso dell&apos;interessato (art. 6.1.a GDPR) per l&apos;invio di comunicazioni;
-                    esecuzione di un contratto (art. 6.1.b GDPR) per la gestione degli ordini;
-                    obbligo legale (art. 6.1.c GDPR) per gli adempimenti fiscali;
-                    legittimo interesse (art. 6.1.f GDPR) per le analisi statistiche anonime.
+                    Il trattamento dei dati si basa su: consenso dell&apos;interessato (art. 6.1.a GDPR) per l&apos;invio di
+                    comunicazioni e per i cookie analitici (Google Analytics), attivati solo dopo il consenso espresso
+                    tramite il banner; esecuzione di un contratto (art. 6.1.b GDPR) per la gestione degli ordini;
+                    obbligo legale (art. 6.1.c GDPR) per gli adempimenti fiscali.
+                    Puoi revocare il consenso ai cookie in qualsiasi momento tramite il link &quot;Gestisci cookie&quot; nel footer.
                   </p>
                 </section>
 
@@ -191,6 +197,8 @@ export default function PrivacyPolicy() {
                     <li><strong className="text-bianco">Stripe Inc.</strong> — per l&apos;elaborazione dei pagamenti.</li>
                     <li><strong className="text-bianco">Google LLC</strong> — per le analisi statistiche (Google Analytics).</li>
                     <li><strong className="text-bianco">Vercel Inc.</strong> — per l&apos;hosting del sito web.</li>
+                    <li><strong className="text-bianco">Resend Inc.</strong> — per l&apos;invio delle email transazionali (conferme d&apos;ordine, modulo contatti).</li>
+                    <li><strong className="text-bianco">Anthropic PBC</strong> — per l&apos;assistente virtuale &quot;Robin&quot;: i messaggi scritti in chat sono elaborati dalla API Claude per generare le risposte. Ti invitiamo a non inserire dati personali nella chat.</li>
                   </ul>
                   <p className="mt-3">I dati non vengono venduti a terzi.</p>
                 </section>

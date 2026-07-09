@@ -124,12 +124,23 @@ function PaymentForm({
         {isProcessing ? (
           <>
             <Loader2 size={16} className="animate-spin" />
-            <span>Elaborazione...</span>
+            <span>{locale === 'en' ? 'Processing...' : 'Elaborazione...'}</span>
           </>
         ) : (
-          <span>Paga {total}</span>
+          // Formulazione "ordine con obbligo di pagare" (art. 51 c.2 Cod. Consumo)
+          <span>{locale === 'en' ? `Pay ${total}` : `Paga ${total}`}</span>
         )}
       </button>
+
+      <p className="font-sans text-xs text-bianco/40 text-center">
+        {locale === 'en' ? (
+          <>By paying you place an order with an obligation to pay and accept the{' '}
+            <a href={`/${locale}/termini`} className="text-gold/70 hover:text-gold underline" target="_blank">terms and conditions of sale</a>.</>
+        ) : (
+          <>Pagando invii un ordine con obbligo di pagare e accetti i{' '}
+            <a href={`/${locale}/termini`} className="text-gold/70 hover:text-gold underline" target="_blank">termini e condizioni di vendita</a>.</>
+        )}
+      </p>
 
       {errorMessage && (
         <div className="p-4 border border-red-400/50 bg-red-400/10">

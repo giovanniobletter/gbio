@@ -31,6 +31,25 @@ declare global {
   }
 }
 
+// Revoca del consenso (GDPR art. 7.3: revocare dev'essere facile quanto
+// consentire): rimuove la scelta e i cookie GA, poi riapre il banner.
+function clearGACookies() {
+  const domain = window.location.hostname.replace(/^www\./, '')
+  document.cookie.split(';').forEach((c) => {
+    const name = c.split('=')[0].trim()
+    if (name === '_ga' || name.startsWith('_ga_') || name === '_gid') {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=.${domain}`
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`
+    }
+  })
+}
+
+export function reopenCookieBanner() {
+  localStorage.removeItem('cookie-consent')
+  clearGACookies()
+  window.dispatchEvent(new Event('gbio:cookie-banner-open'))
+}
+
 export function CookieBanner() {
   const [visible, setVisible] = useState(false)
   const t = useTranslations('cookies')
@@ -47,6 +66,12 @@ export function CookieBanner() {
     }
   }, [])
 
+  useEffect(() => {
+    const open = () => setVisible(true)
+    window.addEventListener('gbio:cookie-banner-open', open)
+    return () => window.removeEventListener('gbio:cookie-banner-open', open)
+  }, [])
+
   const accept = () => {
     localStorage.setItem('cookie-consent', 'accepted')
     setVisible(false)
@@ -56,6 +81,7 @@ export function CookieBanner() {
   const reject = () => {
     localStorage.setItem('cookie-consent', 'rejected')
     setVisible(false)
+    clearGACookies()
   }
 
   return (

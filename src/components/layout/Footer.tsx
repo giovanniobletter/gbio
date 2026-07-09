@@ -6,6 +6,8 @@ import { useTranslations, useLocale } from 'next-intl'
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react'
 import { fadeUp, staggerContainer, staggerItem } from '@/lib/animations'
 import { MountainSilhouette } from '@/components/ui/decorative/MountainSilhouette'
+import { reopenCookieBanner } from '@/components/ui/CookieBanner'
+import { company } from '@/data/company'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -48,8 +50,15 @@ export function Footer() {
             <p className="font-serif text-sm text-gold/60 italic mt-4">
               {t('quote')}
             </p>
-            <p className="font-sans text-xs text-bianco/40">
-              P.IVA IT02773610692
+            {/* Dati identificativi obbligatori: art. 7 D.Lgs. 70/2003, art. 35 DPR 633/72 */}
+            <p className="font-sans text-xs text-bianco/40 leading-relaxed">
+              {company.legalName}
+              <br />
+              {company.address.street}, {company.address.postalCode} {company.address.city} ({company.address.province})
+              <br />
+              P.IVA {company.vatNumber}
+              {company.rea && <><br />REA {company.rea}</>}
+              {company.pec && <><br />PEC: {company.pec}</>}
             </p>
           </motion.div>
 
@@ -60,11 +69,11 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:gb.obletter@gmail.com"
+                  href={`mailto:${company.email}`}
                   className="flex items-center gap-3 text-bianco/60 hover:text-gold transition-colors"
                 >
                   <Mail size={16} />
-                  <span className="text-sm">gb.obletter@gmail.com</span>
+                  <span className="text-sm">{company.email}</span>
                 </a>
               </li>
               <li>
@@ -156,13 +165,25 @@ export function Footer() {
           <p className="text-xs text-bianco/40">
             {t('copyright', { year: currentYear })}
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <a href={`/${locale}/termini`} className="text-xs text-bianco/40 hover:text-gold transition-colors">
+              {t('termsLink')}
+            </a>
+            <a href={`/${locale}/recesso`} className="text-xs text-bianco/40 hover:text-gold transition-colors">
+              {t('withdrawalLink')}
+            </a>
             <a href={`/${locale}/privacy`} className="text-xs text-bianco/40 hover:text-gold transition-colors">
               {t('privacyPolicy')}
             </a>
             <a href={`/${locale}/cookies`} className="text-xs text-bianco/40 hover:text-gold transition-colors">
               {t('cookiePolicy')}
             </a>
+            <button
+              onClick={reopenCookieBanner}
+              className="text-xs text-bianco/40 hover:text-gold transition-colors"
+            >
+              {t('manageCookies')}
+            </button>
           </div>
         </motion.div>
       </div>
