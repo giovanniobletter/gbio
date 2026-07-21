@@ -103,6 +103,33 @@ export default function CookiePolicy() {
                     </table>
                   </div>
 
+                  <h3 className="font-serif text-lg text-bianco mt-6 mb-3">Marketing Cookies (Meta Pixel)</h3>
+                  <p>
+                    We use the Meta (Facebook) Pixel to measure the effectiveness of our advertising
+                    campaigns and to show relevant ads on Facebook and Instagram. These cookies are
+                    installed only with the user&apos;s prior consent. For more information see the{' '}
+                    <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">Meta Privacy Policy</a>.
+                  </p>
+
+                  <div className="mt-4 border border-gold/20 overflow-hidden">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-gold/20 bg-gold/5">
+                          <th className="text-left p-3 text-gold font-sans text-xs uppercase tracking-wider">Cookie</th>
+                          <th className="text-left p-3 text-gold font-sans text-xs uppercase tracking-wider">Purpose</th>
+                          <th className="text-left p-3 text-gold font-sans text-xs uppercase tracking-wider">Duration</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gold/10">
+                          <td className="p-3 text-bianco">_fbp</td>
+                          <td className="p-3">Identifies browsers for advertising purposes</td>
+                          <td className="p-3">3 months</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
                   <h3 className="font-serif text-lg text-bianco mt-6 mb-3">Third-Party Cookies (Stripe)</h3>
                   <p>
                     During the payment process, Stripe may install cookies necessary for secure
@@ -218,6 +245,33 @@ export default function CookiePolicy() {
                           <td className="p-3 text-bianco">_ga_*</td>
                           <td className="p-3">Mantiene lo stato della sessione</td>
                           <td className="p-3">2 anni</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <h3 className="font-serif text-lg text-bianco mt-6 mb-3">Cookie di Marketing (Meta Pixel)</h3>
+                  <p>
+                    Utilizziamo il Pixel di Meta (Facebook) per misurare l&apos;efficacia delle nostre campagne
+                    pubblicitarie e mostrare annunci pertinenti su Facebook e Instagram. Questi cookie vengono
+                    installati solo previo consenso dell&apos;utente. Per maggiori informazioni consulta l&apos;{' '}
+                    <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-gold hover:underline">Informativa sulla privacy di Meta</a>.
+                  </p>
+
+                  <div className="mt-4 border border-gold/20 overflow-hidden">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-gold/20 bg-gold/5">
+                          <th className="text-left p-3 text-gold font-sans text-xs uppercase tracking-wider">Cookie</th>
+                          <th className="text-left p-3 text-gold font-sans text-xs uppercase tracking-wider">Finalità</th>
+                          <th className="text-left p-3 text-gold font-sans text-xs uppercase tracking-wider">Durata</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-gold/10">
+                          <td className="p-3 text-bianco">_fbp</td>
+                          <td className="p-3">Identifica i browser a fini pubblicitari</td>
+                          <td className="p-3">3 mesi</td>
                         </tr>
                       </tbody>
                     </table>

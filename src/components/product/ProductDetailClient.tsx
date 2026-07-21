@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, Check, Expand, MapPin, Award, Scale, CalendarDays, AlertTriangle, Info } from 'lucide-react'
 import Image from 'next/image'
@@ -18,6 +18,7 @@ import { QuantitySelector } from '@/components/product/QuantitySelector'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { luxuryFadeUp, luxurySlideIn, luxurySlideInRight, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
+import { metaTrack } from '@/lib/metaPixel'
 
 interface ProductDetailClientProps {
   product: Product
@@ -90,6 +91,16 @@ function RelatedProductCard({ product: rawProduct }: { product: Product }) {
 
 export function ProductDetailClient({ product: rawProduct, relatedProducts }: ProductDetailClientProps) {
   const product = useProductT(rawProduct)
+
+  useEffect(() => {
+    metaTrack('ViewContent', {
+      content_ids: [rawProduct.id],
+      content_name: rawProduct.name,
+      content_type: 'product',
+      value: rawProduct.price,
+      currency: 'EUR',
+    })
+  }, [rawProduct.id, rawProduct.name, rawProduct.price])
   const locale = useLocale()
   const t = useTranslations('productDetail')
   const tCats = useTranslations('products.categories')

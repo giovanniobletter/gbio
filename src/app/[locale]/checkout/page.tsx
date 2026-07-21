@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
@@ -15,6 +15,7 @@ import {
   User,
 } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
+import { metaTrack } from '@/lib/metaPixel'
 import { useAuth } from '@/context/AuthContext'
 import { COUNTRIES, getShippingZone } from '@/lib/shipping'
 import { isValidCodiceFiscale, isValidPartitaIva, isValidCodiceSdi, isValidEmailFormat } from '@/lib/fiscal'
@@ -78,6 +79,19 @@ function CheckoutContent() {
     pecEmail: '',
   })
   const [billingErrors, setBillingErrors] = useState<Partial<Record<keyof BillingInfo, string>>>({})
+
+  // Meta Pixel: una sola volta per visita al checkout, appena il carrello è disponibile
+  const initiateTracked = useRef(false)
+  useEffect(() => {
+    if (initiateTracked.current || items.length === 0) return
+    initiateTracked.current = true
+    metaTrack('InitiateCheckout', {
+      content_ids: items.map((i) => i.product.id),
+      num_items: items.reduce((n, i) => n + i.quantity, 0),
+      value: total,
+      currency: 'EUR',
+    })
+  }, [items, total])
 
   // Pre-fill form with user data or default address
   useEffect(() => {

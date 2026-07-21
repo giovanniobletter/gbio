@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations, useLocale } from 'next-intl'
 import { X } from 'lucide-react'
+import { loadMetaPixel, clearMetaCookies } from '@/lib/metaPixel'
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 
@@ -47,6 +48,7 @@ function clearGACookies() {
 export function reopenCookieBanner() {
   localStorage.removeItem('cookie-consent')
   clearGACookies()
+  clearMetaCookies()
   window.dispatchEvent(new Event('gbio:cookie-banner-open'))
 }
 
@@ -59,6 +61,7 @@ export function CookieBanner() {
     const consent = localStorage.getItem('cookie-consent')
     if (consent === 'accepted') {
       loadGA()
+      loadMetaPixel()
     } else if (consent === null) {
       // No choice made yet — show banner after a short delay
       const timer = setTimeout(() => setVisible(true), 1500)
@@ -76,12 +79,14 @@ export function CookieBanner() {
     localStorage.setItem('cookie-consent', 'accepted')
     setVisible(false)
     loadGA()
+    loadMetaPixel()
   }
 
   const reject = () => {
     localStorage.setItem('cookie-consent', 'rejected')
     setVisible(false)
     clearGACookies()
+    clearMetaCookies()
   }
 
   return (

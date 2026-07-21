@@ -11,6 +11,7 @@ import {
 } from 'react'
 import { CartItem, Product } from '@/types'
 import { ShippingZone, getShippingCost } from '@/lib/shipping'
+import { metaTrack } from '@/lib/metaPixel'
 
 interface CartState {
   items: CartItem[]
@@ -166,6 +167,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = useCallback((product: Product) => {
     dispatch({ type: 'ADD_ITEM', payload: product })
+    metaTrack('AddToCart', {
+      content_ids: [product.id],
+      content_name: product.name,
+      content_type: 'product',
+      value: product.price,
+      currency: 'EUR',
+    })
   }, [])
 
   const removeItem = useCallback((productId: string) => {

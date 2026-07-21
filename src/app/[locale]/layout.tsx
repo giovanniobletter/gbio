@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Providers } from '@/components/Providers'
 import { CookieBanner } from '@/components/ui/CookieBanner'
+import { MetaPixelPageView } from '@/components/ui/MetaPixelPageView'
 import { locales, type Locale } from '@/i18n/config'
 
 type Props = {
@@ -104,6 +105,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider locale={locale} messages={messages}>
       <Providers>{children}</Providers>
       <CookieBanner />
+      <MetaPixelPageView />
     </NextIntlClientProvider>
   )
 }

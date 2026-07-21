@@ -7,13 +7,14 @@ import { useParams, useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Check, Package, Mail, ArrowRight, AlertTriangle } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
+import { metaTrack } from '@/lib/metaPixel'
 
 function SuccessContent() {
   const params = useParams()
   const searchParams = useSearchParams()
   const locale = params.locale as string
   const t = useTranslations('checkout')
-  const { clearCart } = useCart()
+  const { clearCart, items, total } = useCart()
 
   const paymentIntent = searchParams.get('payment_intent')
   const redirectStatus = searchParams.get('redirect_status')
@@ -27,12 +28,23 @@ function SuccessContent() {
     `GBO-${Date.now().toString(36).toUpperCase()}`
   )
 
-  // Clear cart on successful payment
+  // Clear cart on successful payment (+ evento Purchase per Meta Pixel,
+  // deduplicato via sessionStorage: al reload il carrello è già vuoto)
   useEffect(() => {
-    if (isSuccess) {
-      clearCart()
+    if (!isSuccess) return
+    const dedupeKey = `meta-purchase-${paymentIntent || sessionId}`
+    if (items.length > 0 && !sessionStorage.getItem(dedupeKey)) {
+      sessionStorage.setItem(dedupeKey, '1')
+      metaTrack('Purchase', {
+        content_ids: items.map((i) => i.product.id),
+        content_type: 'product',
+        num_items: items.reduce((n, i) => n + i.quantity, 0),
+        value: total,
+        currency: 'EUR',
+      })
     }
-  }, [clearCart, isSuccess])
+    clearCart()
+  }, [clearCart, isSuccess, items, total, paymentIntent, sessionId])
 
   if (isFailed) {
     return (

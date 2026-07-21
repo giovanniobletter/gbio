@@ -8,6 +8,7 @@ import { SectionTitle } from '@/components/ui/SectionTitle'
 import { Button } from '@/components/ui/Button'
 import { luxuryFadeUp, luxurySlideIn, luxurySlideInRight, luxuryStaggerContainer, luxuryStaggerItem } from '@/lib/animations'
 import { cn } from '@/lib/utils'
+import { metaTrack } from '@/lib/metaPixel'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
 
@@ -76,6 +77,7 @@ export function Contact() {
       }
 
       setIsSubmitted(true)
+      metaTrack('Lead')
       setFormData({
         name: '',
         email: '',
