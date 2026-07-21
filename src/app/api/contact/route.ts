@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
-const TO_EMAIL = 'gb.obletter@gmail.com'
+const TO_EMAIL = 'customerservice@gbio.it'
 
 function escapeHtml(str: string): string {
   return str

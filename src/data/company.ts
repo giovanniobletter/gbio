@@ -17,7 +17,7 @@ export const company = {
     country: 'Italia',
   },
   email: 'ordini@gbio.it',
-  contactEmail: 'gb.obletter@gmail.com',
+  contactEmail: 'customerservice@gbio.it',
   phone: '+39 392 636 2254',
   phoneDisplay: '+39 392 636 2254',
   site: 'https://gbio.it',

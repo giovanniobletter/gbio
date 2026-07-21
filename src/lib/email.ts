@@ -5,7 +5,7 @@ function getResend() {
 }
 
 const FROM_EMAIL = 'GBiO <ordini@gbio.it>'
-const SELLER_EMAIL = 'gb.obletter@gmail.com'
+const SELLER_EMAIL = 'customerservice@gbio.it'
 
 // I dati ordine arrivano dai metadata Stripe compilati dal cliente:
 // vanno escapati prima di finire nell'HTML delle email
@@ -130,7 +130,7 @@ export async function sendOrderConfirmationEmail(order: OrderData) {
           <div style="text-align: center; padding: 24px 0; border-top: 1px solid #c9a96120;">
             <p style="color: #ffffff60; font-size: 12px; margin: 0;">
               Per qualsiasi domanda rispondi a questa email o contattaci a
-              <a href="mailto:gb.obletter@gmail.com" style="color: #c9a961;">gb.obletter@gmail.com</a>
+              <a href="mailto:customerservice@gbio.it" style="color: #c9a961;">customerservice@gbio.it</a>
             </p>
             <p style="color: #ffffff40; font-size: 11px; margin-top: 12px;">
               GBiO — Azienda Agricola Biologica Obletter<br>

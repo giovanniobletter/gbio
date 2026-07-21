@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
                     <strong className="text-bianco">Azienda Agricola Obletter Giovanni Battista</strong><br />
                     Via Sicilia, Fraz. Villanova 2/a, 65012 Cepagatti (PE), Italy<br />
                     VAT: IT02773610692<br />
-                    Email: gb.obletter@gmail.com<br />
+                    Email: customerservice@gbio.it<br />
                     Tel: +39 392 636 2254
                   </p>
                 </section>
@@ -111,7 +111,7 @@ export default function PrivacyPolicy() {
                     <li>Lodge a complaint with the Italian Data Protection Authority.</li>
                   </ul>
                   <p className="mt-3">
-                    To exercise your rights, contact: <a href="mailto:gb.obletter@gmail.com" className="text-gold hover:underline">gb.obletter@gmail.com</a>
+                    To exercise your rights, contact: <a href="mailto:customerservice@gbio.it" className="text-gold hover:underline">customerservice@gbio.it</a>
                   </p>
                 </section>
 
@@ -140,7 +140,7 @@ export default function PrivacyPolicy() {
                     <strong className="text-bianco">Azienda Agricola Obletter Giovanni Battista</strong><br />
                     Via Sicilia, Fraz. Villanova 2/a, 65012 Cepagatti (PE)<br />
                     P.IVA: IT02773610692<br />
-                    Email: gb.obletter@gmail.com<br />
+                    Email: customerservice@gbio.it<br />
                     Tel: +39 392 636 2254
                   </p>
                 </section>
@@ -215,7 +215,7 @@ export default function PrivacyPolicy() {
                     <li>Proporre reclamo al Garante per la Protezione dei Dati Personali.</li>
                   </ul>
                   <p className="mt-3">
-                    Per esercitare i propri diritti, contattare: <a href="mailto:gb.obletter@gmail.com" className="text-gold hover:underline">gb.obletter@gmail.com</a>
+                    Per esercitare i propri diritti, contattare: <a href="mailto:customerservice@gbio.it" className="text-gold hover:underline">customerservice@gbio.it</a>
                   </p>
                 </section>
 

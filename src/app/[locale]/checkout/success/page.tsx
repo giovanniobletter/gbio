@@ -174,8 +174,8 @@ function SuccessContent() {
           className="mt-12 font-sans text-xs text-bianco/40"
         >
           {t('footerNotePre')}{' '}
-          <a href="mailto:gb.obletter@gmail.com" className="text-gold hover:underline">
-            gb.obletter@gmail.com
+          <a href="mailto:customerservice@gbio.it" className="text-gold hover:underline">
+            customerservice@gbio.it
           </a>
         </motion.p>
       </motion.div>

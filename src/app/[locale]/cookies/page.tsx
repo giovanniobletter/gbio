@@ -143,7 +143,7 @@ export default function CookiePolicy() {
                   <h2 className="font-serif text-xl text-gold mb-4">5. Contact</h2>
                   <p>
                     For any questions regarding the cookies used on this site, contact:<br />
-                    <a href="mailto:gb.obletter@gmail.com" className="text-gold hover:underline">gb.obletter@gmail.com</a>
+                    <a href="mailto:customerservice@gbio.it" className="text-gold hover:underline">customerservice@gbio.it</a>
                   </p>
                 </section>
               </div>
@@ -263,7 +263,7 @@ export default function CookiePolicy() {
                   <h2 className="font-serif text-xl text-gold mb-4">5. Contatti</h2>
                   <p>
                     Per qualsiasi domanda relativa ai cookie utilizzati su questo sito, contattare:<br />
-                    <a href="mailto:gb.obletter@gmail.com" className="text-gold hover:underline">gb.obletter@gmail.com</a>
+                    <a href="mailto:customerservice@gbio.it" className="text-gold hover:underline">customerservice@gbio.it</a>
                   </p>
                 </section>
               </div>

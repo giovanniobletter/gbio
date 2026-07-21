@@ -29,8 +29,8 @@ export function Contact() {
     {
       icon: Mail,
       label: t('email'),
-      value: 'gb.obletter@gmail.com',
-      href: 'mailto:gb.obletter@gmail.com',
+      value: 'customerservice@gbio.it',
+      href: 'mailto:customerservice@gbio.it',
     },
     {
       icon: Clock,
