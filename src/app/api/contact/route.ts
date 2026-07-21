@@ -48,7 +48,7 @@ export async function POST(request: Request) {
           Authorization: `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: 'GBiO Sito Web <noreply@gbio.it>',
+          from: 'GBiO Sito Web <customerservice@gbio.it>',
           to: [TO_EMAIL],
           reply_to: email,
           subject: `[GBiO] ${subjectLabel} - ${name}`,
