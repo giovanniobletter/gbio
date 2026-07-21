@@ -4,7 +4,11 @@ import { products } from '@/data/products'
 import { getShippingCost, isValidShippingZone, ShippingZone } from '@/lib/shipping'
 import { isValidCodiceFiscale, isValidPartitaIva, isValidCodiceSdi, isValidEmailFormat } from '@/lib/fiscal'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+// Inizializzazione lazy: a livello di modulo farebbe fallire la build
+// negli ambienti senza STRIPE_SECRET_KEY (es. preview Vercel)
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY!)
+}
 
 function getServerProduct(productId: string) {
   return products.find(p => p.id === productId)
@@ -117,7 +121,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create PaymentIntent with automatic payment methods (cards, Apple Pay, Google Pay)
-    const paymentIntent = await stripe.paymentIntents.create({
+    const paymentIntent = await getStripe().paymentIntents.create({
       amount,
       currency: 'eur',
       automatic_payment_methods: {

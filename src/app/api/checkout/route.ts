@@ -3,7 +3,11 @@ import Stripe from 'stripe'
 import { products } from '@/data/products'
 import { ALL_COUNTRY_CODES, getShippingCost, isValidShippingZone, ShippingZone } from '@/lib/shipping'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+// Inizializzazione lazy: a livello di modulo farebbe fallire la build
+// negli ambienti senza STRIPE_SECRET_KEY (es. preview Vercel)
+function getStripe() {
+  return new Stripe(process.env.STRIPE_SECRET_KEY!)
+}
 
 function getServerProduct(productId: string) {
   return products.find(p => p.id === productId)
@@ -91,7 +95,7 @@ export async function POST(request: NextRequest) {
 
     // Create Stripe Checkout Session
     // No payment_method_types restriction = Stripe auto-enables Apple Pay, Google Pay, cards, etc.
-    const session = await stripe.checkout.sessions.create({
+    const session = await getStripe().checkout.sessions.create({
       line_items: lineItems,
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/${locale}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
