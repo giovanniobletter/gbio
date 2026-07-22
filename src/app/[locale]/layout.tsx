@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { Providers } from '@/components/Providers'
 import { CookieBanner } from '@/components/ui/CookieBanner'
 import { MetaPixelPageView } from '@/components/ui/MetaPixelPageView'
+import { LiveTracker } from '@/components/ui/LiveTracker'
 import { locales, type Locale } from '@/i18n/config'
 
 type Props = {
@@ -106,6 +107,7 @@ export default async function LocaleLayout({
       <Providers>{children}</Providers>
       <CookieBanner />
       <MetaPixelPageView />
+      <LiveTracker />
     </NextIntlClientProvider>
   )
 }
