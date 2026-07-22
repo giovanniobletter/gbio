@@ -26,7 +26,7 @@ export function CallToAction() {
   }, [])
 
   return (
-    <section className="relative min-h-[80vh] flex items-center py-24 sm:py-32 border-t border-b border-gold/20 overflow-hidden">
+    <section id="invito" className="relative min-h-[80vh] flex items-center py-24 sm:py-32 border-t border-b border-gold/20 overflow-hidden">
       {/* Background slideshow */}
       <div className="absolute inset-0 bg-nero">
         <AnimatePresence mode="sync">

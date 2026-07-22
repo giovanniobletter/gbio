@@ -18,10 +18,13 @@ interface Stats {
 
 const SECTION_LABELS: Record<string, string> = {
   hero: 'Apertura',
+  vetrina: 'Vetrina prodotti',
   prodotti: 'Prodotti',
+  cofanetti: 'Cofanetti',
   heritage: 'Heritage',
   territorio: 'Territorio',
   certificazioni: 'Certificazioni',
+  invito: 'Call to action',
   contatti: 'Contatti',
 }
 

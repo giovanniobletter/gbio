@@ -29,7 +29,7 @@ export function ProductShowcase() {
   ]
 
   return (
-    <section className="section-padding bg-nero relative overflow-hidden border-t border-b border-gold/20">
+    <section id="vetrina" className="section-padding bg-nero relative overflow-hidden border-t border-b border-gold/20">
       <div className="container-custom">
         {/* Header */}
         <motion.div

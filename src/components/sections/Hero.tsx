@@ -22,7 +22,7 @@ export function Hero() {
   const t = useTranslations('hero')
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-nero">
+    <section id="hero" className="relative h-screen w-full overflow-hidden bg-nero">
       {/* Main container */}
       <div className="relative h-full w-full overflow-hidden">
 
