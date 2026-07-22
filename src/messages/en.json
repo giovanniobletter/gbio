@@ -587,7 +587,10 @@
     "changeCountry": "— change country at checkout",
     "proceedCheckout": "Proceed to Checkout",
     "continueShopping": "Continue shopping",
-    "total": "Total"
+    "total": "Total",
+    "freeShippingUnlocked": "Free shipping unlocked",
+    "upsellTitle": "Complete your order",
+    "upsellAdd": "Add"
   },
   "callToAction": {
     "title": "Bring Abruzzo to your table.",

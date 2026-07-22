@@ -125,6 +125,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
     isOpen: false,
   })
   const [shippingZone, setShippingZone] = useState<ShippingZone>('italia')
+  // Evita che il salvataggio del primo render (items ancora vuoti) sovrascriva
+  // il carrello salvato prima che venga ricaricato da localStorage
+  const [hydrated, setHydrated] = useState(false)
 
   // Load cart and shipping zone from localStorage on mount
   useEffect(() => {
@@ -142,13 +145,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (savedZone === 'italia' || savedZone === 'europa' || savedZone === 'extra_eu') {
       setShippingZone(savedZone)
     }
+    setHydrated(true)
   }, [])
 
   // Save cart to localStorage on changes
   useEffect(() => {
-    if (typeof window === 'undefined') return
+    if (typeof window === 'undefined' || !hydrated) return
     localStorage.setItem('gbio-cart', JSON.stringify(state.items))
-  }, [state.items])
+  }, [state.items, hydrated])
 
   // Save shipping zone to localStorage on changes
   useEffect(() => {

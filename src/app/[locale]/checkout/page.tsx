@@ -15,6 +15,7 @@ import {
   User,
 } from 'lucide-react'
 import { useCart } from '@/context/CartContext'
+import { CartUpsell } from '@/components/cart/CartUpsell'
 import { metaTrack } from '@/lib/metaPixel'
 import { useAuth } from '@/context/AuthContext'
 import { COUNTRIES, getShippingZone } from '@/lib/shipping'
@@ -969,6 +970,10 @@ function CheckoutContent() {
                   </li>
                 ))}
               </ul>
+
+              {/* Upsell: solo nello step spedizione — durante il pagamento
+                  il totale non deve più cambiare (PaymentIntent già creato) */}
+              {step === 'shipping' && <CartUpsell />}
 
               <div className="border-t border-gold/20 pt-4 space-y-3">
                 <div className="flex justify-between font-sans text-sm">

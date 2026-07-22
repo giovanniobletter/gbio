@@ -5,6 +5,7 @@ import { X, Minus, Plus, Trash2, ShoppingBag, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useCart } from '@/context/CartContext'
+import { CartUpsell } from '@/components/cart/CartUpsell'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -25,7 +26,6 @@ export function CartDrawer() {
     shipping,
     total,
     shippingZone,
-    freeShippingThreshold,
   } = useCart()
 
   const formatPrice = (price: number) => {
@@ -169,6 +169,8 @@ export function CartDrawer() {
             {/* Footer */}
             {items.length > 0 && (
               <div className="p-6 border-t border-gold/20 bg-nero">
+                <CartUpsell />
+
                 {/* Subtotals */}
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between font-sans text-sm">
@@ -185,11 +187,6 @@ export function CartDrawer() {
                       )}
                     </span>
                   </div>
-                  {freeShippingThreshold !== null && subtotal < freeShippingThreshold && (
-                    <p className="font-sans text-xs text-gold/60 text-center py-2 border border-gold/20">
-                      {t('addForFreeShipping', { amount: formatPrice(freeShippingThreshold - subtotal) })}
-                    </p>
-                  )}
                   {shippingZone === 'extra_eu' && (
                     <p className="font-sans text-xs text-bianco/40 text-center py-2 border border-gold/20">
                       {t('extraEuShipping')}

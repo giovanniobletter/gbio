@@ -587,7 +587,10 @@
     "changeCountry": "— cambia paese al checkout",
     "proceedCheckout": "Procedi al Checkout",
     "continueShopping": "Continua lo shopping",
-    "total": "Totale"
+    "total": "Totale",
+    "freeShippingUnlocked": "Spedizione gratuita sbloccata",
+    "upsellTitle": "Completa il tuo ordine",
+    "upsellAdd": "Aggiungi"
   },
   "callToAction": {
     "title": "Porta l'Abruzzo sulla tua tavola.",
