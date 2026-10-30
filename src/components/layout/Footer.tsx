@@ -122,7 +122,7 @@ export function Footer() {
             </h4>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com/gbio_farm"
+                href="https://instagram.com/gbio.farm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-gold/40 flex items-center justify-center text-gold hover:bg-gold hover:text-nero transition-all duration-300"
