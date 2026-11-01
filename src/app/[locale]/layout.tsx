@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: t('title'),
       description: t('description'),
-      url: 'https://gbio.it',
+      url: `https://gbio.it/${locale}`,
       siteName: 'GBiO',
       locale: localeMap[locale] || 'it_IT',
       type: 'website',
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       follow: true,
     },
     alternates: {
-      canonical: 'https://gbio.it',
+      canonical: `https://gbio.it/${locale}`,
     },
   }
 }
