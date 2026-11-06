@@ -20,7 +20,8 @@ export function Hero() {
             alt=""
             fill
             priority
-            sizes="100vw"
+            quality={85}
+            sizes="(orientation: portrait) 250vw, 100vw"
             className="object-cover object-center"
           />
         </div>

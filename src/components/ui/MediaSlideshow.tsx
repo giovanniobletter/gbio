@@ -99,7 +99,7 @@ export function MediaSlideshow({
     const src = still ? still.src : current.type === 'video' ? current.poster : current.src
     return (
       <div className={`absolute inset-0 overflow-hidden ${className}`}>
-        <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
+        <Image src={src} alt="" fill sizes="(orientation: portrait) 250vw, 100vw" className="object-cover" />
       </div>
     )
   }
@@ -127,7 +127,8 @@ export function MediaSlideshow({
                 alt=""
                 fill
                 priority={index === 0}
-                sizes="100vw"
+                quality={85}
+                sizes="(orientation: portrait) 250vw, 100vw"
                 className="object-cover"
               />
             </motion.div>
