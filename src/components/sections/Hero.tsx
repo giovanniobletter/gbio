@@ -3,20 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
-
-const productImages = [
-  '/images/pasta-penne.jpg',
-  '/images/olio-05l.jpg',
-  '/images/pasta-tagliatelle.jpg',
-  '/images/passata-pomodoro.jpg',
-  '/images/olio-latta-5l.jpg',
-  '/images/pasta-mezzemaniche.jpg',
-  '/images/semolato-cappelli.jpg',
-  '/images/olio-3l.jpg',
-  '/images/pasta-quadrucci.jpg',
-  '/images/pasta-fettuccine.jpg',
-  '/images/farina-gentilrosso.jpg',
-]
+import { HeroBackdrop } from '@/components/sections/HeroBackdrop'
 
 export function Hero() {
   const t = useTranslations('hero')
@@ -26,40 +13,11 @@ export function Hero() {
       {/* Main container */}
       <div className="relative h-full w-full overflow-hidden">
 
-        {/* Background - Scrolling product carousel */}
-        <div className="absolute inset-0 flex overflow-hidden">
-          <motion.div
-            className="flex gap-8"
-            animate={{ x: [0, -3620] }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          >
-            {[...productImages, ...productImages].map((img, idx) => (
-              <div
-                key={idx}
-                className="relative w-[300px] h-screen flex-shrink-0 opacity-50"
-                style={{
-                  maskImage: 'radial-gradient(ellipse 70% 60% at center, black 30%, transparent 70%)',
-                  WebkitMaskImage: 'radial-gradient(ellipse 70% 60% at center, black 30%, transparent 70%)',
-                }}
-              >
-                <Image
-                  src={img}
-                  alt=""
-                  fill
-                  className="object-contain object-center brightness-110"
-                  priority={idx < 4}
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        {/* Sfondo: foto e video della raccolta 2026, alternati */}
+        <HeroBackdrop />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-nero/70 via-nero/50 to-nero/70 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-nero/70 via-nero/40 to-nero/85 pointer-events-none" />
 
         {/* Logo - Centered and prominent */}
         <motion.div
