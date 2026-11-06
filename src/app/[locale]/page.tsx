@@ -8,7 +8,6 @@ import { Hero } from '@/components/sections/Hero'
 import { BoxedSets } from '@/components/sections/BoxedSets'
 import { Heritage } from '@/components/sections/Heritage'
 import { Products } from '@/components/sections/Products'
-import { Raccolta2026 } from '@/components/sections/Raccolta2026'
 import { Territory } from '@/components/sections/Territory'
 import { Certifications } from '@/components/sections/Certifications'
 import { ProductShowcase } from '@/components/sections/ProductShowcase'
@@ -25,7 +24,6 @@ export default function Home() {
         <Hero />
         <BoxedSets />
         <Products />
-        <Raccolta2026 />
         <Certifications />
         <Territory />
         <Heritage />
