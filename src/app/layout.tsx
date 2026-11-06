@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import { ChatWidget } from '@/components/ui/ChatWidget'
+import { merchantOfferFields } from '@/lib/structuredData'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -114,6 +115,7 @@ export default function RootLayout({
                     priceCurrency: 'EUR',
                     availability: 'https://schema.org/InStock',
                     url: 'https://gbio.it/it/prodotti/olio-dop-50cl',
+                    ...merchantOfferFields('it'),
                   },
                 },
                 {
@@ -128,6 +130,7 @@ export default function RootLayout({
                     priceCurrency: 'EUR',
                     availability: 'https://schema.org/InStock',
                     url: 'https://gbio.it/it/prodotti/olio-dop-5l',
+                    ...merchantOfferFields('it'),
                   },
                 },
                 {
@@ -142,6 +145,7 @@ export default function RootLayout({
                     priceCurrency: 'EUR',
                     availability: 'https://schema.org/InStock',
                     url: 'https://gbio.it/it/prodotti/pasta-penne',
+                    ...merchantOfferFields('it'),
                   },
                 },
               ],

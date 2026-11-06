@@ -5,7 +5,7 @@ interface ShippingZoneConfig {
   freeThreshold: number | null // null = mai gratuita
 }
 
-const ZONE_CONFIG: Record<ShippingZone, ShippingZoneConfig> = {
+export const ZONE_CONFIG: Record<ShippingZone, ShippingZoneConfig> = {
   italia: { cost: 7.90, freeThreshold: 60 },
   europa: { cost: 14.90, freeThreshold: 100 },
   extra_eu: { cost: 19.90, freeThreshold: null },

@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { products, getProductById, getProductsByCategory } from '@/data/products'
 import { ProductDetailClient } from '@/components/product/ProductDetailClient'
+import { merchantOfferFields } from '@/lib/structuredData'
 
 type Props = {
   params: Promise<{ locale: string; id: string }>
@@ -81,6 +82,7 @@ export default async function ProductPage({ params }: Props) {
           priceCurrency: 'EUR',
           availability: 'https://schema.org/InStock',
           url: `https://gbio.it/${locale}/prodotti/${product.id}`,
+          ...merchantOfferFields(locale),
         },
       },
       {
