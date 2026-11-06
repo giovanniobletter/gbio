@@ -2,8 +2,9 @@
 
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { MediaSlideshow } from '@/components/ui/MediaSlideshow'
+import { territorySlides, type SlideItem } from '@/data/raccolta2026'
 import { Sun, Droplets, Mountain, MapPin } from 'lucide-react'
 
 const slides = [
@@ -23,20 +24,28 @@ const slides = [
   '/images/territory/06-piante-muro.jpg',
 ]
 
+// Sfondo: prima foto e video della raccolta 2026, poi le foto storiche del territorio.
+const territoryItems: SlideItem[] = [
+  ...territorySlides,
+  ...slides.map((src) => ({ type: 'image' as const, src })),
+]
+
 export function Territory() {
   const t = useTranslations('territory')
   const sectionRef = useRef<HTMLElement>(null)
-  const [slideIdx, setSlideIdx] = useState(0)
+  const [inView, setInView] = useState(true)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   })
 
+  // Lo slideshow gira solo quando la sezione è sullo schermo.
   useEffect(() => {
-    const id = setInterval(() => {
-      setSlideIdx((i) => (i + 1) % slides.length)
-    }, 4500)
-    return () => clearInterval(id)
+    const el = sectionRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0 })
+    io.observe(el)
+    return () => io.disconnect()
   }, [])
 
   // Parallax transforms
@@ -101,31 +110,10 @@ export function Territory() {
     >
       {/* Sticky slideshow background */}
       <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
-        <AnimatePresence mode="sync">
-          <motion.div
-            key={slides[slideIdx]}
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1 }}
-            transition={{
-              opacity: { duration: 2, ease: 'easeInOut' },
-              scale: { duration: 6, ease: 'easeOut' },
-            }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={slides[slideIdx]}
-              alt=""
-              fill
-              className="object-cover"
-              priority={slideIdx === 0}
-              sizes="100vw"
-            />
-          </motion.div>
-        </AnimatePresence>
+        <MediaSlideshow items={territoryItems} active={inView} photoSeconds={4.5} />
         {/* Dark overlay for legibility */}
-        <div className="absolute inset-0 bg-nero/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-nero/50 via-nero/30 to-nero/80" />
+        <div className="absolute inset-0 bg-nero/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-nero/50 via-nero/20 to-nero/80" />
       </div>
 
       {/* Gradiente che respira */}
