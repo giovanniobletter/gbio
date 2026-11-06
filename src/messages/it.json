@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "GBiO",
-    "description": "Olio extravergine DOP e pasta di grani antichi dall'Abruzzo. Biologico certificato ICEA."
+    "description": "Olio extravergine DOP e pasta di grani antichi dall'Abruzzo. Olio biologico certificato ICEA."
   },
   "nav": {
     "heritage": "La Nostra Storia",
@@ -30,6 +30,12 @@
     "sideLeft": "Abruzzo • Italia",
     "sideRight": "100% Italiano"
   },
+  "raccolta": {
+    "eyebrow": "Raccolta 2026",
+    "title": "Le olive, a mano",
+    "subtitle": "Ottobre 2026. Reti stese sotto gli alberi, abbacchiatori, cassette. Dalla pianta al frantoio in poche ore.",
+    "caption": "Fotografie e riprese dalla raccolta 2026"
+  },
   "boxedSets": {
     "eyebrow": "Cofanetti",
     "title": "Le Box",
@@ -40,7 +46,7 @@
     "eyebrow": "Heritage",
     "title": "La Nostra Storia",
     "paragraph1": "Nel cuore dell'Abruzzo, tra le dolci colline della provincia di Pescara, sorge l'Azienda Agricola G.B. Obletter: un progetto nato dalla visione di un giovane imprenditore che ha scelto di guardare al futuro riscoprendo le radici più autentiche della terra.",
-    "paragraph2": "Giovanni Battista Obletter, classe 1996, rappresenta una nuova generazione di agricoltori che coniuga la sapienza contadina tramandata nei secoli con le più avanzate pratiche di coltivazione sostenibile. Cinquanta ettari di terreni distribuiti tra Cepagatti, Moscufo e Pianella — borghi dove il tempo scorre ancora al ritmo delle stagioni — costituiscono il patrimonio verde da cui nascono i nostri prodotti biologici certificati.",
+    "paragraph2": "Giovanni Battista Obletter, classe 1996, rappresenta una nuova generazione di agricoltori che coniuga la sapienza contadina tramandata nei secoli con le più avanzate pratiche di coltivazione sostenibile. Cinquanta ettari di terreni distribuiti tra Cepagatti, Moscufo e Pianella — borghi dove il tempo scorre ancora al ritmo delle stagioni — costituiscono il patrimonio verde da cui nascono i nostri prodotti.",
     "sectionTwoTitle": "Tradizione e Innovazione",
     "sectionTwoP1Pre": "La scelta di coltivare il ",
     "sectionTwoP1Mid1": "grano duro Senatore Cappelli",
@@ -53,7 +59,7 @@
   "products": {
     "eyebrow": "Collezione",
     "title": "I Prodotti",
-    "subtitle": "Biologico certificato ICEA.",
+    "subtitle": "Olio EVO DOP biologico certificato ICEA. Pasta, farine e passata in conversione al biologico.",
     "addToCart": "Aggiungi",
     "added": "Aggiunto",
     "add": "Aggiungi",
@@ -69,17 +75,17 @@
       "olio": {
         "label": "Olio",
         "title": "Olio EVO Bio DOP Aprutino Pescarese",
-        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 6 ore al Frantoio Valentini Cerretani di Loreto Aprutino. Estrazione a freddo, alto contenuto di polifenoli, proprietà nutraceutiche. <em>Il nostro DOP Aprutino Pescarese contiene 444 mg/kg di biofenoli — oltre 4 volte il minimo richiesto dal disciplinare DOP (100 mg/kg) e quasi il doppio della soglia riconosciuta dall'Unione Europea. I polifenoli dell'olio di oliva contribuiscono alla protezione dei lipidi ematici dallo stress ossidativo. L'effetto benefico si ottiene con l'assunzione giornaliera di 20 g di olio di oliva. (Reg. UE 432/2012 – Analisi BIOCHEM, RdP n° 297-059/25)</em>"
+        "description": "Da ulivi secolari di Moscufo, nel cuore del Triangolo d'Oro d'Abruzzo. Olive raccolte a mano e molite entro 6 ore al Frantoio Valentini Cerretani di Loreto Aprutino. Estrazione a freddo, alto contenuto di polifenoli. <em>Il nostro DOP Aprutino Pescarese contiene 444 mg/kg di biofenoli — oltre 4 volte il minimo richiesto dal disciplinare DOP (100 mg/kg) e quasi il doppio della soglia riconosciuta dall'Unione Europea. I polifenoli dell'olio di oliva contribuiscono alla protezione dei lipidi ematici dallo stress ossidativo. L'effetto benefico si ottiene con l'assunzione giornaliera di 20 g di olio di oliva. (Reg. UE 432/2012 – Analisi BIOCHEM, RdP n° 297-059/25)</em>"
       },
       "pasta": {
         "label": "Pasta",
         "title": "Pasta di Semolato di Grano Duro Senatore Cappelli",
-        "description": "Da grano 100% italiano, coltivato a Castellana in Abruzzo con metodo biologico. Alta digeribilità, un carico glicemico più favorevole, ricco di proteine e fibre. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
+        "description": "Da grano 100% italiano, coltivato a Castellana in Abruzzo, in conversione all'agricoltura biologica. Semola di Senatore Cappelli, la varietà selezionata da Nazareno Strampelli intorno al 1915. Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
       },
       "farina": {
         "label": "Farine",
         "title": "Farine di Grani Antichi",
-        "description": "Castellana. Senatore Cappelli e Gentil Rosso macinati a pietra. Alta digeribilità, un carico glicemico più favorevole."
+        "description": "Castellana. Senatore Cappelli e Gentil Rosso macinati a pietra, in conversione all'agricoltura biologica."
       },
       "conserve": {
         "label": "Conserve",
@@ -116,7 +122,7 @@
     "icea": {
       "title": "Biologico Certificato ICEA",
       "code": "IT-BIO-006 • Operatore S2451",
-      "description": "Tutti i nostri prodotti sono certificati biologici dall'Istituto per la Certificazione Etica e Ambientale secondo il Reg. UE 2018/848. Nessun pesticida, nessun OGM, solo natura.",
+      "description": "Il nostro olio EVO DOP è certificato biologico dall'Istituto per la Certificazione Etica e Ambientale secondo il Reg. UE 2018/848. Pasta, farine e passata sono in conversione: stesso disciplinare, stessi controlli, certificazione a conversione conclusa. Nessun pesticida di sintesi, nessun OGM.",
       "feature1": "Coltivazione senza pesticidi chimici",
       "feature2": "Fertilizzazione naturale",
       "feature3": "Rispetto della biodiversità",
@@ -190,7 +196,7 @@
       "contact": "Contatti"
     },
     "cookiePolicy": "Cookie Policy",
-    "tagline": "Azienda Agricola Obletter Giovanni Battista. Eccellenze biologiche dal cuore dell'Abruzzo, destinate alle tavole più raffinate.",
+    "tagline": "Azienda Agricola Obletter Giovanni Battista. Eccellenze agricole dal cuore dell'Abruzzo, destinate alle tavole più raffinate.",
     "quote": "\"Coltiviamo il futuro, rispettando la tradizione\"",
     "contactTitle": "Contatti",
     "navTitle": "Navigazione",
@@ -206,7 +212,7 @@
   "cart": {
     "title": "Carrello",
     "empty": "Il carrello è vuoto",
-    "emptyDescription": "Scopri i nostri prodotti biologici",
+    "emptyDescription": "Scopri i nostri prodotti",
     "goToProducts": "Vai ai Prodotti",
     "removeItem": "Rimuovi dal carrello",
     "decreaseQuantity": "Diminuisci quantità",
@@ -428,7 +434,7 @@
     "orders": {
       "title": "I tuoi Ordini",
       "empty": "Non hai ancora effettuato ordini",
-      "emptyDescription": "Scopri i nostri prodotti biologici",
+      "emptyDescription": "Scopri i nostri prodotti",
       "goToProducts": "Scopri i Prodotti"
     },
     "addresses": {
@@ -505,57 +511,57 @@
     "olio-dop-50cl": {
       "name": "Olio Extravergine",
       "subtitle": "Bottiglia 0,5 L",
-      "description": "Nutraceutico. Alto contenuto di polifenoli. Note di mandorla e carciofo."
+      "description": "Alto contenuto di polifenoli. Note di mandorla e carciofo."
     },
     "olio-dop-3l": {
       "name": "Olio Extravergine",
       "subtitle": "DOP Aprutino Pescarese · Latta 3L",
-      "description": "Formato famiglia. Polifenoli e antiossidanti naturali."
+      "description": "Formato famiglia. Alto contenuto di polifenoli."
     },
     "olio-dop-5l": {
       "name": "Olio Extravergine",
       "subtitle": "DOP Aprutino Pescarese · Latta 5L",
-      "description": "Per intenditori. Proprietà antiossidanti certificate."
+      "description": "Per intenditori. Alto contenuto di polifenoli."
     },
     "pasta-penne": {
       "name": "Penne Rigate",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
     },
     "pasta-mezzemaniche": {
       "name": "Mezzemaniche",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
     },
     "pasta-fettuccine": {
       "name": "Fettuccine",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
     },
     "pasta-tagliatelle": {
       "name": "Tagliatelle",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Alta digeribilità. Trafilatura al bronzo, essiccazione lenta."
+      "description": "Trafilatura al bronzo, essiccazione lenta a bassa temperatura."
     },
     "pasta-sagnette": {
       "name": "Sagnette",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Formato abruzzese. Alta digeribilità, trafilatura al bronzo."
+      "description": "Formato abruzzese, per i legumi. Trafilatura al bronzo."
     },
     "pasta-quadrucci": {
       "name": "Quadrucci",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Per minestre e brodi. Alta digeribilità."
+      "description": "Per minestre e brodi. Trafilatura al bronzo."
     },
     "semolato-cappelli": {
       "name": "Semolato",
       "subtitle": "Senatore Cappelli · 1kg",
-      "description": "Macinato a pietra. Un carico glicemico più favorevole."
+      "description": "Semolato di Senatore Cappelli, macinato a pietra."
     },
     "farina-gentilrosso": {
       "name": "Farina Gentilrosso",
       "subtitle": "Grano Tenero Antico · 1kg",
-      "description": "Macinata a pietra. Un carico glicemico più favorevole."
+      "description": "Gentil Rosso, macinata a pietra."
     },
     "passata-pomodoro": {
       "name": "Passata di Pomodoro",

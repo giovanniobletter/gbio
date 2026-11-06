@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "GBiO",
-    "description": "DOP extra virgin olive oil and ancient grain pasta from Abruzzo. ICEA certified organic."
+    "description": "DOP extra virgin olive oil and ancient grain pasta from Abruzzo. Olive oil ICEA certified organic."
   },
   "nav": {
     "heritage": "Our Story",
@@ -30,6 +30,12 @@
     "sideLeft": "Abruzzo • Italy",
     "sideRight": "100% Italian"
   },
+  "raccolta": {
+    "eyebrow": "Harvest 2026",
+    "title": "Olives, picked by hand",
+    "subtitle": "October 2026. Nets under the trees, harvesting rakes, crates. From the tree to the mill within hours.",
+    "caption": "Photographs and footage from the 2026 harvest"
+  },
   "boxedSets": {
     "eyebrow": "Gift Sets",
     "title": "The Boxes",
@@ -40,7 +46,7 @@
     "eyebrow": "Heritage",
     "title": "Our Story",
     "paragraph1": "In the heart of Abruzzo, among the gentle hills of the province of Pescara, lies the G.B. Obletter Farm: a project born from the vision of a young entrepreneur who chose to look to the future by rediscovering the most authentic roots of the land.",
-    "paragraph2": "Giovanni Battista Obletter, born in 1996, represents a new generation of farmers who combines centuries-old peasant wisdom with the most advanced sustainable cultivation practices. Fifty hectares of land spread across Cepagatti, Moscufo and Pianella — villages where time still moves to the rhythm of the seasons — form the green heritage from which our certified organic products are born.",
+    "paragraph2": "Giovanni Battista Obletter, born in 1996, represents a new generation of farmers who combines centuries-old peasant wisdom with the most advanced sustainable cultivation practices. Fifty hectares of land spread across Cepagatti, Moscufo and Pianella — villages where time still moves to the rhythm of the seasons — form the green heritage from which our products are born.",
     "sectionTwoTitle": "Tradition and Innovation",
     "sectionTwoP1Pre": "Choosing to cultivate ",
     "sectionTwoP1Mid1": "Senatore Cappelli durum wheat",
@@ -53,7 +59,7 @@
   "products": {
     "eyebrow": "Collection",
     "title": "Products",
-    "subtitle": "ICEA certified organic.",
+    "subtitle": "DOP extra virgin olive oil ICEA certified organic. Pasta, flours and passata in conversion to organic.",
     "addToCart": "Add",
     "added": "Added",
     "add": "Add",
@@ -69,17 +75,17 @@
       "olio": {
         "label": "Olive Oil",
         "title": "Golden Triangle of Olive Oil",
-        "description": "Moscufo · Loreto Aprutino · Pianella. Nutraceutical DOP Aprutino Pescarese olive oil with high polyphenol content. Certified antioxidant properties."
+        "description": "Moscufo · Loreto Aprutino · Pianella. DOP Aprutino Pescarese olive oil from century-old trees, hand-picked and cold-extracted within 6 hours. High polyphenol content: 444 mg/kg of biophenols (BIOCHEM test report no. 297-059/25)."
       },
       "pasta": {
         "label": "Pasta",
         "title": "Ancient Grains · Via del Grano",
-        "description": "Castellana. Senatore Cappelli pasta, a highly digestible ancient grain. Bronze-drawn, slow dried at low temperature."
+        "description": "Castellana. Senatore Cappelli, the durum wheat selected by Nazareno Strampelli around 1915. Bronze-drawn, slow dried at low temperature. In conversion to organic farming."
       },
       "farina": {
         "label": "Flours",
         "title": "Ancient Grain Flours",
-        "description": "Castellana. Stone-ground Senatore Cappelli and Gentil Rosso. High digestibility, low glycemic index."
+        "description": "Castellana. Stone-ground Senatore Cappelli and Gentil Rosso, in conversion to organic farming."
       },
       "conserve": {
         "label": "Preserves",
@@ -116,7 +122,7 @@
     "icea": {
       "title": "ICEA Certified Organic",
       "code": "IT-BIO-006 • Operator S2451",
-      "description": "All our products are certified organic by the Institute for Ethical and Environmental Certification under EU Reg. 2018/848. No pesticides, no GMOs — only nature.",
+      "description": "Our DOP extra virgin olive oil is certified organic by the Institute for Ethical and Environmental Certification under EU Reg. 2018/848. Pasta, flours and passata are in conversion: same rulebook, same inspections, certification when the conversion period ends. No synthetic pesticides, no GMOs.",
       "feature1": "Cultivation without chemical pesticides",
       "feature2": "Natural fertilization",
       "feature3": "Biodiversity protection",
@@ -206,7 +212,7 @@
   "cart": {
     "title": "Cart",
     "empty": "Your cart is empty",
-    "emptyDescription": "Discover our organic products",
+    "emptyDescription": "Discover our products",
     "goToProducts": "Go to Products",
     "removeItem": "Remove from cart",
     "decreaseQuantity": "Decrease quantity",
@@ -428,7 +434,7 @@
     "orders": {
       "title": "Your Orders",
       "empty": "No orders yet",
-      "emptyDescription": "Discover our organic products",
+      "emptyDescription": "Discover our products",
       "goToProducts": "Discover Products"
     },
     "addresses": {
@@ -505,57 +511,57 @@
     "olio-dop-50cl": {
       "name": "Extra Virgin Olive Oil",
       "subtitle": "DOP Aprutino Pescarese · 50cl",
-      "description": "Nutraceutical. High polyphenol content. Notes of almond and artichoke."
+      "description": "High polyphenol content. Notes of almond and artichoke."
     },
     "olio-dop-3l": {
       "name": "Extra Virgin Olive Oil",
       "subtitle": "DOP Aprutino Pescarese · 3L Tin",
-      "description": "Family format. Natural polyphenols and antioxidants."
+      "description": "Family format. High polyphenol content."
     },
     "olio-dop-5l": {
       "name": "Extra Virgin Olive Oil",
       "subtitle": "DOP Aprutino Pescarese · 5L Tin",
-      "description": "For connoisseurs. Certified antioxidant properties."
+      "description": "For connoisseurs. High polyphenol content."
     },
     "pasta-penne": {
       "name": "Penne Rigate",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "High digestibility. Bronze-drawn, slow dried."
+      "description": "Bronze-drawn, slow dried at low temperature."
     },
     "pasta-mezzemaniche": {
       "name": "Mezzemaniche",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "High digestibility. Bronze-drawn, slow dried."
+      "description": "Bronze-drawn, slow dried at low temperature."
     },
     "pasta-fettuccine": {
       "name": "Fettuccine",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "High digestibility. Bronze-drawn, slow dried."
+      "description": "Bronze-drawn, slow dried at low temperature."
     },
     "pasta-tagliatelle": {
       "name": "Tagliatelle",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "High digestibility. Bronze-drawn, slow dried."
+      "description": "Bronze-drawn, slow dried at low temperature."
     },
     "pasta-sagnette": {
       "name": "Sagnette",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "Abruzzo format. High digestibility, bronze-drawn."
+      "description": "Abruzzo format, for legumes. Bronze-drawn."
     },
     "pasta-quadrucci": {
       "name": "Quadrucci",
       "subtitle": "Senatore Cappelli · 500g",
-      "description": "For soups and broths. High digestibility."
+      "description": "For soups and broths. Bronze-drawn."
     },
     "semolato-cappelli": {
       "name": "Semolina",
       "subtitle": "Senatore Cappelli · 1kg",
-      "description": "Stone-ground. Low glycemic index."
+      "description": "Senatore Cappelli semolato, stone-ground."
     },
     "farina-gentilrosso": {
       "name": "Gentilrosso Flour",
       "subtitle": "Ancient Soft Wheat · 1kg",
-      "description": "Stone-ground. Low glycemic index."
+      "description": "Gentil Rosso, stone-ground."
     },
     "passata-pomodoro": {
       "name": "Tomato Passata",
