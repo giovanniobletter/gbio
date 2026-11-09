@@ -37,7 +37,7 @@ function BoxCard({ id }: { id: string }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-10%' }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className="group relative bg-nero/60 backdrop-blur-sm border border-gold/20 hover:border-gold/50 transition-all duration-500 overflow-hidden"
+      className="group relative bg-nero/60 border border-gold/20 hover:border-gold/50 transition-all duration-500 overflow-hidden"
     >
       {/* Image */}
       <Link href={`/${locale}/prodotti/${product.id}`} className="block relative aspect-[4/3] overflow-hidden">

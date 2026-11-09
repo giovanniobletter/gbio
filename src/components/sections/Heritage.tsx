@@ -1,12 +1,16 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { TextureOverlay } from '@/components/ui/decorative/TextureOverlay'
 import { OrnateRule } from '@/components/ui/decorative/OrnateRule'
+import { cn } from '@/lib/utils'
 
 export function Heritage() {
   const t = useTranslations('heritage')
+  const sectionRef = useRef<HTMLElement>(null)
+  const inView = useInView(sectionRef, { amount: 0 })
   const slowReveal = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -32,8 +36,9 @@ export function Heritage() {
 
   return (
     <section
+      ref={sectionRef}
       id="heritage"
-      className="section-padding bg-nero relative overflow-hidden"
+      className={cn('section-padding bg-nero relative overflow-hidden', !inView && 'anim-paused')}
     >
       {/* Subtle texture overlay */}
       <TextureOverlay variant="linen" opacity={0.02} />
@@ -194,24 +199,16 @@ export function Heritage() {
             </svg>
           </motion.div>
 
-          {/* Particelle dorate fluttuanti */}
+          {/* Particelle dorate fluttuanti (keyframes CSS, ferme fuori schermo) */}
           {[...Array(6)].map((_, i) => (
-            <motion.div
+            <div
               key={i}
-              className="absolute w-1 h-1 bg-gold/30 rounded-full"
+              className="absolute w-1 h-1 bg-gold/30 rounded-full anim-particle"
               style={{
                 left: `${20 + i * 12}%`,
                 top: `${30 + (i % 3) * 20}%`,
-              }}
-              animate={{
-                y: [0, -15, 0],
-                opacity: [0.2, 0.6, 0.2],
-              }}
-              transition={{
-                duration: 3 + i * 0.5,
-                repeat: Infinity,
-                delay: i * 0.4,
-                ease: "easeInOut"
+                animationDuration: `${3 + i * 0.5}s`,
+                animationDelay: `${i * 0.4}s`,
               }}
             />
           ))}

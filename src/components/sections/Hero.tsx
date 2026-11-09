@@ -1,8 +1,10 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
+import { useRef } from 'react'
 import { useTranslations } from 'next-intl'
+import { cn } from '@/lib/utils'
 
 const productImages = [
   '/images/pasta-penne.jpg',
@@ -20,23 +22,24 @@ const productImages = [
 
 export function Hero() {
   const t = useTranslations('hero')
+  const sectionRef = useRef<HTMLElement>(null)
+  // Le animazioni infinite (carosello, invito allo scroll) sono in CSS e si
+  // fermano quando la hero esce dallo schermo: niente lavoro per frame mentre
+  // l'utente scorre il resto della pagina.
+  const inView = useInView(sectionRef, { amount: 0 })
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden bg-nero">
+    <section
+      ref={sectionRef}
+      id="hero"
+      className={cn('relative h-screen w-full overflow-hidden bg-nero', !inView && 'anim-paused')}
+    >
       {/* Main container */}
       <div className="relative h-full w-full overflow-hidden">
 
         {/* Background - Scrolling product carousel */}
         <div className="absolute inset-0 flex overflow-hidden">
-          <motion.div
-            className="flex gap-8"
-            animate={{ x: [0, -3620] }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          >
+          <div className="flex gap-8 anim-marquee">
             {[...productImages, ...productImages].map((img, idx) => (
               <div
                 key={idx}
@@ -50,12 +53,13 @@ export function Hero() {
                   src={img}
                   alt=""
                   fill
-                  className="object-contain object-center brightness-110"
+                  sizes="300px"
+                  className="object-contain object-center"
                   priority={idx < 4}
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Gradient overlay */}
@@ -121,26 +125,15 @@ export function Hero() {
           transition={{ delay: 1.5 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2 text-gold/60"
-          >
+          <div className="flex flex-col items-center gap-2 text-gold/60 anim-float">
             <span className="font-sans text-[10px] uppercase tracking-[0.3em]">
               {t('scroll')}
             </span>
             <svg width="20" height="30" viewBox="0 0 20 30" className="text-gold/40">
               <rect x="1" y="1" width="18" height="28" rx="9" stroke="currentColor" strokeWidth="1" fill="none" />
-              <motion.circle
-                cx="10"
-                cy="8"
-                r="3"
-                fill="currentColor"
-                animate={{ cy: [8, 18, 8] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              <circle cx="10" cy="8" r="3" fill="currentColor" className="anim-float" />
             </svg>
-          </motion.div>
+          </div>
         </motion.div>
 
         {/* Side text */}

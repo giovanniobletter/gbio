@@ -1,10 +1,11 @@
 'use client'
 
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Sun, Droplets, Mountain, MapPin } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const slides = [
   '/images/territory/05-albero-tramonto.jpg',
@@ -27,17 +28,20 @@ export function Territory() {
   const t = useTranslations('territory')
   const sectionRef = useRef<HTMLElement>(null)
   const [slideIdx, setSlideIdx] = useState(0)
+  // Slideshow e nebbie girano solo mentre la sezione è sullo schermo
+  const inView = useInView(sectionRef, { amount: 0 })
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"]
   })
 
   useEffect(() => {
+    if (!inView) return
     const id = setInterval(() => {
       setSlideIdx((i) => (i + 1) % slides.length)
     }, 4500)
     return () => clearInterval(id)
-  }, [])
+  }, [inView])
 
   // Parallax transforms
   const fogOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.6, 0.3])
@@ -97,7 +101,7 @@ export function Territory() {
     <section
       ref={sectionRef}
       id="territorio"
-      className="relative min-h-[200vh] bg-nero overflow-hidden"
+      className={cn('relative min-h-[200vh] bg-nero overflow-hidden', !inView && 'anim-paused')}
     >
       {/* Sticky slideshow background */}
       <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
@@ -128,43 +132,31 @@ export function Territory() {
         <div className="absolute inset-0 bg-gradient-to-b from-nero/50 via-nero/30 to-nero/80" />
       </div>
 
-      {/* Gradiente che respira */}
+      {/* Gradiente che respira (animazione CSS: solo opacity, sul compositor) */}
       <div className="absolute inset-0 z-[1] pointer-events-none">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-b from-nero/40 via-forest-dark/20 to-nero/40"
-          animate={{
-            opacity: [0.5, 0.8, 0.5],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-b from-nero/40 via-forest-dark/20 to-nero/40 anim-breathe" />
       </div>
 
-      {/* Nebbia animata - layer 1 */}
+      {/* Nebbia - layer 1: il gradiente è già morbido, senza filtro blur
+          (un blur di 64px su un livello alto 200vh costava un raster a ogni frame) */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ opacity: fogOpacity }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-bianco/5 to-transparent blur-3xl" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-bianco/5 to-transparent" />
       </motion.div>
 
-      {/* Nebbia animata - layer 2 */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        animate={{
-          x: ['-10%', '10%', '-10%'],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <div className="absolute top-1/3 left-0 right-0 h-96 bg-gradient-to-r from-transparent via-gold/3 to-transparent blur-3xl" />
-      </motion.div>
+      {/* Nebbia - layer 2: deriva orizzontale in CSS, bordi morbidi con un
+          gradiente radiale al posto del blur */}
+      <div className="absolute inset-0 pointer-events-none anim-drift">
+        <div
+          className="absolute top-1/3 left-0 right-0 h-96"
+          style={{
+            background:
+              'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(201, 169, 97, 0.04), transparent 70%)',
+          }}
+        />
+      </div>
 
 
       {/* Contenuto - offset sopra il bg sticky */}

@@ -29,7 +29,16 @@ const categoryIcons = {
   box: Package,
 }
 
-function ProductCard({ product: rawProduct, index }: { product: Product; index: number }) {
+function ProductCard({
+  product: rawProduct,
+  index,
+  frosted = false,
+}: {
+  product: Product
+  index: number
+  /** Effetto vetro smerigliato: ha senso solo quando dietro scorre il video di categoria */
+  frosted?: boolean
+}) {
   const product = useProductT(rawProduct)
   const locale = useLocale()
   const { addItem } = useCart()
@@ -56,11 +65,15 @@ function ProductCard({ product: rawProduct, index }: { product: Product; index: 
   return (
     <motion.article
       variants={luxuryStaggerItem}
-      layout
       className="group relative"
     >
-      {/* Card unificata con altezza responsive */}
-      <div className="relative h-[440px] sm:h-[620px] lg:h-[820px] bg-nero/60 backdrop-blur-sm border border-gold/20 group-hover:border-gold/40 transition-all duration-500 overflow-hidden flex flex-col">
+      {/* Card unificata con altezza responsive. Il backdrop-blur si attiva solo
+          col video dietro: su fondo nero non si vede e costa un raster per frame. */}
+      <div
+        className={`relative h-[440px] sm:h-[620px] lg:h-[820px] bg-nero/60 border border-gold/20 group-hover:border-gold/40 transition-all duration-500 overflow-hidden flex flex-col ${
+          frosted ? 'backdrop-blur-sm' : ''
+        }`}
+      >
 
         {/* Zona immagine - altezza responsive */}
         <div className="relative h-[240px] sm:h-[360px] lg:h-[520px] flex-shrink-0 overflow-hidden">
@@ -358,7 +371,7 @@ export function Products() {
             className="mt-12 grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 lg:gap-8"
           >
             {filteredProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
+              <ProductCard key={product.id} product={product} index={index} frosted={!!videoSrc} />
             ))}
           </motion.div>
         </AnimatePresence>
